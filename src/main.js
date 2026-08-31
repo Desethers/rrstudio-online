@@ -422,7 +422,7 @@ function previewMarkup(task) {
   if (task.category === "website") {
     if (task.id === "fix-website-issue") return bugMarkup();
     const image = websitePreviewImages[task.id] || defaultWebsitePreviewImage;
-    return `<div class="preview-fullbleed"><img src="/studio/images/${image.src}" alt="${image.alt}" /></div>`;
+    return `<div class="preview-fullbleed"><img src="/images/${image.src}" alt="${image.alt}" /></div>`;
   }
   if (task.category === "database") {
     if (task.id === "artlogic-check") return dedupeMarkup();
@@ -445,7 +445,7 @@ function collectorPdfMarkup() {
         <h3>${pv.collectorTitle}</h3>
         <p class="preview-collector__subtitle">${pv.collectorSubtitle}</p>
       </div>
-      <div class="preview-collector__media"><img src="/studio/images/collector-pdf-artwork.jpg" alt="${pv.collectorArtwork}" /></div>
+      <div class="preview-collector__media"><img src="/images/collector-pdf-artwork.jpg" alt="${pv.collectorArtwork}" /></div>
       <div class="preview-collector__meta">
         <div>
           <p class="preview-collector__artist">Sacha Elron</p>
