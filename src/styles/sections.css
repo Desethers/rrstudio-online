@@ -15,9 +15,6 @@
   letter-spacing: -0.4px;
   line-height: 24px;
 }
-.brand span {
-  color: var(--subtle);
-}
 .nav {
   display: flex;
   gap: 28px;
@@ -1938,9 +1935,6 @@ h1 {
 .site-footer__brand {
   font-size: 18px;
   letter-spacing: -0.025em;
-}
-.site-footer__brand span {
-  color: var(--subtle);
 }
 .site-footer__intro p {
   color: var(--subtle);
