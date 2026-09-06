@@ -665,3 +665,21 @@ if (dragZone) {
   dragZone.addEventListener("pointerup", endDrag);
   dragZone.addEventListener("pointercancel", endDrag);
 }
+
+// Cycles the hero's closing word between the audiences the studio serves.
+const heroRotator = document.querySelector("#hero-rotator");
+if (heroRotator && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const HERO_WORDS = { en: ["galleries", "artists", "advisors"], fr: ["galeries", "artistes", "conseillers"] };
+  const words = HERO_WORDS[LANG];
+  let wordIndex = 0;
+  setInterval(() => {
+    heroRotator.classList.add("is-out");
+    setTimeout(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      heroRotator.textContent = words[wordIndex];
+      heroRotator.classList.remove("is-out");
+      heroRotator.classList.add("is-in");
+      setTimeout(() => heroRotator.classList.remove("is-in"), 420);
+    }, 320);
+  }, 2600);
+}

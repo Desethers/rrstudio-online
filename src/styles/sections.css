@@ -1139,6 +1139,37 @@ h1 {
   line-height: 0.9;
   max-width: 680px;
 }
+.hero-rotator {
+  display: inline-block;
+}
+.hero-rotator.is-out {
+  animation: heroRotatorOut 0.32s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+}
+.hero-rotator.is-in {
+  animation: heroRotatorIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes heroRotatorOut {
+  to {
+    opacity: 0;
+    transform: translateY(-0.18em);
+  }
+}
+@keyframes heroRotatorIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotator.is-out,
+  .hero-rotator.is-in {
+    animation: none;
+  }
+}
 .hero__copy {
   font-size: 23px;
   line-height: 1.18;
