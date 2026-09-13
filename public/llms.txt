@@ -6,7 +6,7 @@ R.R Studio is a digital studio (an extension of Vitreen Software) that handles t
 
 Contact: rrstudio.forartworld@gmail.com
 Location: Paris, France
-Website: https://web.forart.world
+Website: https://rr.forart.world
 
 ## How it works
 
