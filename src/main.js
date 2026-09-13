@@ -165,9 +165,9 @@ const UI = {
     moreTasks: (n) => `+${n} more task${n === 1 ? "" : "s"}`,
     exampleTask: "Example task",
     dateLocale: "en-GB",
-    mailSubject: "Vitreen task request",
+    mailSubject: "R.R Studio task request",
     mailBody: (lines, total) =>
-      `Hello Vitreen,\n\nI would like to request:\n${lines}\n\nEstimated total: ${price(total)}`,
+      `Hello R.R Studio,\n\nI would like to request:\n${lines}\n\nEstimated total: ${price(total)}`,
   },
   fr: {
     add: "Ajouter",
@@ -179,9 +179,9 @@ const UI = {
     moreTasks: (n) => `+${n} autre${n === 1 ? "" : "s"} tâche${n === 1 ? "" : "s"}`,
     exampleTask: "Tâche exemple",
     dateLocale: "fr-FR",
-    mailSubject: "Demande de tâche Vitreen",
+    mailSubject: "Demande de tâche R.R Studio",
     mailBody: (lines, total) =>
-      `Bonjour Vitreen,\n\nJe souhaiterais demander :\n${lines}\n\nTotal estimé : ${price(total)}`,
+      `Bonjour R.R Studio,\n\nJe souhaiterais demander :\n${lines}\n\nTotal estimé : ${price(total)}`,
   },
 };
 
@@ -378,7 +378,7 @@ function updateSummary() {
   }
   const lines = selectedTasks.map((task) => `- ${task.title} (${price(task.price)})`).join("\n");
   document.querySelector("#request-tasks").href =
-    `mailto:studio@vitreen.art?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody(lines, total))}`;
+    `mailto:rrstudio.forartworld@gmail.com?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody(lines, total))}`;
   if (!selectedTasks.length) {
     summary.classList.remove("is-visible", "is-updated");
     summary.hidden = true;
