@@ -2883,7 +2883,9 @@ h1 {
    gap, and a compact wrapped reassurance row instead of a full 3-line stack. */
 @media (max-width: 640px) {
   .eyebrow,
-  .hero .eyebrow {
+  .hero .eyebrow,
+  .tasks .eyebrow,
+  .how-it-works .eyebrow {
     font-size: 12px;
   }
   .hero__content {
@@ -2905,16 +2907,22 @@ h1 {
   .reassurances {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px 16px;
+    gap: 12px;
+    font-size: 11px;
     margin: 8px 0 0;
   }
   .reassurances li {
     align-items: center;
     display: flex;
-    gap: 6px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .reassurances svg {
+    height: 13px;
+    width: 13px;
   }
   .hero__actions {
     flex-direction: row;
