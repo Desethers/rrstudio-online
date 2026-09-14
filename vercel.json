@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/tasks", "destination": "/index.html" },
+    { "source": "/fr/tasks", "destination": "/fr/index.html" }
+  ]
+}
