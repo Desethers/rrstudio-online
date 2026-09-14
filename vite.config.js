@@ -3,6 +3,9 @@ import path from "path";
 
 export default defineConfig({
   base: "/",
+  server: {
+    port: process.env.PORT ? Number(process.env.PORT) : undefined,
+  },
   build: {
     outDir: "dist",
     rollupOptions: {
