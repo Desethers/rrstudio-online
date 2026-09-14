@@ -40,25 +40,25 @@ const TASK_COPY = {
         "Something looks wrong or stopped working? We investigate and fix one defined issue.",
     },
     "organise-database": {
-      label: "Database",
-      title: "Organise your database",
+      label: "Inventory",
+      title: "Organise your inventory",
       description: "Clean categories, fields and structure.",
     },
     "import-artworks": {
-      label: "Database",
+      label: "Inventory",
       title: "Import 50 artworks",
       description: "Clean and import your spreadsheet or export.",
     },
     "clean-records": {
-      label: "Database",
+      label: "Inventory",
       title: "Clean 50 artwork records",
       description: "Fix inconsistent artwork information.",
     },
     "artlogic-check": {
-      label: "Database",
-      title: "Clean up your Artlogic database",
+      label: "Inventory",
+      title: "Clean up your Artlogic inventory",
       description:
-        "Remove duplicates, complete missing records and make your database reliable again.",
+        "Remove duplicates, complete missing records and make your inventory reliable again.",
     },
     "collector-pdf": {
       label: "Sales material",
@@ -110,25 +110,25 @@ const TASK_COPY = {
         "Quelque chose s’affiche mal ou ne fonctionne plus ? Nous cherchons et corrigeons un problème défini.",
     },
     "organise-database": {
-      label: "Base de données",
-      title: "Organiser votre base de données",
+      label: "Inventaire",
+      title: "Organiser votre inventaire",
       description: "Catégories, champs et structure remis au propre.",
     },
     "import-artworks": {
-      label: "Base de données",
+      label: "Inventaire",
       title: "Importer 50 œuvres",
       description: "Nettoyage et import de votre tableur ou de votre export.",
     },
     "clean-records": {
-      label: "Base de données",
+      label: "Inventaire",
       title: "Nettoyer 50 fiches d’œuvres",
       description: "Correction des informations d’œuvres incohérentes.",
     },
     "artlogic-check": {
-      label: "Base de données",
-      title: "Nettoyer votre base Artlogic",
+      label: "Inventaire",
+      title: "Nettoyer votre inventaire Artlogic",
       description:
-        "Doublons supprimés, fiches incomplètes complétées, et une base à nouveau fiable.",
+        "Doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable.",
     },
     "collector-pdf": {
       label: "Supports de vente",
@@ -215,7 +215,7 @@ const PREVIEW = {
     resolveDuplicate: "Resolve duplicate",
     oneArtistRecord: "1 artist record",
     artworksConnected: (n) => `${n} artworks connected`,
-    databaseCleaned: "Database cleaned",
+    databaseCleaned: "Inventory cleaned",
     medium: "Medium",
     recordCount: (n) => `${n} records`,
     mergeValues: ["Oil", "Oil painting", "Oil on canvas"],
@@ -269,7 +269,7 @@ const PREVIEW = {
     resolveDuplicate: "Fusionner le doublon",
     oneArtistRecord: "1 fiche artiste",
     artworksConnected: (n) => `${n} œuvres rattachées`,
-    databaseCleaned: "Base nettoyée",
+    databaseCleaned: "Inventaire nettoyé",
     medium: "Technique",
     recordCount: (n) => `${n} fiches`,
     mergeValues: ["Huile", "Peinture à l’huile", "Huile sur toile"],
