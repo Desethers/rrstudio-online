@@ -1180,7 +1180,8 @@ h1 {
   gap: 14px;
   margin-top: 10px;
 }
-.hero__actions .button {
+.hero__actions .button,
+.hero__actions .outline-button {
   gap: 9px;
 }
 .reassurances {
