@@ -8,6 +8,13 @@ import { BadgeCheck, BadgeEuro, createIcons, Database, Files, Monitor, Plug, Sea
  * has to exist in both. Pages declare their language on <html lang>. */
 const LANG = document.documentElement.lang === "fr" ? "fr" : "en";
 
+/* /tasks (and /fr/tasks) are Vercel rewrites to this same index.html, kept
+ * as a clean, hash-free URL for outreach links. Scroll to the tasks section
+ * on load instead of relying on a #tasks fragment. */
+if (/^\/(fr\/)?tasks\/?$/.test(location.pathname)) {
+  document.getElementById("tasks")?.scrollIntoView();
+}
+
 /* Prices read "€120" in English and "120 €" in French. */
 const price = (amount) => (LANG === "fr" ? `${amount}\u00a0€` : `€${amount}`);
 
