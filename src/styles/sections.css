@@ -28,6 +28,9 @@
 .header .button {
   justify-self: end;
 }
+.lang-switch {
+  display: none;
+}
 main {
   margin: auto;
   max-width: 1280px;
@@ -479,11 +482,20 @@ h1 {
 }
 @media (max-width: 640px) {
   .header__inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    gap: 14px;
     margin: 0 18px;
   }
   .nav {
     display: none;
+  }
+  .lang-switch {
+    color: var(--muted);
+    display: inline-flex;
+    font-size: var(--font-size-14);
+  }
+  .lang-switch:hover {
+    color: var(--ink);
   }
   main {
     padding: 0 18px;
