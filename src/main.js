@@ -399,7 +399,7 @@ function updateSummary() {
   }
   const lines = selectedTasks.map((task) => `- ${task.title} (${price(task.price)})`).join("\n");
   document.querySelector("#request-tasks").href =
-    `mailto:rrstudio.forartworld@gmail.com?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody(lines, total))}`;
+    `mailto:studio@rrstudio.online?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody(lines, total))}`;
   if (!selectedTasks.length) {
     summary.classList.remove("is-visible", "is-updated");
     summary.hidden = true;
