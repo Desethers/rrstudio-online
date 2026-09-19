@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rr.forart.world/sitemap.xml
+Sitemap: https://rrstudio.online/sitemap.xml
