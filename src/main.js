@@ -3,6 +3,10 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 import { BadgeCheck, BadgeEuro, createIcons, Database, Files, Monitor, Plug, Search } from "lucide";
+import gsap from "gsap";
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(Flip);
 
 /* The two locales share one build, so every string the page renders at runtime
  * has to exist in both. Pages declare their language on <html lang>. */
@@ -333,6 +337,12 @@ const invoiceDate = document.querySelector("#invoice-date");
 const selected = new Set();
 let activeFilter = "all";
 let previewedTask = null;
+/* Every layout expands a clicked card in place (grid or carousel) instead
+ * of a dialog. The carousel (flex row) and the grids (CSS grid) reflow
+ * differently though, so an expanded card is reset when a resize crosses
+ * that boundary. Matches the .task-grid 640px breakpoint. */
+const carouselQuery = window.matchMedia("(max-width: 640px)");
+let expandedTaskId = null;
 
 if (invoiceDate) {
   invoiceDate.textContent = new Intl.DateTimeFormat(t.dateLocale, {
@@ -343,14 +353,18 @@ if (invoiceDate) {
 }
 
 function renderTasks() {
+  expandedTaskId = null;
   const visibleTasks =
     activeFilter === "all" ? tasks : tasks.filter((task) => task.category === activeFilter);
   grid.innerHTML = visibleTasks
     .map(
       (task) => `
-    <article class="task-card" data-preview-id="${task.id}" tabindex="0" role="button" aria-label="${t.preview(task.title)}">
-      <p class="task-category">${task.label}</p><h3>${task.title}</h3><p class="task-price">${price(task.price)}</p><p class="task-description">${task.description}</p>
-      <button class="task-add ${selected.has(task.id) ? "is-selected" : ""}" type="button" data-task-id="${task.id}" aria-pressed="${selected.has(task.id)}">${selected.has(task.id) ? t.added : t.add}</button>
+    <article class="task-card" data-preview-id="${task.id}" tabindex="0" role="button" aria-expanded="false" aria-label="${t.preview(task.title)}">
+      <div class="task-card__body">
+        <p class="task-category">${task.label}</p><h3>${task.title}</h3><p class="task-price">${price(task.price)}</p><p class="task-description">${task.description}</p>
+        <button class="task-add ${selected.has(task.id) ? "is-selected" : ""}" type="button" data-task-id="${task.id}" aria-pressed="${selected.has(task.id)}">${selected.has(task.id) ? t.added : t.add}</button>
+      </div>
+      <div class="task-card__media" aria-hidden="true"></div>
     </article>`
     )
     .join("");
@@ -572,6 +586,82 @@ function openPreview(task) {
   modal.showModal();
 }
 
+/* Desktop card expansion: grows the clicked card to two grid columns and
+ * fills its media pane with the same previewMarkup() used by the dialog,
+ * animating the whole reflow (the expanding card and every card it pushes)
+ * with GSAP Flip so the grid settles back into a coherent 3-up rhythm. */
+function collapseCard(card) {
+  card.classList.remove("is-expanded");
+  card.setAttribute("aria-expanded", "false");
+  const media = card.querySelector(".task-card__media");
+  if (media) media.innerHTML = "";
+}
+
+function expandCard(task, card) {
+  const state = Flip.getState(grid.querySelectorAll(".task-card"));
+  if (expandedTaskId && expandedTaskId !== task.id) {
+    const previous = grid.querySelector(`.task-card[data-preview-id="${expandedTaskId}"]`);
+    if (previous) collapseCard(previous);
+  }
+  card.classList.add("is-expanded");
+  card.setAttribute("aria-expanded", "true");
+  const media = card.querySelector(".task-card__media");
+  media.innerHTML = previewMarkup(task);
+  expandedTaskId = task.id;
+  // Flip's absolute:true pulls every card out of the flow for the duration
+  // of the animation, so the grid — which gets its height from those
+  // cards — would collapse and yank everything below it up the page.
+  // Pin the grid to its current height until the flip settles.
+  grid.style.height = `${grid.getBoundingClientRect().height}px`;
+  Flip.from(state, {
+    absolute: true,
+    duration: 0.6,
+    ease: "power2.inOut",
+    scale: false,
+    onComplete: () => {
+      grid.style.height = "";
+      // Nudge the carousel's own horizontal scroll only — scrollIntoView()
+      // also re-scrolls the page vertically to "nearest", which yanked the
+      // section below the grid up on every tap.
+      if (!carouselQuery.matches) return;
+      const gridRect = grid.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      if (cardRect.right > gridRect.right) {
+        grid.scrollLeft += cardRect.right - gridRect.right;
+      } else if (cardRect.left < gridRect.left) {
+        grid.scrollLeft -= gridRect.left - cardRect.left;
+      }
+    },
+  });
+  gsap.fromTo(media, { opacity: 0 }, { delay: 0.2, duration: 0.35, opacity: 1 });
+}
+
+function collapseExpandedCard() {
+  if (!expandedTaskId) return;
+  const state = Flip.getState(grid.querySelectorAll(".task-card"));
+  const card = grid.querySelector(`.task-card[data-preview-id="${expandedTaskId}"]`);
+  if (card) collapseCard(card);
+  expandedTaskId = null;
+  grid.style.height = `${grid.getBoundingClientRect().height}px`;
+  Flip.from(state, {
+    absolute: true,
+    duration: 0.5,
+    ease: "power2.inOut",
+    scale: false,
+    onComplete: () => {
+      grid.style.height = "";
+    },
+  });
+}
+
+function toggleCardPreview(task, card) {
+  if (expandedTaskId === task.id) {
+    collapseExpandedCard();
+  } else {
+    expandCard(task, card);
+  }
+}
+
 document.querySelector(".task-filters").addEventListener("click", (event) => {
   const filter = event.target.closest(".filter");
   if (!filter) return;
@@ -594,7 +684,7 @@ grid.addEventListener("click", (event) => {
   const button = event.target.closest(".task-add");
   if (!button) {
     const card = event.target.closest(".task-card");
-    if (card) openPreview(tasks.find((task) => task.id === card.dataset.previewId));
+    if (card) toggleCardPreview(tasks.find((task) => task.id === card.dataset.previewId), card);
     return;
   }
   const { taskId } = button.dataset;
@@ -607,8 +697,16 @@ grid.addEventListener("keydown", (event) => {
   const card = event.target.closest(".task-card");
   if (!card) return;
   event.preventDefault();
-  openPreview(tasks.find((task) => task.id === card.dataset.previewId));
+  toggleCardPreview(tasks.find((task) => task.id === card.dataset.previewId), card);
 });
+document.addEventListener("click", (event) => {
+  if (!expandedTaskId || event.target.closest(".task-card")) return;
+  collapseExpandedCard();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && expandedTaskId) collapseExpandedCard();
+});
+carouselQuery.addEventListener("change", () => collapseExpandedCard());
 document.querySelector(".modal-close").addEventListener("click", () => modal.close());
 document.querySelector("#modal-add").addEventListener("click", () => {
   selected.has(previewedTask.id)

@@ -154,9 +154,23 @@ h1 {
   border: 1px solid var(--border-soft);
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
   min-height: 270px;
   padding: 24px;
+}
+.task-card__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+.task-card__media {
+  flex: 0 0 0;
+  overflow: hidden;
+  width: 0;
+}
+.task-card__media > * {
+  height: 100%;
+  width: 100%;
 }
 .task-category {
   color: var(--muted);
@@ -600,6 +614,38 @@ h1 {
   outline: none;
   transform: translateY(-2px);
 }
+/* Grid layouts (2-up tablet, 3-up desktop): clicking a card grows it in
+ * place (GSAP Flip) instead of opening the dialog, revealing the same
+ * preview shown in the modal to the right of its text. Spans two grid
+ * columns so the row rhythm holds; dense packing lets later cards fill the
+ * gap it leaves behind. Clicking the expanded card again (or anywhere
+ * outside it) closes it. */
+@media (min-width: 641px) {
+  .task-grid {
+    grid-auto-flow: dense;
+  }
+  .task-card.is-expanded {
+    gap: 28px;
+    grid-column: span 2;
+    min-height: 360px;
+    transform: none;
+  }
+  .task-card.is-expanded:hover,
+  .task-card.is-expanded:focus-visible {
+    transform: none;
+  }
+  .task-card.is-expanded .task-card__body {
+    /* Fixed width, not a %: a percentage recalculates every animation
+     * frame as the card widens, so the text keeps re-wrapping mid-flight.
+     * Pinning it means only the media pane visibly opens, like a shutter. */
+    flex: 0 0 280px;
+  }
+  .task-card.is-expanded .task-card__media {
+    border-radius: 8px;
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
 .task-modal {
   background: var(--background);
   border: 0;
@@ -687,7 +733,6 @@ h1 {
 .preview-pdf small {
   font-size: 10px;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 .preview-image {
   background: linear-gradient(135deg, #ccc9c1, #827b72);
@@ -1143,7 +1188,7 @@ h1 {
   max-width: 700px;
 }
 .hero h1 {
-  font-size: clamp(58px, 6vw, 92px);
+  font-size: clamp(46px, 5vw, 76px);
   letter-spacing: -0.065em;
   line-height: 0.9;
   max-width: 680px;
@@ -1720,13 +1765,6 @@ h1 {
   letter-spacing: 0;
   text-transform: none;
 }
-.hero h1 {
-  font-size: 60px;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  max-width: none;
-  white-space: nowrap;
-}
 .hero .eyebrow {
   font-size: 14px;
 }
@@ -1741,14 +1779,14 @@ h1 {
 }
 #tasks-title {
   font-size: 28px;
-  line-height: 1.05;
+  line-height: 0.95;
 }
 #tasks-title span {
   color: var(--subtitle);
 }
 #how-title {
   font-size: 28px;
-  line-height: 1.05;
+  line-height: 0.95;
 }
 #how-title span {
   color: var(--subtitle);
@@ -2147,7 +2185,7 @@ h1 {
   padding: 72px 22px;
 }
 .faq h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: var(--font-weight-400);
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -2626,8 +2664,8 @@ h1 {
 }
 .software-promo__description {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 18px;
+  line-height: 1.4;
   margin-top: 23px;
   max-width: 440px;
 }
@@ -2994,9 +3032,13 @@ h1 {
     font-size: 21px;
   }
   .tasks .section-heading {
-    gap: 12px;
+    gap: 0;
   }
-  .tasks .section-heading__copy {
+  /* Specificity fix: the shared `.section-heading > p:last-child` rule
+   * (class + pseudo-class + type) otherwise outranks a plain two-class
+   * selector here and silently wins, so this override never actually
+   * applied. Matching its type-selector weight makes this one stick. */
+  .tasks p.section-heading__copy {
     font-size: 16px;
   }
   .task-filters {
@@ -3021,7 +3063,7 @@ h1 {
 @media (max-width: 640px) {
   .task-grid {
     display: flex;
-    gap: 10px;
+    gap: 16px;
     margin-inline: -18px;
     overflow-x: auto;
     padding-inline: 18px;
@@ -3041,7 +3083,7 @@ h1 {
     width: 62%;
   }
   .task-category {
-    font-size: 10px;
+    font-size: 9px;
   }
   .task-card h3 {
     font-size: 15px;
@@ -3056,8 +3098,8 @@ h1 {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     display: -webkit-box;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: var(--font-size-12);
+    line-height: 1.3;
     margin: 0 0 14px;
     overflow: hidden;
   }
@@ -3065,6 +3107,158 @@ h1 {
     font-size: 12px;
     margin-top: auto;
     padding: 7px 10px;
+  }
+  /* Same shutter-style reveal as the grid breakpoints: the tapped card
+   * widens in place inside the carousel (GSAP Flip), opening its media
+   * pane to the right of the text, and pushes the following cards along —
+   * no layout switch, just a wider flex item in the same scroll row. */
+  .task-card.is-expanded {
+    gap: 14px;
+    overflow: hidden;
+    width: 86%;
+  }
+  .task-card.is-expanded .task-card__body {
+    /* Fixed width for the same reason as the grid breakpoint: keeps the
+     * text from re-wrapping every frame while the card widens. */
+    flex: 0 0 110px;
+  }
+  .task-card.is-expanded .task-description {
+    display: block;
+    overflow: visible;
+  }
+  .task-card.is-expanded .task-card__media {
+    border-radius: 8px 0 0 8px;
+    flex: 1 1 auto;
+    margin-right: -16px;
+    width: auto;
+  }
+  /* These preview mockups were sized for the ~700px-wide modal pane; at the
+   * ~150px this media pane opens to, their own padding and rigid pill/tag
+   * widths pushed content past the edge and got clipped. Shrink the padding
+   * and let tags wrap their text instead of refusing to shrink. */
+  .task-card__media .preview-merge__panel,
+  .task-card__media .preview-dedupe__panel {
+    padding: 14px;
+  }
+  .task-card__media .preview-merge__tag {
+    flex-shrink: 1;
+    white-space: normal;
+  }
+  .task-card__media .preview-dedupe__status {
+    white-space: normal;
+  }
+  /* Same narrow-pane treatment for the artwork-records table: less padding,
+   * a smaller non-wrapping heading, and the least essential column (status)
+   * dropped so the remaining three actually have room to read. */
+  .task-card__media .preview-table {
+    padding: 12px;
+  }
+  .task-card__media .preview-table__heading {
+    font-size: 14px;
+    padding-bottom: 12px;
+    white-space: nowrap;
+  }
+  .task-card__media .preview-table__heading span {
+    font-size: 10px;
+  }
+  .task-card__media .preview-row {
+    font-size: 11px;
+    gap: 6px;
+    grid-template-columns: 1fr 1fr 0.7fr;
+    padding: 10px 0;
+  }
+  .task-card__media .preview-row--head {
+    font-size: 9px;
+  }
+  .task-card__media .preview-row > :nth-child(4) {
+    display: none;
+  }
+  /* Lighthouse audit: 4 fixed 72px gauges side by side never fit a ~150px
+   * pane — drop to a 2x2 grid of smaller gauges. */
+  .task-card__media .preview-lighthouse {
+    padding: 14px;
+  }
+  .task-card__media .preview-lighthouse__head {
+    flex-wrap: wrap;
+  }
+  .task-card__media .preview-lighthouse__grid {
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .task-card__media .preview-lighthouse__gauge {
+    /* Grid items default to min-width:auto, which floors each track at its
+     * content's own width — the 46px ring plus label otherwise refuses to
+     * shrink to the 1fr share and the grid overflows its pane. */
+    min-width: 0;
+  }
+  .task-card__media .preview-lighthouse__ring {
+    height: 46px;
+    margin-bottom: 6px;
+    width: 46px;
+  }
+  .task-card__media .preview-lighthouse__score {
+    font-size: 12px;
+  }
+  .task-card__media .preview-lighthouse__gauge p {
+    font-size: 9px;
+  }
+  /* Search-ranking result card. */
+  .task-card__media .preview-ranking {
+    padding: 14px;
+  }
+  .task-card__media .preview-ranking__head {
+    flex-wrap: wrap;
+  }
+  .task-card__media .preview-ranking__pagination {
+    gap: 8px;
+  }
+  .task-card__media .preview-ranking__result {
+    gap: 8px;
+    padding: 12px;
+  }
+  .task-card__media .preview-ranking__position {
+    font-size: 16px;
+  }
+  .task-card__media .preview-ranking__result h3 {
+    font-size: 13px;
+  }
+  .task-card__media .preview-ranking__flag {
+    font-size: 8px;
+    padding: 3px 7px;
+    right: 8px;
+  }
+  /* Broken-image bug report. */
+  .task-card__media .preview-bug__bar {
+    padding: 10px 12px;
+  }
+  .task-card__media .preview-bug__page {
+    padding: 16px;
+  }
+  .task-card__media .preview-bug__page h3 {
+    font-size: 17px;
+  }
+  .task-card__media .preview-bug__broken {
+    height: 110px;
+    margin: 10px 0;
+  }
+  .task-card__media .preview-bug__note {
+    padding: 12px 16px;
+  }
+  /* Collector PDF. */
+  .task-card__media .preview-collector__head {
+    padding: 16px 16px 10px;
+  }
+  .task-card__media .preview-collector__head h3 {
+    font-size: 17px;
+  }
+  .task-card__media .preview-collector__meta {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .task-card__media .preview-collector__inquire {
+    font-size: 10px;
+    padding: 6px 12px;
   }
 }
 
@@ -3171,8 +3365,13 @@ h1 {
 .preview-merge__row {
   align-items: center;
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   justify-content: space-between;
+}
+.preview-merge__row > div,
+.preview-merge__result > div {
+  min-width: 0;
 }
 .preview-merge__row b,
 .preview-merge__result b {
@@ -3216,7 +3415,8 @@ h1 {
   align-items: center;
   border-top: 1px solid var(--border-soft);
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   justify-content: space-between;
   opacity: 0;
   padding-top: 20px;
@@ -3345,8 +3545,12 @@ h1 {
 .preview-dedupe__card-head {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: space-between;
+}
+.preview-dedupe__card-head b {
+  min-width: 0;
 }
 .preview-dedupe__card b {
   color: var(--ink);
