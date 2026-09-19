@@ -590,11 +590,37 @@ function openPreview(task) {
  * fills its media pane with the same previewMarkup() used by the dialog,
  * animating the whole reflow (the expanding card and every card it pushes)
  * with GSAP Flip so the grid settles back into a coherent 3-up rhythm. */
+/* The preview mockups are laid out for the modal's ~700px pane. On the
+ * mobile carousel the media pane is barely 166px wide, so instead of
+ * reflowing each mockup we give it a roomy design box and scale the whole
+ * thing down to land exactly on the pane — the same way the full-bleed
+ * screenshots read as miniatures. Measured after the DOM mutation but
+ * before Flip starts tweening, when the layout is already final. */
+const PREVIEW_DESIGN_WIDTH = 560;
+
+function scalePreviewToPane(media) {
+  media.style.removeProperty("--preview-scale");
+  media.style.removeProperty("--preview-h");
+  media.style.removeProperty("--preview-w");
+  if (!carouselQuery.matches) return;
+  const paneWidth = media.clientWidth;
+  const paneHeight = media.clientHeight;
+  if (!paneWidth || !paneHeight) return;
+  const scale = paneWidth / PREVIEW_DESIGN_WIDTH;
+  media.style.setProperty("--preview-w", `${PREVIEW_DESIGN_WIDTH}px`);
+  media.style.setProperty("--preview-scale", `${scale}`);
+  media.style.setProperty("--preview-h", `${paneHeight / scale}px`);
+}
+
 function collapseCard(card) {
   card.classList.remove("is-expanded");
   card.setAttribute("aria-expanded", "false");
   const media = card.querySelector(".task-card__media");
-  if (media) media.innerHTML = "";
+  if (!media) return;
+  media.innerHTML = "";
+  media.style.removeProperty("--preview-scale");
+  media.style.removeProperty("--preview-h");
+  media.style.removeProperty("--preview-w");
 }
 
 function expandCard(task, card) {
@@ -607,6 +633,7 @@ function expandCard(task, card) {
   card.setAttribute("aria-expanded", "true");
   const media = card.querySelector(".task-card__media");
   media.innerHTML = previewMarkup(task);
+  scalePreviewToPane(media);
   expandedTaskId = task.id;
   // Flip's absolute:true pulls every card out of the flow for the duration
   // of the animation, so the grid — which gets its height from those

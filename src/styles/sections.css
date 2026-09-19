@@ -3132,133 +3132,17 @@ h1 {
     margin-right: -16px;
     width: auto;
   }
-  /* These preview mockups were sized for the ~700px-wide modal pane; at the
-   * ~150px this media pane opens to, their own padding and rigid pill/tag
-   * widths pushed content past the edge and got clipped. Shrink the padding
-   * and let tags wrap their text instead of refusing to shrink. */
-  .task-card__media .preview-merge__panel,
-  .task-card__media .preview-dedupe__panel {
-    padding: 14px;
-  }
-  .task-card__media .preview-merge__tag {
-    flex-shrink: 1;
-    white-space: normal;
-  }
-  .task-card__media .preview-dedupe__status {
-    white-space: normal;
-  }
-  /* Same narrow-pane treatment for the artwork-records table: less padding,
-   * a smaller non-wrapping heading, and the least essential column (status)
-   * dropped so the remaining three actually have room to read. */
-  .task-card__media .preview-table {
-    padding: 12px;
-  }
-  .task-card__media .preview-table__heading {
-    font-size: 14px;
-    padding-bottom: 12px;
-    white-space: nowrap;
-  }
-  .task-card__media .preview-table__heading span {
-    font-size: 10px;
-  }
-  .task-card__media .preview-row {
-    font-size: 11px;
-    gap: 6px;
-    grid-template-columns: 1fr 1fr 0.7fr;
-    padding: 10px 0;
-  }
-  .task-card__media .preview-row--head {
-    font-size: 9px;
-  }
-  .task-card__media .preview-row > :nth-child(4) {
-    display: none;
-  }
-  /* Lighthouse audit: 4 fixed 72px gauges side by side never fit a ~150px
-   * pane — drop to a 2x2 grid of smaller gauges. */
-  .task-card__media .preview-lighthouse {
-    padding: 14px;
-  }
-  .task-card__media .preview-lighthouse__head {
-    flex-wrap: wrap;
-  }
-  .task-card__media .preview-lighthouse__grid {
-    gap: 10px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .task-card__media .preview-lighthouse__gauge {
-    /* Grid items default to min-width:auto, which floors each track at its
-     * content's own width — the 46px ring plus label otherwise refuses to
-     * shrink to the 1fr share and the grid overflows its pane. */
-    min-width: 0;
-  }
-  .task-card__media .preview-lighthouse__ring {
-    height: 46px;
-    margin-bottom: 6px;
-    width: 46px;
-  }
-  .task-card__media .preview-lighthouse__score {
-    font-size: 12px;
-  }
-  .task-card__media .preview-lighthouse__gauge p {
-    font-size: 9px;
-  }
-  /* Search-ranking result card. */
-  .task-card__media .preview-ranking {
-    padding: 14px;
-  }
-  .task-card__media .preview-ranking__head {
-    flex-wrap: wrap;
-  }
-  .task-card__media .preview-ranking__pagination {
-    gap: 8px;
-  }
-  .task-card__media .preview-ranking__result {
-    gap: 8px;
-    padding: 12px;
-  }
-  .task-card__media .preview-ranking__position {
-    font-size: 16px;
-  }
-  .task-card__media .preview-ranking__result h3 {
-    font-size: 13px;
-  }
-  .task-card__media .preview-ranking__flag {
-    font-size: 8px;
-    padding: 3px 7px;
-    right: 8px;
-  }
-  /* Broken-image bug report. */
-  .task-card__media .preview-bug__bar {
-    padding: 10px 12px;
-  }
-  .task-card__media .preview-bug__page {
-    padding: 16px;
-  }
-  .task-card__media .preview-bug__page h3 {
-    font-size: 17px;
-  }
-  .task-card__media .preview-bug__broken {
-    height: 110px;
-    margin: 10px 0;
-  }
-  .task-card__media .preview-bug__note {
-    padding: 12px 16px;
-  }
-  /* Collector PDF. */
-  .task-card__media .preview-collector__head {
-    padding: 16px 16px 10px;
-  }
-  .task-card__media .preview-collector__head h3 {
-    font-size: 17px;
-  }
-  .task-card__media .preview-collector__meta {
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 16px;
-  }
-  .task-card__media .preview-collector__inquire {
-    font-size: 10px;
-    padding: 6px 12px;
+  /* These mockups are laid out for the ~700px-wide modal pane. Rather than
+   * squeezing each one's padding, fonts and columns to fit the ~166px this
+   * media pane opens to — which never converged and clipped content — they
+   * are rendered at a comfortable design size and scaled down as a whole.
+   * main.js sets --preview-scale/--preview-h so the box maps exactly onto
+   * the pane. Full-bleed screenshots are excluded: they already cover. */
+  .task-card.is-expanded .task-card__media > *:not(.preview-fullbleed) {
+    height: var(--preview-h, 430px);
+    transform: scale(var(--preview-scale, 0.3));
+    transform-origin: top left;
+    width: var(--preview-w, 560px);
   }
 }
 
