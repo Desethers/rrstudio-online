@@ -2,7 +2,16 @@ import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
-import { BadgeCheck, BadgeEuro, createIcons, Database, Files, Monitor, Plug, Search } from "lucide";
+import {
+  BadgeCheck,
+  BadgeEuro,
+  createIcons,
+  Database,
+  Files,
+  Monitor,
+  Plug,
+  Search,
+} from "lucide";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 
@@ -27,22 +36,26 @@ const TASK_COPY = {
     "publish-exhibition": {
       label: "Website",
       title: "Publish an exhibition",
-      description: "Text, images and dates turned into a published exhibition page.",
+      description:
+        "Text, images and dates turned into a published exhibition page.",
     },
     "opening-website": {
       label: "Website",
       title: "Prepare for an opening",
-      description: "Homepage, exhibition and artist pages refreshed and ready before opening.",
+      description:
+        "Homepage, exhibition and artist pages refreshed and ready before opening.",
     },
     "artist-page": {
       label: "Website",
       title: "Add an artist page",
-      description: "Biography, works, images and basic metadata added to the gallery website.",
+      description:
+        "Biography, works, images and basic metadata added to the gallery website.",
     },
     "update-artworks": {
       label: "Website",
       title: "Update 10 artworks",
-      description: "Update images, captions, availability or other artwork information.",
+      description:
+        "Update images, captions, availability or other artwork information.",
     },
     "fix-website-issue": {
       label: "Website",
@@ -74,12 +87,14 @@ const TASK_COPY = {
     "collector-pdf": {
       label: "Sales material",
       title: "Collector PDF",
-      description: "A clean, gallery-ready PDF prepared from selected artworks.",
+      description:
+        "A clean, gallery-ready PDF prepared from selected artworks.",
     },
     "viewing-room": {
       label: "Sales material",
       title: "Private viewing room",
-      description: "Prepare and publish a private online artwork selection for a collector.",
+      description:
+        "Prepare and publish a private online artwork selection for a collector.",
     },
     "seo-check": {
       label: "Visibility",
@@ -96,12 +111,14 @@ const TASK_COPY = {
     "publish-exhibition": {
       label: "Site web",
       title: "Publier une exposition",
-      description: "Textes, images et dates transformés en page d’exposition publiée.",
+      description:
+        "Textes, images et dates transformés en page d’exposition publiée.",
     },
     "opening-website": {
       label: "Site web",
       title: "Préparer un vernissage",
-      description: "Accueil, exposition et pages artistes actualisés et prêts avant l’ouverture.",
+      description:
+        "Accueil, exposition et pages artistes actualisés et prêts avant l’ouverture.",
     },
     "artist-page": {
       label: "Site web",
@@ -112,7 +129,8 @@ const TASK_COPY = {
     "update-artworks": {
       label: "Site web",
       title: "Mettre à jour 10 œuvres",
-      description: "Images, légendes, disponibilités ou autres informations d’œuvres mises à jour.",
+      description:
+        "Images, légendes, disponibilités ou autres informations d’œuvres mises à jour.",
     },
     "fix-website-issue": {
       label: "Site web",
@@ -144,7 +162,8 @@ const TASK_COPY = {
     "collector-pdf": {
       label: "Supports de vente",
       title: "PDF collectionneur",
-      description: "Un PDF net, prêt à envoyer, préparé à partir des œuvres sélectionnées.",
+      description:
+        "Un PDF net, prêt à envoyer, préparé à partir des œuvres sélectionnées.",
     },
     "viewing-room": {
       label: "Supports de vente",
@@ -187,7 +206,8 @@ const UI = {
     preview: (title) => `Aperçu : ${title}`,
     taskCount: (n) => `${n} tâche${n === 1 ? "" : "s"}`,
     estimated: (total) => `${price(total)} estimés`,
-    moreTasks: (n) => `+${n} autre${n === 1 ? "" : "s"} tâche${n === 1 ? "" : "s"}`,
+    moreTasks: (n) =>
+      `+${n} autre${n === 1 ? "" : "s"} tâche${n === 1 ? "" : "s"}`,
     exampleTask: "Tâche exemple",
     dateLocale: "fr-FR",
     mailSubject: "Demande de tâche R.R Studio",
@@ -239,7 +259,8 @@ const PREVIEW = {
     searchRanking: "Google · Search ranking",
     otherResults: "Page 1 — other results",
     rankingTitle: "Sacha Elron — Gallery Name",
-    rankingDesc: "Biography, selected works, exhibitions and available artworks.",
+    rankingDesc:
+      "Biography, selected works, exhibitions and available artworks.",
     pageTwo: "Page 2",
     gauges: ["Performance", "Accessibility", "Best Practices", "SEO"],
     collectorArtwork: "Untitled (Cadmium Red)",
@@ -293,7 +314,8 @@ const PREVIEW = {
     searchRanking: "Google · Positionnement",
     otherResults: "Page 1 — autres résultats",
     rankingTitle: "Sacha Elron — Nom de la galerie",
-    rankingDesc: "Biographie, œuvres sélectionnées, expositions et œuvres disponibles.",
+    rankingDesc:
+      "Biographie, œuvres sélectionnées, expositions et œuvres disponibles.",
     pageTwo: "Page 2",
     gauges: ["Performance", "Accessibilité", "Bonnes pratiques", "SEO"],
     collectorArtwork: "Sans titre (rouge de cadmium)",
@@ -355,7 +377,9 @@ if (invoiceDate) {
 function renderTasks() {
   expandedTaskId = null;
   const visibleTasks =
-    activeFilter === "all" ? tasks : tasks.filter((task) => task.category === activeFilter);
+    activeFilter === "all"
+      ? tasks
+      : tasks.filter((task) => task.category === activeFilter);
   grid.innerHTML = visibleTasks
     .map(
       (task) => `
@@ -365,7 +389,7 @@ function renderTasks() {
         <button class="task-add ${selected.has(task.id) ? "is-selected" : ""}" type="button" data-task-id="${task.id}" aria-pressed="${selected.has(task.id)}">${selected.has(task.id) ? t.added : t.add}</button>
       </div>
       <div class="task-card__media" aria-hidden="true"></div>
-    </article>`
+    </article>`,
     )
     .join("");
 }
@@ -375,7 +399,9 @@ function updateSummary() {
   const total = selectedTasks.reduce((sum, task) => sum + task.price, 0);
   const wasVisible = !summary.hidden;
   const requestItems = document.querySelector("#request-items");
-  document.querySelector("#task-count").textContent = t.taskCount(selectedTasks.length);
+  document.querySelector("#task-count").textContent = t.taskCount(
+    selectedTasks.length,
+  );
   document.querySelector("#task-total").textContent = t.estimated(total);
   document.querySelector("#request-total").textContent = price(total);
   requestItems.replaceChildren();
@@ -397,7 +423,9 @@ function updateSummary() {
     more.append(label, document.createElement("span"));
     requestItems.append(more);
   }
-  const lines = selectedTasks.map((task) => `- ${task.title} (${price(task.price)})`).join("\n");
+  const lines = selectedTasks
+    .map((task) => `- ${task.title} (${price(task.price)})`)
+    .join("\n");
   document.querySelector("#request-tasks").href =
     `mailto:studio@rrstudio.online?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody(lines, total))}`;
   if (!selectedTasks.length) {
@@ -425,10 +453,11 @@ function updateInvoice(selectedTasks, total) {
   invoiceItems.innerHTML = displayedTasks
     .map(
       (task) =>
-        `<div class="invoice-row invoice-row--item"><div><strong>${task.title}</strong><small>${selectedTasks.length ? task.label : t.exampleTask}</small></div><span>1</span><span>${price(task.price)}</span><strong>${price(task.price)}</strong></div>`
+        `<div class="invoice-row invoice-row--item"><div><strong>${task.title}</strong><small>${selectedTasks.length ? task.label : t.exampleTask}</small></div><span>1</span><span>${price(task.price)}</span><strong>${price(task.price)}</strong></div>`,
     )
     .join("");
-  document.querySelector("#invoice-subtotal").textContent = price(displayedTotal);
+  document.querySelector("#invoice-subtotal").textContent =
+    price(displayedTotal);
   document.querySelector("#invoice-total").textContent = price(displayedTotal);
 }
 
@@ -437,7 +466,10 @@ const websitePreviewImages = {
   "artist-page": { src: "artist-page.png", alt: pv.previewAlt.artist },
   "update-artworks": { src: "artworks-page.png", alt: pv.previewAlt.artworks },
 };
-const defaultWebsitePreviewImage = { src: "exhibition-page.png", alt: pv.previewAlt.exhibition };
+const defaultWebsitePreviewImage = {
+  src: "exhibition-page.png",
+  alt: pv.previewAlt.exhibition,
+};
 
 function previewMarkup(task) {
   if (task.category === "website") {
@@ -454,8 +486,12 @@ function previewMarkup(task) {
     if (task.id === "collector-pdf") return collectorPdfMarkup();
     return `<div class="preview-pdf"><div><small>${pv.galleryName}</small><h3>${pv.selectedWorks}</h3><p>${pv.privateSelection}</p></div><div class="preview-pdf__art"></div><span>01 — 12</span></div>`;
   }
-  if (task.category === "visibility" && task.id === "seo-check") return rankingMarkup();
-  const gauges = [58, 96, 87, 71].map((score, i) => ({ label: pv.gauges[i], score }));
+  if (task.category === "visibility" && task.id === "seo-check")
+    return rankingMarkup();
+  const gauges = [58, 96, 87, 71].map((score, i) => ({
+    label: pv.gauges[i],
+    score,
+  }));
   return `<div class="preview-lighthouse"><div class="preview-lighthouse__head"><span class="preview-lighthouse__logo">Lighthouse report</span><span class="preview-lighthouse__url">${pv.lighthouseUrl}</span></div><div class="preview-lighthouse__grid">${gauges.map((gauge) => lighthouseGauge(gauge.label, gauge.score)).join("")}</div></div>`;
 }
 
@@ -505,16 +541,18 @@ function dedupeMarkup() {
     </div>`;
 }
 
-const mergeRows = ["Paradise, 2019", "Reverie, 2021", "Coastline, 2020"].map((title, i) => ({
-  title,
-  value: pv.mergeValues[i],
-}));
+const mergeRows = ["Paradise, 2019", "Reverie, 2021", "Coastline, 2020"].map(
+  (title, i) => ({
+    title,
+    value: pv.mergeValues[i],
+  }),
+);
 
 function mergeFieldsMarkup() {
   const rows = mergeRows
     .map(
       (row) =>
-        `<li class="preview-merge__row"><div><b>Sacha Elron</b><small>${row.title}</small></div><span class="preview-merge__tag">${row.value}</span></li>`
+        `<li class="preview-merge__row"><div><b>Sacha Elron</b><small>${row.title}</small></div><span class="preview-merge__tag">${row.value}</span></li>`,
     )
     .join("");
   return `<div class="preview-merge" aria-hidden="true">
@@ -539,11 +577,14 @@ function rankingMarkup() {
   const skeletonRows = Array.from({ length: 4 })
     .map(
       () =>
-        `<div class="preview-ranking__row"><span class="preview-ranking__bar preview-ranking__bar--url"></span><span class="preview-ranking__bar preview-ranking__bar--title"></span><span class="preview-ranking__bar preview-ranking__bar--body"></span></div>`
+        `<div class="preview-ranking__row"><span class="preview-ranking__bar preview-ranking__bar--url"></span><span class="preview-ranking__bar preview-ranking__bar--title"></span><span class="preview-ranking__bar preview-ranking__bar--body"></span></div>`,
     )
     .join("");
   const pages = [1, 2, 3, 4, 5]
-    .map((page) => `<span class="${page === 2 ? "is-current" : ""}">${page}</span>`)
+    .map(
+      (page) =>
+        `<span class="${page === 2 ? "is-current" : ""}">${page}</span>`,
+    )
     .join("");
   return `<div class="preview-ranking"><div class="preview-ranking__head"><span class="preview-ranking__label">${pv.searchRanking}</span><span class="preview-ranking__query">${pv.searchQuery}</span></div><div class="preview-ranking__page1"><span class="preview-ranking__page1-label">${pv.otherResults}</span>${skeletonRows}</div><div class="preview-ranking__pagination">${pages}</div><div class="preview-ranking__result"><span class="preview-ranking__position">14</span><div><p class="preview-ranking__url">${pv.rankingUrl}</p><h3>${pv.rankingTitle}</h3><p class="preview-ranking__desc">${pv.rankingDesc}</p></div><span class="preview-ranking__flag">${pv.pageTwo}</span></div></div>`;
 }
@@ -576,13 +617,16 @@ function openPreview(task) {
       task.category === "visibility" ||
       task.id === "artlogic-check" ||
       task.id === "organise-database" ||
-      task.id === "collector-pdf"
+      task.id === "collector-pdf",
   );
   const mergeEl = previewEl.querySelector(".preview-merge");
   if (mergeEl) requestAnimationFrame(() => mergeEl.classList.add("is-inview"));
   const dedupeEl = previewEl.querySelector(".preview-dedupe");
-  if (dedupeEl) requestAnimationFrame(() => dedupeEl.classList.add("is-inview"));
-  document.querySelector("#modal-add").textContent = selected.has(task.id) ? t.remove : t.add;
+  if (dedupeEl)
+    requestAnimationFrame(() => dedupeEl.classList.add("is-inview"));
+  document.querySelector("#modal-add").textContent = selected.has(task.id)
+    ? t.remove
+    : t.add;
   modal.showModal();
 }
 
@@ -626,7 +670,9 @@ function collapseCard(card) {
 function expandCard(task, card) {
   const state = Flip.getState(grid.querySelectorAll(".task-card"));
   if (expandedTaskId && expandedTaskId !== task.id) {
-    const previous = grid.querySelector(`.task-card[data-preview-id="${expandedTaskId}"]`);
+    const previous = grid.querySelector(
+      `.task-card[data-preview-id="${expandedTaskId}"]`,
+    );
     if (previous) collapseCard(previous);
   }
   card.classList.add("is-expanded");
@@ -660,13 +706,19 @@ function expandCard(task, card) {
       }
     },
   });
-  gsap.fromTo(media, { opacity: 0 }, { delay: 0.2, duration: 0.35, opacity: 1 });
+  gsap.fromTo(
+    media,
+    { opacity: 0 },
+    { delay: 0.2, duration: 0.35, opacity: 1 },
+  );
 }
 
 function collapseExpandedCard() {
   if (!expandedTaskId) return;
   const state = Flip.getState(grid.querySelectorAll(".task-card"));
-  const card = grid.querySelector(`.task-card[data-preview-id="${expandedTaskId}"]`);
+  const card = grid.querySelector(
+    `.task-card[data-preview-id="${expandedTaskId}"]`,
+  );
   if (card) collapseCard(card);
   expandedTaskId = null;
   grid.style.height = `${grid.getBoundingClientRect().height}px`;
@@ -704,14 +756,20 @@ document.querySelector(".category-strip").addEventListener("click", (event) => {
   activeFilter = link.dataset.category;
   document
     .querySelectorAll(".filter")
-    .forEach((item) => item.classList.toggle("is-active", item.dataset.filter === activeFilter));
+    .forEach((item) =>
+      item.classList.toggle("is-active", item.dataset.filter === activeFilter),
+    );
   renderTasks();
 });
 grid.addEventListener("click", (event) => {
   const button = event.target.closest(".task-add");
   if (!button) {
     const card = event.target.closest(".task-card");
-    if (card) toggleCardPreview(tasks.find((task) => task.id === card.dataset.previewId), card);
+    if (card)
+      toggleCardPreview(
+        tasks.find((task) => task.id === card.dataset.previewId),
+        card,
+      );
     return;
   }
   const { taskId } = button.dataset;
@@ -724,7 +782,10 @@ grid.addEventListener("keydown", (event) => {
   const card = event.target.closest(".task-card");
   if (!card) return;
   event.preventDefault();
-  toggleCardPreview(tasks.find((task) => task.id === card.dataset.previewId), card);
+  toggleCardPreview(
+    tasks.find((task) => task.id === card.dataset.previewId),
+    card,
+  );
 });
 document.addEventListener("click", (event) => {
   if (!expandedTaskId || event.target.closest(".task-card")) return;
@@ -734,7 +795,9 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && expandedTaskId) collapseExpandedCard();
 });
 carouselQuery.addEventListener("change", () => collapseExpandedCard());
-document.querySelector(".modal-close").addEventListener("click", () => modal.close());
+document
+  .querySelector(".modal-close")
+  .addEventListener("click", () => modal.close());
 document.querySelector("#modal-add").addEventListener("click", () => {
   selected.has(previewedTask.id)
     ? selected.delete(previewedTask.id)
@@ -749,7 +812,9 @@ modal.addEventListener("click", (event) => {
 
 renderTasks();
 updateSummary();
-createIcons({ icons: { BadgeCheck, BadgeEuro, Database, Files, Monitor, Plug, Search } });
+createIcons({
+  icons: { BadgeCheck, BadgeEuro, Database, Files, Monitor, Plug, Search },
+});
 
 // Drag the estimate ticket down to collapse it to a peeking strip, or up to reopen it.
 const dragZone = summary.querySelector(".request-summary__drag-zone");
@@ -761,14 +826,17 @@ if (dragZone) {
   let cardHeight = 0;
   let moved = 0;
 
-  const setCollapsed = (collapsed) => summary.classList.toggle("is-collapsed", collapsed);
+  const setCollapsed = (collapsed) =>
+    summary.classList.toggle("is-collapsed", collapsed);
 
   dragZone.addEventListener("pointerdown", (event) => {
     dragging = true;
     moved = 0;
     startY = event.clientY;
     cardHeight = summary.getBoundingClientRect().height;
-    startOffset = summary.classList.contains("is-collapsed") ? cardHeight - PEEK : 0;
+    startOffset = summary.classList.contains("is-collapsed")
+      ? cardHeight - PEEK
+      : 0;
     summary.classList.add("is-dragging");
     dragZone.setPointerCapture(event.pointerId);
   });
@@ -790,7 +858,10 @@ if (dragZone) {
       setCollapsed(!summary.classList.contains("is-collapsed"));
     } else {
       const delta = event.clientY - startY;
-      const finalOffset = Math.min(Math.max(startOffset + delta, 0), cardHeight - PEEK);
+      const finalOffset = Math.min(
+        Math.max(startOffset + delta, 0),
+        cardHeight - PEEK,
+      );
       setCollapsed(finalOffset > (cardHeight - PEEK) / 2);
     }
   };
@@ -798,20 +869,152 @@ if (dragZone) {
   dragZone.addEventListener("pointercancel", endDrag);
 }
 
-// Cycles the hero's closing word between the audiences the studio serves.
+/* Cycles the hero title's closing word through the audiences the studio
+ * serves; the "for the" ahead of it and the full stop after it stay put.
+ *
+ * The word lives in a horizontally clipped box (.hero-rotator__mask) whose
+ * width springs to the next word's measured width, so a longer word is
+ * unveiled left to right and a shorter one has its box close in on it. The
+ * word crossfades under that clip rather than being cut, and the exchange
+ * happens at the bottom of the fade, while the box is already moving.
+ *
+ * The spring and the fade are both CSS transitions, so the browser runs them
+ * off the main thread and stops them outright in a background tab.
+ *
+ * The rotator is aria-hidden and the first word is duplicated in a
+ * visually-hidden span, so assistive tech reads one stable heading. */
 const heroRotator = document.querySelector("#hero-rotator");
-if (heroRotator && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const HERO_WORDS = { en: ["galleries", "artists", "advisors"], fr: ["galeries", "artistes", "conseillers"] };
+if (heroRotator) {
+  const HERO_WORDS = {
+    en: [
+      "art world",
+      "artists",
+      "art advisors",
+      "galleries",
+      "art foundations",
+    ],
+    fr: [
+      "le monde de l\u2019art",
+      "les artistes",
+      "les conseillers",
+      "les galeries",
+      "les fondations",
+    ],
+  };
   const words = HERO_WORDS[LANG];
-  let wordIndex = 0;
-  setInterval(() => {
-    heroRotator.classList.add("is-out");
-    setTimeout(() => {
-      wordIndex = (wordIndex + 1) % words.length;
-      heroRotator.textContent = words[wordIndex];
-      heroRotator.classList.remove("is-out");
-      heroRotator.classList.add("is-in");
-      setTimeout(() => heroRotator.classList.remove("is-in"), 420);
-    }, 320);
-  }, 2600);
+  const mask = heroRotator.querySelector(".hero-rotator__mask");
+  const measure = heroRotator.querySelector(".hero-rotator__measure");
+  const word = heroRotator.querySelector(".hero-rotator__word");
+  const FADE_OUT_MS = 160;
+  const SPRING_MS = 620;
+
+  /* Width of a word at the heading's current (fluid) font size. */
+  const widthOf = (text) => {
+    measure.textContent = text;
+    return measure.getBoundingClientRect().width;
+  };
+
+  if (
+    mask &&
+    measure &&
+    word &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    let index = 0;
+    let swapTimer;
+    let fadeTimer;
+    /* The box's target width, tracked here rather than read back from the
+     * DOM: a mid-transition measurement would report where the animation has
+     * got to, not where it is headed, and the direction of the next move is
+     * decided from it. */
+    let pinned = 0;
+    /* Snap, never animate: this runs on load and on resize, where a visible
+     * width change would read as the heading collapsing. Any cycle in flight
+     * is abandoned first, so a late webfont or a resize cannot land halfway
+     * through an exchange. */
+    const pin = () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(swapTimer);
+      word.textContent = words[index];
+      word.classList.remove("is-swapping");
+      pinned = widthOf(words[index]);
+      mask.style.transition = "none";
+      mask.style.width = `${pinned}px`;
+      void mask.offsetWidth;
+      mask.style.transition = "";
+    };
+    const start = () => {
+      pin();
+      /* fonts.ready can resolve a beat before the face is actually applied to
+       * the heading — the box would then hold the fallback's wider metrics.
+       * One cheap re-measure, well before the first exchange, settles it. */
+      setTimeout(pin, 300);
+      startCycle();
+    };
+    /* Wait for the webfont before doing anything: measuring against the
+     * fallback serif gives a box far wider than the word, and until the box
+     * holds a real length its width is "auto", which a CSS transition cannot
+     * animate from — the first exchange would jump instead of sliding. */
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(start);
+    } else {
+      start();
+    }
+
+    function startCycle() {
+      setInterval(() => {
+        const next = (index + 1) % words.length;
+        const target = widthOf(words[next]);
+        const current = pinned;
+        index = next;
+        pinned = target;
+        clearTimeout(fadeTimer);
+        clearTimeout(swapTimer);
+
+        /* A CSS transition needs a length at both ends: while the box is
+         * still at its automatic width the move is skipped outright and the
+         * exchange jumps. Stamping the current width with the transition off
+         * first guarantees every move actually animates. */
+        const from = (px) => {
+          mask.style.transition = "none";
+          mask.style.width = `${px}px`;
+          void mask.offsetWidth;
+          mask.style.transition = "";
+        };
+
+        const exchange = () => {
+          word.textContent = words[next];
+          if (target >= current) from(current);
+          mask.style.width = `${target}px`;
+          word.classList.remove("is-swapping");
+        };
+
+        if (target >= current) {
+          // Longer: exchange under the fade, then let the widening box unveil
+          // the new word from the left.
+          word.classList.add("is-swapping");
+          swapTimer = setTimeout(exchange, FADE_OUT_MS);
+        } else {
+          // Shorter: narrow first, cropping the outgoing word, and exchange
+          // only once the box has arrived. Swapping up front would leave the
+          // short word floating in a box that is still wide, opening a gap
+          // between it and the full stop that follows.
+          from(current);
+          mask.style.width = `${target}px`;
+          fadeTimer = setTimeout(
+            () => word.classList.add("is-swapping"),
+            SPRING_MS - FADE_OUT_MS,
+          );
+          swapTimer = setTimeout(exchange, SPRING_MS);
+        }
+      }, 3400);
+
+      /* The heading's font size is fluid, so a resize changes every width. */
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(pin, 150);
+      });
+    }
+  }
 }

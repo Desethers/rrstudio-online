@@ -22,7 +22,7 @@
   --radius-3xl: 4px;
   --radius-4xl: 4px;
   --font-sans: Inter, system-ui, sans-serif;
-  --font-serif: var(--font-sans);
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
   --font-display: var(--font-sans);
   --font-mono: var(--font-sans);
 
@@ -46,6 +46,7 @@
   --font-size-12: var(--type-body-13);
   --font-size-14: var(--type-body-14);
   --font-size-15: var(--type-body-15);
+  --font-weight-300: 300;
   --font-weight-400: 400;
   --font-weight-500: 500;
   --line-height-18: 18px;
@@ -54,4 +55,9 @@
   --radius-pill: 999px;
   --ink: var(--foreground);
   --line: var(--border);
+
+  /* Hero — Figma node 108:15. */
+  --hero-title: rgba(0, 0, 0, 0.9);
+  --hero-copy: rgba(0, 0, 0, 0.8);
+  --hero-meta: #a2a2a2;
 }

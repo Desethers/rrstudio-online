@@ -26,7 +26,11 @@
   color: var(--ink);
 }
 .header .button {
+  font-size: 12px;
+  font-weight: var(--font-weight-300);
   justify-self: end;
+  line-height: 16px;
+  padding: 6px 14px;
 }
 .lang-switch {
   display: none;
@@ -1193,37 +1197,86 @@ h1 {
   line-height: 0.9;
   max-width: 680px;
 }
+/* The closing word sits in a horizontally clipped box whose width springs to
+   the next word's measured width. The word itself never moves or fades — it
+   is swapped underneath the clip, so a longer word is unveiled left to right
+   and a shorter one is cropped until the box catches up. The negative
+   vertical inset keeps ascenders and descenders out of the crop. */
+/* Keeps the full stop welded to the word: without it the period can wrap to
+   a line of its own when the column gets tight. */
+.hero-rotator-group {
+  white-space: nowrap;
+}
 .hero-rotator {
   display: inline-block;
+  position: relative;
 }
-.hero-rotator.is-out {
-  animation: heroRotatorOut 0.32s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+.hero-rotator__mask {
+  clip-path: inset(-0.14em 0);
+  /* An inline-block rather than a flex container: nothing here needs flex
+     alignment, and the width is driven from script, so the simpler box is
+     the honest one. The word overflows it and the clip does the cropping. */
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  will-change: width;
+  /* Critically damped spring, sampled as linear() — quick departure, long
+     soft settle, no bounce. The bezier above it is the fallback for engines
+     without linear(). */
+  transition: width 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-timing-function: linear(
+    0,
+    0.0616 5%,
+    0.1913 10%,
+    0.3374 15%,
+    0.4751 20%,
+    0.594 25%,
+    0.6916 30%,
+    0.7689 35%,
+    0.8286 40%,
+    0.8744 45%,
+    0.9084 50%,
+    0.9523 60%,
+    0.9756 70%,
+    0.9877 80%,
+    0.9939 90%,
+    1
+  );
 }
-.hero-rotator.is-in {
-  animation: heroRotatorIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+/* Off-screen twin used to measure the next word before the box animates. */
+.hero-rotator__measure {
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
 }
-@keyframes heroRotatorOut {
-  to {
-    opacity: 0;
-    transform: translateY(-0.18em);
-  }
+/* The word crossfades under the clip, so the exchange never reads as a cut. */
+.hero-rotator__word {
+  display: inline-block;
+  transition: opacity 0.3s ease-out;
+  white-space: nowrap;
 }
-@keyframes heroRotatorIn {
-  from {
-    opacity: 0;
-    transform: translateY(0.22em);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-rotator__word.is-swapping {
+  opacity: 0;
+  transition-duration: 0.16s;
+  transition-timing-function: ease-in;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-rotator.is-out,
-  .hero-rotator.is-in {
-    animation: none;
+  .hero-rotator__mask,
+  .hero-rotator__word {
+    transition: none;
   }
 }
+.hero-rotator__rule {
+  background: rgba(17, 17, 16, 0.16);
+  border-radius: var(--radius-pill);
+  bottom: -0.05em;
+  height: 0.05em;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
 .hero__copy {
   font-size: 23px;
   line-height: 1.18;
@@ -3618,4 +3671,221 @@ h1 {
   font-size: 11px;
   letter-spacing: 0.08em;
   padding: 9px 18px;
+}
+
+/* Hero typography, colour and rhythm — Figma node 108:15.
+   The markup is a flat stack, so the frame's 18 / 25 / 20 / 25px gaps are
+   expressed as margins and the container gap is zeroed out. */
+.hero__content {
+  gap: 0;
+  /* Without this a grid item cannot shrink below its min-content width, so
+     one unshrinkable child (the button row) widens the whole column and
+     pushes every sibling past the right edge. */
+  min-width: 0;
+}
+.hero .eyebrow {
+  color: var(--hero-meta);
+  /* 14px, the same step as every other eyebrow on the page. */
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+.hero h1 {
+  color: var(--hero-title);
+  font-family: var(--font-serif);
+  /* One step above the Figma 58px. The clamp only shrinks it below ~1250px
+     so the two authored lines survive the narrower text column (the French
+     title is the long one). */
+  font-size: clamp(40px, calc(7.1vw - 25px), 64px);
+  font-weight: var(--font-weight-500);
+  letter-spacing: -0.01em;
+  line-height: 1.16;
+  margin-top: 25px;
+  max-width: none;
+}
+.hero h1 + .hero__copy {
+  color: var(--hero-copy);
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 29px;
+  margin-top: 32px;
+  max-width: 532px;
+  padding-block: 0;
+}
+.hero .reassurances {
+  color: var(--hero-meta);
+  column-gap: 47px;
+  flex-wrap: wrap;
+  /* Same step as the eyebrow above. */
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin: 27px 0 0;
+  row-gap: 8px;
+}
+.hero .reassurances li {
+  gap: 6px;
+}
+/* Badges scaled to the 13px label. */
+.hero .reassurances svg {
+  height: 15px;
+  width: 15px;
+}
+.hero__actions {
+  gap: 35px;
+  margin-top: 39px;
+}
+.hero__actions .button,
+.hero__actions .outline-button {
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-300);
+  height: 44px;
+  letter-spacing: 0;
+  padding-block: 0;
+}
+/* The weight is reversed from the usual pairing: "Browse tasks" is the light
+   pill, on the invoice card's ground, and the WhatsApp button carries the
+   black. Neither is outlined — the borders are kept transparent rather than
+   removed so the two keep identical metrics. */
+.hero__actions .button {
+  background: var(--surface-warm);
+  border-color: transparent;
+  color: var(--ink);
+  transition: background-color 0.2s ease;
+}
+/* One step down the surface scale on hover — the same ground the task cards
+   use, so the whole page darkens by the same amount. */
+.hero__actions .button:hover,
+.hero__actions .button:focus-visible {
+  background: var(--surface-soft);
+  /* The shared .button:hover dims with opacity, which greys out a light
+     pill; the darker ground carries the state instead. */
+  opacity: 1;
+}
+.hero__actions .outline-button {
+  background: var(--ink);
+  border-color: transparent;
+  color: var(--color-white-solid);
+  transition: opacity 0.2s ease;
+}
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  opacity: 0.78;
+}
+/* The glyph leans in and picks up WhatsApp's green, so the button says where
+   it goes before it is clicked. The svg is filled with currentColor. */
+.hero__actions .outline-button svg {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease;
+}
+.hero__actions .outline-button:hover svg,
+.hero__actions .outline-button:focus-visible svg {
+  color: #25d366;
+  transform: scale(1.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .button,
+  .hero__actions .outline-button,
+  .hero__actions .outline-button svg {
+    transition: none;
+  }
+  /* Keep the colour cue, drop the movement. */
+  .hero__actions .outline-button:hover svg,
+  .hero__actions .outline-button:focus-visible svg {
+    transform: none;
+  }
+}
+/* The arrow leans out on hover, and comes back on its own. */
+.hero__actions .button span {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero__actions .button:hover span,
+.hero__actions .button:focus-visible span {
+  transform: translateX(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .button span {
+    transition: none;
+  }
+}
+
+/* Below 640px the hero keeps the tuned mobile scale defined above; these
+   rules only restore values the desktop block would otherwise win on. */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(48px, 7.6vw, 64px);
+  }
+}
+@media (max-width: 640px) {
+  .hero .eyebrow {
+    font-size: 12px;
+    font-weight: var(--font-weight-300);
+  }
+  .hero h1 {
+    /* 44px is wider than a phone column for the longest title lines — "Votre
+       partenaire digital" is 416px at 44px, the rotator's "for the art
+       foundations." 414px — so the title keeps scaling to hold its two
+       lines whatever word is showing. Tracks the column (viewport minus the
+       36px of gutters) with a few percent of slack. */
+    font-size: clamp(24px, calc(10.26vw - 3.7px), 44px);
+    letter-spacing: -0.02em;
+    line-height: 1.26;
+    margin-top: 17px;
+  }
+  .hero h1 + .hero__copy {
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 24px;
+  }
+  .hero .reassurances {
+    /* Sized so the three badges hold one row, icons included: the row runs
+       about 29.5x the font size in French (the longer set), against a column
+       of viewport minus 36px of gutters. flex-wrap stays as the safety net. */
+    column-gap: 1.6em;
+    flex-wrap: wrap;
+    /* Same step and weight as the eyebrow above. */
+    font-size: 12px;
+    font-weight: var(--font-weight-300);
+    margin-top: 22px;
+    row-gap: 8px;
+  }
+  .hero .reassurances li {
+    gap: 0.45em;
+  }
+  .hero .reassurances svg {
+    height: 1.15em;
+    width: 1.15em;
+  }
+  .hero__actions {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 43px;
+  }
+  .hero__actions .button,
+  .hero__actions .outline-button {
+    /* Tightened so the pair holds one row on a phone; flex-wrap above is
+       only the safety net for the very narrowest screens. */
+    flex: 0 1 auto;
+    font-size: 13px;
+    gap: 7px;
+    height: auto;
+    padding: 9px 12px;
+  }
+  .hero__actions .outline-button svg {
+    height: 16px;
+    width: 16px;
+  }
+}
+/* Small phones: one more notch off so the pair still shares a row. The
+   breakpoint sits below 375 so the common iPhone width keeps the 13px step. */
+@media (max-width: 370px) {
+  .hero__actions .button,
+  .hero__actions .outline-button {
+    font-size: 12px;
+    gap: 6px;
+    padding: 8px 11px;
+  }
 }
