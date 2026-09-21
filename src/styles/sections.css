@@ -32,9 +32,6 @@
   line-height: 16px;
   padding: 6px 14px;
 }
-.lang-switch {
-  display: none;
-}
 main {
   margin: auto;
   max-width: 1280px;
@@ -506,14 +503,6 @@ h1 {
   }
   .nav {
     display: none;
-  }
-  .lang-switch {
-    color: var(--muted);
-    display: inline-flex;
-    font-size: var(--font-size-14);
-  }
-  .lang-switch:hover {
-    color: var(--ink);
   }
   main {
     padding: 0 18px;
@@ -1369,7 +1358,7 @@ h1 {
     padding: 60px 22px;
   }
   .hero__layout {
-    gap: 42px;
+    gap: 48px;
     grid-template-columns: 1fr;
   }
   .hero__content {
@@ -2127,7 +2116,12 @@ h1 {
 .site-footer__bottom i {
   font-style: normal;
 }
-.site-footer__bottom > div span:first-child {
+/* .lang-current rather than :first-child — the other language is now a real
+   link, and its position (before or after) differs between the two pages. */
+.site-footer__bottom > div .lang-current {
+  color: var(--background);
+}
+.site-footer__bottom > div a:hover {
   color: var(--background);
 }
 @media (max-width: 760px) {
@@ -2151,9 +2145,9 @@ h1 {
     margin-bottom: 40px;
   }
   .site-footer {
-    gap: 56px;
+    gap: 40px;
     grid-template-columns: 1fr;
-    padding: 56px 24px;
+    padding: 40px 24px;
   }
   .site-footer__nav {
     gap: 32px;
@@ -2163,6 +2157,9 @@ h1 {
     flex-direction: column;
     gap: 12px;
     margin-top: 0;
+    /* The 24px desktop padding-top plus this stack's own 40px gap otherwise
+       doubles up into a much bigger gap than any other pair in the footer. */
+    padding-top: 0;
   }
 }
 
@@ -2250,6 +2247,9 @@ h1 {
 .faq details {
   border-top: 1px solid var(--line);
 }
+.faq details:first-child {
+  border-top: 0;
+}
 .faq summary {
   align-items: center;
   cursor: pointer;
@@ -2313,7 +2313,7 @@ h1 {
   }
   .faq h2 {
     font-size: 28px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   .faq summary {
     font-size: 13px;
@@ -2699,7 +2699,7 @@ h1 {
   gap: 64px;
   grid-template-columns: 4fr 8fr;
   margin: 72px 22px;
-  padding-block: 64px;
+  padding-block: 84px;
 }
 .software-promo__intro {
   padding-top: 4px;
@@ -2733,7 +2733,7 @@ h1 {
   font-size: 14px;
   font-weight: var(--font-weight-400);
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 32px;
   padding: 14px 22px;
 }
 .software-features {
@@ -2993,7 +2993,7 @@ h1 {
   .software-promo {
     gap: 36px;
     margin: 0;
-    padding-block: 32px;
+    padding-block: 48px;
   }
   .software-promo__intro h2 {
     font-size: 26px;
@@ -3696,7 +3696,7 @@ h1 {
   /* One step above the Figma 58px. The clamp only shrinks it below ~1250px
      so the two authored lines survive the narrower text column (the French
      title is the long one). */
-  font-size: clamp(40px, calc(7.1vw - 25px), 64px);
+  font-size: clamp(40px, calc(7.1vw - 25px), 70px);
   font-weight: var(--font-weight-500);
   letter-spacing: -0.01em;
   line-height: 1.16;
@@ -3815,7 +3815,7 @@ h1 {
    rules only restore values the desktop block would otherwise win on. */
 @media (max-width: 900px) {
   .hero h1 {
-    font-size: clamp(48px, 7.6vw, 64px);
+    font-size: clamp(52px, 8.2vw, 70px);
   }
 }
 @media (max-width: 640px) {
@@ -3829,7 +3829,7 @@ h1 {
        foundations." 414px — so the title keeps scaling to hold its two
        lines whatever word is showing. Tracks the column (viewport minus the
        36px of gutters) with a few percent of slack. */
-    font-size: clamp(24px, calc(10.26vw - 3.7px), 44px);
+    font-size: clamp(24px, calc(10.26vw - 3.7px), 48px);
     letter-spacing: -0.02em;
     line-height: 1.26;
     margin-top: 17px;
@@ -3837,7 +3837,7 @@ h1 {
   .hero h1 + .hero__copy {
     font-size: 17px;
     line-height: 1.5;
-    margin-top: 24px;
+    margin-top: 29px;
   }
   .hero .reassurances {
     /* Sized so the three badges hold one row, icons included: the row runs
@@ -3862,7 +3862,7 @@ h1 {
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 43px;
+    margin-top: 48px;
   }
   .hero__actions .button,
   .hero__actions .outline-button {
@@ -3887,5 +3887,180 @@ h1 {
     font-size: 12px;
     gap: 6px;
     padding: 8px 11px;
+  }
+}
+
+/* Section titles take the hero's serif. The id selectors are repeated here
+   on purpose: several of these headings are styled by id further up, which
+   outranks a bare h2 and would otherwise keep them at the -0.04em tracking
+   tuned for Inter — far too tight for Source Serif's wider fit. */
+h2,
+.category-strip__heading h2,
+#tasks-title,
+#how-title,
+#faq-title,
+#software-promo-title,
+#footer-cta-title,
+#modal-task-title {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-500);
+  letter-spacing: -0.01em;
+}
+/* The grey second line of these two titles is a span inside the heading, so
+   it inherited the serif. It is a subtitle, not a title: back to Inter, at
+   the tracking that face was tuned for. */
+#tasks-title span,
+#how-title span {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.04em;
+}
+
+/* One rhythm for every title/subtitle pair. Two of these pairs are two lines
+   of a single heading, governed by line-height; the others are a heading and
+   a separate block, governed by margins. The values below are set so both
+   read as the same amount of air — previously they ran from overlapping
+   lines (line-height 0.95) to a 23px margin. */
+/* These two subtitles were a second line inside the heading, so their spacing
+   came from line-height while every other section used a margin — the two
+   never match optically. Turning the span into a block (and dropping the <br>
+   it no longer needs) puts all five pairs on the same mechanism. */
+#tasks-title,
+#how-title {
+  line-height: 1.05;
+}
+#tasks-title br,
+#how-title br {
+  display: none;
+}
+#tasks-title span,
+#how-title span,
+.category-strip__heading h2,
+.footer-cta h2 {
+  margin-bottom: 0;
+}
+#tasks-title span,
+#how-title span {
+  display: block;
+  margin-top: 12px;
+}
+.category-strip__heading h2,
+.footer-cta h2 {
+  margin-bottom: 12px;
+}
+/* Unlike the other section subtitles this harmonization pass touched, this
+   block is two paragraphs of body copy, not a single short line — cramming
+   it against the title the way a one-line subtitle sits under a heading
+   read as broken rather than tightened. Left with real air instead. */
+.software-promo__description {
+  margin-top: 20px;
+}
+
+/* One step up for every section title and its subtitle. The two subtitles
+   that live inside their heading inherit its size, so they are not listed.
+   Each breakpoint is stepped from its own value: the phone scale is tuned
+   separately further up (21px, 26px, 30px) and id selectors like these
+   outrank it, so it has to be restated rather than left to cascade. */
+.category-strip__heading h2,
+#tasks-title,
+#how-title,
+#software-promo-title,
+#faq-title {
+  font-size: 32px;
+}
+/* :not(.eyebrow) so the small label above the title keeps its own size. */
+.category-strip__heading p:not(.eyebrow) {
+  font-size: 32px;
+}
+#modal-task-title {
+  font-size: 38px;
+}
+/* Matched to the pricing section's own paragraph — .tasks
+   .section-heading__copy — rather than stepped with the titles: it reads as
+   body copy, not a subtitle. */
+.software-promo__description {
+  font-size: 18px;
+}
+/* The footer call to action has its own two-step scale. */
+#footer-cta-title,
+#footer-cta-title + p {
+  font-size: 34px;
+}
+@media (min-width: 768px) {
+  #footer-cta-title,
+  #footer-cta-title + p {
+    font-size: 50px;
+  }
+}
+@media (max-width: 640px) {
+  /* One step for every section title on the phone. The file used to carry
+     21 / 26 / 28 / 30px here depending on the section, for headings of the
+     same rank; they are levelled to a single value. The footer call to
+     action keeps its own, larger size. */
+  .category-strip__heading h2,
+  .category-strip__heading p:not(.eyebrow),
+  #tasks-title,
+  #how-title,
+  #software-promo-title,
+  #faq-title {
+    font-size: 24px;
+  }
+}
+/* Tighter column gap between a section title and the copy beside it. Scoped
+   to the two-column layout: below 760px the heading stacks, where this would
+   stop being a lateral gap and start pushing the copy down instead. */
+@media (min-width: 761px) {
+  .tasks .section-heading {
+    gap: 56px;
+  }
+}
+
+/* Inter carries a much larger x-height than Source Serif, so a subtitle set
+   at its title's size reads bigger than the title. One step down brings the
+   two back into optical balance. Only the subtitles that matched their
+   title's size are listed; the software promo's is already smaller. */
+.category-strip__heading p:not(.eyebrow),
+#tasks-title span,
+#how-title span {
+  font-size: 28px;
+}
+#footer-cta-title + p {
+  font-size: 30px;
+}
+@media (min-width: 768px) {
+  #footer-cta-title + p {
+    font-size: 44px;
+  }
+}
+@media (max-width: 640px) {
+  .category-strip__heading p:not(.eyebrow),
+  #tasks-title span,
+  #how-title span {
+    font-size: 21px;
+  }
+  /* One step down from the title (34px) — at 30px, plain Inter's tall
+     x-height made this read as large as the title itself on a phone. */
+  #footer-cta-title + p {
+    font-size: 26px;
+  }
+}
+
+/* The title/subtitle margins above are absolute, so at the smaller phone type
+   sizes the same 12px reads as more air than it does on desktop. Trimmed to
+   land on the same optical gap. */
+@media (max-width: 640px) {
+  #tasks-title span,
+  #how-title span {
+    margin-top: 9px;
+  }
+  .category-strip__heading h2 {
+    margin-bottom: 9px;
+  }
+  .footer-cta h2 {
+    margin-bottom: 8px;
+  }
+  .software-promo__description {
+    font-size: 16px;
+    margin-top: 16px;
   }
 }
