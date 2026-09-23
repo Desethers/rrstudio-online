@@ -896,7 +896,7 @@ if (heroRotator) {
     fr: [
       "le monde de l\u2019art",
       "les artistes",
-      "les conseillers",
+      "les art advisors",
       "les galeries",
       "les fondations",
     ],
