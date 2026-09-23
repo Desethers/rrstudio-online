@@ -3824,12 +3824,14 @@ h1 {
     font-weight: var(--font-weight-300);
   }
   .hero h1 {
-    /* 44px is wider than a phone column for the longest title lines — "Votre
-       partenaire digital" is 416px at 44px, the rotator's "for the art
-       foundations." 414px — so the title keeps scaling to hold its two
-       lines whatever word is showing. Tracks the column (viewport minus the
-       36px of gutters) with a few percent of slack. */
-    font-size: clamp(24px, calc(10.26vw - 3.7px), 48px);
+    /* One step up from 48px. The new ceiling (52px) lines up with the
+       641-900px block's own floor just above this breakpoint, so the size
+       doesn't jump at the handoff. Rebuilt by binary-searching, at each
+       column width, the largest size that still holds every title
+       line — both fixed first lines and every "for the <word>."/"pour
+       <word>." combination the rotator can show — on two lines, then fitting
+       a line through those points with ~3% of slack throughout. */
+    font-size: clamp(26px, calc(11.26vw - 8px), 52px);
     letter-spacing: -0.02em;
     line-height: 1.26;
     margin-top: 17px;
