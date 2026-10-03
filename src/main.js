@@ -920,6 +920,29 @@ if (heroRotator) {
     word &&
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ) {
+    const heading = heroRotator.closest("h1");
+    const content = heading?.closest(".hero__content");
+    const firstLine = heading?.firstChild?.textContent.trim();
+    const prefix = heading?.querySelector("br")?.nextSibling?.textContent.trim();
+
+    /* Fit the longest complete line before locking the two authored lines.
+     * Measuring every word avoids a wrap midway through the width spring. */
+    const fitHeading = () => {
+      if (!heading || !content || !firstLine || !prefix) return;
+      heading.style.fontSize = "";
+      const baseSize = parseFloat(getComputedStyle(heading).fontSize);
+      const widestLine = Math.max(
+        widthOf(firstLine),
+        ...words.map((entry) => widthOf(`${prefix} ${entry}.`)),
+      );
+      const available = content.clientWidth - 8;
+      if (available > 0 && widestLine > available) {
+        heading.style.fontSize = `${(baseSize * available) / widestLine}px`;
+      }
+      heading.classList.add("hero-title--fixed-lines");
+    };
+
+    fitHeading();
     let index = 0;
     let swapTimer;
     let fadeTimer;
@@ -935,6 +958,7 @@ if (heroRotator) {
     const pin = () => {
       clearTimeout(fadeTimer);
       clearTimeout(swapTimer);
+      fitHeading();
       word.textContent = words[index];
       word.classList.remove("is-swapping");
       pinned = widthOf(words[index]);
@@ -951,10 +975,9 @@ if (heroRotator) {
       setTimeout(pin, 300);
       startCycle();
     };
-    /* Wait for the webfont before doing anything: measuring against the
-     * fallback serif gives a box far wider than the word, and until the box
-     * holds a real length its width is "auto", which a CSS transition cannot
-     * animate from — the first exchange would jump instead of sliding. */
+    /* Wait for the webfont before starting the cycle: fallback metrics can
+     * give the box a different width. Until the box holds a real length,
+     * its width is "auto", which a CSS transition cannot animate from. */
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(start);
     } else {

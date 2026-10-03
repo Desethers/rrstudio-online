@@ -3692,16 +3692,24 @@ h1 {
 }
 .hero h1 {
   color: var(--hero-title);
-  font-family: var(--font-serif);
-  /* One step above the Figma 58px. The clamp only shrinks it below ~1250px
-     so the two authored lines survive the narrower text column (the French
-     title is the long one). */
-  font-size: clamp(40px, calc(7.1vw - 25px), 70px);
+  font-family: var(--font-sans);
+  /* Keep the two authored lines within the text column. */
+  font-size: clamp(34px, calc(7.1vw - 31px), 64px);
   font-weight: var(--font-weight-500);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
   line-height: 1.16;
   margin-top: 25px;
   max-width: none;
+}
+.hero h1.hero-title--fixed-lines {
+  /* The authored <br> still breaks; the animated second line never does. */
+  white-space: nowrap;
+}
+@media (min-width: 901px) {
+  /* The longer French first line needs a smaller step in the desktop grid. */
+  html[lang="fr"] .hero h1 {
+    font-size: clamp(34px, calc(4.2vw - 4px), 58px);
+  }
 }
 .hero h1 + .hero__copy {
   color: var(--hero-copy);
@@ -3824,15 +3832,8 @@ h1 {
     font-weight: var(--font-weight-300);
   }
   .hero h1 {
-    /* One step up from 48px. The new ceiling (52px) lines up with the
-       641-900px block's own floor just above this breakpoint, so the size
-       doesn't jump at the handoff. Rebuilt by binary-searching, at each
-       column width, the largest size that still holds every title
-       line — both fixed first lines and every "for the <word>."/"pour
-       <word>." combination the rotator can show — on two lines, then fitting
-       a line through those points with ~3% of slack throughout. */
     font-size: clamp(26px, calc(11.26vw - 8px), 52px);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     line-height: 1.26;
     margin-top: 17px;
   }
@@ -3892,10 +3893,8 @@ h1 {
   }
 }
 
-/* Section titles take the hero's serif. The id selectors are repeated here
-   on purpose: several of these headings are styled by id further up, which
-   outranks a bare h2 and would otherwise keep them at the -0.04em tracking
-   tuned for Inter — far too tight for Source Serif's wider fit. */
+/* Keep section titles in the same typeface as the rest of the site. The id
+   selectors repeat here because several headings are styled by id above. */
 h2,
 .category-strip__heading h2,
 #tasks-title,
@@ -3904,13 +3903,14 @@ h2,
 #software-promo-title,
 #footer-cta-title,
 #modal-task-title {
-  font-family: var(--font-serif);
-  font-weight: var(--font-weight-500);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-400);
   letter-spacing: -0.01em;
 }
-/* The grey second line of these two titles is a span inside the heading, so
-   it inherited the serif. It is a subtitle, not a title: back to Inter, at
-   the tracking that face was tuned for. */
+#modal-task-title {
+  font-weight: var(--font-weight-500);
+}
+/* The grey second line of these titles keeps its subtitle tracking. */
 #tasks-title span,
 #how-title span {
   font-family: var(--font-sans);
@@ -3958,21 +3958,17 @@ h2,
   margin-top: 20px;
 }
 
-/* One step up for every section title and its subtitle. The two subtitles
-   that live inside their heading inherit its size, so they are not listed.
-   Each breakpoint is stepped from its own value: the phone scale is tuned
-   separately further up (21px, 26px, 30px) and id selectors like these
-   outrank it, so it has to be restated rather than left to cascade. */
+/* Match section headings to the grey subtitle size. */
 .category-strip__heading h2,
 #tasks-title,
 #how-title,
 #software-promo-title,
 #faq-title {
-  font-size: 32px;
+  font-size: 28px;
 }
 /* :not(.eyebrow) so the small label above the title keeps its own size. */
 .category-strip__heading p:not(.eyebrow) {
-  font-size: 32px;
+  font-size: 28px;
 }
 #modal-task-title {
   font-size: 38px;
@@ -3983,29 +3979,26 @@ h2,
 .software-promo__description {
   font-size: 18px;
 }
-/* The footer call to action has its own two-step scale. */
+/* The footer call to action shares its grey subtitle's scale. */
 #footer-cta-title,
 #footer-cta-title + p {
-  font-size: 34px;
+  font-size: 30px;
 }
 @media (min-width: 768px) {
   #footer-cta-title,
   #footer-cta-title + p {
-    font-size: 50px;
+    font-size: 44px;
   }
 }
 @media (max-width: 640px) {
-  /* One step for every section title on the phone. The file used to carry
-     21 / 26 / 28 / 30px here depending on the section, for headings of the
-     same rank; they are levelled to a single value. The footer call to
-     action keeps its own, larger size. */
+  /* Section titles and grey subtitles share the same phone size. */
   .category-strip__heading h2,
   .category-strip__heading p:not(.eyebrow),
   #tasks-title,
   #how-title,
   #software-promo-title,
   #faq-title {
-    font-size: 24px;
+    font-size: 21px;
   }
 }
 /* Tighter column gap between a section title and the copy beside it. Scoped
@@ -4017,10 +4010,7 @@ h2,
   }
 }
 
-/* Inter carries a much larger x-height than Source Serif, so a subtitle set
-   at its title's size reads bigger than the title. One step down brings the
-   two back into optical balance. Only the subtitles that matched their
-   title's size are listed; the software promo's is already smaller. */
+/* Keep the grey lines at the shared section title size. */
 .category-strip__heading p:not(.eyebrow),
 #tasks-title span,
 #how-title span {
@@ -4040,8 +4030,7 @@ h2,
   #how-title span {
     font-size: 21px;
   }
-  /* One step down from the title (34px) — at 30px, plain Inter's tall
-     x-height made this read as large as the title itself on a phone. */
+  #footer-cta-title,
   #footer-cta-title + p {
     font-size: 26px;
   }
