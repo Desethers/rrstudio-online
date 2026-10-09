@@ -4332,3 +4332,13 @@ h2,
 .product-visual--whatsapp img {
   object-position: 50% 50%;
 }
+
+/* Cards read text first, visual below; the visuals share a baseline at the
+   bottom of the row. */
+.product-card__body {
+  flex: 1;
+  order: 1;
+}
+.product-visual {
+  order: 2;
+}
