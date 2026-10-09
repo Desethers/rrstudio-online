@@ -4425,13 +4425,13 @@ h2,
   font-weight: var(--font-weight-400);
   letter-spacing: -0.01em;
   line-height: 1.2;
-  margin: 12px 0 0;
+  margin: 6px 0 0;
   max-width: 520px;
 }
 @media (max-width: 640px) {
   .software-promo__subtitle {
     font-size: 21px;
-    margin-top: 9px;
+    margin-top: 5px;
   }
 }
 
