@@ -4416,8 +4416,27 @@ h2,
   }
 }
 
-/* Tools intro: title block on the left, the supporting sentence facing it on
-   the right (same split as the pricing heading). */
+
+
+/* Tools subtitle: grey line under the title, same size as the title. */
+.software-promo__subtitle {
+  color: var(--subtitle);
+  font-size: 28px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 12px 0 0;
+  max-width: 520px;
+}
+@media (max-width: 640px) {
+  .software-promo__subtitle {
+    font-size: 21px;
+    margin-top: 9px;
+  }
+}
+
+/* Tools intro: title, subtitle and button on the left; both supporting
+   sentences as one block in the right column, spanning the left rows. */
 @media (min-width: 761px) {
   .software-promo--tools .software-promo__intro {
     column-gap: 56px;
@@ -4428,30 +4447,14 @@ h2,
   .software-promo--tools .software-promo__intro > * {
     grid-column: 1;
   }
-  .software-promo--tools .software-promo__aside {
+  .software-promo--tools .software-promo__description {
     align-self: start;
     grid-column: 2;
-    grid-row: 2 / span 3;
+    grid-row: 1 / span 3;
+    margin-top: 6px;
   }
-}
-.software-promo__aside {
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.4;
-  margin: 23px 0 0;
-  max-width: 440px;
-}
-@media (max-width: 640px) {
-  .software-promo__aside {
-    font-size: 16px;
-    margin-top: 8px;
-  }
-}
-@media (min-width: 761px) {
   .software-promo--tools .software-promo__intro .button {
     justify-self: start;
-  }
-  .software-promo--tools .software-promo__aside {
-    margin-top: 6px;
+    margin-top: 32px;
   }
 }
