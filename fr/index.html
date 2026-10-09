@@ -399,7 +399,7 @@
           </aside>
         </div>
       </section>
-      <section class="software-promo" id="products" aria-labelledby="software-promo-title">
+      <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
         <div class="software-promo__intro">
           <p class="eyebrow">Outils</p>
           <h2 id="software-promo-title">Des outils pour le travail de tous les jours.</h2>
@@ -413,28 +413,45 @@
             >Demander une installation <span aria-hidden="true">↗</span></a
           >
         </div>
-        <div class="software-features product-list">
-          <article>
-            <i aria-hidden="true">01</i>
-            <div>
+        <div class="product-cards">
+          <article class="product-card">
+            <div class="product-visual product-visual--gmail" aria-hidden="true">
+              <div class="gm-mail">
+                <div class="gm-mail__bar"><i></i><i></i><i></i><span>Boîte de réception</span></div>
+                <div class="gm-mail__head"><strong>Marie Beaumont</strong><span>Evening Field — toujours disponible ?</span></div>
+                <p>Bonjour, “Evening Field” est-elle toujours disponible, et quelles sont ses dimensions ?</p>
+              </div>
+              <div class="gm-panel">
+                <span class="gm-panel__brand">Vitreen</span>
+                <div class="gm-panel__art"></div>
+                <strong>Evening Field</strong>
+                <small>Disponible · 120 × 90 cm</small>
+                <em>Ajouter à la réponse</em>
+              </div>
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">Add-in Gmail</p>
               <h3>Vos emails collectionneurs, connectés</h3>
               <p>Ajoutez les détails d’une œuvre à un email et gardez chaque échange avec un collectionneur dans votre base.</p>
               <p class="product-meta">Installé dans votre Google Workspace</p>
             </div>
           </article>
-          <article>
-            <i aria-hidden="true">02</i>
-            <div>
+          <article class="product-card">
+            <div class="product-visual product-visual--whatsapp">
+              <img src="/images/tool-whatsapp.png" width="1172" height="676" loading="lazy" alt="Conversation WhatsApp où la commande /pdf génère un PDF de sélection d’œuvres pour un collectionneur" />
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">Add-on WhatsApp</p>
               <h3>Partagez des œuvres depuis votre téléphone</h3>
               <p>Envoyez œuvres et sélections aux collectionneurs directement depuis la conversation, avec les bonnes images et informations.</p>
               <p class="product-meta">Mis en place sur votre propre compte</p>
             </div>
           </article>
-          <article>
-            <i aria-hidden="true">03</i>
-            <div>
+          <article class="product-card">
+            <div class="product-visual product-visual--crm">
+              <img src="/images/tool-crm.png" width="1134" height="1040" loading="lazy" alt="Assistant répondant à « Qui attend une réponse ce matin ? » à partir des données de la galerie" />
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">CRM personnel</p>
               <h3>Vos collectionneurs et vos œuvres, une seule base</h3>
               <p>Contacts, œuvres, disponibilités et pipeline au même endroit, chez vous, avec votre site web toujours synchronisé.</p>

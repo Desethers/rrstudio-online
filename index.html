@@ -329,7 +329,7 @@
           </aside>
         </div>
       </section>
-      <section class="software-promo" id="products" aria-labelledby="software-promo-title">
+      <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
         <div class="software-promo__intro">
           <p class="eyebrow">Tools</p>
           <h2 id="software-promo-title">Tools for everyday work.</h2>
@@ -343,28 +343,45 @@
             >Ask about an installation <span aria-hidden="true">↗</span></a
           >
         </div>
-        <div class="software-features product-list">
-          <article>
-            <i aria-hidden="true">01</i>
-            <div>
+        <div class="product-cards">
+          <article class="product-card">
+            <div class="product-visual product-visual--gmail" aria-hidden="true">
+              <div class="gm-mail">
+                <div class="gm-mail__bar"><i></i><i></i><i></i><span>Inbox</span></div>
+                <div class="gm-mail__head"><strong>Marie Beaumont</strong><span>Evening Field — still available?</span></div>
+                <p>Hello, is “Evening Field” still available, and what are its dimensions?</p>
+              </div>
+              <div class="gm-panel">
+                <span class="gm-panel__brand">Vitreen</span>
+                <div class="gm-panel__art"></div>
+                <strong>Evening Field</strong>
+                <small>Available · 120 × 90 cm</small>
+                <em>Add to reply</em>
+              </div>
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">Gmail add-in</p>
               <h3>Collector emails, connected</h3>
               <p>Add artwork details to an email, and keep every conversation with a collector in your database.</p>
               <p class="product-meta">Installed in your Google Workspace</p>
             </div>
           </article>
-          <article>
-            <i aria-hidden="true">02</i>
-            <div>
+          <article class="product-card">
+            <div class="product-visual product-visual--whatsapp">
+              <img src="/images/tool-whatsapp.png" width="1172" height="676" loading="lazy" alt="WhatsApp chat where a /pdf command builds a PDF selection of artworks for a collector" />
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">WhatsApp add-on</p>
               <h3>Share works from your phone</h3>
               <p>Send artworks and selections to collectors straight from the chat, with the right images and details.</p>
               <p class="product-meta">Set up on your own account</p>
             </div>
           </article>
-          <article>
-            <i aria-hidden="true">03</i>
-            <div>
+          <article class="product-card">
+            <div class="product-visual product-visual--crm">
+              <img src="/images/tool-crm.png" width="1134" height="1040" loading="lazy" alt="Assistant answering “Who is waiting for a reply this morning?” from the gallery’s records" />
+            </div>
+            <div class="product-card__body">
               <p class="product-tag">Personal CRM</p>
               <h3>Your collectors and artworks, one database</h3>
               <p>Contacts, works, availability and pipeline in a single place you own, with your website kept in sync.</p>

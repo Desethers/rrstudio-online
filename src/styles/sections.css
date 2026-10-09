@@ -4160,3 +4160,175 @@ h2,
     font-size: 20px;
   }
 }
+
+/* Tools: title block on top, three product cards in a row below it, each with
+   a visual (Gmail mock, WhatsApp chat, CRM assistant). */
+.software-promo--tools {
+  gap: 48px;
+  grid-template-columns: 1fr;
+}
+.software-promo--tools .software-promo__intro {
+  max-width: 640px;
+}
+.product-cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.product-card {
+  background: var(--surface-warm);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.product-visual {
+  aspect-ratio: 1.1;
+  background: var(--surface-soft);
+  overflow: hidden;
+  position: relative;
+}
+.product-visual img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.product-visual--crm img {
+  object-position: left top;
+}
+.product-card__body {
+  padding: 20px 22px 22px;
+}
+.product-card .product-tag {
+  color: var(--subtle);
+  font-size: var(--font-size-14);
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.product-card h3 {
+  font-size: 18px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+.product-card__body p:not(.product-tag):not(.product-meta) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+.product-card .product-meta {
+  border-top: 1px solid var(--border-soft);
+  color: var(--subtle);
+  font-size: 12px;
+  margin: 16px 0 0;
+  padding-top: 12px;
+}
+
+/* Gmail visual — an open email with the add-in's side panel. Built in CSS so
+   it matches the other two screenshots' data (Marie Beaumont, Evening Field). */
+.product-visual--gmail {
+  background: var(--surface-soft);
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1.35fr 1fr;
+  padding: 18px;
+}
+.gm-mail,
+.gm-panel {
+  background: var(--background);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  min-width: 0;
+}
+.gm-mail {
+  padding: 10px 12px;
+}
+.gm-mail__bar {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.gm-mail__bar i {
+  background: var(--border);
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+.gm-mail__bar span {
+  color: var(--subtle);
+  font-size: 10px;
+  margin-left: 6px;
+}
+.gm-mail__head strong {
+  display: block;
+  font-size: 12px;
+  font-weight: var(--font-weight-500);
+}
+.gm-mail__head span {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  margin-top: 2px;
+}
+.gm-mail p {
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 10px 0 0;
+}
+.gm-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+}
+.gm-panel__brand {
+  color: var(--subtle);
+  font-size: 10px;
+}
+.gm-panel__art {
+  background: linear-gradient(135deg, #e9e6dc, #cfd6c9);
+  border-radius: 4px;
+  margin: 4px 0;
+  min-height: 54px;
+  flex: 1;
+}
+.gm-panel strong {
+  font-size: 12px;
+  font-weight: var(--font-weight-500);
+}
+.gm-panel small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.gm-panel em {
+  background: var(--ink);
+  border-radius: 999px;
+  color: var(--background);
+  font-size: 10px;
+  font-style: normal;
+  margin-top: 6px;
+  padding: 5px 8px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .product-cards {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .software-promo--tools {
+    gap: 28px;
+  }
+}
+
+/* The WhatsApp capture is wide: a centred crop keeps the conversation column. */
+.product-visual--whatsapp img {
+  object-position: 50% 50%;
+}
