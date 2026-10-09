@@ -61,7 +61,7 @@ const TASK_COPY = {
       label: "Website",
       title: "Fix a website issue",
       description:
-        "Something looks wrong or stopped working? We investigate and fix one defined issue.",
+        "Something looks wrong or stopped working? I investigate and fix one defined issue.",
     },
     "organise-database": {
       label: "Inventory",
@@ -136,7 +136,7 @@ const TASK_COPY = {
       label: "Site web",
       title: "Corriger un problème sur le site",
       description:
-        "Quelque chose s’affiche mal ou ne fonctionne plus ? Nous cherchons et corrigeons un problème défini.",
+        "Quelque chose s’affiche mal ou ne fonctionne plus ? Je cherche et je corrige un problème défini.",
     },
     "organise-database": {
       label: "Inventaire",
@@ -887,18 +887,20 @@ const heroRotator = document.querySelector("#hero-rotator");
 if (heroRotator) {
   const HERO_WORDS = {
     en: [
-      "art world",
-      "artists",
-      "art advisors",
-      "galleries",
-      "art foundations",
+      "inbox",
+      "database",
+      "website",
+      "WhatsApp",
+      "Artlogic",
+      "SEO",
     ],
     fr: [
-      "le monde de l\u2019art",
-      "les artistes",
-      "les art advisors",
-      "les galeries",
-      "les fondations",
+      "boîte mail",
+      "base de données",
+      "site web",
+      "WhatsApp",
+      "Artlogic",
+      "SEO",
     ],
   };
   const words = HERO_WORDS[LANG];
