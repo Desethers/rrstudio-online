@@ -4342,3 +4342,76 @@ h2,
 .product-visual {
   order: 2;
 }
+
+/* Tool visuals as soft coloured panels with the interface floating inside. */
+.product-card {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+.product-card__body {
+  padding: 4px 4px 22px;
+}
+.product-visual {
+  --tone: var(--surface-soft);
+  align-items: center;
+  aspect-ratio: 1;
+  background: var(--tone);
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.product-visual--gmail {
+  --tone: #d6e6fd;
+  padding: 22px;
+}
+.product-visual--whatsapp {
+  --tone: #dce7d8;
+}
+.product-visual--crm {
+  --tone: #ebe6dc;
+}
+.product-visual img {
+  aspect-ratio: 1;
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(17, 17, 16, 0.1);
+  height: auto;
+  object-fit: cover;
+  width: 80%;
+}
+.product-visual--crm img {
+  object-position: left top;
+}
+.gm-mail,
+.gm-panel {
+  border: 0;
+  box-shadow: 0 10px 30px rgba(17, 17, 16, 0.1);
+}
+.product-visual--gmail {
+  align-content: center;
+}
+.product-visual--gmail {
+  align-content: center;
+  align-items: stretch;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1.35fr 1fr;
+  height: auto;
+}
+.product-visual--gmail .gm-mail,
+.product-visual--gmail .gm-panel {
+  align-self: center;
+}
+.product-visual--gmail .gm-mail {
+  min-height: 62%;
+}
+.product-visual--gmail .gm-panel {
+  min-height: 62%;
+}
+@media (max-width: 900px) {
+  .product-cards {
+    gap: 40px;
+  }
+}
