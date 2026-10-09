@@ -4415,3 +4415,43 @@ h2,
     gap: 40px;
   }
 }
+
+/* Tools intro: title block on the left, the supporting sentence facing it on
+   the right (same split as the pricing heading). */
+@media (min-width: 761px) {
+  .software-promo--tools .software-promo__intro {
+    column-gap: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: none;
+  }
+  .software-promo--tools .software-promo__intro > * {
+    grid-column: 1;
+  }
+  .software-promo--tools .software-promo__aside {
+    align-self: start;
+    grid-column: 2;
+    grid-row: 2 / span 3;
+  }
+}
+.software-promo__aside {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 23px 0 0;
+  max-width: 440px;
+}
+@media (max-width: 640px) {
+  .software-promo__aside {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+@media (min-width: 761px) {
+  .software-promo--tools .software-promo__intro .button {
+    justify-self: start;
+  }
+  .software-promo--tools .software-promo__aside {
+    margin-top: 6px;
+  }
+}
