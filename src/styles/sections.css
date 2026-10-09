@@ -4114,3 +4114,49 @@ h2,
     padding-top: 10px;
   }
 }
+
+/* Text-only section ("New ways of working") — same two-column rhythm as the
+   tools section, with a single paragraph in place of the cards. */
+#ways-title {
+  font-size: 28px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 520px;
+}
+.software-promo__body p {
+  color: var(--muted);
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 640px;
+}
+@media (max-width: 640px) {
+  #ways-title {
+    font-size: 21px;
+  }
+  .software-promo__body p {
+    font-size: 18px;
+  }
+}
+
+/* Longer supporting paragraphs under two section titles: body-copy size, not
+   the 28px subtitle step reserved for one-line subtitles. */
+.category-strip__heading p:not(.eyebrow) {
+  font-size: 18px;
+  line-height: 1.4;
+  max-width: 560px;
+}
+#footer-cta-title + p {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-inline: auto;
+  max-width: 560px;
+}
+@media (min-width: 768px) {
+  #footer-cta-title + p {
+    font-size: 20px;
+  }
+}
