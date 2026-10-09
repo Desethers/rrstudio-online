@@ -888,18 +888,18 @@ const heroRotator = document.querySelector("#hero-rotator");
 if (heroRotator) {
   const HERO_WORDS = {
     en: [
-      "art world",
+      "galleries",
       "artists",
       "art advisors",
-      "galleries",
       "art foundations",
+      "the art world",
     ],
     fr: [
-      "le monde de l\u2019art",
+      "les galeries",
       "les artistes",
       "les art advisors",
-      "les galeries",
       "les fondations",
+      "le monde de l\u2019art",
     ],
   };
   const words = HERO_WORDS[LANG];
