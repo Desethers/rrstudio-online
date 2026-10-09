@@ -448,6 +448,7 @@ function updateSummary() {
 
 function updateInvoice(selectedTasks, total) {
   const invoiceItems = document.querySelector("#invoice-items");
+  if (!invoiceItems) return;
   const displayedTasks = selectedTasks.length ? selectedTasks : [tasks[0]];
   const displayedTotal = selectedTasks.length ? total : tasks[0].price;
   invoiceItems.innerHTML = displayedTasks
