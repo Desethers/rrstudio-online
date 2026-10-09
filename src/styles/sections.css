@@ -4055,3 +4055,62 @@ h2,
     margin-top: 16px;
   }
 }
+
+/* Products catalogue — three mini-apps, one column of wider cards so each
+   tag, promise and install context reads as a single row. */
+.product-list {
+  grid-template-columns: 1fr;
+}
+.product-list article {
+  gap: 20px;
+  min-height: 0;
+  padding: 22px 24px;
+}
+.product-list i {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+}
+.product-list .product-tag {
+  color: var(--subtle);
+  font-size: var(--font-size-14);
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.product-list h3 {
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+.product-list .product-meta {
+  border-top: 1px solid var(--border-soft);
+  color: var(--subtle);
+  font-size: 12px;
+  margin-top: 16px;
+  padding-top: 12px;
+}
+@media (max-width: 640px) {
+  .product-list article {
+    flex-direction: row;
+    gap: 14px;
+    padding: 18px;
+  }
+  .product-list i {
+    font-size: 12px;
+  }
+  .product-list h3 {
+    font-size: 16px;
+  }
+  .product-list p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .product-list .product-tag {
+    font-size: 13px;
+    margin: 0 0 6px;
+  }
+  .product-list .product-meta {
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+}
