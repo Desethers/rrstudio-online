@@ -98,7 +98,7 @@ const TASK_COPY = {
     },
     "seo-check": {
       label: "Visibility",
-      title: "Artist SEO check",
+      title: "Artist Google indexing",
       description: "Find the main issues.",
     },
   },
@@ -168,7 +168,7 @@ const TASK_COPY = {
     },
     "seo-check": {
       label: "Visibilité",
-      title: "Audit SEO artiste",
+      title: "Indexation Google artiste",
       description: "Identification des principaux problèmes.",
     },
   },
