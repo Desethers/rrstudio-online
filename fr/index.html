@@ -399,68 +399,17 @@
           </aside>
         </div>
       </section>
-      <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
-        <div class="software-promo__intro">
-          <p class="eyebrow">Apps</p>
-          <h2 id="software-promo-title">Des outils pour le travail de tous les jours.</h2>
-          <div class="software-promo__description">
-            <p>De petits outils, faits avec soin.</p>
-            <p>Intégrez les informations sur vos œuvres à votre quotidien grâce à des outils qui relient Gmail, WhatsApp et les systèmes que vous utilisez déjà.</p>
-          </div>
-          <a
-            class="button"
-            href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20installation"
-            >Demander une installation <span aria-hidden="true">↗</span></a
-          >
+      <section class="studio-split" id="services">
+      <div class="studio-intro" aria-label="À propos de R.R Studio">
+        <p class="eyebrow">Le studio</p>
+        <p class="studio-intro__lead" data-reveal>R.R Studio est un studio indépendant de design et de technologie pour le monde de l’art contemporain.</p>
+        <div class="studio-intro__body">
+          <p data-reveal>Je crois que la technologie peut servir les galeries de toutes tailles : donner à un galeriste seul les outils d’une méga-galerie, et aider les équipes établies à travailler plus simplement.</p>
+          <p data-reveal>Je conçois des sites web et des outils sur mesure pour les galeries et les artistes, et j’apporte un accompagnement concret, des corrections web aux améliorations de workflow.</p>
+          <p data-reveal>Je parle régulièrement avec des personnes de tout le monde de l’art, pour que ce que je construis corresponde à leur façon de travailler réelle.</p>
         </div>
-        <div class="product-cards">
-          <article class="product-card">
-            <div class="product-visual product-visual--gmail" aria-hidden="true">
-              <div class="gm-mail">
-                <div class="gm-mail__bar"><i></i><i></i><i></i><span>Boîte de réception</span></div>
-                <div class="gm-mail__head"><strong>Marie Beaumont</strong><span>Evening Field — toujours disponible ?</span></div>
-                <p>Bonjour, “Evening Field” est-elle toujours disponible, et quelles sont ses dimensions ?</p>
-              </div>
-              <div class="gm-panel">
-                <span class="gm-panel__brand">Vitreen</span>
-                <div class="gm-panel__art"></div>
-                <strong>Evening Field</strong>
-                <small>Disponible · 120 × 90 cm</small>
-                <em>Ajouter à la réponse</em>
-              </div>
-            </div>
-            <div class="product-card__body">
-              <p class="product-tag">Add-in Gmail</p>
-              <h3>Vos emails collectionneurs, connectés</h3>
-              <p>Ajoutez les détails d’une œuvre à un email et gardez chaque échange avec un collectionneur dans votre base.</p>
-              <p class="product-meta">Installé dans votre Google Workspace</p>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-visual product-visual--whatsapp">
-              <img src="/images/tool-whatsapp.png" width="1172" height="676" loading="lazy" alt="Conversation WhatsApp où la commande /pdf génère un PDF de sélection d’œuvres pour un collectionneur" />
-            </div>
-            <div class="product-card__body">
-              <p class="product-tag">Add-on WhatsApp</p>
-              <h3>Partagez des œuvres depuis votre téléphone</h3>
-              <p>Envoyez œuvres et sélections aux collectionneurs directement depuis la conversation, avec les bonnes images et informations.</p>
-              <p class="product-meta">Mis en place sur votre propre compte</p>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-visual product-visual--crm">
-              <img src="/images/tool-crm.png" width="1134" height="1040" loading="lazy" alt="Assistant répondant à « Qui attend une réponse ce matin ? » à partir des données de la galerie" />
-            </div>
-            <div class="product-card__body">
-              <p class="product-tag">CRM personnel</p>
-              <h3>Vos collectionneurs et vos œuvres, une seule base</h3>
-              <p>Contacts, œuvres, disponibilités et pipeline au même endroit, chez vous, avec votre site web toujours synchronisé.</p>
-              <p class="product-meta">Hébergé dans vos comptes</p>
-            </div>
-          </article>
-        </div>
-      </section>
-      <section class="category-strip" id="services" aria-label="Catégories de services">
+      </div>
+      <div class="category-strip" aria-label="Catégories de services">
         <div class="category-strip__heading">
           <p class="eyebrow">Services</p>
           <h2>Ce qui pourrait mieux fonctionner.</h2>
@@ -495,6 +444,125 @@
             >
           </div></a
         >
+      </div>
+      </section>
+      <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
+        <div class="software-promo__intro">
+          <p class="eyebrow">Apps</p>
+          <h2 id="software-promo-title">Des outils pour le travail de tous les jours.</h2>
+          <div class="software-promo__description">
+            <p>De petits outils, faits avec soin.</p>
+            <p>Intégrez les informations sur vos œuvres à votre quotidien grâce à des outils qui relient Gmail, WhatsApp et les systèmes que vous utilisez déjà.</p>
+          </div>
+          <a
+            class="button"
+            href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20installation"
+            >Demander une installation <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="product-cards">
+          <article class="product-card">
+            <div class="product-visual product-visual--gmail" aria-hidden="true" data-gm-body="Bonjour Marie,
+voici l’œuvre dont vous parliez :">
+              <div class="gm-mock">
+                <div class="gm-stage">
+                  <div class="gm-win">
+                    <div class="gm-win__bar"><span>Nouveau message</span><span class="gm-win__ctl">− ↗ ×</span></div>
+                    <div class="gm-line"><span>Destinataires</span>mariebeaumont@gmail.com</div>
+                    <div class="gm-line"><span>Objet</span><b>Evening Field — Sacha Elron</b></div>
+                    <div class="gm-body">
+                      <p class="gm-body__text"></p>
+                      <div class="gm-art">
+                        <img src="/mockups/gmail/painting-05.jpg" alt="" />
+                        <div class="gm-art__row"><div><p class="gm-art__artist">Sacha Elron</p><p class="gm-art__title">Evening field, 2023</p></div><span class="gm-art__btn">Demander</span></div>
+                        <p class="gm-art__meta">Acrylique sur toile<br />120 × 120 cm</p>
+                        <p class="gm-art__price">10 000 €</p>
+                      </div>
+                    </div>
+                    <div class="gm-tools"><span class="gm-send">Envoyer <i>▾</i></span><span class="gm-tools__ico">Aa</span><span class="gm-logo"><img src="/mockups/gmail/gallery-os.svg" alt="" /></span></div>
+                  </div>
+                  <aside class="gm-side">
+                    <div class="gm-side__bar"><b>Gallery OS</b><span>⋮ &nbsp;×</span></div>
+                    <div class="gm-side__scroll">
+                      <h4>Insérer une œuvre</h4>
+                      <p class="gm-side__sub">Recherche dans Gallery OS</p>
+                      <div class="gm-side__field"><span class="gm-query"></span><i class="gm-caret"></i></div>
+                      <p class="gm-side__hint">Titre ou nom d’artiste</p>
+                      <div class="gm-side__btns"><span class="gm-btn gm-btn--solid">Chercher</span><span class="gm-btn">Vue galerie</span></div>
+                      <div class="gm-results"><p class="gm-results__n">8 résultats</p><div class="gm-row"><img src="/mockups/gmail/painting-05.jpg" alt="" /><div><p class="gm-row__artist">Sacha Elron</p><p class="gm-row__title">Evening field, 2023</p><p class="gm-row__meta">10 000 € · <b style="color:#16A34A">DISPONIBLE</b></p></div></div><div class="gm-row"><img src="/mockups/gmail/painting-10.jpg" alt="" /><div><p class="gm-row__artist">Sacha Elron</p><p class="gm-row__title">Amber Nocturne, 2025</p><p class="gm-row__meta">14 000 € · <b style="color:#71717A">VENDU</b></p></div></div><div class="gm-row"><img src="/mockups/gmail/painting-08.jpg" alt="" /><div><p class="gm-row__artist">Sacha Elron</p><p class="gm-row__title">Crimson Field, 2024</p><p class="gm-row__meta">9 500 € · <b style="color:#71717A">VENDU</b></p></div></div><div style="height:70px"></div></div>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <p class="product-tag">Add-in Gmail</p>
+              <h3>Vos emails collectionneurs, connectés</h3>
+              <p>Les détails d’une œuvre, directement dans vos emails.</p>
+              <a class="product-card__link" href="#" aria-label="Ouvrir l’add-in Gmail"><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual product-visual--whatsapp">
+              <div class="wa-mock" role="img" aria-label="Conversation WhatsApp où la commande /pdf génère un PDF de sélection d’œuvres">
+              <div class="wa-mock__stage">
+                <div class="wa-mock__chat">
+                  <div class="wa-m wa-m--art">
+                    <img class="wa-shape" src="/mockups/whatsapp/shape-incoming1b.svg" alt="" />
+                    <img class="wa-art" src="/mockups/whatsapp/artwork-photo.png" alt="" />
+                    <p class="wa-cap"><span>Sacha Elron - Evening Field - 2026 -<br />Acrylique sur toile - 180 × 180 cm -<br />10 000 $</span></p>
+                    <p class="wa-time" style="right:27px;bottom:9px">10:15</p>
+                    <svg class="wa-check" style="right:9px;bottom:10px;width:14px;height:8px" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </div>
+                  <div class="wa-m wa-m--added">
+                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/shape-incoming2b.svg" alt="" />
+                    <p class="wa-txt" style="left:16px;top:7px;line-height:1.3">Reçu. « Evening Field » ajouté<br />à votre sélection</p>
+                    <p class="wa-time" style="right:13px;bottom:5px">11:40</p>
+                  </div>
+                  <div class="wa-m wa-m--cmd">
+                    <img class="wa-shape" src="/mockups/whatsapp/shape-outgoing2.svg" alt="" />
+                    <p class="wa-txt" style="left:10px;top:7px;line-height:1">/pdf</p>
+                    <p class="wa-time" style="right:26px;bottom:8px;font-size:8px">11:43</p>
+                    <svg class="wa-check" style="right:10px;bottom:8px;width:12px;height:7px" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </div>
+                  <div class="wa-m wa-m--build">
+                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/shape-incoming3.svg" alt="" />
+                    <p class="wa-txt" style="left:16px;top:9px;line-height:1">Création de votre sélection…</p>
+                    <p class="wa-time" style="right:13px;bottom:6px">11:45</p>
+                  </div>
+                  <div class="wa-m wa-m--pdf">
+                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/add-plus.svg" alt="" />
+                    <div class="wa-pdf">
+                      <img src="/mockups/whatsapp/pdf-thumb.png" alt="" />
+                      <p class="wa-txt" style="left:42px;top:9px;line-height:1.3">spring_selection_2026_<br />Marie_Beaumont.pdf</p>
+                      <p class="wa-time" style="left:42px;bottom:8px;font-size:9px;color:rgba(0,0,0,.4)">2.8 MB · PDF</p>
+                    </div>
+                    <p class="wa-txt" style="left:17px;bottom:9px;font-size:11px;line-height:1">Sélection prête · 1 page</p>
+                  </div>
+                </div>
+              </div>
+              <div class="wa-mock__bar"><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><div class="wa-mock__input"><span class="wa-ph">Message</span><span class="wa-typed">/pdf</span><svg class="wa-ico wa-ico--in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.5V8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h4.5L20 12.5Z"/><path d="M20 12.5h-3a4.5 4.5 0 0 0-4.5 4.5v3"/></svg></div><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2a1 1 0 0 0 .8-.4L9.4 4.4a1 1 0 0 1 .8-.4h3.6a1 1 0 0 1 .8.4l.9 1.2a1 1 0 0 0 .8.4h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5Z"/><circle cx="12" cy="12.5" r="3.3"/></svg><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg></div>
+            </div>
+            </div>
+            <div class="product-card__body">
+              <p class="product-tag">Add-on WhatsApp</p>
+              <h3>Partagez des œuvres depuis votre téléphone</h3>
+              <p>Envoyez des œuvres aux collectionneurs depuis la conversation.</p>
+              <a class="product-card__link" href="#" aria-label="Ouvrir l’add-on WhatsApp"><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual product-visual--crm">
+              <img src="/images/tool-crm.png" width="1134" height="1040" loading="lazy" alt="Assistant répondant à « Qui attend une réponse ce matin ? » à partir des données de la galerie" />
+            </div>
+            <div class="product-card__body">
+              <p class="product-tag">CRM personnel</p>
+              <h3>Vos collectionneurs et vos œuvres, une seule base</h3>
+              <p>Contacts, œuvres et pipeline au même endroit.</p>
+              <a class="product-card__link" href="#" aria-label="Ouvrir le CRM personnel"><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
       </section>
       <section class="tasks" id="tasks" aria-labelledby="tasks-title">
         <div class="section-heading">

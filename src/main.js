@@ -374,6 +374,29 @@ if (invoiceDate) {
   }).format(new Date());
 }
 
+/* A task's deliverable drawn as a small stack of its own components, staggered
+ * like a large icon (trial: exhibition page; the page's real components, shrunk and staggered). */
+const TASK_GLYPHS = {
+  "artist-page": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--portrait"><img src="/mockups/artist/portrait.jpg" alt="" /></span>
+      <span class="tg tg--name"><b>Sacha Elron</b><small>Born 1975, US</small></span>
+      <span class="tg tg--bio">Sacha Elron explores the boundaries of landscape and abstraction through a deeply personal visual vocabulary. His paintings, often rendered in rich, saturated color fields.</span>
+      <span class="tg tg--works"><img src="/mockups/artist/work-1.jpg" alt="" /><img src="/mockups/artist/work-2.jpg" alt="" /><img src="/mockups/artist/work-3.jpg" alt="" /></span>
+    </div>`,
+  "opening-website": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--photo"><img src="/mockups/your-friends.jpg" alt="" /></span>
+      <span class="tg tg--nav"><b>GALERIE</b><i>Exhibitions &nbsp;Artists &nbsp;Fairs</i></span>
+      <span class="tg tg--hero"><b>Sacha Elron</b><em>Your friends</em></span>
+      <span class="tg tg--cta">Learn more</span>
+    </div>`,
+  "publish-exhibition": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--image"><img src="/mockups/your-friends.jpg" alt="" /></span>
+      <span class="tg tg--title">Sacha Elron — <em>Your friends</em></span>
+      <span class="tg tg--text">A presentation of recent paintings and works on paper exploring friendship, memory, and shared light. The exhibition brings together a focused selection of pieces conceived as a single environment.</span>
+      <span class="tg tg--btns"><b>Artwork Inquiry</b><u>View artist</u></span>
+    </div>`,
+};
+
 function renderTasks() {
   expandedTaskId = null;
   const visibleTasks =
@@ -383,12 +406,13 @@ function renderTasks() {
   grid.innerHTML = visibleTasks
     .map(
       (task) => `
-    <article class="task-card" data-preview-id="${task.id}" tabindex="0" role="button" aria-expanded="false" aria-label="${t.preview(task.title)}">
+    <article class="task-card${TASK_GLYPHS[task.id] ? " has-glyph" : ""}" data-preview-id="${task.id}" tabindex="0" role="button" aria-expanded="false" aria-label="${t.preview(task.title)}">
       <div class="task-card__body">
         <p class="task-category">${task.label}</p><h3>${task.title}</h3><p class="task-price">${price(task.price)}</p><p class="task-description">${task.description}</p>
         <button class="task-add ${selected.has(task.id) ? "is-selected" : ""}" type="button" data-task-id="${task.id}" aria-pressed="${selected.has(task.id)}">${selected.has(task.id) ? t.added : t.add}</button>
       </div>
       <div class="task-card__media" aria-hidden="true"></div>
+      ${TASK_GLYPHS[task.id] || ""}
     </article>`,
     )
     .join("");
@@ -472,7 +496,60 @@ const defaultWebsitePreviewImage = {
   alt: pv.previewAlt.exhibition,
 };
 
+function exhibitionPageMarkup() {
+  return `<div class="preview-exhibit">
+      <p class="ex-crumb ex-chrome"><u>Exhibitions</u> — Your friends</p>
+      <div class="ex-main">
+        <div class="ex-side">
+          <div class="ex-meta ex-chrome"><small>Artist</small><u>Sacha Elron</u><small>Dates</small><span>Feb 12 — Mar 22, 2026</span><small>Location</small><span>Galerie, Paris — Turenne</span></div>
+          <div class="ex-btns ex-slot" data-slot="btns"><b>Artwork Inquiry</b><i>View artist</i></div>
+          <u class="ex-all ex-chrome">All exhibitions</u>
+        </div>
+        <div class="ex-copy">
+          <h2 class="ex-title ex-slot" data-slot="title">Sacha Elron — <em>Your friends</em></h2>
+          <div class="ex-text ex-slot" data-slot="text">
+            <p>A presentation of recent paintings and works on paper exploring friendship, memory, and shared light. The exhibition brings together a focused selection of pieces conceived as a single environment.</p>
+            <p>Arranged as a sequence of rooms, the works invite a slow reading: color fields, soft gradients, and restrained surfaces echo the quiet of the gallery itself.</p>
+            <p>Private viewing and availability: contact the gallery.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ex-photo ex-slot" data-slot="image"><img src="/mockups/your-friends-large.jpg" alt="" /></div>
+    </div>`;
+}
+
+function openingPageMarkup() {
+  return `<div class="preview-exhibit preview-opening">
+      <div class="op-photo ex-slot" data-slot="photo"><img src="/mockups/your-friends-large.jpg" alt="" /></div>
+      <div class="op-shade ex-chrome"></div>
+      <div class="op-nav ex-slot" data-slot="nav"><b>GALERIE</b><span><i>Exhibitions</i><i>Artists</i><i>Fairs</i><i>News</i><i>About</i><u></u></span></div>
+      <div class="op-hero ex-slot" data-slot="hero"><small>PARIS</small><h2>Sacha Elron</h2><h3>Your friends</h3><p>Feb 12 — Mar 22, 2026</p></div>
+      <div class="op-cta ex-slot" data-slot="cta">Learn more</div>
+      <div class="op-dots ex-chrome"><i></i><i></i><i></i><i></i></div>
+    </div>`;
+}
+
+function artistPageMarkup() {
+  return `<div class="preview-exhibit preview-artist">
+      <div class="ar-top">
+        <div class="ar-portrait ex-slot" data-slot="portrait"><img src="/mockups/artist/portrait.jpg" alt="" /></div>
+        <div class="ar-copy">
+          <div class="ar-name ex-slot" data-slot="name"><h2>Sacha Elron</h2><small>Born 1975, US</small></div>
+          <div class="ar-bio ex-slot" data-slot="bio">
+            <p>Sacha Elron explores the boundaries of landscape and abstraction through a deeply personal visual vocabulary. His paintings, often rendered in rich, saturated color fields, evoke a contemplative stillness that hovers between representation and pure sensation.</p>
+            <p>Working primarily with oil on canvas, his practice distills nature into its most essential forms — solitary trees, expansive skies, and luminous horizons emerge from layers of pigment with an almost meditative quality.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ar-label ex-chrome"><span>SELECTED WORKS</span><b>Selected Works</b></div>
+      <div class="ar-works ex-slot" data-slot="works"><img src="/mockups/artist/work-1.jpg" alt="" /><img src="/mockups/artist/work-2.jpg" alt="" /><img src="/mockups/artist/work-3.jpg" alt="" /></div>
+    </div>`;
+}
+
 function previewMarkup(task) {
+  if (task.id === "publish-exhibition") return exhibitionPageMarkup();
+  if (task.id === "artist-page") return artistPageMarkup();
+  if (task.id === "opening-website") return openingPageMarkup();
   if (task.category === "website") {
     if (task.id === "fix-website-issue") return bugMarkup();
     const image = websitePreviewImages[task.id] || defaultWebsitePreviewImage;
@@ -647,7 +724,7 @@ function scalePreviewToPane(media) {
   media.style.removeProperty("--preview-scale");
   media.style.removeProperty("--preview-h");
   media.style.removeProperty("--preview-w");
-  if (!carouselQuery.matches) return;
+  if (!carouselQuery.matches && !media.querySelector(".preview-exhibit")) return;
   const paneWidth = media.clientWidth;
   const paneHeight = media.clientHeight;
   if (!paneWidth || !paneHeight) return;
@@ -657,9 +734,99 @@ function scalePreviewToPane(media) {
   media.style.setProperty("--preview-h", `${paneHeight / scale}px`);
 }
 
+/* Glyph -> page: each glyph tile travels to its slot in the live exhibition
+ * mockup and swaps with the real element; the rest of the page then builds in
+ * around them. Slots and chrome start hidden (.is-morph). */
+const FLY_ORDER = { btns: 0, title: 1, text: 2, image: 3, photo: 0, nav: 1, hero: 2, cta: 3, portrait: 0, name: 1, bio: 2, works: 3 };
+
+function morphGlyph(card) {
+  const glyph = card.querySelector(".task-glyph");
+  const page = card.querySelector(".preview-exhibit");
+  if (!glyph || !page) return;
+  const tiles = [...glyph.querySelectorAll(".tg")];
+  gsap.killTweensOf(tiles);
+  const slots = [...page.querySelectorAll(".ex-slot")];
+  const tl = gsap.timeline({
+    onComplete: () =>
+      slots.forEach((slot) => {
+        gsap.set(slot, { clearProps: "transform,clipPath" });
+        ["--ex-extra", "--ex-a", "--ex-r", "--ex-bg"].forEach((p) => slot.style.removeProperty(p));
+      }),
+  });
+  // Shared-element transition: each real element of the page starts exactly where
+  // its glyph tile is (uniformly scaled down, so nothing stretches) and travels to
+  // its place with transforms only — no layout work per frame. The tile's shape is
+  // matched at the start by a backing card (::before, grows away) and a clip-path
+  // (shrinks away), both paint-only.
+  tiles.forEach((tile) => {
+    const key = [...tile.classList].find((c) => c.startsWith("tg--"))?.slice(4);
+    const slot = page.querySelector(`[data-slot="${key}"]`);
+    if (!slot) return;
+    const to = slot.getBoundingClientRect();
+    const from = tile.getBoundingClientRect();
+    const W = slot.offsetWidth || to.width;
+    const H = slot.offsetHeight || to.height;
+    const pageScale = to.width / W;
+    const k0 = from.width / to.width;
+    const tileBg = getComputedStyle(tile).backgroundColor;
+    const tileH = (from.height * W) / from.width;
+    const clip = Math.max(0, H - tileH);
+    const extra = Math.max(0, tileH - H);
+    const bottom = clip > 0 ? clip : -(extra + 24);
+    const at = (FLY_ORDER[key] ?? 0) * 0.05;
+    tl.set(
+      slot,
+      {
+        opacity: 1,
+        transformOrigin: "0 0",
+        x: (from.left - to.left) / pageScale,
+        y: (from.top - to.top) / pageScale,
+        scale: k0,
+        clipPath: `inset(-24px -24px ${bottom}px -24px)`,
+        "--ex-extra": `${extra}px`,
+        "--ex-a": tileBg === "rgba(0, 0, 0, 0)" ? 0 : 1,
+        "--ex-bg": tileBg,
+        "--ex-r": `${7 / k0}px`,
+      },
+      at,
+    );
+    tl.set(tile, { opacity: 0 }, at);
+    tl.to(
+      slot,
+      {
+        x: 0,
+        y: 0,
+        scale: 1,
+        clipPath: "inset(-24px -24px -24px -24px)",
+        "--ex-extra": "0px",
+        "--ex-a": 0,
+        "--ex-r": "0px",
+        duration: 0.55,
+        ease: "power3.inOut",
+        force3D: true,
+      },
+      at,
+    );
+  });
+  tl.fromTo(
+    page.querySelectorAll(".ex-chrome"),
+    { opacity: 0, y: 6 },
+    { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.035 },
+    0.4,
+  );
+}
+
+function resetGlyph(card) {
+  const tiles = card.querySelectorAll(".task-glyph .tg");
+  if (!tiles.length) return;
+  gsap.killTweensOf(tiles);
+  gsap.set(tiles, { clearProps: "transform,opacity,boxShadow,width,height,fontSize,lineHeight" });
+}
+
 function collapseCard(card) {
   card.classList.remove("is-expanded");
   card.setAttribute("aria-expanded", "false");
+  resetGlyph(card);
   const media = card.querySelector(".task-card__media");
   if (!media) return;
   media.innerHTML = "";
@@ -681,6 +848,10 @@ function expandCard(task, card) {
   const media = card.querySelector(".task-card__media");
   media.innerHTML = previewMarkup(task);
   scalePreviewToPane(media);
+  const hasGlyph = Boolean(
+    card.querySelector(".task-glyph") && media.querySelector(".preview-exhibit"),
+  );
+  if (hasGlyph) media.querySelector(".preview-exhibit").classList.add("is-morph");
   expandedTaskId = task.id;
   // Flip's absolute:true pulls every card out of the flow for the duration
   // of the animation, so the grid — which gets its height from those
@@ -689,11 +860,12 @@ function expandCard(task, card) {
   grid.style.height = `${grid.getBoundingClientRect().height}px`;
   Flip.from(state, {
     absolute: true,
-    duration: 0.6,
+    duration: hasGlyph ? 0.45 : 0.6,
     ease: "power2.inOut",
     scale: false,
     onComplete: () => {
       grid.style.height = "";
+      if (hasGlyph) morphGlyph(card);
       // Nudge the carousel's own horizontal scroll only — scrollIntoView()
       // also re-scrolls the page vertically to "nearest", which yanked the
       // section below the grid up on every tap.
@@ -710,7 +882,7 @@ function expandCard(task, card) {
   gsap.fromTo(
     media,
     { opacity: 0 },
-    { delay: 0.2, duration: 0.35, opacity: 1 },
+    { delay: 0.1, duration: 0.3, opacity: 1 },
   );
 }
 
@@ -1042,3 +1214,131 @@ if (heroRotator) {
     }
   }
 }
+
+/* WhatsApp tool visual: scale the fixed-width chat stage to its card. */
+document.querySelectorAll(".wa-mock").forEach((mock) => {
+  const set = () => mock.style.setProperty("--wa-s", String(mock.clientWidth / 480));
+  set();
+  new ResizeObserver(set).observe(mock);
+});
+
+/* Gmail tool visual: scale the stage to its card and play the add-in sequence
+ * (compose, open the side panel, search, pick a work, insert it), then loop. */
+document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
+  const mock = visual.querySelector(".gm-mock");
+  if (!mock) return;
+  const bodyEl = mock.querySelector(".gm-body__text");
+  const queryEl = mock.querySelector(".gm-query");
+  const scroller = mock.querySelector(".gm-side__scroll");
+  const results = mock.querySelector(".gm-results");
+  const firstRow = mock.querySelector(".gm-row");
+  const body = visual.dataset.gmBody || "";
+  const word = "Elron";
+  const flags = ["is-panel", "is-results", "is-inserted", "is-bump", "is-scrolled"];
+  const scale = () => mock.style.setProperty("--gm-s", String(mock.clientWidth / 480));
+  scale();
+  new ResizeObserver(scale).observe(mock);
+
+  let timers = [];
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const stop = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+  };
+
+  const showFinal = () => {
+    bodyEl.textContent = body;
+    queryEl.textContent = word;
+    mock.classList.add("is-inserted", "is-scrolled");
+  };
+
+  const play = () => {
+    stop();
+    mock.classList.remove(...flags);
+    firstRow.classList.remove("is-hit");
+    bodyEl.textContent = "";
+    queryEl.textContent = "";
+    scroller.scrollTop = 0;
+
+    const typeStep = 36;
+    const typeEnd = 150 + body.length * typeStep;
+    for (let i = 1; i <= body.length; i += 1) {
+      at(150 + i * typeStep, () => (bodyEl.textContent = body.slice(0, i)));
+    }
+    at(typeEnd + 250, () => mock.classList.add("is-bump"));
+    at(typeEnd + 840, () => mock.classList.remove("is-bump"));
+    at(typeEnd + 300, () => mock.classList.add("is-panel"));
+
+    const searchStart = typeEnd + 700;
+    word.split("").forEach((_, i) => {
+      at(searchStart + i * 320, () => (queryEl.textContent = word.slice(0, i + 1)));
+    });
+    const searchEnd = searchStart + (word.length - 1) * 320;
+    at(searchEnd + 350, () => mock.classList.add("is-results"));
+    at(searchEnd + 800, () => {
+      scroller.scrollTop = Math.max(0, results.offsetTop - 8);
+    });
+    at(searchEnd + 2250, () => firstRow.classList.add("is-hit"));
+    at(searchEnd + 3150, () => mock.classList.add("is-inserted"));
+    at(searchEnd + 5750, () => mock.classList.add("is-scrolled"));
+    at(searchEnd + 9250, play);
+  };
+
+  /* Rests on the finished frame; plays only while the card is hovered or focused. */
+  showFinal();
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const card = visual.closest(".product-card") || visual;
+  const rest = () => {
+    stop();
+    mock.classList.remove(...flags);
+    firstRow.classList.remove("is-hit");
+    showFinal();
+  };
+  card.addEventListener("mouseenter", play);
+  card.addEventListener("mouseleave", rest);
+  card.addEventListener("focusin", play);
+  card.addEventListener("focusout", rest);
+});
+
+/* Studio intro: split into words and reveal them (pale -> ink) as the block scrolls
+ * through the viewport. Reduced motion shows everything at once. */
+(() => {
+  const section = document.querySelector(".studio-intro");
+  if (!section) return;
+  const words = [];
+  section.querySelectorAll("[data-reveal]").forEach((p) => {
+    const parts = p.textContent.trim().split(/\s+/);
+    p.textContent = "";
+    parts.forEach((word, i) => {
+      const span = document.createElement("span");
+      span.className = "rv-w";
+      span.textContent = word;
+      p.append(span, i < parts.length - 1 ? " " : "");
+      words.push(span);
+    });
+  });
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const update = () => {
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // 0 when the block's top reaches 85% of the viewport, 1 when its bottom reaches 55%.
+    const p = Math.min(1, Math.max(0, (vh * 0.85 - rect.top) / (rect.height + vh * 0.3)));
+    const n = words.length;
+    words.forEach((w, i) => {
+      const a = Math.min(1, Math.max(0, p * (n + 6) - i) / 3);
+      w.style.setProperty("--a", a.toFixed(3));
+    });
+  };
+  let queued = false;
+  const tick = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      update();
+    });
+  };
+  addEventListener("scroll", tick, { passive: true });
+  addEventListener("resize", tick);
+  update();
+})();

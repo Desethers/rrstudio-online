@@ -4420,3 +4420,1531 @@ h2,
 .software-promo--tools .software-promo__description {
   max-width: 560px;
 }
+
+/* WhatsApp tool visual: animated chat (ported from the Vitreen mock).
+   The stage is laid out at a fixed design width and scaled to the card by main.js. */
+.product-visual--whatsapp .wa-mock {
+  align-items: center;
+  aspect-ratio: 1;
+  background: #f5f5f3;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(17, 17, 16, 0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif;
+  overflow: hidden;
+  width: 80%;
+}
+.wa-mock__stage {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.wa-mock__chat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  left: 50%;
+  margin-left: -170px;
+  position: absolute;
+  top: 0;
+  transform-origin: top center;
+  width: 340px;
+  animation: wa-scroll 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+.wa-m {
+  position: relative;
+}
+.wa-shape,
+.wa-art {
+  position: absolute;
+}
+.wa-shape {
+  height: 100%;
+  inset: 0;
+  width: 100%;
+}
+.wa-flip {
+  transform: scaleX(-1);
+}
+.wa-txt,
+.wa-cap,
+.wa-time {
+  color: #000;
+  font-size: 13.5px;
+  letter-spacing: -0.3px;
+  margin: 0;
+  position: absolute;
+}
+.wa-time {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+.wa-check {
+  position: absolute;
+}
+.wa-m--art {
+  align-self: flex-end;
+  height: 208px;
+  width: 280px;
+}
+.wa-art {
+  border-radius: 6px;
+  height: 128px;
+  left: 4px;
+  object-fit: cover;
+  top: 3px;
+  width: 260px;
+}
+.wa-cap {
+  left: 11px;
+  line-height: 1.32;
+  overflow: hidden;
+  right: 20px;
+  top: 138px;
+}
+.wa-cap span {
+  animation: wa-wipe 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+.wa-m--added {
+  align-self: flex-start;
+  height: 50px;
+  width: 276px;
+  animation: wa-in-added 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.wa-m--cmd {
+  align-self: flex-end;
+  height: 30px;
+  width: 102px;
+  animation: wa-in-cmd 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.wa-m--build {
+  align-self: flex-start;
+  height: 41px;
+  width: 255px;
+  animation: wa-in-build 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.wa-m--pdf {
+  align-self: flex-start;
+  height: 107px;
+  width: 262px;
+  animation: wa-in-pdf 9.4s infinite cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.wa-pdf {
+  background: #f3f0f0;
+  border-radius: 7px;
+  height: 74px;
+  left: 17px;
+  position: absolute;
+  top: 3px;
+  width: 242px;
+}
+.wa-pdf > img {
+  height: 24px;
+  left: 14px;
+  object-fit: cover;
+  position: absolute;
+  top: 13px;
+  width: 20px;
+}
+.wa-pdf .wa-time {
+  letter-spacing: 0.1px;
+}
+.wa-mock__input {
+  background: #fff;
+  border: 1px solid #d8d8de;
+  border-radius: 999px;
+  color: #8e8e93;
+  flex: none;
+  font-size: 11px;
+  height: 32px;
+  line-height: 30px;
+  margin: 0 0 14px;
+  overflow: hidden;
+  padding: 0 14px;
+  position: relative;
+  width: 84%;
+}
+.wa-ph {
+  animation: wa-ph 9.4s infinite;
+}
+.wa-typed {
+  animation: wa-typed 9.4s infinite steps(4, end);
+  color: #111110;
+  font-weight: 500;
+  left: 14px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 0;
+}
+@keyframes wa-scroll {
+  0%, 17% { transform: translateY(calc(120px * var(--wa-s))) scale(var(--wa-s)); }
+  30.6% { transform: translateY(calc(120px * var(--wa-s))) scale(var(--wa-s)); }
+  58.7%, 100% { transform: translateY(calc(-100px * var(--wa-s))) scale(var(--wa-s)); }
+}
+@keyframes wa-wipe {
+  0% { clip-path: inset(0 100% 0 0); }
+  3.2%, 100% { clip-path: inset(0 0 0 0); }
+}
+@keyframes wa-in-added {
+  0%, 11% { opacity: 0; translate: 0 12px; }
+  16.3%, 100% { opacity: 1; translate: 0 0; }
+}
+@keyframes wa-in-cmd {
+  0%, 46.8% { opacity: 0; translate: 0 12px; }
+  49.5%, 100% { opacity: 1; translate: 0 0; }
+}
+@keyframes wa-in-build {
+  0%, 53.2% { opacity: 0; translate: 0 12px; }
+  58.5%, 100% { opacity: 1; translate: 0 0; }
+}
+@keyframes wa-in-pdf {
+  0%, 74.5% { opacity: 0; translate: 0 12px; }
+  79.8%, 100% { opacity: 1; translate: 0 0; }
+}
+@keyframes wa-ph {
+  0%, 25.5% { opacity: 1; }
+  27%, 44% { opacity: 0; }
+  46.8%, 100% { opacity: 1; }
+}
+@keyframes wa-typed {
+  0%, 27% { width: 0; opacity: 0; }
+  28%, 43% { opacity: 1; }
+  38%, 44% { width: 4ch; }
+  46.8%, 100% { width: 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-mock__chat, .wa-cap span, .wa-m, .wa-ph, .wa-typed { animation: none; }
+  .wa-mock__chat { transform: translateY(calc(-100px * var(--wa-s))) scale(var(--wa-s)); }
+}
+.product-visual--whatsapp .wa-mock img {
+  aspect-ratio: auto;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  object-fit: fill;
+}
+.product-visual--whatsapp .wa-mock .wa-shape {
+  height: 100%;
+  width: 100%;
+}
+.product-visual--whatsapp .wa-mock .wa-art {
+  border-radius: 6px;
+  height: 128px;
+  object-fit: cover;
+  width: 260px;
+}
+.product-visual--whatsapp .wa-mock .wa-pdf > img {
+  height: 24px;
+  object-fit: cover;
+  width: 20px;
+}
+
+/* The coloured panel spans the whole tool card, text on top, visual below. */
+.software-promo--tools .product-card {
+  --tone: var(--surface-soft);
+  background: var(--tone);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.software-promo--tools .product-card:has(.product-visual--gmail) {
+  --tone: #d6e6fd;
+}
+.software-promo--tools .product-card:has(.product-visual--whatsapp) {
+  --tone: #dce7d8;
+}
+.software-promo--tools .product-card:has(.product-visual--crm) {
+  --tone: #ebe6dc;
+}
+.software-promo--tools .product-card__body {
+  padding: 26px 26px 22px;
+}
+.software-promo--tools .product-visual {
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Minimal tool cards: no rule, short copy, an arrow that opens the tool page. */
+.software-promo--tools .product-card {
+  position: relative;
+}
+.software-promo--tools .product-card__body {
+  padding: 26px 64px 0 26px;
+}
+.software-promo--tools .product-card .product-meta {
+  display: none;
+}
+.software-promo--tools .product-card__link {
+  color: var(--text, #111110);
+  text-decoration: none;
+}
+.software-promo--tools .product-card__link::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+.software-promo--tools .product-card__link span {
+  align-items: center;
+  display: inline-flex;
+  font-size: 18px;
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  top: 22px;
+  transition: transform 0.2s ease;
+  width: 32px;
+}
+.software-promo--tools .product-card:hover .product-card__link span {
+  transform: translate(2px, -2px);
+}
+
+/* WhatsApp animation plays straight on the card background, no inner panel. */
+.product-visual--whatsapp .wa-mock {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+.product-visual--whatsapp .wa-mock__stage {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 28px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 28px);
+}
+.product-visual--whatsapp .wa-mock__input {
+  margin-bottom: 18px;
+}
+.product-visual--whatsapp .wa-mock__input {
+  font-size: 10px;
+  height: 28px;
+  line-height: 26px;
+  margin-bottom: 34px;
+  width: 72%;
+}
+.product-visual--whatsapp .wa-typed {
+  left: 12px;
+}
+
+/* Composer row: + · field (sticker inside) · camera · mic, like the WhatsApp app. */
+.product-visual--whatsapp .wa-mock__bar {
+  align-items: center;
+  color: #7d8a85;
+  display: flex;
+  flex: none;
+  gap: 8px;
+  margin-bottom: 34px;
+  width: 86%;
+}
+.wa-ico {
+  flex: none;
+  height: 22px;
+  width: 22px;
+}
+.product-visual--whatsapp .wa-mock__input {
+  flex: 1;
+  height: 32px;
+  line-height: 30px;
+  margin: 0;
+  min-width: 0;
+  width: auto;
+}
+.wa-ico--in {
+  height: 18px;
+  position: absolute;
+  right: 9px;
+  top: 6px;
+  width: 18px;
+}
+/* Composer spans exactly the chat column (340 of the 480 design width). */
+.product-visual--whatsapp .wa-mock__bar {
+  width: calc(100% * 340 / 480);
+}
+
+/* Gmail tool visual: compose window + Vitreen side panel (ported from Vitreen's
+   IntegrationsFrame). Laid out on a 480px stage scaled to the card by main.js. */
+.software-promo--tools .product-visual--gmail {
+  display: block;
+  padding: 0;
+}
+.gm-mock {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  --gm-s: 0.5;
+}
+.gm-stage {
+  height: 480px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(var(--gm-s));
+  transform-origin: top left;
+  width: 480px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif;
+}
+.gm-win {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(17, 17, 16, 0.1);
+  inset: 36px 28px 28px;
+  overflow: hidden;
+  position: absolute;
+}
+.gm-win__bar {
+  align-items: center;
+  background: #f1f4fa;
+  color: #202124;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.gm-win__ctl {
+  color: #5f6368;
+  font-weight: 400;
+  letter-spacing: 6px;
+}
+.gm-line {
+  border-bottom: 1px solid #e8e8e6;
+  color: #202124;
+  font-size: 11px;
+  padding: 8px 20px;
+}
+.gm-line span {
+  color: #6b6a67;
+  margin-right: 6px;
+}
+.gm-body {
+  bottom: 52px;
+  left: 20px;
+  overflow: hidden;
+  position: absolute;
+  right: 20px;
+  top: 112px;
+}
+.gm-body__text {
+  color: #3c4043;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 4px 0 0;
+  min-height: 32px;
+  white-space: pre-line;
+}
+.gm-art {
+  color: #202124;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  width: 64%;
+}
+.gm-art img {
+  aspect-ratio: 43 / 24;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+.gm-art__row {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.gm-art p {
+  margin: 0;
+}
+.gm-art__artist {
+  font-size: 12px;
+  font-weight: 500;
+}
+.gm-art__title {
+  font-size: 11px;
+  font-style: italic;
+}
+.gm-art__btn {
+  border: 0.5px solid #202124;
+  font-size: 10px;
+  padding: 4px 12px;
+}
+.gm-art__meta {
+  color: #8b93a1;
+  font-size: 10px;
+  line-height: 1.4;
+  margin-top: 6px !important;
+}
+.gm-art__price {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 4px !important;
+}
+.gm-tools {
+  align-items: center;
+  bottom: 8px;
+  display: flex;
+  gap: 14px;
+  left: 20px;
+  position: absolute;
+}
+.gm-send {
+  background: #0b57d0;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+.gm-send i {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  font-style: normal;
+  margin-left: 8px;
+  padding-left: 8px;
+}
+.gm-tools__ico {
+  color: #5f6368;
+  font-size: 15px;
+}
+.gm-logo {
+  align-items: center;
+  background: #e8eaed;
+  border-radius: 50%;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+.gm-logo img {
+  height: 24px;
+  width: 24px;
+}
+.gm-side {
+  background: #fff;
+  border: 1px solid #d8d8d5;
+  border-radius: 10px;
+  bottom: 24px;
+  box-shadow: 0 10px 30px rgba(17, 17, 16, 0.12);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 44px;
+  top: 52px;
+  transform: translateY(6px);
+  transition: opacity 0.32s ease, transform 0.32s ease;
+  width: 290px;
+}
+.gm-side__bar {
+  align-items: center;
+  background: #414141;
+  color: #fff;
+  display: flex;
+  flex: none;
+  height: 36px;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+.gm-side__bar b {
+  font-size: 14px;
+}
+.gm-side__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px 20px;
+  scroll-behavior: smooth;
+}
+.gm-side h4 {
+  color: #202124;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+}
+.gm-side p {
+  margin: 0;
+}
+.gm-side__sub {
+  color: #4a4a4a;
+  font-size: 12px;
+  margin-top: 4px !important;
+}
+.gm-side__field {
+  align-items: center;
+  border: 1px solid #777773;
+  border-radius: 5px;
+  color: #333331;
+  display: flex;
+  font-size: 13px;
+  margin-top: 16px;
+  min-height: 40px;
+  padding: 0 12px;
+}
+.gm-caret {
+  animation: gm-blink 0.9s steps(2) infinite;
+  background: #333331;
+  height: 16px;
+  margin-left: 1px;
+  width: 1px;
+}
+@keyframes gm-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.gm-side__hint {
+  color: #5f5f5b;
+  font-size: 10px;
+  margin-top: 8px !important;
+}
+.gm-side__btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.gm-btn {
+  border: 1px solid #777773;
+  border-radius: 999px;
+  color: #0b57d0;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 7px 18px;
+}
+.gm-btn--solid {
+  background: #0b57d0;
+  border-color: #0b57d0;
+  color: #fff;
+}
+.gm-results {
+  border-top: 1px solid #d5d5d2;
+  margin: 16px -20px 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.gm-results__n {
+  color: #333331;
+  font-size: 12px;
+  padding: 10px 20px;
+}
+.gm-row {
+  align-items: center;
+  border-top: 1px solid #d5d5d2;
+  display: flex;
+  gap: 12px;
+  padding: 10px 20px;
+}
+.gm-row.is-hit {
+  animation: gm-tap 0.4s ease;
+}
+@keyframes gm-tap {
+  50% {
+    transform: scale(0.95);
+  }
+}
+.gm-row img {
+  border: 1px solid #e1e1de;
+  border-radius: 2px;
+  flex: none;
+  height: 32px;
+  object-fit: cover;
+  width: 32px;
+}
+.gm-row p {
+  margin: 0;
+}
+.gm-row__artist {
+  color: #4a4a47;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+.gm-row__title {
+  color: #202124;
+  font-size: 12px;
+  font-style: italic;
+}
+.gm-row__meta {
+  color: #4a4a47;
+  font-size: 10px;
+  margin-top: 2px !important;
+}
+.gm-mock.is-panel .gm-side {
+  opacity: 1;
+  transform: none;
+}
+.gm-mock.is-results .gm-results {
+  opacity: 1;
+  transform: none;
+}
+.gm-mock.is-inserted .gm-side {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.gm-mock.is-inserted .gm-art {
+  opacity: 1;
+}
+.gm-mock.is-bump .gm-logo {
+  animation: gm-bump 0.42s ease;
+}
+@keyframes gm-bump {
+  40% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1.08);
+  }
+}
+.gm-mock.is-scrolled .gm-art {
+  transform: translateY(-52px);
+  transition: opacity 0.4s ease, transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* WhatsApp animation: rests on its final frame, plays only while the card is hovered. */
+.wa-mock__chat {
+  transform: translateY(calc(-100px * var(--wa-s))) scale(var(--wa-s));
+}
+.wa-mock__chat,
+.wa-cap span,
+.wa-m--added,
+.wa-m--cmd,
+.wa-m--build,
+.wa-m--pdf,
+.wa-ph,
+.wa-typed {
+  animation-name: none;
+}
+.product-card:hover .wa-mock__chat,
+.product-card:focus-within .wa-mock__chat {
+  animation-name: wa-scroll;
+}
+.product-card:hover .wa-cap span,
+.product-card:focus-within .wa-cap span {
+  animation-name: wa-wipe;
+}
+.product-card:hover .wa-m--added,
+.product-card:focus-within .wa-m--added {
+  animation-name: wa-in-added;
+}
+.product-card:hover .wa-m--cmd,
+.product-card:focus-within .wa-m--cmd {
+  animation-name: wa-in-cmd;
+}
+.product-card:hover .wa-m--build,
+.product-card:focus-within .wa-m--build {
+  animation-name: wa-in-build;
+}
+.product-card:hover .wa-m--pdf,
+.product-card:focus-within .wa-m--pdf {
+  animation-name: wa-in-pdf;
+}
+.product-card:hover .wa-ph,
+.product-card:focus-within .wa-ph {
+  animation-name: wa-ph;
+}
+.product-card:hover .wa-typed,
+.product-card:focus-within .wa-typed {
+  animation-name: wa-typed;
+}
+.product-visual--gmail .gm-mock img {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+}
+.product-visual--gmail .gm-art img {
+  aspect-ratio: 43 / 24;
+  height: auto;
+  width: 100%;
+}
+.product-visual--gmail .gm-row img {
+  border: 1px solid #e1e1de;
+  border-radius: 2px;
+  height: 32px;
+  width: 32px;
+}
+.product-visual--gmail .gm-logo img {
+  height: 24px;
+  width: 24px;
+}
+
+/* No rule above the tools section. */
+.software-promo--tools {
+  border-top: 0;
+}
+
+.task-card.has-glyph {
+  min-height: 330px;
+}
+.task-card.has-glyph.is-expanded {
+  min-height: 360px;
+}
+
+/* Task glyph: the deliverable's own components (photo, title, text, buttons),
+   shrunk and staggered like one big icon. */
+.task-glyph {
+  bottom: 22px;
+  height: 100px;
+  pointer-events: none;
+  position: absolute;
+  right: 22px;
+  width: 134px;
+}
+.task-card.is-expanded .task-glyph {
+  z-index: 3;
+}
+.tg {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 8px 18px rgba(17, 17, 16, 0.12), 0 0 0 1px rgba(17, 17, 16, 0.05);
+  color: var(--ink);
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tg--image {
+  height: 46px;
+  left: 20px;
+  top: 54px;
+  width: 114px;
+  z-index: 4;
+}
+.tg--image img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.tg--title {
+  font-size: 6.6px;
+  font-weight: 300;
+  height: 21px;
+  left: 0;
+  letter-spacing: -0.01em;
+  line-height: 21px;
+  padding: 0 7px;
+  top: 0;
+  white-space: nowrap;
+  width: 98px;
+  z-index: 3;
+}
+.tg--title em {
+  font-style: italic;
+}
+.tg--text {
+  color: #55554f;
+  font-size: 4.6px;
+  height: 48px;
+  left: 68px;
+  line-height: 1.5;
+  padding: 7px 8px;
+  top: 20px;
+  width: 66px;
+  z-index: 1;
+}
+.tg--btns {
+  align-items: flex-start;
+  background: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 36px;
+  left: 0;
+  overflow: visible;
+  padding: 0;
+  top: 28px;
+  width: 56px;
+  z-index: 5;
+}
+.tg--btns b,
+.tg--btns u {
+  border-radius: 999px;
+  display: block;
+  font-size: 5.6px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 4px 0;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+.tg--btns b {
+  background: var(--ink);
+  color: #fff;
+}
+.tg--btns u {
+  background: #fff;
+  border: 0.5px solid var(--ink);
+}
+.task-card:hover .tg--image {
+  transform: translate(-3px, -3px);
+}
+.task-card:hover .tg--title {
+  transform: translateY(-2px);
+}
+.task-card:hover .tg--text {
+  transform: translate(3px, 3px);
+}
+.task-card:hover .tg--btns {
+  transform: translate(-2px, 3px);
+}
+.task-card {
+  position: relative;
+}
+
+/* Exhibition page mockup (live HTML, designed at ~560px wide). */
+.preview-exhibit {
+  background: var(--background);
+  box-sizing: border-box;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 22px 0;
+  width: 100%;
+}
+.preview-exhibit u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ex-crumb {
+  color: #8a8a86;
+  font-size: 8px;
+  margin: 0 0 16px;
+}
+.ex-crumb u {
+  color: var(--ink);
+}
+.ex-main {
+  display: flex;
+  flex: none;
+  gap: 28px;
+}
+.ex-side {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: 118px;
+}
+.ex-meta small {
+  color: #8a8a86;
+  display: block;
+  font-size: 6px;
+  letter-spacing: 0.14em;
+  margin: 10px 0 3px;
+  text-transform: uppercase;
+}
+.ex-meta small:first-child {
+  margin-top: 0;
+}
+.ex-meta u,
+.ex-meta span {
+  display: block;
+  font-size: 8px;
+}
+.ex-btns {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+  width: 118px;
+}
+.ex-btns b,
+.ex-btns i {
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  display: block;
+  font-size: 7.5px;
+  font-style: normal;
+  font-weight: 400;
+  padding: 6px 0;
+  text-align: center;
+}
+.ex-btns b {
+  background: var(--ink);
+  color: #fff;
+}
+.ex-all {
+  color: #8a8a86;
+  font-size: 7px;
+  margin-top: 12px;
+}
+.ex-copy {
+  flex: 1;
+  min-width: 0;
+}
+.ex-title {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+.ex-title em {
+  font-style: italic;
+}
+.ex-text p {
+  color: #3a3a37;
+  font-size: 8.4px;
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+.ex-photo {
+  flex: 1;
+  margin-top: 16px;
+  min-height: 0;
+  overflow: hidden;
+}
+.ex-photo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.preview-exhibit.is-morph .ex-slot,
+.preview-exhibit.is-morph .ex-chrome {
+  opacity: 0;
+}
+
+/* The live exhibition mockup is always drawn at its design size and scaled to the
+   card's media pane, out of flow so it never stretches the card. */
+.task-card__media:has(> .preview-exhibit) {
+  position: relative;
+}
+.task-card.is-expanded .task-card__media > .preview-exhibit {
+  height: var(--preview-h, 430px);
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(var(--preview-scale, 0.4));
+  transform-origin: top left;
+  width: var(--preview-w, 560px);
+}
+.task-card.is-expanded .tg {
+  transition: none;
+  will-change: transform, width, height;
+}
+.preview-exhibit .ex-slot {
+  isolation: isolate;
+  position: relative;
+  will-change: transform;
+}
+/* Backing card that stands in for the glyph tile at the start of the flight. */
+.preview-exhibit .ex-slot::before {
+  background: var(--ex-bg, #fff);
+  border-radius: var(--ex-r, 0);
+  box-shadow:
+    0 8px 18px rgba(17, 17, 16, calc(0.12 * var(--ex-a, 0))),
+    0 0 0 1px rgba(17, 17, 16, calc(0.05 * var(--ex-a, 0)));
+  content: "";
+  height: calc(100% + var(--ex-extra, 0px));
+  left: 0;
+  opacity: var(--ex-a, 0);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+/* Let the flying page elements start from the glyph even where it sits outside the pane. */
+.task-card.has-glyph .task-card__media {
+  overflow: visible;
+}
+
+/* "Prepare for an opening": glyph tiles (photo, nav, hero, button)... */
+.tg--photo {
+  height: 66px;
+  left: 30px;
+  top: 16px;
+  width: 104px;
+  z-index: 1;
+}
+.tg--photo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.tg--nav {
+  align-items: center;
+  display: flex;
+  font-size: 4.2px;
+  height: 16px;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 7px;
+  top: 0;
+  width: 104px;
+  z-index: 3;
+}
+.tg--nav b {
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+.tg--nav i {
+  font-style: normal;
+}
+.tg--hero {
+  background: rgba(28, 28, 26, 0.9);
+  color: #fff;
+  height: 36px;
+  left: 4px;
+  padding: 7px 8px;
+  top: 46px;
+  width: 66px;
+  z-index: 2;
+}
+.tg--hero b {
+  display: block;
+  font-size: 8.4px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.tg--hero em {
+  display: block;
+  font-size: 7.4px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.tg--cta {
+  background: rgba(28, 28, 26, 0.9);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 5.2px;
+  height: 15px;
+  left: 10px;
+  letter-spacing: 0.03em;
+  line-height: 15px;
+  text-align: center;
+  top: 84px;
+  width: 48px;
+  z-index: 4;
+}
+.task-card:hover .tg--photo {
+  transform: translate(3px, -2px);
+}
+.task-card:hover .tg--hero {
+  transform: translate(-2px, 2px);
+}
+.task-card:hover .tg--cta {
+  transform: translateY(2px);
+}
+
+/* ...and the live homepage mockup they fly into. */
+.preview-opening {
+  background: #1d1d1b;
+  color: #fff;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+.preview-exhibit .ex-slot.op-photo {
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+.op-photo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% center;
+  width: 100%;
+}
+.op-shade {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0) 55%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+.preview-exhibit .ex-slot.op-nav {
+  align-items: center;
+  color: #161614;
+  display: flex;
+  font-size: 8px;
+  justify-content: space-between;
+  left: 22px;
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  z-index: 2;
+}
+.op-nav b {
+  font-weight: 400;
+  letter-spacing: 0.22em;
+}
+.op-nav span {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+.op-nav i {
+  font-style: normal;
+}
+.op-nav u {
+  border: 1px solid #161614;
+  border-radius: 50%;
+  height: 12px;
+  text-decoration: none;
+  width: 12px;
+}
+.preview-exhibit .ex-slot.op-hero {
+  bottom: 72px;
+  left: 22px;
+  position: absolute;
+  z-index: 2;
+}
+.op-hero small {
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  font-size: 6px;
+  letter-spacing: 0.2em;
+  margin-bottom: 6px;
+}
+.op-hero h2 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+.op-hero h3 {
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+.op-hero p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 7.5px;
+  margin: 8px 0 0;
+}
+.preview-exhibit .ex-slot.op-cta {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  bottom: 30px;
+  font-size: 8px;
+  left: 22px;
+  padding: 6px 18px;
+  position: absolute;
+  z-index: 2;
+}
+.op-dots {
+  bottom: 34px;
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  right: 22px;
+  z-index: 2;
+}
+.op-dots i {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+.op-dots i:first-child {
+  background: #fff;
+}
+
+/* "Add an artist page": glyph tiles... */
+.tg--portrait {
+  height: 62px;
+  left: 0;
+  top: 0;
+  width: 47px;
+  z-index: 1;
+}
+.tg--portrait img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.tg--name {
+  height: 24px;
+  left: 32px;
+  padding: 5px 8px;
+  top: 4px;
+  width: 98px;
+  z-index: 3;
+}
+.tg--name b {
+  display: block;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.tg--name small {
+  color: #8a8a86;
+  display: block;
+  font-size: 4px;
+  margin-top: 2px;
+}
+.tg--bio {
+  color: #55554f;
+  font-size: 4px;
+  height: 36px;
+  left: 60px;
+  line-height: 1.5;
+  padding: 6px 7px;
+  top: 30px;
+  width: 74px;
+  z-index: 2;
+}
+.tg--works {
+  background: none;
+  box-shadow: none;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 32px;
+  left: 6px;
+  overflow: visible;
+  top: 68px;
+  width: 128px;
+  z-index: 4;
+}
+.tg--works img {
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(17, 17, 16, 0.14), 0 0 0 1px rgba(17, 17, 16, 0.05);
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.task-card:hover .tg--portrait {
+  transform: translate(-2px, -2px);
+}
+.task-card:hover .tg--bio {
+  transform: translate(3px, 2px);
+}
+.task-card:hover .tg--works {
+  transform: translateY(3px);
+}
+
+/* ...and the live artist page they fly into. */
+.preview-artist {
+  padding: 22px 22px 0;
+}
+.ar-top {
+  display: flex;
+  flex: none;
+  gap: 28px;
+}
+.preview-exhibit .ex-slot.ar-portrait {
+  flex: none;
+  height: 222px;
+  width: 166px;
+}
+.ar-portrait img {
+  border-radius: 4px;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.ar-copy {
+  flex: 1;
+  min-width: 0;
+}
+.ar-name h2 {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+.ar-name small {
+  color: #8a8a86;
+  display: block;
+  font-size: 6.5px;
+  margin: 4px 0 14px;
+}
+.ar-bio p {
+  color: #3a3a37;
+  font-size: 7px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+.ar-label {
+  align-items: center;
+  display: flex;
+  flex: none;
+  justify-content: space-between;
+  margin: 22px 0 14px;
+}
+.ar-label span {
+  font-size: 5.5px;
+  letter-spacing: 0.22em;
+}
+.ar-label b {
+  background: var(--ink);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 6.5px;
+  font-weight: 400;
+  padding: 5px 10px;
+}
+.preview-exhibit .ex-slot.ar-works {
+  display: grid;
+  flex: 1;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+.ar-works img {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+/* Studio intro, centred under the hero. Words go from pale to ink as it scrolls into view. */
+.studio-intro {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 56px 22px 88px;
+  text-align: center;
+}
+.studio-intro p {
+  --rv-from: #d6d6d2;
+  --rv-to: var(--foreground);
+  margin: 0;
+}
+.studio-intro__lead {
+  font-size: 28px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+.studio-intro__body {
+  display: grid;
+  gap: 18px;
+  margin: 32px auto 0;
+  max-width: 600px;
+}
+.studio-intro__body p {
+  --rv-to: #6e6e6a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.rv-w {
+  color: color-mix(in srgb, var(--rv-to) calc(var(--a, 1) * 100%), var(--rv-from));
+}
+@media (max-width: 640px) {
+  .studio-intro {
+    padding: 36px 22px 64px;
+  }
+  .studio-intro__lead {
+    font-size: 22px;
+  }
+}
+
+/* Studio + services as one section: story on the left, what it can do on the right. */
+.studio-split {
+  align-items: start;
+  display: grid;
+  gap: 88px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 56px 22px 88px;
+}
+.studio-split .studio-intro {
+  margin: 0;
+  max-width: none;
+  padding: 0;
+  text-align: left;
+}
+.studio-split .studio-intro > .eyebrow,
+.studio-split .category-strip__heading > .eyebrow {
+  margin-bottom: 10px;
+}
+.studio-split .studio-intro__lead {
+  max-width: 520px;
+}
+.studio-split .studio-intro__body {
+  margin: 28px 0 0;
+  max-width: 480px;
+}
+.studio-split .category-strip {
+  display: block;
+  padding: 0;
+}
+.studio-split .category-strip__heading {
+  margin-bottom: 28px;
+}
+.studio-split .category-link {
+  border-left: 0;
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+}
+.studio-split .category-link + .category-link,
+.studio-split .category-link:first-child,
+.studio-split .category-link:last-child {
+  border-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.studio-split .category-link span {
+  max-width: 44ch;
+}
+@media (max-width: 900px) {
+  .studio-split {
+    gap: 56px;
+    grid-template-columns: 1fr;
+    padding: 36px 22px 64px;
+  }
+}
+
+/* The studio story sits in one large card, as tall as the services column. */
+.studio-split {
+  align-items: stretch;
+}
+.studio-split .studio-intro {
+  background: var(--surface-soft);
+  border-radius: 22px;
+  padding: 40px 44px 48px;
+}
+.studio-split .studio-intro p {
+  --rv-from: #cdcdc8;
+}
+.studio-split .studio-intro__lead {
+  max-width: none;
+}
+.studio-split .studio-intro__body {
+  max-width: 520px;
+}
+@media (max-width: 900px) {
+  .studio-split .studio-intro {
+    padding: 28px 24px 32px;
+  }
+}
+
+/* White version of the studio card: a hairline border keeps it readable on the white page. */
+.studio-split .studio-intro {
+  background: #fff;
+  border: 1px solid var(--border);
+}
+.studio-split .studio-intro p {
+  --rv-from: #d6d6d2;
+}
