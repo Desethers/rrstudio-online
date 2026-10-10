@@ -8950,7 +8950,7 @@ h2,
 .hero__strip-label {
   color: var(--subtitle);
   flex: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: var(--font-weight-300);
   margin: 0;
 }
@@ -8975,12 +8975,12 @@ h2,
 }
 .hero__strip .category-link svg {
   color: var(--muted);
-  height: 22px;
+  height: 20px;
   margin: 0;
-  width: 22px;
+  width: 20px;
 }
 .hero__strip .category-link strong {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: var(--font-weight-400);
   letter-spacing: -0.01em;
 }
