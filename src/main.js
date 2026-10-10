@@ -101,11 +101,6 @@ const TASK_COPY = {
       title: "Artist SEO check",
       description: "Find the main issues.",
     },
-    "fix-google": {
-      label: "Visibility",
-      title: "Google indexing",
-      description: "Get new pages discovered.",
-    },
   },
   fr: {
     "publish-exhibition": {
@@ -175,11 +170,6 @@ const TASK_COPY = {
       label: "Visibilité",
       title: "Audit SEO artiste",
       description: "Identification des principaux problèmes.",
-    },
-    "fix-google": {
-      label: "Visibilité",
-      title: "Indexation Google",
-      description: "Faire découvrir vos nouvelles pages.",
     },
   },
 };
@@ -349,7 +339,6 @@ const tasks = [
   { id: "collector-pdf", category: "sales-material", price: 80 },
   { id: "viewing-room", category: "sales-material", price: 120 },
   { id: "seo-check", category: "visibility", price: 120 },
-  { id: "fix-google", category: "visibility", price: 90 },
 ].map((task) => ({ ...task, ...TASK_COPY[LANG][task.id] }));
 
 const grid = document.querySelector("#task-grid");
@@ -411,13 +400,6 @@ const TASK_GLYPHS = {
       <span class="tg tg--rh"><u>${pv.searchRanking}</u><em>${pv.searchQuery}</em></span>
       <span class="tg tg--rp"><i></i><i></i><i></i></span>
       <span class="tg tg--rr"><b>14</b><span><small>${pv.rankingUrl}</small><strong>${pv.rankingTitle}</strong></span><em>${pv.pageTwo}</em></span>
-    </div>`,
-  "fix-google": `<div class="task-glyph" aria-hidden="true">
-      <span class="tg tg--lh">Lighthouse report</span>
-      <span class="tg tg--lg1"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#ffa400" stroke-width="3" stroke-linecap="round" stroke-dasharray="38.3 66" transform="rotate(-90 14 14)" /></svg><b>58</b></span>
-      <span class="tg tg--lg2"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#0cce6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="63.4 66" transform="rotate(-90 14 14)" /></svg><b>96</b></span>
-      <span class="tg tg--lg3"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#0cce6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="57.4 66" transform="rotate(-90 14 14)" /></svg><b>87</b></span>
-      <span class="tg tg--lg4"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#ffa400" stroke-width="3" stroke-linecap="round" stroke-dasharray="46.9 66" transform="rotate(-90 14 14)" /></svg><b>71</b></span>
     </div>`,
   "fix-website-issue": `<div class="task-glyph" aria-hidden="true">
       <span class="tg tg--bar"><i></i><i></i><i></i><u>${pv.bugUrl}</u></span>
@@ -861,15 +843,6 @@ const MORPH_MAP = {
   "seo-check": {
     slots: { rh: ".preview-ranking__head", rp: ".preview-ranking__page1", rr: ".preview-ranking__result" },
     chrome: [".preview-ranking__pagination"],
-  },
-  "fix-google": {
-    slots: {
-      lh: ".preview-lighthouse__head",
-      lg1: ".preview-lighthouse__gauge:nth-child(1)",
-      lg2: ".preview-lighthouse__gauge:nth-child(2)",
-      lg3: ".preview-lighthouse__gauge:nth-child(3)",
-      lg4: ".preview-lighthouse__gauge:nth-child(4)",
-    },
   },
 };
 
