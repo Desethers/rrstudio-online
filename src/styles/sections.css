@@ -7149,6 +7149,10 @@ h2,
 .hero h1 + .hero__copy {
   margin-top: 14px;
 }
+/* Eyebrow sits close to the title: 24px gap - 12px = 12px. */
+.hero .eyebrow + h1 {
+  margin-top: -12px;
+}
 .hero__actions {
   margin-top: 12px;
 }
@@ -7159,6 +7163,9 @@ h2,
   }
   .hero__content {
     gap: 18px;
+  }
+  .hero .eyebrow + h1 {
+    margin-top: -10px;
   }
 }
 
@@ -8642,4 +8649,373 @@ h2,
 /* Pages that had to shrink to fit are centred in the pane. */
 .task-card.is-expanded .task-card__media > [data-morph] {
   left: var(--preview-x, 0px);
+}
+
+/* ---- Studio: a quiet, centred pause right after the dense hero, then the services on their own ---- */
+.studio-statement:not(.studio-services) {
+  padding: 128px 22px 88px;
+  text-align: center;
+}
+.studio-statement:not(.studio-services) > .eyebrow {
+  margin-bottom: 20px;
+}
+.studio-statement:not(.studio-services) .studio-statement__text {
+  margin-inline: auto;
+  max-width: 740px;
+}
+.studio-statement:not(.studio-services) .studio-statement__notes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 36px auto 0;
+  max-width: 600px;
+  text-align: center;
+}
+.studio-statement:not(.studio-services) .studio-statement__notes p {
+  max-width: none;
+}
+.studio-services {
+  padding: 0 22px 104px;
+}
+.studio-services .category-strip {
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services) {
+    padding: 80px 22px 56px;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes {
+    margin-top: 24px;
+  }
+  .studio-services {
+    padding-bottom: 64px;
+  }
+}
+
+/* ---- Room to breathe: every section opens with a centred, quiet heading and more vertical air ---- */
+.software-promo.software-promo--tools {
+  gap: 64px;
+  padding-block: 104px 80px;
+}
+.software-promo--tools .software-promo__intro {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  max-width: 640px;
+  text-align: center;
+}
+.software-promo--tools .software-promo__description {
+  max-width: 540px;
+}
+.software-promo--tools .software-promo__intro .button {
+  margin-top: 28px;
+}
+.tasks {
+  padding-block: 104px 80px;
+}
+.tasks .section-heading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 44px;
+  text-align: center;
+}
+.tasks .section-heading__title,
+.tasks .section-heading__copy {
+  margin-inline: auto;
+  text-align: center;
+}
+.tasks .section-heading__copy {
+  max-width: 440px;
+}
+.tasks .task-filters {
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.workshop {
+  padding-block: 88px;
+}
+.quote {
+  padding-block: 104px;
+}
+.faq {
+  padding-block: 104px 80px;
+}
+.faq h2 {
+  margin-bottom: 44px;
+  text-align: center;
+}
+.faq__items {
+  margin-inline: auto;
+  max-width: 820px;
+}
+.footer-cta {
+  padding-block: 112px 96px;
+}
+@media (max-width: 640px) {
+  .software-promo.software-promo--tools,
+  .tasks,
+  .faq {
+    padding-block: 64px 48px;
+  }
+  .workshop {
+    padding-block: 48px;
+  }
+  .quote {
+    padding-block: 64px;
+  }
+  .footer-cta {
+    padding-block: 72px 56px;
+  }
+}
+
+/* Section titles and subtitles one notch larger: 28 -> 32px titles, 18 -> 20px subtitles. */
+.studio-statement__text,
+#software-promo-title,
+#tasks-title,
+#faq-title,
+.workshop-card__main h2 {
+  font-size: 32px;
+}
+#tasks-title,
+#faq-title {
+  line-height: 1.05;
+}
+.studio-statement .studio-statement__notes p,
+.software-promo--tools .software-promo__description p,
+.tasks .section-heading__copy,
+.workshop-card__main > p:last-child {
+  font-size: 20px;
+}
+@media (max-width: 640px) {
+  .studio-statement__text,
+  #software-promo-title,
+  #tasks-title,
+  #faq-title,
+  .workshop-card__main h2 {
+    font-size: 24px;
+  }
+  .studio-statement .studio-statement__notes p,
+  .software-promo--tools .software-promo__description p,
+  .tasks .section-heading__copy,
+  .workshop-card__main > p:last-child {
+    font-size: 17px;
+  }
+}
+.workshop .workshop-card__main h2 {
+  font-size: 32px;
+}
+.tasks .section-heading p.section-heading__copy {
+  font-size: 20px;
+  line-height: 1.35;
+}
+@media (max-width: 640px) {
+  .workshop .workshop-card__main h2 {
+    font-size: 24px;
+  }
+  .tasks .section-heading p.section-heading__copy {
+    font-size: 17px;
+  }
+}
+#ways-title {
+  font-size: 32px;
+}
+@media (max-width: 640px) {
+  #ways-title {
+    font-size: 24px;
+  }
+}
+
+/* Apps intro: one paragraph in two parts (a darker first sentence, then the grey explanation), with balanced line breaks. */
+.software-promo--tools .software-promo__description {
+  max-width: 600px;
+}
+.software-promo--tools .software-promo__description p {
+  line-height: 1.4;
+  margin: 0;
+  text-wrap: balance;
+}
+.software-promo--tools .software-promo__description strong {
+  color: var(--foreground);
+  font-weight: inherit;
+}
+/* Apps intro: the whole paragraph in the same grey. */
+.software-promo--tools .software-promo__description strong {
+  color: inherit;
+}
+
+/* Studio text one size up: 32 -> 38px lead, 20 -> 24px paragraphs. */
+.studio-statement:not(.studio-services) .studio-statement__text {
+  font-size: 38px;
+  line-height: 1.12;
+  max-width: 880px;
+}
+.studio-statement:not(.studio-services) .studio-statement__notes {
+  gap: 22px;
+  margin-top: 44px;
+  max-width: 720px;
+}
+.studio-statement:not(.studio-services) .studio-statement__notes p {
+  font-size: 24px;
+  line-height: 1.35;
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services) .studio-statement__text {
+    font-size: 30px;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-statement__text {
+    font-size: 26px;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 18px;
+  }
+}
+
+/* Studio paragraphs at the same size as the lead sentence (38 / 30 / 26px). */
+.studio-statement:not(.studio-services) .studio-statement__notes {
+  gap: 26px;
+  max-width: 880px;
+}
+.studio-statement:not(.studio-services) .studio-statement__notes p {
+  font-size: 38px;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-statement__notes {
+    gap: 18px;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 26px;
+  }
+}
+
+/* Studio: enough air above that its label never peeks in under the hero on the first screen,
+   and the label sits close to its title. */
+.studio-statement:not(.studio-services) {
+  padding-top: clamp(168px, 26vh, 300px);
+}
+.studio-statement:not(.studio-services) > .eyebrow {
+  margin-bottom: 8px;
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services) {
+    padding-top: 120px;
+  }
+}
+/* Less white space under the hero: the label is still pushed below the fold on tall screens, but with a smaller gap. */
+.studio-statement:not(.studio-services) {
+  padding-top: clamp(88px, 14vh, 140px);
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services) {
+    padding-top: 72px;
+  }
+}
+
+/* ---- First screen ends with a quiet strip (like a "trusted by" row): the services as plain items, no cards. ---- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - 72px);
+  padding-bottom: 0;
+}
+.hero__layout {
+  align-items: center;
+  flex: 1;
+}
+.hero__strip {
+  align-items: center;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding: 30px 0 34px;
+  width: 100%;
+}
+.hero__strip-label {
+  color: var(--subtitle);
+  flex: none;
+  font-size: 18px;
+  font-weight: var(--font-weight-300);
+  margin: 0;
+}
+.hero__strip .category-strip {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 44px;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+.hero__strip .category-link,
+.hero__strip .category-link + .category-link,
+.hero__strip .category-link:first-child,
+.hero__strip .category-link:last-child {
+  align-items: center;
+  border: 0;
+  display: inline-flex;
+  gap: 10px;
+  padding: 0;
+}
+.hero__strip .category-link svg {
+  color: var(--muted);
+  height: 22px;
+  margin: 0;
+  width: 22px;
+}
+.hero__strip .category-link strong {
+  font-size: 18px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.01em;
+}
+.hero__strip .category-link span {
+  display: none;
+}
+.hero__strip .category-link:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .hero {
+    min-height: calc(100svh - 64px);
+  }
+  .hero__strip {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 22px 0 28px;
+  }
+  .hero__strip .category-strip {
+    gap: 14px 28px;
+    justify-content: flex-start;
+  }
+}
+
+/* Strip items: no underline on hover; the icon just darkens. */
+.hero__strip .category-link:hover strong {
+  text-decoration: none;
+}
+.hero__strip .category-link svg {
+  transition: color 0.2s ease;
+}
+.hero__strip .category-link:hover svg,
+.hero__strip .category-link:focus-visible svg {
+  color: var(--foreground);
 }
