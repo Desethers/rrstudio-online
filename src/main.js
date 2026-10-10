@@ -377,6 +377,61 @@ if (invoiceDate) {
 /* A task's deliverable drawn as a small stack of its own components, staggered
  * like a large icon (trial: exhibition page; the page's real components, shrunk and staggered). */
 const TASK_GLYPHS = {
+  "organise-database": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--mh"><u>${pv.medium}</u><u>${pv.recordCount(3)}</u></span>
+      <span class="tg tg--ml">${pv.mergeValues.map((v) => `<i><span><b></b><s></s></span><em>${v}</em></i>`).join("")}</span>
+      <span class="tg tg--mb">${pv.mergeFields}</span>
+    </div>`,
+  "import-artworks": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--tfile"><svg viewBox="0 0 24 24" fill="none" stroke="#1d7a46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2z" /><path d="M14 2v6h6M8 13h8M8 17h8M12 11v8" /></svg><u>artworks.xlsx</u></span>
+      <span class="tg tg--th">${pv.recordsHeading}</span>
+      <span class="tg tg--trows"><i></i><i></i><i></i><i></i></span>
+    </div>`,
+  "clean-records": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--tbadge">✓ 50</span>
+      <span class="tg tg--th">${pv.recordsHeading}</span>
+      <span class="tg tg--trows tg--trows--clean"><i></i><i></i><i></i><i></i></span>
+    </div>`,
+  "artlogic-check": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--dp"><b>Sacha Elron</b><em class="ok">${pv.primaryRecord}</em><small></small></span>
+      <span class="tg tg--dd"><b>Sacha&nbsp; Elron</b><em class="warn">${pv.possibleDuplicate}</em><small></small></span>
+      <span class="tg tg--da">${pv.resolveDuplicate}</span>
+    </div>`,
+  "collector-pdf": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--ch"><small>Sacha Elron</small><strong>${pv.collectorTitle}</strong></span>
+      <span class="tg tg--cm"><img src="/images/collector-pdf-artwork.jpg" alt="" /></span>
+      <span class="tg tg--cmeta"><span><strong>${pv.collectorArtwork}</strong><small>${pv.collectorMedium}</small></span><u>${pv.inquire}</u></span>
+    </div>`,
+  "viewing-room": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--vh"><small>${pv.galleryName}</small><strong>${pv.selectedWorks}</strong><small>${pv.privateSelection}</small></span>
+      <span class="tg tg--va"></span>
+      <span class="tg tg--vn">01 — 12</span>
+    </div>`,
+  "seo-check": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--rh"><u>${pv.searchRanking}</u><em>${pv.searchQuery}</em></span>
+      <span class="tg tg--rp"><i></i><i></i><i></i></span>
+      <span class="tg tg--rr"><b>14</b><span><small>${pv.rankingUrl}</small><strong>${pv.rankingTitle}</strong></span><em>${pv.pageTwo}</em></span>
+    </div>`,
+  "fix-google": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--lh">Lighthouse report</span>
+      <span class="tg tg--lg1"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#ffa400" stroke-width="3" stroke-linecap="round" stroke-dasharray="38.3 66" transform="rotate(-90 14 14)" /></svg><b>58</b></span>
+      <span class="tg tg--lg2"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#0cce6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="63.4 66" transform="rotate(-90 14 14)" /></svg><b>96</b></span>
+      <span class="tg tg--lg3"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#0cce6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="57.4 66" transform="rotate(-90 14 14)" /></svg><b>87</b></span>
+      <span class="tg tg--lg4"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10.5" fill="none" stroke="#e8e8e6" stroke-width="3" /><circle cx="14" cy="14" r="10.5" fill="none" stroke="#ffa400" stroke-width="3" stroke-linecap="round" stroke-dasharray="46.9 66" transform="rotate(-90 14 14)" /></svg><b>71</b></span>
+    </div>`,
+  "fix-website-issue": `<div class="task-glyph" aria-hidden="true">
+      <span class="tg tg--bar"><i></i><i></i><i></i><u>${pv.bugUrl}</u></span>
+      <span class="tg tg--broken"><em>1</em><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="4" width="40" height="40" rx="4" /><circle cx="16" cy="16" r="4" /><path d="M4 32L16 22L26 30L34 20L44 30" /><line x1="2" y1="2" x2="46" y2="46" /></svg><b>404</b></span>
+      <span class="tg tg--caption"><strong>Paradise, 2019</strong><small></small></span>
+      <span class="tg tg--note"><em>1</em><span><strong>${pv.imageFailed}</strong><small>${pv.fileMissing}</small></span></span>
+    </div>`,
+  "update-artworks": `<div class="task-glyph task-glyph--tall" aria-hidden="true">
+      <span class="tg tg--pill">Selected Works</span>
+      <span class="tg tg--w1"><img src="/mockups/artworks/g1.jpg" alt="" /><i><u></u><b></b><em></em></i></span>
+      <span class="tg tg--w2"><img src="/mockups/artworks/g2.jpg" alt="" /><i><u></u><b></b><em></em></i></span>
+      <span class="tg tg--w4"><img src="/mockups/artworks/g4.jpg" alt="" /><i><u></u><b></b><em></em></i></span>
+      <span class="tg tg--w5"><img src="/mockups/artworks/g5.jpg" alt="" /><i><u></u><b></b><em></em></i></span>
+    </div>`,
   "artist-page": `<div class="task-glyph" aria-hidden="true">
       <span class="tg tg--portrait"><img src="/mockups/artist/portrait.jpg" alt="" /></span>
       <span class="tg tg--name"><b>Sacha Elron</b><small>Born 1975, US</small></span>
@@ -546,8 +601,24 @@ function artistPageMarkup() {
     </div>`;
 }
 
+function artworksPageMarkup() {
+  const card = (n, slot, title, year, medium, dims, extra = "") =>
+    `<figure class="aw2-card ${extra}"${slot ? ` data-slot="${slot}"` : ""}><img src="/mockups/artworks/t${n}.jpg" alt="" /><figcaption><small>Sacha Elron</small><b>${title}, <span>${year}</span></b><em>${medium}</em><em>${dims}</em></figcaption></figure>`;
+  return `<div class="preview-exhibit preview-works">
+      <div class="aw2-head"><span class="aw2-label ex-chrome">SELECTED WORKS</span><span class="aw2-pill ex-slot" data-slot="pill">Selected Works</span></div>
+      <div class="aw2-grid">
+        ${card(1, "w1", "Amber Nocturne", "2025", "Oil on canvas", "150 × 150 cm", "ex-slot")}
+        ${card(2, "w2", "Crimson Field", "2024", "Oil on linen", "130 × 110 cm", "ex-slot")}
+        ${card(3, "", "Evening field", "2023", "Acrylic on canvas", "120 × 120 cm", "ex-chrome")}
+        ${card(4, "w4", "Dawn Study No. 7", "2023", "Acrylic", "30 × 30 cm", "ex-slot")}
+        ${card(5, "w5", "Sage Interval", "2022", "Acrylic on canvas", "100 × 140 cm", "ex-slot")}
+      </div>
+    </div>`;
+}
+
 function previewMarkup(task) {
   if (task.id === "publish-exhibition") return exhibitionPageMarkup();
+  if (task.id === "update-artworks") return artworksPageMarkup();
   if (task.id === "artist-page") return artistPageMarkup();
   if (task.id === "opening-website") return openingPageMarkup();
   if (task.category === "website") {
@@ -648,7 +719,7 @@ function mergeFieldsMarkup() {
 }
 
 function bugMarkup() {
-  return `<div class="preview-bug"><div class="preview-bug__bar"><i></i><i></i><i></i><span>${pv.bugUrl}</span></div><div class="preview-bug__page"><small>${pv.galleryName}</small><div class="preview-bug__broken"><span class="preview-bug__pin">1</span><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="40" height="40" rx="4" /><circle cx="16" cy="16" r="4" /><path d="M4 32L16 22L26 30L34 20L44 30" /><line x1="2" y1="2" x2="46" y2="46" /></svg><span class="preview-bug__code">404</span></div><h3>Paradise, 2019</h3><p>${pv.bugCaption}</p></div><div class="preview-bug__note"><span class="preview-bug__note-pin">1</span><div><b>${pv.imageFailed}</b><small>${pv.fileMissing}</small></div></div></div>`;
+  return `<div class="preview-bug"><div class="preview-bug__bar ex-slot" data-slot="bar"><i></i><i></i><i></i><span>${pv.bugUrl}</span></div><div class="preview-bug__page"><small class="ex-chrome">${pv.galleryName}</small><div class="preview-bug__broken ex-slot" data-slot="broken"><span class="preview-bug__pin">1</span><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="40" height="40" rx="4" /><circle cx="16" cy="16" r="4" /><path d="M4 32L16 22L26 30L34 20L44 30" /><line x1="2" y1="2" x2="46" y2="46" /></svg><span class="preview-bug__code">404</span></div><div class="preview-bug__caption ex-slot" data-slot="caption"><h3>Paradise, 2019</h3><p>${pv.bugCaption}</p></div></div><div class="preview-bug__note ex-slot" data-slot="note"><span class="preview-bug__note-pin">1</span><div><b>${pv.imageFailed}</b><small>${pv.fileMissing}</small></div></div></div>`;
 }
 
 function rankingMarkup() {
@@ -724,24 +795,111 @@ function scalePreviewToPane(media) {
   media.style.removeProperty("--preview-scale");
   media.style.removeProperty("--preview-h");
   media.style.removeProperty("--preview-w");
-  if (!carouselQuery.matches && !media.querySelector(".preview-exhibit")) return;
+  media.style.removeProperty("--preview-x");
+  const root = media.querySelector("[data-morph]");
+  if (!carouselQuery.matches && !root) return;
   const paneWidth = media.clientWidth;
   const paneHeight = media.clientHeight;
   if (!paneWidth || !paneHeight) return;
-  const scale = paneWidth / PREVIEW_DESIGN_WIDTH;
+  let scale = paneWidth / PREVIEW_DESIGN_WIDTH;
+  let height = paneHeight / scale;
   media.style.setProperty("--preview-w", `${PREVIEW_DESIGN_WIDTH}px`);
+  if (root && !root.matches(".preview-pdf")) {
+    // The page is drawn at its design width. If its content is taller than the room
+    // the pane leaves at that scale (wide screens), shrink the whole page to fit and
+    // centre it, instead of letting content hang out of the card.
+    root.style.height = "auto";
+    const natural = root.scrollHeight;
+    root.style.removeProperty("height");
+    if (natural > height) {
+      scale = paneHeight / natural;
+      height = natural;
+    }
+    media.style.setProperty(
+      "--preview-x",
+      `${Math.max(0, (paneWidth - PREVIEW_DESIGN_WIDTH * scale) / 2)}px`,
+    );
+  }
   media.style.setProperty("--preview-scale", `${scale}`);
-  media.style.setProperty("--preview-h", `${paneHeight / scale}px`);
+  media.style.setProperty("--preview-h", `${height}px`);
+}
+
+/* Pages built from the older preview markup get their morph slots tagged here:
+ * `slots` are the real elements the glyph tiles fly to, `chrome` is what builds in
+ * afterwards. Pages written for the morph (exhibition, homepage...) tag themselves. */
+const TABLE_MAP = {
+  slots: { th: ".preview-table__heading", trows: ".preview-table__rows" },
+  wrap: (root) => {
+    const rows = [...root.querySelectorAll(".preview-row")];
+    if (!rows.length) return;
+    const box = document.createElement("div");
+    box.className = "preview-table__rows";
+    rows[0].before(box);
+    rows.forEach((row) => box.append(row));
+  },
+};
+const MORPH_MAP = {
+  "organise-database": {
+    slots: { mh: ".preview-merge__field", ml: ".preview-merge__list", mb: ".preview-merge__action-btn" },
+  },
+  "import-artworks": TABLE_MAP,
+  "clean-records": TABLE_MAP,
+  "artlogic-check": {
+    slots: {
+      dp: ".preview-dedupe__card--primary",
+      dd: ".preview-dedupe__card--duplicate",
+      da: ".preview-dedupe__action-btn",
+    },
+    chrome: [".preview-dedupe__field"],
+  },
+  "collector-pdf": {
+    slots: { ch: ".preview-collector__head", cm: ".preview-collector__media", cmeta: ".preview-collector__meta" },
+  },
+  "viewing-room": {
+    slots: { vh: ".preview-pdf > div", va: ".preview-pdf__art", vn: ".preview-pdf > span" },
+  },
+  "seo-check": {
+    slots: { rh: ".preview-ranking__head", rp: ".preview-ranking__page1", rr: ".preview-ranking__result" },
+    chrome: [".preview-ranking__pagination"],
+  },
+  "fix-google": {
+    slots: {
+      lh: ".preview-lighthouse__head",
+      lg1: ".preview-lighthouse__gauge:nth-child(1)",
+      lg2: ".preview-lighthouse__gauge:nth-child(2)",
+      lg3: ".preview-lighthouse__gauge:nth-child(3)",
+      lg4: ".preview-lighthouse__gauge:nth-child(4)",
+    },
+  },
+};
+
+function prepareMorph(task, media) {
+  const root = media.firstElementChild;
+  if (!root || !TASK_GLYPHS[task.id]) return;
+  root.setAttribute("data-morph", "");
+  const cfg = MORPH_MAP[task.id];
+  if (!cfg) return;
+  cfg.wrap?.(root);
+  Object.entries(cfg.slots).forEach(([key, selector]) => {
+    const el = root.querySelector(selector);
+    if (!el) return;
+    el.classList.add("ex-slot");
+    el.dataset.slot = key;
+    if (getComputedStyle(el).position === "static") el.style.position = "relative";
+  });
+  (cfg.chrome || []).forEach((selector) =>
+    root.querySelectorAll(selector).forEach((el) => el.classList.add("ex-chrome")),
+  );
 }
 
 /* Glyph -> page: each glyph tile travels to its slot in the live exhibition
  * mockup and swaps with the real element; the rest of the page then builds in
  * around them. Slots and chrome start hidden (.is-morph). */
-const FLY_ORDER = { btns: 0, title: 1, text: 2, image: 3, photo: 0, nav: 1, hero: 2, cta: 3, portrait: 0, name: 1, bio: 2, works: 3 };
+const FLY_ORDER = { btns: 0, title: 1, text: 2, image: 3, photo: 0, nav: 1, hero: 2, cta: 3, portrait: 0, name: 1, bio: 2, works: 3, w1: 0, w2: 1, w3: 2, w4: 2, w5: 3, pill: 4, bar: 0, broken: 1, caption: 2, note: 3 };
 
 function morphGlyph(card) {
   const glyph = card.querySelector(".task-glyph");
-  const page = card.querySelector(".preview-exhibit");
+  const page = card.querySelector("[data-morph]");
   if (!glyph || !page) return;
   const tiles = [...glyph.querySelectorAll(".tg")];
   gsap.killTweensOf(tiles);
@@ -761,7 +919,11 @@ function morphGlyph(card) {
   tiles.forEach((tile) => {
     const key = [...tile.classList].find((c) => c.startsWith("tg--"))?.slice(4);
     const slot = page.querySelector(`[data-slot="${key}"]`);
-    if (!slot) return;
+    if (!slot) {
+      // A tile with no counterpart on the page simply dissolves as the others fly.
+      tl.to(tile, { opacity: 0, duration: 0.3, ease: "power2.out" }, 0.05);
+      return;
+    }
     const to = slot.getBoundingClientRect();
     const from = tile.getBoundingClientRect();
     const W = slot.offsetWidth || to.width;
@@ -773,7 +935,7 @@ function morphGlyph(card) {
     const clip = Math.max(0, H - tileH);
     const extra = Math.max(0, tileH - H);
     const bottom = clip > 0 ? clip : -(extra + 24);
-    const at = (FLY_ORDER[key] ?? 0) * 0.05;
+    const at = (FLY_ORDER[key] ?? tiles.indexOf(tile)) * 0.05;
     tl.set(
       slot,
       {
@@ -847,11 +1009,12 @@ function expandCard(task, card) {
   card.setAttribute("aria-expanded", "true");
   const media = card.querySelector(".task-card__media");
   media.innerHTML = previewMarkup(task);
+  prepareMorph(task, media);
   scalePreviewToPane(media);
   const hasGlyph = Boolean(
-    card.querySelector(".task-glyph") && media.querySelector(".preview-exhibit"),
+    card.querySelector(".task-glyph") && media.querySelector("[data-morph]"),
   );
-  if (hasGlyph) media.querySelector(".preview-exhibit").classList.add("is-morph");
+  if (hasGlyph) media.querySelector("[data-morph]").classList.add("is-morph");
   expandedTaskId = task.id;
   // Flip's absolute:true pulls every card out of the flow for the duration
   // of the animation, so the grid — which gets its height from those
@@ -1303,18 +1466,34 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
 /* Studio intro: split into words and reveal them (pale -> ink) as the block scrolls
  * through the viewport. Reduced motion shows everything at once. */
 (() => {
-  const section = document.querySelector(".studio-intro");
+  const section = document.querySelector(".studio-statement, .studio-intro");
   if (!section) return;
   const words = [];
   section.querySelectorAll("[data-reveal]").forEach((p) => {
-    const parts = p.textContent.trim().split(/\s+/);
+    // Text nodes are split into words; an element marked .intro-name (name + photo)
+    // is kept whole and counts as a single word.
+    const nodes = [...p.childNodes];
     p.textContent = "";
-    parts.forEach((word, i) => {
-      const span = document.createElement("span");
-      span.className = "rv-w";
-      span.textContent = word;
-      p.append(span, i < parts.length - 1 ? " " : "");
-      words.push(span);
+    nodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const parts = node.textContent.split(/(\s+)/);
+        parts.forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            p.append(" ");
+            return;
+          }
+          const span = document.createElement("span");
+          span.className = "rv-w";
+          span.textContent = part;
+          p.append(span);
+          words.push(span);
+        });
+      } else {
+        node.classList.add("rv-w");
+        p.append(node);
+        words.push(node);
+      }
     });
   });
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -1342,3 +1521,116 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
   addEventListener("resize", tick);
   update();
 })();
+
+/* Tools carousel: prev / next buttons and a pagination pill (one dot per reachable
+ * scroll position), centred under the cards. */
+(() => {
+  const track = document.querySelector(".product-cards");
+  const nav = document.querySelector(".product-cards__nav");
+  if (!track || !nav) return;
+  const [prev, next] = nav.querySelectorAll(".product-cards__btn");
+  const dotsEl = nav.querySelector(".product-cards__dots");
+  const pageLabel = nav.dataset.pageLabel || "Page";
+  const step = () => {
+    const card = track.querySelector(".product-card");
+    return card ? card.getBoundingClientRect().width + 16 : track.clientWidth;
+  };
+  const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
+  const positions = () => {
+    const n = Math.max(1, Math.ceil(maxScroll() / step() - 0.05) + 1);
+    return Array.from({ length: n }, (_, i) => Math.min(i * step(), maxScroll()));
+  };
+  const buildDots = () => {
+    const pos = positions();
+    if (dotsEl.children.length === pos.length) return;
+    dotsEl.innerHTML = "";
+    pos.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "product-cards__dot";
+      dot.dataset.page = String(i);
+      dot.setAttribute("aria-label", `${pageLabel} ${i + 1}`);
+      dotsEl.append(dot);
+    });
+  };
+  const sync = () => {
+    buildDots();
+    const pos = positions();
+    let active = 0;
+    pos.forEach((p, i) => {
+      if (Math.abs(track.scrollLeft - p) < Math.abs(track.scrollLeft - pos[active])) active = i;
+    });
+    [...dotsEl.children].forEach((d, i) => d.classList.toggle("is-active", i === active));
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= maxScroll() - 2;
+  };
+  nav.addEventListener("click", (event) => {
+    const btn = event.target.closest(".product-cards__btn");
+    const dot = event.target.closest(".product-cards__dot");
+    if (btn) {
+      track.scrollBy({ left: Number(btn.dataset.dir) * step(), behavior: "smooth" });
+    } else if (dot) {
+      track.scrollTo({ left: positions()[Number(dot.dataset.page)], behavior: "smooth" });
+    }
+  });
+  track.addEventListener("scroll", sync, { passive: true });
+  addEventListener("resize", sync);
+  sync();
+})();
+
+/* Artwork record visual: scale its fixed-width stage to the card. */
+document.querySelectorAll(".aw-mock").forEach((mock) => {
+  const set = () => mock.style.setProperty("--aw-s", String(mock.clientWidth / 520));
+  set();
+  new ResizeObserver(set).observe(mock);
+});
+
+/* Morning brief visual: scale its stage; rests on the answer, and on hover types the
+ * question into the composer, then sends it and shows the answer. */
+document.querySelectorAll(".product-visual--crm").forEach((visual) => {
+  const mock = visual.querySelector(".mb-mock");
+  if (!mock) return;
+  const scale = () => mock.style.setProperty("--mb-s", String(mock.clientWidth / 480));
+  scale();
+  new ResizeObserver(scale).observe(mock);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const textEl = mock.querySelector(".mb-text");
+  const question = visual.dataset.mbQ || "";
+  let timers = [];
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const stop = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+  };
+  const rest = () => {
+    stop();
+    mock.classList.remove("is-typing", "is-composing");
+    textEl.textContent = "";
+  };
+  const play = () => {
+    stop();
+    textEl.textContent = "";
+    mock.classList.remove("is-typing");
+    mock.classList.add("is-composing");
+    const step = 42;
+    const start = 650;
+    mock.classList.add("is-typing");
+    for (let i = 1; i <= question.length; i += 1) {
+      at(start + i * step, () => (textEl.textContent = question.slice(0, i)));
+    }
+    const done = start + question.length * step;
+    // Sent: the composer empties and the answer comes in.
+    at(done + 600, () => {
+      mock.classList.remove("is-composing");
+      mock.classList.remove("is-typing");
+      textEl.textContent = "";
+    });
+    at(done + 6200, play);
+  };
+  const card = visual.closest(".product-card") || visual;
+  card.addEventListener("mouseenter", play);
+  card.addEventListener("mouseleave", rest);
+  card.addEventListener("focusin", play);
+  card.addEventListener("focusout", rest);
+});

@@ -247,7 +247,7 @@
         <a class="brand" href="#top">R.R <span>Studio</span></a>
         <nav class="nav" aria-label="Main navigation">
           <a href="#products">Tools</a><a href="#services">Services</a
-          ><a href="#how-it-works">How it works</a>
+          ><a href="#how-it-works" hidden>How it works</a>
         </nav>
         <a class="button" href="mailto:studio@rrstudio.online">Work with me</a>
       </div>
@@ -329,47 +329,36 @@
           </aside>
         </div>
       </section>
-      <section class="studio-split" id="services">
-      <div class="studio-intro" aria-label="About R.R Studio">
+      <section class="studio-statement" id="services" aria-label="About R.R Studio">
         <p class="eyebrow">Studio</p>
-        <p class="studio-intro__lead" data-reveal>R.R Studio is an independent design and technology studio for the contemporary art world.</p>
-        <div class="studio-intro__body">
-          <p data-reveal>I believe technology can serve galleries of every size, giving a solo gallerist the tools of a mega-gallery and helping established teams work more simply.</p>
+        <p class="studio-statement__text" data-reveal>R.R Studio is an independent design and technology studio for the contemporary art world.</p>
+        <div class="studio-statement__notes">
+          <p data-reveal>I’m <span class="intro-name"><img src="/images/raphael.jpg" alt="" width="40" height="40" />Raphael</span> and I believe technology can serve galleries of every size, giving a solo gallerist the tools of a mega-gallery and helping established teams work more simply.</p>
           <p data-reveal>I build websites and tailored tools for galleries and artists, and provide hands-on support, from web fixes to workflow improvements.</p>
           <p data-reveal>I talk regularly with people across the art world, so what I build fits how they actually work.</p>
         </div>
-      </div>
-      <div class="category-strip" aria-label="Service categories">
-        <div class="category-strip__heading">
-          <p class="eyebrow">Services</p>
-          <h2>Things that could work better.</h2>
-          <p>Websites, SEO, databases and existing software. Improve what you already have, fix what doesn’t work and connect the tools you rely on.</p>
-        </div>
+        <div class="category-strip" aria-label="Service categories">
         <a class="category-link" href="#tasks" data-category="website"
           ><i data-lucide="monitor" aria-hidden="true"></i>
-          <div>
-            <strong>Website</strong
-            ><span
-              >Keep your artists, exhibitions and artworks current without waiting for a
-              developer.</span
-            >
-          </div></a
+          <strong>Website</strong>
+          <span>Keep your artists, exhibitions and artworks current without waiting for a developer.</span></a
         >
         <a class="category-link" href="#tasks" data-category="database"
           ><i data-lucide="database" aria-hidden="true"></i>
-          <div>
-            <strong>Inventory</strong
-            ><span>Clean, structure and import the records your gallery relies on every day.</span>
-          </div></a
+          <strong>Inventory</strong>
+          <span>Clean, structure and import the records your gallery relies on every day.</span></a
+        >
+        <a class="category-link" href="#tasks" data-category="sales-material"
+          ><i data-lucide="files" aria-hidden="true"></i>
+          <strong>Sales material</strong>
+          <span>Collector PDFs, price lists and presentations, ready to send.</span></a
         >
         <a class="category-link" href="#tasks" data-category="visibility"
           ><i data-lucide="search" aria-hidden="true"></i>
-          <div>
-            <strong>Visibility</strong
-            ><span>Make artist pages easier to find with clear, practical SEO improvements.</span>
-          </div></a
+          <strong>Visibility</strong>
+          <span>Make artist pages easier to find with clear, practical SEO improvements.</span></a
         >
-      </div>
+        </div>
       </section>
       <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
         <div class="software-promo__intro">
@@ -421,9 +410,8 @@ here’s the piece you asked about:">
               </div>
             </div>
             <div class="product-card__body">
-              <p class="product-tag">Gmail add-in</p>
-              <h3>Collector emails, connected</h3>
-              <p>Artwork details, right inside your emails.</p>
+              <h3>Link mail to inventory</h3>
+              <p>A <img class="inline-logo" src="/logos/gmail.png" alt="" width="14" height="14" />Gmail add-in: artwork details inside your emails, every thread saved.</p>
               <a class="product-card__link" href="#" aria-label="Open the Gmail add-in"><span aria-hidden="true">↗</span></a>
             </div>
           </article>
@@ -432,61 +420,79 @@ here’s the piece you asked about:">
               <div class="wa-mock" role="img" aria-label="WhatsApp chat where a /pdf command builds a PDF selection of artworks">
               <div class="wa-mock__stage">
                 <div class="wa-mock__chat">
-                  <div class="wa-m wa-m--art">
-                    <img class="wa-shape" src="/mockups/whatsapp/shape-incoming1b.svg" alt="" />
-                    <img class="wa-art" src="/mockups/whatsapp/artwork-photo.png" alt="" />
-                    <p class="wa-cap"><span>Sacha Elron - Evening Field - 2026 -<br />Acrylic on canvas - 180 × 180 cm -<br />$10,000</span></p>
-                    <p class="wa-time" style="right:27px;bottom:9px">10:15</p>
-                    <svg class="wa-check" style="right:9px;bottom:10px;width:14px;height:8px" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  </div>
-                  <div class="wa-m wa-m--added">
-                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/shape-incoming2b.svg" alt="" />
-                    <p class="wa-txt" style="left:16px;top:7px;line-height:1.3">Received. “Evening Field” added<br />to your selection</p>
-                    <p class="wa-time" style="right:13px;bottom:5px">11:40</p>
-                  </div>
-                  <div class="wa-m wa-m--cmd">
-                    <img class="wa-shape" src="/mockups/whatsapp/shape-outgoing2.svg" alt="" />
-                    <p class="wa-txt" style="left:10px;top:7px;line-height:1">/pdf</p>
-                    <p class="wa-time" style="right:26px;bottom:8px;font-size:8px">11:43</p>
-                    <svg class="wa-check" style="right:10px;bottom:8px;width:12px;height:7px" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  </div>
-                  <div class="wa-m wa-m--build">
-                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/shape-incoming3.svg" alt="" />
-                    <p class="wa-txt" style="left:16px;top:9px;line-height:1">Building your selection…</p>
-                    <p class="wa-time" style="right:13px;bottom:6px">11:45</p>
-                  </div>
-                  <div class="wa-m wa-m--pdf">
-                    <img class="wa-shape wa-flip" src="/mockups/whatsapp/add-plus.svg" alt="" />
-                    <div class="wa-pdf">
-                      <img src="/mockups/whatsapp/pdf-thumb.png" alt="" />
-                      <p class="wa-txt" style="left:42px;top:9px;line-height:1.3">spring_selection_2026_<br />Marie_Beaumont.pdf</p>
-                      <p class="wa-time" style="left:42px;bottom:8px;font-size:9px;color:rgba(0,0,0,.4)">2.8 MB · PDF</p>
-                    </div>
-                    <p class="wa-txt" style="left:17px;bottom:9px;font-size:11px;line-height:1">Selection ready · 1 page</p>
-                  </div>
+                  <div class="wa-b wa-b--in wa-b1"><p>Hello, is Horizon by Sacha Elron still available? And at what price?</p><span class="wa-b__time">11:45</span></div>
+                  <div class="wa-b wa-b--out wa-b2"><p>Hello Henry, yes, it’s still available. I’m sending you the details right here.</p><span class="wa-b__time">11:46</span></div>
+                  <div class="wa-b wa-b--out wa-b--card wa-b3"><span class="wa-fwd"><svg viewBox="0 0 16 12" width="12" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 1.5l4.5 4.5L10 10.5M14.5 6H6.5C4 6 2 7.8 1.5 10.5"/></svg>Forwarded</span><img src="/mockups/whatsapp/horizon.jpg" alt="" /><p>Sacha Elron — Untitled (Horizon), 2024<br />Acrylic on canvas · 180 × 180 cm<br />€8,000</p><span class="wa-b__time">11:46 <svg class="wa-check" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg></span></div>
                 </div>
               </div>
               <div class="wa-mock__bar"><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><div class="wa-mock__input"><span class="wa-ph">Message</span><span class="wa-typed">/pdf</span><svg class="wa-ico wa-ico--in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.5V8a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h4.5L20 12.5Z"/><path d="M20 12.5h-3a4.5 4.5 0 0 0-4.5 4.5v3"/></svg></div><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2a1 1 0 0 0 .8-.4L9.4 4.4a1 1 0 0 1 .8-.4h3.6a1 1 0 0 1 .8.4l.9 1.2a1 1 0 0 0 .8.4h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5Z"/><circle cx="12" cy="12.5" r="3.3"/></svg><svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg></div>
             </div>
             </div>
             <div class="product-card__body">
-              <p class="product-tag">WhatsApp add-on</p>
               <h3>Share works from your phone</h3>
-              <p>Send works to collectors from the chat.</p>
+              <p>A <img class="inline-logo" src="/logos/whatsapp.svg" alt="" width="14" height="14" />WhatsApp add-on to send works and selections to collectors from the chat.</p>
               <a class="product-card__link" href="#" aria-label="Open the WhatsApp add-on"><span aria-hidden="true">↗</span></a>
             </div>
           </article>
           <article class="product-card">
-            <div class="product-visual product-visual--crm">
-              <img src="/images/tool-crm.png" width="1134" height="1040" loading="lazy" alt="Assistant answering “Who is waiting for a reply this morning?” from the gallery’s records" />
+            <div class="product-visual product-visual--crm" aria-hidden="true" data-mb-q="Who is waiting for a reply this morning?">
+              <div class="mb-mock">
+                <div class="mb-stage">
+                  <div class="mb-win">
+                    <h4>Good morning</h4>
+                    <div class="mb-composer">
+                      <p class="mb-typed"><span class="mb-ph">Ask Gallery OS…</span><span class="mb-text"></span><i class="mb-caret"></i></p>
+                      <div class="mb-composer__foot"><small>The assistant reads your records — it can’t send anything.</small><span class="mb-send">↑</span></div>
+                    </div>
+                    <div class="mb-chips"><span>A person</span><span>A work</span><span>A reply</span><span>My day</span><em>↵ Enter to send</em></div>
+                    <div class="mb-answer">
+                      <div class="mb-bubble">Who is waiting for a reply this morning?</div>
+                      <div class="mb-card"><p>One collector is waiting for a reply:</p><p>- “<b>Marie Beaumont</b>” wrote on WhatsApp on 9 September: is “Evening field” still available, and what are its dimensions?</p></div>
+                      <small>From your records · searchConversations</small>
+                      <small class="mb-clear">↺ Clear</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="product-card__body">
-              <p class="product-tag">Personal CRM</p>
-              <h3>Your collectors and artworks, one database</h3>
-              <p>Contacts, works and pipeline in one place.</p>
-              <a class="product-card__link" href="#" aria-label="Open the personal CRM"><span aria-hidden="true">↗</span></a>
+              <h3>Morning brief</h3>
+              <p>Your personal CRM tells you <svg class="inline-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><mask id="mb-sun-mask"><rect width="24" height="24" fill="#fff" /><rect x="3.1" y="7.6" width="12.2" height="13.3" rx="1.9" fill="#000" /></mask></defs><g mask="url(#mb-sun-mask)"><g class="icon-sun"><circle cx="17.6" cy="6.4" r="2.7" /><path d="M17.6 2.1V1M20.64 3.36l.78-.78M21.9 6.4H23M20.64 9.44l.78.78M17.6 10.7v1.1M13.3 6.4h-1.1M14.56 3.36l-.78-.78M14.56 9.44l-.78.78" /></g></g><rect x="3" y="7.5" width="12.4" height="13.5" rx="2" /><path d="M6.3 11.6h5.8M6.3 14.6h5.8M6.3 17.6h3.4" /></svg>every morning who is waiting for a reply.</p>
+              <a class="product-card__link" href="#" aria-label="Open the morning brief"><span aria-hidden="true">↗</span></a>
             </div>
           </article>
+          <article class="product-card">
+            <div class="product-visual product-visual--artwork" aria-hidden="true">
+              <div class="aw-mock">
+                <div class="aw-stage">
+                  <div class="aw-win">
+                    <div class="aw-head"><div><p class="aw-head__title">Evening Field</p><p class="aw-head__sub">Artwork · AR-0247</p></div><span class="aw-save">Save</span></div>
+                    <div class="aw-grid">
+                      <div class="aw-fields">
+                        <div class="aw-f aw-f--2"><p>Title</p><div>Evening Field</div></div>
+                        <div class="aw-f aw-f--2"><p>Artist</p><div>Sacha Elron ✓ Linked</div></div>
+                        <div class="aw-f"><p>Year</p><div>2023</div></div>
+                        <div class="aw-f"><p>Medium</p><div>Acrylic on canvas</div></div>
+                        <div class="aw-f aw-f--2"><p>Dimensions</p><div class="aw-dims"><span>120</span><i>×</i><span>120</span><i>×</i><span>4 cm</span></div></div>
+                        <div class="aw-f aw-f--2 aw-meta"><div><small>DOCUMENTS</small><p>Provenance.pdf</p></div><div><small>AVAILABILITY</small><p class="aw-ok">Available</p></div></div>
+                      </div>
+                      <div class="aw-image"><p>Main image</p><div><img src="/mockups/gmail/painting-01.jpg" alt="" /><span>✓ Current</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <h3>Artwork inventory</h3>
+              <p><img class="inline-logo" src="/mockups/gmail/gallery-os.svg" alt="" width="14" height="14" />Gallery OS: every work, with its images and availability, in one record.</p>
+              <a class="product-card__link" href="#" aria-label="Open the artwork inventory"><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+        <div class="product-cards__nav" role="group" aria-label="Tools carousel" data-page-label="Go to page">
+          <button type="button" class="product-cards__btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <div class="product-cards__dots"></div>
+          <button type="button" class="product-cards__btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
         </div>
       </section>
       <section class="tasks" id="tasks" aria-labelledby="tasks-title">
@@ -764,7 +770,7 @@ here’s the piece you asked about:">
           </article>
         </div>
       </section>
-      <section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+      <section class="how-it-works" id="how-it-works" hidden aria-labelledby="how-title">
         <div class="section-heading">
           <p class="eyebrow">How it works</p>
           <h2 id="how-title">Send the work.<br /><span>I handle it.</span></h2>
@@ -847,14 +853,22 @@ here’s the piece you asked about:">
           </article>
         </div>
       </section>
-      <section class="software-promo software-promo--text" id="ways" aria-labelledby="ways-title">
-        <div class="software-promo__intro">
-          <p class="eyebrow">Exploring</p>
-          <h2 id="ways-title">New ways of working.</h2>
-        </div>
-        <div class="software-promo__body">
-          <p>Exploring how technology and AI can simplify everyday tasks, connect information and open up new possibilities for the art world.</p>
-        </div>
+      <section class="workshop" id="ways" aria-labelledby="ways-title">
+        <article class="workshop-card">
+          <div class="workshop-card__main">
+            <p class="eyebrow">Workshop</p>
+            <h2 id="ways-title">Get your team started with AI.</h2>
+            <p>A hands-on session built around your real tasks: exhibition texts, collector replies, inventory, sales material. Your team leaves with methods and prompts it can use the next morning.</p>
+          </div>
+          <div class="workshop-card__side">
+            <p class="workshop-card__note">I work on your own material: your texts, your inventory, your inbox. You leave with prompts and workflows you keep, whether you’re a solo gallerist or an established team.</p>
+            <a class="workshop-book" href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20AI%20workshop">
+              <span class="workshop-book__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17h.01M12 17h.01"/></svg></span>
+              <span class="workshop-book__text"><strong>Book a session</strong><small>Half-day · On site or remote · Price on request</small></span>
+              <span class="workshop-book__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
       </section>
       <section class="quote" aria-labelledby="quote-text">
         <blockquote>
@@ -922,7 +936,7 @@ here’s the piece you asked about:">
       <nav class="site-footer__nav" aria-label="Footer">
         <div>
           <span>Studio</span><a href="#products">Tools</a><a href="#services">Services</a
-          ><a href="#how-it-works">How it works</a>
+          ><a href="#how-it-works" hidden>How it works</a>
         </div>
         <div>
           <span>Company</span><a href="#ways">New ways of working</a
