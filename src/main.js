@@ -1498,33 +1498,37 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
   const section = document.querySelector(".studio-statement, .studio-intro");
   if (!section) return;
   const words = [];
-  section.querySelectorAll("[data-reveal]").forEach((p) => {
+  const split = (container) => {
     // Text nodes are split into words; an element marked .intro-name (name + photo)
-    // is kept whole and counts as a single word.
-    const nodes = [...p.childNodes];
-    p.textContent = "";
+    // is kept whole and counts as a single word. A .intro-tail wrapper is split in turn.
+    const nodes = [...container.childNodes];
+    container.textContent = "";
     nodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
         const parts = node.textContent.split(/(\s+)/);
         parts.forEach((part) => {
           if (!part) return;
           if (/^\s+$/.test(part)) {
-            p.append(" ");
+            container.append(" ");
             return;
           }
           const span = document.createElement("span");
           span.className = "rv-w";
           span.textContent = part;
-          p.append(span);
+          container.append(span);
           words.push(span);
         });
+      } else if (node.classList?.contains("intro-tail")) {
+        container.append(node);
+        split(node);
       } else {
         node.classList.add("rv-w");
-        p.append(node);
+        container.append(node);
         words.push(node);
       }
     });
-  });
+  };
+  section.querySelectorAll("[data-reveal]").forEach(split);
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const update = () => {
     const rect = section.getBoundingClientRect();
@@ -1842,6 +1846,24 @@ if (heroInvoice) {
   const toggle = () => {
     const opening = !card.classList.contains("is-expanded");
     animation?.cancel();
+    if (!reduce && matchMedia("(max-width: 640px)").matches) {
+      /* Mobile: the first paragraph also gains its tail, so animate the whole card's height. */
+      const before = card.getBoundingClientRect().height;
+      card.classList.toggle("is-expanded", opening);
+      button.setAttribute("aria-expanded", String(opening));
+      label.textContent = texts[opening ? 1 : 0];
+      const after = card.getBoundingClientRect().height;
+      card.style.overflow = "hidden";
+      animation = card.animate([{ height: `${before}px` }, { height: `${after}px` }], {
+        duration: 520,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      });
+      animation.onfinish = () => {
+        card.style.overflow = "";
+        animation = null;
+      };
+      return;
+    }
     card.classList.toggle("is-expanded", opening);
     button.setAttribute("aria-expanded", String(opening));
     label.textContent = texts[opening ? 1 : 0];

@@ -11069,3 +11069,66 @@ h2,
     padding-top: 36px;
   }
 }
+
+/* Mobile studio card: compact. The first paragraph stops at "and helping…" until the card is expanded. */
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) {
+    padding: 56px 22px 44px;
+  }
+  .studio-card {
+    padding: 30px 22px 24px;
+  }
+  .studio-statement:not(.studio-services) .studio-card > .eyebrow {
+    margin-bottom: 10px;
+  }
+  .studio-statement:not(.studio-services) .studio-card .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-card .studio-statement__notes p {
+    font-size: 19px;
+    line-height: 1.34;
+  }
+  .studio-statement:not(.studio-services) .studio-card .studio-statement__notes {
+    margin-top: 18px;
+  }
+  .studio-card:not(.is-expanded) .intro-tail {
+    display: none;
+  }
+  .studio-card:not(.is-expanded) .studio-statement__notes p:first-child::after {
+    content: "…";
+    color: inherit;
+  }
+  .studio-card__more {
+    font-size: 13px;
+    margin-top: 18px;
+    padding: 8px 12px 8px 14px;
+  }
+}
+
+/* Mobile: the collapsed paragraph stops at "every size" with no ellipsis. */
+@media (max-width: 640px) {
+  .studio-card:not(.is-expanded) .studio-statement__notes p:first-child::after {
+    content: none;
+  }
+}
+
+/* Mobile: collapsed, the card shows only the title; both paragraphs appear when it is expanded. */
+@media (max-width: 640px) {
+  .studio-card:not(.is-expanded) .studio-statement__notes {
+    display: none;
+  }
+  .studio-card.is-expanded .studio-statement__notes p:first-child::after {
+    content: none;
+  }
+}
+
+/* Mobile: the text takes the full content width (18px margins); the card bleeds outward around it. */
+@media (max-width: 640px) {
+  .studio-card {
+    margin-inline: -14px;
+    max-width: none;
+    padding-inline: 14px;
+    width: calc(100% + 28px);
+  }
+  .studio-card.is-expanded {
+    max-width: none;
+  }
+}
