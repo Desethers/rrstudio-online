@@ -11190,3 +11190,40 @@ h2,
     text-wrap: balance;
   }
 }
+
+/* Mobile hero sub-copy: one size up (16px) on three lines: the opening clause, "we make technology useful for", then the rolling label on its own line. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 16px;
+  }
+  html:not([lang="fr"]) .copy-tail {
+    white-space: normal;
+  }
+  .hero-tag {
+    display: block;
+    margin: 0.5em auto 0;
+    width: fit-content;
+  }
+}
+
+/* Mobile hero sub-copy (EN): 17px, broken after "apps" and after "useful"; the rolling label ends the last line ("for [label]"). */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 17px;
+  }
+  html:not([lang="fr"]) .hero-tag {
+    display: inline-block;
+    margin: 0;
+    width: auto;
+  }
+}
+
+/* Mobile hero sub-copy: 18px. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 18px;
+  }
+}
