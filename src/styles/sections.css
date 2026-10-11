@@ -11173,3 +11173,20 @@ h2,
 .hero__actions .button:focus-visible {
   background: #ebebe8;
 }
+
+/* Desktop: the Apps intro paragraph is balanced so its three lines are of similar length. */
+@media (min-width: 641px) {
+  .software-promo--tools .software-promo__description {
+    text-wrap: balance;
+  }
+}
+
+/* Desktop: balance the Apps paragraph itself (an earlier rule reset it to "wrap") on a narrower measure, so the 3 lines have similar lengths. */
+@media (min-width: 641px) {
+  .software-promo--tools .software-promo__description {
+    max-width: 600px;
+  }
+  .software-promo--tools .software-promo__description p {
+    text-wrap: balance;
+  }
+}
