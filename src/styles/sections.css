@@ -11132,3 +11132,35 @@ h2,
     max-width: none;
   }
 }
+
+/* Mobile studio card: the first paragraph is shown in full (up to "more simply."); only the second one waits for the expand. */
+@media (max-width: 640px) {
+  .studio-card:not(.is-expanded) .studio-statement__notes {
+    display: flex;
+  }
+  .studio-card:not(.is-expanded) .intro-tail {
+    display: inline;
+  }
+}
+
+/* Mobile hero sub-copy: back inside the content margins (no bleed), 15px so the longest rolling word still fits two lines
+ * with at least ~20px between the text and the screen edge. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 15px;
+    margin-inline: 0;
+    width: 100%;
+  }
+}
+
+/* Mobile: the WhatsApp button stays in its hover look permanently (stronger shadow, small lift). */
+@media (max-width: 640px) {
+  .hero__actions .outline-button {
+    box-shadow:
+      0 -2px 8px -4px rgba(17, 17, 16, 0.07),
+      0 5px 12px -4px rgba(17, 17, 16, 0.14);
+    clip-path: inset(-14px -14px -16px -14px);
+    transform: translateY(-1px);
+  }
+}
