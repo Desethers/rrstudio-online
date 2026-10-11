@@ -1824,3 +1824,46 @@ if (heroInvoice) {
     heroInvoice.closest(".hero-stage").classList.remove("is-open"),
   );
 }
+
+/* Studio card: shows the opening line and the first paragraph; the button (or a click on the card)
+ * grows the card in place to reveal the second paragraph, and folds it back. */
+(() => {
+  const card = document.querySelector(".studio-statement:not(.studio-services) .studio-card");
+  if (!card) return;
+  const button = card.querySelector(".studio-card__more");
+  const label = button.querySelector(".studio-card__label");
+  const notes = card.querySelector(".studio-statement__notes");
+  const extra = notes.querySelectorAll("p")[1];
+  if (!extra) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const texts = LANG === "fr" ? ["Lire la suite", "Réduire"] : ["Read more", "Show less"];
+  let animation = null;
+
+  const toggle = () => {
+    const opening = !card.classList.contains("is-expanded");
+    animation?.cancel();
+    card.classList.toggle("is-expanded", opening);
+    button.setAttribute("aria-expanded", String(opening));
+    label.textContent = texts[opening ? 1 : 0];
+    if (reduce) return;
+    const gap = parseFloat(getComputedStyle(notes).rowGap) || 0;
+    const height = extra.getBoundingClientRect().height;
+    const closed = { height: "0px", opacity: 0, marginTop: `${-gap}px` };
+    const full = { height: `${height}px`, opacity: 1, marginTop: "0px" };
+    extra.style.overflow = "hidden";
+    animation = extra.animate(opening ? [closed, full] : [full, closed], {
+      duration: 520,
+      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+    });
+    animation.onfinish = () => {
+      extra.style.overflow = "";
+      animation = null;
+    };
+  };
+
+  card.addEventListener("click", (event) => {
+    if (window.getSelection()?.toString()) return;
+    if (event.target.closest("a")) return;
+    toggle();
+  });
+})();

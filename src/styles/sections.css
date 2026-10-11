@@ -10718,3 +10718,354 @@ h2,
     }
   }
 }
+
+/* Grey card behind the inline "opening page" glyph, like the glyph cards in the task grid. */
+.intro-opening {
+  isolation: isolate;
+  margin-left: 0.62em;
+  margin-right: 0.5em;
+}
+.intro-opening::before {
+  background: var(--surface-soft, #f5f5f3);
+  border-radius: 10px;
+  bottom: -8px;
+  content: "";
+  left: -18px;
+  position: absolute;
+  right: -8px;
+  top: -11px;
+  z-index: -1;
+}
+@media (max-width: 640px) {
+  .intro-opening {
+    margin-left: 0.5em;
+    margin-right: 0.4em;
+  }
+  .intro-opening::before {
+    border-radius: 0.4em;
+    bottom: -0.25em;
+    left: -0.3em;
+    right: -0.25em;
+    top: -0.3em;
+  }
+}
+
+/* The grey card now sits behind the whole paragraph that holds the glyph (text alignment unchanged: the card bleeds outward). */
+.intro-opening::before {
+  display: none;
+}
+.intro-opening {
+  margin-left: 0.2em;
+  margin-right: 0.3em;
+}
+.studio-statement__notes p:has(.intro-opening) {
+  isolation: isolate;
+  position: relative;
+}
+.studio-statement__notes p:has(.intro-opening)::before {
+  background: var(--surface-soft, #f5f5f3);
+  border-radius: 20px;
+  bottom: -22px;
+  content: "";
+  left: -28px;
+  position: absolute;
+  right: -28px;
+  top: -22px;
+  z-index: -1;
+}
+@media (max-width: 640px) {
+  .intro-opening {
+    margin-left: 0.2em;
+    margin-right: 0.3em;
+  }
+  .studio-statement__notes p:has(.intro-opening)::before {
+    border-radius: 16px;
+    bottom: -16px;
+    left: -14px;
+    right: -14px;
+    top: -16px;
+  }
+}
+.studio-statement__notes p:has(.intro-opening) {
+  margin-top: 16px;
+}
+
+/* One grey card behind the whole "Studio" section (eyebrow, opening line and both paragraphs). */
+.studio-statement__notes p:has(.intro-opening)::before {
+  display: none;
+}
+.studio-statement__notes p:has(.intro-opening) {
+  margin-top: 0;
+}
+.studio-statement:not(.studio-services) {
+  isolation: isolate;
+  position: relative;
+}
+.studio-statement:not(.studio-services)::before {
+  background: var(--surface-soft, #f5f5f3);
+  border-radius: 28px;
+  bottom: 56px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 92px;
+  transform: translateX(-50%);
+  width: min(884px, calc(100% + 24px));
+  z-index: -1;
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services)::before {
+    bottom: 28px;
+    top: 48px;
+  }
+}
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services)::before {
+    border-radius: 20px;
+    width: calc(100% + 24px);
+  }
+}
+
+/* Studio card: wider, with more room above and below the text. */
+.studio-statement:not(.studio-services)::before {
+  bottom: 24px;
+  top: 64px;
+  width: min(1040px, calc(100% + 24px));
+}
+@media (max-width: 900px) {
+  .studio-statement:not(.studio-services)::before {
+    bottom: 12px;
+    top: 36px;
+  }
+}
+
+/* Studio card as wide as the task grid below it (same left and right edges). */
+@media (min-width: 901px) {
+  .studio-statement:not(.studio-services)::before {
+    left: 22px;
+    right: 22px;
+    transform: none;
+    width: auto;
+  }
+}
+
+/* ==== Studio: a compact white card (opening line + first paragraph) that opens into a modal. ==== */
+.studio-statement:not(.studio-services)::before {
+  display: none;
+}
+.studio-statement:not(.studio-services) {
+  isolation: auto;
+}
+.studio-statement.is-modal-open {
+  position: relative;
+  z-index: 200;
+}
+.studio-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow:
+    0 16px 26px -16px rgba(17, 17, 16, 0.22),
+    0 0 18px -8px rgba(17, 17, 16, 0.1);
+  cursor: pointer;
+  margin-inline: auto;
+  max-width: 920px;
+  padding: 40px 48px 32px;
+  position: relative;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.studio-card:hover {
+  box-shadow:
+    0 22px 34px -16px rgba(17, 17, 16, 0.26),
+    0 0 22px -8px rgba(17, 17, 16, 0.13);
+  transform: translateY(-2px);
+}
+.studio-statement:not(.studio-services) .studio-card > .eyebrow,
+.studio-statement:not(.studio-services) .studio-card .studio-statement__text,
+.studio-statement:not(.studio-services) .studio-card .studio-statement__notes {
+  margin-inline: 0;
+  max-width: none;
+}
+.studio-card > .eyebrow {
+  text-align: left;
+}
+.studio-card .studio-statement__notes p:nth-child(2) {
+  display: none;
+}
+.studio-card__more {
+  align-items: center;
+  background: var(--surface-soft);
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 14px;
+  gap: 8px;
+  margin-top: 26px;
+  padding: 9px 14px 9px 16px;
+}
+.studio-card__more i {
+  color: var(--muted);
+  font-style: normal;
+}
+.studio-modal {
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(17, 17, 16, 0.32);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 300;
+}
+.studio-modal__card {
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px -30px rgba(17, 17, 16, 0.4);
+  max-height: calc(100svh - 48px);
+  max-width: 920px;
+  overflow: auto;
+  padding: 56px 56px 48px;
+  position: relative;
+  width: 100%;
+}
+.studio-modal .rv-w {
+  --a: 1 !important;
+}
+.studio-modal__card > .eyebrow {
+  text-align: left;
+}
+.studio-modal__card .studio-statement__text,
+.studio-modal__card .studio-statement__notes {
+  margin-inline: 0 !important;
+  max-width: none !important;
+}
+.studio-modal__close {
+  align-items: center;
+  background: var(--surface-soft);
+  border: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font-size: 22px;
+  height: 36px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 36px;
+}
+@media (max-width: 640px) {
+  .studio-card {
+    border-radius: 20px;
+    padding: 26px 22px 22px;
+  }
+  .studio-modal {
+    padding: 12px;
+  }
+  .studio-modal__card {
+    border-radius: 22px;
+    padding: 56px 22px 28px;
+  }
+}
+
+/* Studio card v3: expands in place instead of opening a modal; lighter bottom shadow; expand icon on the button. */
+.studio-card {
+  box-shadow:
+    0 10px 18px -14px rgba(17, 17, 16, 0.12),
+    0 0 16px -8px rgba(17, 17, 16, 0.08);
+}
+.studio-card:hover {
+  box-shadow:
+    0 14px 24px -14px rgba(17, 17, 16, 0.16),
+    0 0 18px -8px rgba(17, 17, 16, 0.1);
+}
+.studio-card.is-expanded .studio-statement__notes p:nth-child(2) {
+  display: block;
+}
+.studio-card__more {
+  padding: 9px 14px 9px 16px;
+}
+.studio-card__more svg {
+  color: var(--muted);
+  flex: none;
+}
+.studio-card__more .i-collapse,
+.studio-card.is-expanded .studio-card__more .i-expand {
+  display: none;
+}
+.studio-card.is-expanded .studio-card__more .i-collapse {
+  display: block;
+}
+
+/* Studio card v4: centred label and button; the card's sides grow too when it expands (to the task grid's width). */
+.studio-card {
+  max-width: 920px;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    max-width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+}
+.studio-card.is-expanded {
+  max-width: 1216px;
+}
+/* The text keeps one column width (824px) centred in the card, so growing the sides never reflows it. */
+.studio-statement:not(.studio-services) .studio-card > .eyebrow,
+.studio-statement:not(.studio-services) .studio-card .studio-statement__text,
+.studio-statement:not(.studio-services) .studio-card .studio-statement__notes {
+  margin-inline: auto;
+  max-width: 824px;
+}
+.studio-card > .eyebrow {
+  text-align: center;
+}
+.studio-card__more {
+  display: flex;
+  margin: 26px auto 0;
+  width: fit-content;
+}
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-card > .eyebrow,
+  .studio-statement:not(.studio-services) .studio-card .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-card .studio-statement__notes {
+    max-width: none;
+  }
+}
+
+/* Studio card: same eyebrow-to-title gap as the Apps section (14px), and a lighter button label. */
+.studio-statement:not(.studio-services) .studio-card > .eyebrow {
+  margin-bottom: 14px;
+}
+.studio-card__more {
+  font-weight: var(--font-weight-300);
+}
+
+/* Expanded card: no shadow (and no hover lift). */
+.studio-card.is-expanded,
+.studio-card.is-expanded:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+/* Studio card: a little wider and with more padding above and below. */
+.studio-card {
+  max-width: 1040px;
+  padding-bottom: 46px;
+  padding-top: 56px;
+}
+.studio-card.is-expanded {
+  max-width: 1216px;
+}
+@media (max-width: 640px) {
+  .studio-card {
+    padding-bottom: 30px;
+    padding-top: 36px;
+  }
+}
