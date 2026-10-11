@@ -11164,3 +11164,12 @@ h2,
     transform: translateY(-1px);
   }
 }
+
+/* "Browse tasks" uses the same grey as the other pills (the "Website" dropdown). */
+.hero__actions .button {
+  background: var(--surface-soft);
+}
+.hero__actions .button:hover,
+.hero__actions .button:focus-visible {
+  background: #ebebe8;
+}
