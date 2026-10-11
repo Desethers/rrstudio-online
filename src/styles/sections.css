@@ -7934,6 +7934,34 @@ h2,
 .task-card:hover .tg--note {
   transform: translateY(2px);
 }
+/* Same lift-and-settle drift for the remaining glyphs: the front tile slides one way, the back tile the other. */
+.task-card:hover .tg--mh,
+.task-card:hover .tg--tfile,
+.task-card:hover .tg--tbadge,
+.task-card:hover .tg--dp,
+.task-card:hover .tg--ch,
+.task-card:hover .tg--vh,
+.task-card:hover .tg--rh {
+  transform: translateY(-2px);
+}
+.task-card:hover .tg--mb,
+.task-card:hover .tg--trows,
+.task-card:hover .tg--da,
+.task-card:hover .tg--cmeta,
+.task-card:hover .tg--vn,
+.task-card:hover .tg--rr {
+  transform: translateY(2px);
+}
+.task-card:hover .tg--ml,
+.task-card:hover .tg--dd,
+.task-card:hover .tg--cm,
+.task-card:hover .tg--va,
+.task-card:hover .tg--rp {
+  transform: translateX(2px);
+}
+.task-card:hover .tg--th {
+  transform: translateY(-1px);
+}
 
 /* Glyph tiles: flat at rest (hairline only), soft shadow only while the card is hovered. */
 .task-card .tg {
@@ -9533,5 +9561,1160 @@ h2,
 @media (max-width: 640px) {
   .tasks .section-heading p.section-heading__copy {
     max-width: none;
+  }
+}
+
+/* The three reassurances are hidden (kept in the markup). */
+.hero .reassurances {
+  display: none;
+}
+
+/* ==== Hero v2 (trial): 72px title split around a miniature invoice that grows
+   on hover; the category word in the sub-copy is a dropdown. To drop it, delete
+   this block and restore the old hero markup. ==== */
+.hero {
+  --fs: 72;
+  --inv-w: 560;
+  --inv-h: 540;
+  --s-rest: calc(var(--fs) * 1.1 / var(--inv-h));
+  --s-open: 0.5;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  min-height: 0;
+  text-align: center;
+}
+.hero__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__content {
+  align-items: center;
+  max-width: none;
+  width: 100%;
+}
+.hero-stage {
+  position: relative;
+  width: 100%;
+}
+.hero h1 {
+  font-size: calc(var(--fs) * 1px);
+  letter-spacing: -0.045em;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: none;
+  width: 100%;
+}
+.hero-line {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.hero-line__l,
+.hero-line__r {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+}
+.hero-line__l {
+  text-align: right;
+}
+.hero-line__r {
+  text-align: left;
+}
+.hero-gap {
+  flex: none;
+  transition: width 0.55s var(--ease);
+  width: 0.26em;
+}
+.hero-gap--invoice {
+  width: calc(var(--inv-w) * var(--s-rest) * 1px + 0.36em);
+}
+.hero-stage .service-estimate {
+  height: calc(var(--inv-h) * 1px);
+  left: 50%;
+  margin: 0;
+  max-width: none;
+  min-height: 0;
+  overflow: hidden;
+  padding: 26px 30px;
+  position: absolute;
+  text-align: left;
+  top: 75%;
+  transform: translate(-50%, -50%) scale(var(--s-rest));
+  transition:
+    transform 0.55s var(--ease),
+    box-shadow 0.4s ease;
+  width: calc(var(--inv-w) * 1px);
+  z-index: 3;
+}
+.hero-stage .service-estimate::before {
+  /* Extra hit area around the miniature. */
+  content: "";
+  inset: -170px;
+  position: absolute;
+}
+.hero-stage:has(.service-estimate:hover) .service-estimate,
+.hero-stage .service-estimate:focus-within {
+  box-shadow: 0 30px 60px -30px rgba(17, 17, 16, 0.28);
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--s-open));
+}
+.hero-stage:has(.service-estimate:hover) .hero-gap {
+  width: calc(var(--inv-w) * var(--s-open) * 1px + 0.6em);
+}
+/* Make room under the title so the opened invoice never covers the copy. */
+.hero-stage {
+  margin-bottom: calc(var(--inv-h) * (var(--s-open) - 0.28) * 1px);
+}
+.hero h1 + .hero__copy,
+.hero__copy {
+  margin-inline: auto;
+  max-width: 540px;
+}
+
+/* Category pill + dropdown inside the sub-copy. */
+.hero-pick {
+  display: inline-block;
+  position: relative;
+  vertical-align: baseline;
+}
+.hero-pick__btn {
+  align-items: center;
+  background: var(--surface-soft);
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.78em;
+  gap: 7px;
+  line-height: 1;
+  padding: 0.42em 0.8em 0.42em 0.95em;
+  transition: background-color 0.18s ease;
+}
+.hero-pick__btn:hover,
+.hero-pick.is-open .hero-pick__btn {
+  background: #ebebe8;
+}
+.hero-pick__btn svg {
+  color: var(--muted);
+  transition: transform 0.25s var(--ease);
+}
+.hero-pick.is-open .hero-pick__btn svg {
+  transform: rotate(180deg);
+}
+.hero-pick__menu {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px -18px rgba(17, 17, 16, 0.25);
+  display: block;
+  left: 50%;
+  margin: 8px 0 0;
+  min-width: 170px;
+  opacity: 0;
+  padding: 6px;
+  pointer-events: none;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  transform: translate(-50%, -6px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s var(--ease);
+  z-index: 20;
+}
+.hero-pick.is-open .hero-pick__menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.hero-pick__menu button {
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
+  color: var(--ink);
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  font-size: 14px;
+  padding: 9px 12px;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+}
+.hero-pick__menu button:hover,
+.hero-pick__menu button:focus-visible {
+  background: var(--surface-soft);
+}
+
+@media (max-width: 1280px) {
+  .hero { --fs: 60; }
+}
+/* Narrow screens: no hover, so the invoice drops back to a normal card below. */
+
+/* Miniature stays legible: a hairline and corner radius that survive the scale-down. */
+.hero-stage .service-estimate {
+  border: 0;
+  border-radius: 40px;
+  box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
+}
+.hero-stage:has(.service-estimate:hover) .service-estimate,
+.hero-stage .service-estimate:focus-within {
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 2px rgba(17, 17, 16, 0.07),
+    0 30px 60px -30px rgba(17, 17, 16, 0.28);
+}
+.hero-pick__menu[hidden] {
+  display: none;
+}
+
+
+/* Rolling audience label in the hero sub-copy. */
+.hero-tag {
+  background: #fff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(17, 17, 16, 0.05),
+    0 2px 6px -2px rgba(17, 17, 16, 0.1);
+  color: var(--ink);
+  display: inline-block;
+  padding: 0.12em 0.7em 0.16em;
+  position: relative;
+  white-space: nowrap;
+}
+.hero-tag__mask {
+  display: inline-block;
+  overflow: hidden;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  vertical-align: bottom;
+}
+.hero-tag__word {
+  display: inline-block;
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+.hero-tag__word.is-out {
+  opacity: 0;
+  transform: translateY(-70%);
+}
+.hero-tag__word.is-in {
+  opacity: 0;
+  transform: translateY(70%);
+  transition: none;
+}
+.hero-tag__measure {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+/* WhatsApp CTA set inline at the end of the sub-copy, in the same white label style. */
+.hero-cta {
+  align-items: center;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(17, 17, 16, 0.05),
+    0 2px 6px -2px rgba(17, 17, 16, 0.1);
+  color: var(--ink);
+  display: inline-flex;
+  gap: 0.4em;
+  margin-left: 0.3em;
+  padding: 0.12em 0.75em 0.16em 0.6em;
+  text-decoration: none;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.hero-cta svg {
+  color: #25d366;
+  flex: none;
+  height: 0.95em;
+  width: 0.95em;
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  box-shadow:
+    0 0 0 1px rgba(17, 17, 16, 0.07),
+    0 6px 14px -4px rgba(17, 17, 16, 0.16);
+  transform: translateY(-1px);
+}
+.hero__copy {
+  max-width: 600px;
+}
+
+/* "What I work on" strip hidden (kept in the markup: main.js binds to it). */
+.hero__strip {
+  display: none;
+}
+
+/* No underline under the title's closing words. */
+.hero-rotator__rule {
+  display: none;
+}
+
+/* Sub-copy one step up. */
+.hero .hero__copy,
+.hero h1 + .hero__copy {
+  font-size: 20px;
+  line-height: 1.45;
+  max-width: 640px;
+}
+
+/* White labels: soft shadow only, no hairline stroke. */
+.hero-tag,
+.hero-cta {
+  box-shadow: 0 2px 6px -2px rgba(17, 17, 16, 0.12);
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  box-shadow: 0 6px 14px -4px rgba(17, 17, 16, 0.18);
+}
+
+/* Category dropdown pill: one size up. */
+.hero-pick__btn {
+  font-size: 0.95em;
+  gap: 8px;
+  padding: 0.3em 0.85em 0.3em 1em;
+}
+.hero-pick__btn svg {
+  height: 12px;
+  width: 12px;
+}
+.hero-pick__menu button {
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.hero-pick__menu {
+  min-width: 190px;
+}
+
+/* Same text size as before; only the padding grows. */
+.hero-pick__btn {
+  font-size: 0.78em;
+  padding: 0.62em 1.1em 0.62em 1.25em;
+}
+.hero-pick__btn svg {
+  height: 10px;
+  width: 10px;
+}
+.hero-pick__menu button {
+  font-size: 14px;
+}
+
+/* Invoice: more breathing room either side, and no drop shadows (hairline ring only). */
+.hero-gap--invoice {
+  width: calc(var(--inv-w) * var(--s-rest) * 1px + 0.6em);
+}
+.hero-stage:has(.service-estimate:hover) .hero-gap {
+  width: calc(var(--inv-w) * var(--s-open) * 1px + 1.3em);
+}
+.hero-stage .service-estimate,
+.hero-stage:has(.service-estimate:hover) .service-estimate,
+.hero-stage .service-estimate:focus-within {
+  box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
+}
+/* At rest the ring is drawn at 9px so it still reads as a 1px hairline after the scale-down. */
+.hero-stage .service-estimate {
+  box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
+}
+.hero-stage:has(.service-estimate:hover) .service-estimate,
+.hero-stage .service-estimate:focus-within {
+  box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
+}
+
+
+/* Centre the title composition (see centreHero in main.js) and tighten the sub-copy. */
+.hero-stage {
+  --shift: 0px;
+  margin-bottom: 20px;
+}
+.hero-stage h1 {
+  transform: translateX(var(--shift));
+}
+.hero-stage .service-estimate {
+  left: calc(50% + var(--shift));
+}
+.hero h1 + .hero__copy,
+.hero .hero__copy {
+  margin-top: 28px;
+}
+
+
+/* Sub-copy: airier lines, and the WhatsApp label sits on its own centred row. */
+.hero .hero__copy,
+.hero h1 + .hero__copy {
+  line-height: 1.75;
+}
+.hero-cta {
+  display: flex;
+  margin: 22px auto 0;
+  width: fit-content;
+}
+
+/* Header CTA opens WhatsApp: icon + label. */
+.header-wa {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+.header-wa svg {
+  flex: none;
+  height: 16px;
+  width: 16px;
+}
+
+/* Sub-copy another step up. */
+.hero .hero__copy,
+.hero h1 + .hero__copy {
+  font-size: 23px;
+  max-width: 720px;
+}
+
+/* Mobile: smaller, tighter sub-copy. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 330px;
+  }
+  .hero-pick__btn {
+    padding: 0.5em 0.9em 0.5em 1em;
+  }
+}
+
+/* Hero v2 on every width: same title + miniature invoice, scaled down. Tap/focus opens the invoice. */
+@media (max-width: 1100px) {
+  .hero { --fs: 52; }
+  .hero-stage:has(.service-estimate:hover) .hero-gap {
+    width: calc(var(--inv-w) * var(--s-rest) * 1px + 0.6em);
+  }
+}
+@media (max-width: 900px) {
+  .hero { --fs: 44; }
+}
+@media (max-width: 640px) {
+  .hero {
+    --fs: 30;
+    --s-open: calc(var(--s-rest) * 2);
+  }
+  .hero-stage .service-estimate {
+    box-shadow: 0 0 0 16px rgba(17, 17, 16, 0.09);
+  }
+  .hero-stage:has(.service-estimate:hover) .service-estimate,
+  .hero-stage .service-estimate:focus-within,
+  .hero-stage .service-estimate:focus {
+    box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
+  }
+}
+.hero-stage .service-estimate:focus {
+  outline: none;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--s-open));
+}
+
+/* Tap-to-open state (touch), same look as hover. */
+.hero-stage.is-open .service-estimate {
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--s-open));
+  box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
+  border-radius: 20px;
+}
+@media (min-width: 1101px) {
+  .hero-stage.is-open .hero-gap {
+    width: calc(var(--inv-w) * var(--s-open) * 1px + 1.3em);
+  }
+}
+
+/* Mobile: no invoice in the title. */
+@media (max-width: 640px) {
+  .hero-stage .service-estimate {
+    display: none;
+  }
+  .hero-gap--invoice {
+    width: 0.26em;
+  }
+}
+
+/* Mobile: the invoice is gone, so the sub-copy moves up closer to the title. */
+@media (max-width: 640px) {
+  .hero-stage {
+    margin-bottom: 0;
+  }
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    margin-top: 0;
+  }
+}
+
+/* Mobile: studio statement text one step down. */
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+}
+
+/* Header CTA one size taller; the bar grows with it so nothing is clipped. */
+.header {
+  padding: 10px 0;
+}
+.header__inner {
+  height: 44px;
+}
+.header .button {
+  font-size: 13px;
+  line-height: 16px;
+  padding: 10px 18px;
+}
+.header .header-wa {
+  gap: 9px;
+}
+.header .header-wa svg {
+  height: 17px;
+  width: 17px;
+}
+
+/* "Studio" eyebrow centred like the other section eyebrows. */
+.studio-statement:not(.studio-services) > .eyebrow {
+  text-align: center;
+}
+
+/* Inline glyph in the studio intro: the opening page reduced to its photo and its real "Galerie" header pill.
+ * Dimensions are snapped to whole pixels with round() so edges stay crisp at any text size. */
+.intro-opening {
+  display: inline-block;
+  height: round(1.31em, 1px);
+  margin-left: 0.2em;
+  margin-right: round(0.3em, 1px);
+  position: relative;
+  vertical-align: round(-0.3em, 1px);
+  width: round(2.4em, 1px);
+}
+.intro-opening img {
+  border-radius: round(0.14em, 1px);
+  display: block;
+  height: 100%;
+  object-fit: fill;
+  width: 100%;
+}
+/* Header pill, same content and proportions as the task-card glyph; soft shadow, no stroke. */
+.intro-opening i {
+  align-items: center;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px -1px rgba(17, 17, 16, 0.25);
+  color: #111110;
+  display: flex;
+  font-size: 4.2px;
+  font-style: normal;
+  height: 13px;
+  justify-content: space-between;
+  left: -11px;
+  line-height: 1;
+  padding: 0 6px;
+  position: absolute;
+  top: -7px;
+  white-space: nowrap;
+  width: 86px;
+}
+.intro-opening i b {
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+.intro-opening i u {
+  text-decoration: none;
+}
+
+/* Mobile only: the header pill is a wireframe (bars instead of text), sized in em with the text. */
+@media (max-width: 640px) {
+  .intro-opening i b,
+  .intro-opening i u {
+    display: none;
+  }
+  .intro-opening i {
+    background:
+      linear-gradient(#111110, #111110) round(0.18em, 1px) 50% / round(0.34em, 1px) 2px no-repeat,
+      linear-gradient(#6b6b67, #6b6b67) round(0.64em, 1px) 50% / round(0.22em, 1px) 1px no-repeat,
+      linear-gradient(#6b6b67, #6b6b67) round(0.96em, 1px) 50% / round(0.22em, 1px) 1px no-repeat,
+      #fff;
+    height: round(0.5em, 1px);
+    left: round(-0.14em, 1px);
+    padding: 0;
+    top: round(-0.18em, 1px);
+    width: round(1.5em, 1px);
+  }
+}
+
+/* The header pill sits mostly on the photo so the white pill always reads against it. */
+.intro-opening i {
+  box-shadow: 0 2px 8px -1px rgba(17, 17, 16, 0.35);
+  top: -4px;
+}
+@media (max-width: 640px) {
+  .intro-opening i {
+    top: round(-0.06em, 1px);
+    left: round(-0.1em, 1px);
+  }
+}
+/* The pill carries a 4.2px font for its real text; the mobile wireframe sizes in em of the surrounding text instead. */
+@media (max-width: 640px) {
+  .intro-opening i {
+    font-size: inherit;
+  }
+}
+
+/* Desktop/tablet: grey paragraphs of the studio statement one step down (the opening line stays). */
+@media (min-width: 641px) {
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 28px;
+    line-height: 1.28;
+  }
+}
+
+/* With the smaller paragraph the photo is 67px wide: the header pill now ends flush with its right edge. */
+@media (min-width: 641px) {
+  .intro-opening i {
+    font-size: 4px;
+    left: -13px;
+    padding: 0 5px;
+    width: calc(100% + 13px);
+  }
+}
+
+
+/* Desktop/tablet: more space between the lines of the grey paragraphs. */
+@media (min-width: 641px) {
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    line-height: 1.45;
+  }
+}
+
+/* Hero CTA: white label with a soft shadow. On load only the round WhatsApp mark shows,
+ * then the pill grows to the right and reveals the text. */
+.hero__actions .outline-button {
+  animation: cta-pad 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  background: #fff;
+  border: 0;
+  box-shadow: 0 2px 8px -2px rgba(17, 17, 16, 0.16);
+  color: var(--ink);
+  gap: 0;
+  opacity: 1;
+  padding: 0 13px;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  box-shadow: 0 6px 16px -4px rgba(17, 17, 16, 0.22);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.hero__actions .outline-button svg {
+  animation: cta-icon 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  color: #25d366;
+}
+.hero__actions .outline-button:hover svg,
+.hero__actions .outline-button:focus-visible svg {
+  transform: none;
+}
+.hero__actions .outline-button .cta-label {
+  animation: cta-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.hero__actions .outline-button .cta-label > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@keyframes cta-grow {
+  from {
+    grid-template-columns: 0fr;
+    opacity: 0;
+  }
+  to {
+    grid-template-columns: 1fr;
+    opacity: 1;
+  }
+}
+@keyframes cta-icon {
+  from {
+    margin-right: 0;
+  }
+  to {
+    margin-right: 10px;
+  }
+}
+@keyframes cta-pad {
+  from {
+    padding-right: 13px;
+  }
+  to {
+    padding-right: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button,
+  .hero__actions .outline-button svg,
+  .hero__actions .outline-button .cta-label {
+    animation: none;
+  }
+  .hero__actions .outline-button {
+    padding-right: 22px;
+  }
+  .hero__actions .outline-button svg {
+    margin-right: 10px;
+  }
+}
+
+/* Hero actions: the "See the products" pill sits left of the WhatsApp label. */
+.hero__actions {
+  align-items: center;
+  gap: 12px;
+}
+
+/* WhatsApp label: a thin grey stroke so the opening circle reads clearly, and keeps framing the pill as it grows. */
+.hero__actions .outline-button {
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(138, 138, 134, 0.3),
+    0 2px 8px -2px rgba(17, 17, 16, 0.16);
+}
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  box-shadow:
+    0 0 0 1px rgba(138, 138, 134, 0.4),
+    0 6px 16px -4px rgba(17, 17, 16, 0.22);
+}
+
+/* Grey stroke belongs to the opening circle only: drawn on a pseudo-element that fades out as the pill grows. */
+.hero__actions .outline-button {
+  box-shadow: 0 2px 8px -2px rgba(17, 17, 16, 0.16);
+  position: relative;
+}
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  box-shadow: 0 6px 16px -4px rgba(17, 17, 16, 0.22);
+}
+.hero__actions .outline-button::before {
+  animation: cta-ring 0.5s ease 0.9s both;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(138, 138, 134, 0.3);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+@keyframes cta-ring {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button::before {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* WhatsApp CTA: the round mark is its own disc with a grey ring, sitting over the left end of the pill
+ * (the pill grows out from behind it to the right). */
+.hero__actions .outline-button::before {
+  animation: none;
+  background: #fff;
+  border: 3px solid rgba(138, 138, 134, 0.3);
+  border-radius: 50%;
+  bottom: auto;
+  box-shadow: none;
+  box-sizing: border-box;
+  height: 52px;
+  inset: auto;
+  left: -4px;
+  opacity: 1;
+  top: -4px;
+  width: 52px;
+  z-index: 0;
+}
+.hero__actions .outline-button svg,
+.hero__actions .outline-button .cta-label {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button::before {
+    opacity: 1;
+  }
+}
+
+/* Refinement: the WhatsApp disc is exactly the pill's height with a thin grey ring; the pill itself is
+ * drawn by its shadow alone and grows out to the right while the ringed disc stays put. */
+.hero__actions .outline-button::before {
+  border-width: 1px;
+  height: 44px;
+  left: 0;
+  top: 0;
+  width: 44px;
+}
+
+/* Bigger WhatsApp mark centred in the 44px disc, and more room between it and the label. */
+.hero__actions .outline-button {
+  padding-left: 10px;
+}
+.hero__actions .outline-button svg {
+  animation-name: cta-icon-wide;
+  height: 24px;
+  width: 24px;
+}
+@keyframes cta-icon-wide {
+  from {
+    margin-right: 0;
+  }
+  to {
+    margin-right: 16px;
+  }
+}
+@keyframes cta-pad {
+  from {
+    padding-right: 10px;
+  }
+  to {
+    padding-right: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button {
+    padding-right: 24px;
+  }
+  .hero__actions .outline-button svg {
+    margin-right: 16px;
+  }
+}
+
+/* The WhatsApp mark fills the whole 44px disc (2px inside the ring). */
+.hero__actions .outline-button {
+  padding-left: 2px;
+}
+.hero__actions .outline-button svg {
+  height: 40px;
+  width: 40px;
+}
+@keyframes cta-pad {
+  from {
+    padding-right: 2px;
+  }
+  to {
+    padding-right: 24px;
+  }
+}
+
+/* WhatsApp mark, all green: a green disc with the white glyph, ring drawn just outside it. */
+.hero__actions .outline-button::before {
+  background: #25d366;
+  border: 0;
+  box-shadow: 0 0 0 1px rgba(138, 138, 134, 0.3);
+}
+.hero__actions .outline-button svg,
+.hero__actions .outline-button:hover svg,
+.hero__actions .outline-button:focus-visible svg {
+  color: #fff;
+}
+
+/* WhatsApp logo from /logos/whatsapp.svg (green disc, white glyph) fills the whole 44px circle. */
+.hero__actions .outline-button {
+  padding-left: 0;
+}
+.hero__actions .outline-button::before {
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(138, 138, 134, 0.3);
+}
+.hero__actions .outline-button .cta-logo {
+  animation: cta-icon-wide 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+  border-radius: 50%;
+  display: block;
+  flex: none;
+  height: 44px;
+  position: relative;
+  width: 44px;
+  z-index: 1;
+}
+@keyframes cta-pad {
+  from {
+    padding-right: 0;
+  }
+  to {
+    padding-right: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button .cta-logo {
+    animation: none;
+    margin-right: 16px;
+  }
+}
+
+/* Logo nudged 5px right so a sliver of the pill shows to its left. */
+.hero__actions .outline-button {
+  padding-left: 5px;
+}
+.hero__actions .outline-button::before {
+  left: 5px;
+}
+
+/* Logo nudged further right (10px) and the white pill 6px shorter, so the logo disc overhangs it top and bottom. */
+.hero__actions .outline-button {
+  height: 38px;
+  padding-left: 10px;
+}
+.hero__actions .outline-button::before {
+  left: 10px;
+  top: -3px;
+}
+
+/* Simplified: the WhatsApp logo alone at load, then a normal 44px pill grows out to its right. No offset, no ring. */
+.hero__actions .outline-button {
+  height: 44px;
+  padding-left: 0;
+}
+.hero__actions .outline-button::before {
+  display: none;
+}
+
+/* WhatsApp pill shadow: nothing above, only a lighter one below (clip-path cuts anything over the top edge). */
+.hero__actions .outline-button {
+  box-shadow: 0 3px 8px -3px rgba(17, 17, 16, 0.1);
+  clip-path: inset(0 -14px -16px -14px);
+}
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  box-shadow: 0 5px 12px -4px rgba(17, 17, 16, 0.14);
+}
+
+/* Both hero buttons taller (50px); the logo disc grows with the pill. */
+.hero__actions .button,
+.hero__actions .outline-button {
+  height: 50px;
+}
+.hero__actions .outline-button .cta-logo {
+  height: 50px;
+  width: 50px;
+}
+/* Hover: a very light shadow above as well. */
+.hero__actions .outline-button:hover,
+.hero__actions .outline-button:focus-visible {
+  box-shadow:
+    0 -2px 8px -4px rgba(17, 17, 16, 0.07),
+    0 5px 12px -4px rgba(17, 17, 16, 0.14);
+  clip-path: inset(-14px -14px -16px -14px);
+}
+
+/* Rolling audience label: no shadow, a thin grey stroke instead (40% grey). */
+.hero-tag {
+  box-shadow: 0 0 0 1px rgba(138, 138, 134, 0.4);
+}
+
+/* The rolling label matches the height of the "Website" pill (both in em of the sub-copy). */
+.hero-tag {
+  line-height: 1;
+  padding: 0.374em 0.7em;
+}
+.hero-tag__mask,
+.hero-tag__word {
+  line-height: 1;
+}
+@media (max-width: 640px) {
+  .hero-tag {
+    padding: 0.28em 0.7em;
+  }
+}
+
+/* Descenders (g, y, p) are no longer clipped by the label's mask: it is taller than its line box, with the extra space cancelled out. */
+.hero-tag__mask {
+  margin: -0.2em 0;
+  padding: 0.2em 0;
+}
+
+/* Rolling label text in the same grey as the sub-copy. */
+.hero-tag {
+  color: inherit;
+}
+
+/* Rolling label: black stroke. */
+.hero-tag {
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+/* Mobile: hero buttons scaled to the other pills (40px), text 14px, and they wrap instead of overflowing. */
+@media (max-width: 640px) {
+  .hero__actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .hero__actions .button,
+  .hero__actions .outline-button {
+    font-size: 14px;
+    height: 40px;
+  }
+  .hero__actions .button {
+    padding-inline: 16px;
+  }
+  .hero__actions .outline-button .cta-logo {
+    height: 40px;
+    width: 40px;
+  }
+  .hero__actions .outline-button .cta-label {
+    font-size: 14px;
+  }
+  @keyframes cta-icon-wide {
+    from {
+      margin-right: 0;
+    }
+    to {
+      margin-right: 12px;
+    }
+  }
+  @keyframes cta-pad {
+    from {
+      padding-right: 0;
+    }
+    to {
+      padding-right: 18px;
+    }
+  }
+}
+
+/* Mobile only: the rolling label sits on its own line below the sentence, centred, so its changing width never reflows the text. */
+@media (max-width: 640px) {
+  .hero-tag {
+    display: block;
+    margin: 0.4em auto 0;
+    width: fit-content;
+  }
+}
+
+/* Header: brand, nav links and the pill's label share one text baseline, and the row stays centred in the bar. */
+@media (min-width: 901px) {
+  .header__inner {
+    align-content: center;
+    align-items: baseline;
+  }
+}
+
+/* Mobile: the category pill one size up; the rolling label follows so both stay the same height. */
+@media (max-width: 640px) {
+  .hero-pick__btn {
+    font-size: 0.9em;
+    padding: 0.55em 1em 0.55em 1.1em;
+  }
+  .hero-pick__btn svg {
+    height: 11px;
+    width: 11px;
+  }
+  .hero-tag {
+    padding: 0.44em 0.8em;
+  }
+  .hero-pick__menu button {
+    font-size: 15px;
+  }
+}
+
+/* Mobile: title one step up. */
+@media (max-width: 640px) {
+  .hero {
+    --fs: 34;
+  }
+}
+
+/* Mobile: the sub-copy spans the full content width, like the sections below. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Mobile: the sentence breaks after the first clause so every rolling word fits a two-line layout. */
+.m-br {
+  display: none;
+}
+@media (max-width: 640px) {
+  .m-br {
+    display: inline;
+  }
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 15px;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin: 0;
+    width: auto;
+  }
+  html:not([lang="fr"]) .copy-tail {
+    white-space: nowrap;
+  }
+}
+
+/* Mobile: keep the sub-copy at 16px and let it run wider than the content margins so the second line still fits. */
+@media (max-width: 640px) {
+  .hero .hero__copy,
+  .hero h1 + .hero__copy {
+    font-size: 16px;
+    margin-inline: -12px;
+    width: calc(100% + 24px);
+  }
+}
+
+/* Mobile: the two hero buttons sit side by side on one row. */
+@media (max-width: 640px) {
+  .hero__actions {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-inline: -12px;
+    width: calc(100% + 24px);
+  }
+  .hero__actions .button,
+  .hero__actions .outline-button {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .hero__actions .button {
+    padding-inline: 14px;
+  }
+  .hero__actions .outline-button .cta-label {
+    font-size: 13px;
+  }
+  @keyframes cta-icon-wide {
+    from {
+      margin-right: 0;
+    }
+    to {
+      margin-right: 10px;
+    }
+  }
+  @keyframes cta-pad {
+    from {
+      padding-right: 0;
+    }
+    to {
+      padding-right: 16px;
+    }
   }
 }

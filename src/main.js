@@ -1262,20 +1262,8 @@ if (dragZone) {
 const heroRotator = document.querySelector("#hero-rotator");
 if (heroRotator) {
   const HERO_WORDS = {
-    en: [
-      "galleries",
-      "artists",
-      "art advisors",
-      "art foundations",
-      "the art world",
-    ],
-    fr: [
-      "les galeries",
-      "les artistes",
-      "les art advisors",
-      "les fondations",
-      "le monde de l\u2019art",
-    ],
+    en: ["the art world"],
+    fr: ["le monde de l\u2019art"],
   };
   const words = HERO_WORDS[LANG];
   const mask = heroRotator.querySelector(".hero-rotator__mask");
@@ -1298,8 +1286,9 @@ if (heroRotator) {
   ) {
     const heading = heroRotator.closest("h1");
     const content = heading?.closest(".hero__content");
-    const firstLine = heading?.firstChild?.textContent.trim();
-    const prefix = heading?.querySelector("br")?.nextSibling?.textContent.trim();
+    const lines = heading?.querySelectorAll(".hero-line");
+    const firstLine = lines?.[0]?.textContent.replace(/\s+/g, " ").trim();
+    const prefix = lines?.[1]?.querySelector(".hero-line__l")?.textContent.trim();
 
     /* Fit the longest complete line before locking the two authored lines.
      * Measuring every word avoids a wrap midway through the width spring. */
@@ -1349,7 +1338,7 @@ if (heroRotator) {
        * the heading — the box would then hold the fallback's wider metrics.
        * One cheap re-measure, well before the first exchange, settles it. */
       setTimeout(pin, 300);
-      startCycle();
+      if (words.length > 1) startCycle();
     };
     /* Wait for the webfont before starting the cycle: fallback metrics can
      * give the box a different width. Until the box holds a real length,
@@ -1674,3 +1663,164 @@ document.querySelectorAll(".product-visual--crm").forEach((visual) => {
   card.addEventListener("focusin", play);
   card.addEventListener("focusout", rest);
 });
+
+/* Hero sub-copy: the category pill is a dropdown that lists the task section's
+ * other filters. Picking one re-uses the task filter buttons (same handler). */
+const heroPick = document.querySelector("#hero-pick");
+if (heroPick) {
+  const button = heroPick.querySelector(".hero-pick__btn");
+  const label = heroPick.querySelector(".hero-pick__label");
+  const menu = heroPick.querySelector(".hero-pick__menu");
+  const filters = [...document.querySelectorAll(".task-filters .filter")];
+  const labelOf = (filter) => filter.textContent.trim();
+  let current = filters.find((f) => f.dataset.filter === "website") || filters[0];
+
+  const setOpen = (open) => {
+    if (open) {
+      menu.hidden = false;
+      void menu.offsetWidth;
+    }
+    heroPick.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", String(open));
+    if (!open) {
+      clearTimeout(setOpen.timer);
+      setOpen.timer = setTimeout(() => {
+        if (!heroPick.classList.contains("is-open")) menu.hidden = true;
+      }, 220);
+    }
+  };
+  const renderMenu = () => {
+    label.textContent = labelOf(current);
+    menu.innerHTML = "";
+    filters
+      .filter((f) => f !== current && f.dataset.filter !== "all")
+      .forEach((f) => {
+        const item = document.createElement("span");
+        item.style.display = "block";
+        item.setAttribute("role", "option");
+        const choice = document.createElement("button");
+        choice.type = "button";
+        choice.textContent = labelOf(f);
+        choice.addEventListener("click", () => {
+          current = f;
+          f.click();
+          renderMenu();
+          setOpen(false);
+          button.focus();
+        });
+        item.append(choice);
+        menu.append(item);
+      });
+  };
+  renderMenu();
+  menu.hidden = true;
+  button.addEventListener("click", () => setOpen(!heroPick.classList.contains("is-open")));
+  document.addEventListener("click", (event) => {
+    if (!heroPick.contains(event.target)) setOpen(false);
+  });
+  heroPick.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setOpen(false);
+      button.focus();
+    }
+  });
+}
+
+/* Hero sub-copy: the closing audience sits in a small label that rolls through
+ * the audiences the studio serves. The box springs to each word's width. */
+const heroTag = document.querySelector("#hero-tag");
+if (heroTag && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const TAG_WORDS = {
+    en: ["the art world", "galleries", "artists", "art advisors", "art foundations"],
+    fr: ["le monde de l\u2019art", "les galeries", "les artistes", "les art advisors", "les fondations"],
+  };
+  const tagWords = TAG_WORDS[LANG];
+  const tagMask = heroTag.querySelector(".hero-tag__mask");
+  const tagWord = heroTag.querySelector(".hero-tag__word");
+  const tagMeasure = heroTag.querySelector(".hero-tag__measure");
+  const tagWidth = (text) => {
+    tagMeasure.textContent = text;
+    return tagMeasure.getBoundingClientRect().width;
+  };
+  let tagIndex = 0;
+  const pinTag = () => {
+    tagMask.style.transition = "none";
+    tagMask.style.width = `${tagWidth(tagWords[tagIndex])}px`;
+    void tagMask.offsetWidth;
+    tagMask.style.transition = "";
+  };
+  const rollTag = () => {
+    tagIndex = (tagIndex + 1) % tagWords.length;
+    const next = tagWords[tagIndex];
+    tagMask.style.width = `${tagWidth(next)}px`;
+    /* Web Animations rather than class toggles: the new word always ends fully visible. */
+    const leave = tagWord.animate(
+      [
+        { opacity: 1, transform: "none" },
+        { opacity: 0, transform: "translateY(-70%)" },
+      ],
+      { duration: 220, easing: "ease", fill: "forwards" },
+    );
+    leave.onfinish = () => {
+      tagWord.textContent = next;
+      leave.cancel();
+      tagWord.animate(
+        [
+          { opacity: 0, transform: "translateY(70%)" },
+          { opacity: 1, transform: "none" },
+        ],
+        { duration: 260, easing: "ease" },
+      );
+    };
+  };
+  (document.fonts?.ready || Promise.resolve()).then(() => {
+    pinTag();
+    setInterval(rollTag, 2600);
+    window.addEventListener("resize", pinTag);
+  });
+}
+
+/* Hero title: the two lines are anchored on the invoice gap, so the longer right
+ * halves would push the composition off-centre. Shift the whole stage so the widest
+ * left and right extents sit symmetrically around the page centre. */
+const heroStage = document.querySelector(".hero-stage");
+if (heroStage) {
+  /* Union of the visible text rects only: the hidden measuring and screen-reader
+   * spans inside the rotator would otherwise inflate the width. */
+  const textWidth = (el) => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let left = Infinity;
+    let right = -Infinity;
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (!node.textContent.trim()) continue;
+      if (node.parentElement.closest(".visually-hidden, .hero-rotator__measure")) continue;
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      const rect = range.getBoundingClientRect();
+      left = Math.min(left, rect.left);
+      right = Math.max(right, rect.right);
+    }
+    return right > left ? right - left : 0;
+  };
+  const centreHero = () => {
+    const lefts = [...heroStage.querySelectorAll(".hero-line__l")].map(textWidth);
+    const rights = [...heroStage.querySelectorAll(".hero-line__r")].map(textWidth);
+    const shift = (Math.max(...lefts) - Math.max(...rights)) / 2;
+    heroStage.style.setProperty("--shift", `${shift.toFixed(1)}px`);
+  };
+  centreHero();
+  (document.fonts?.ready || Promise.resolve()).then(centreHero);
+  window.addEventListener("resize", centreHero);
+}
+
+/* Touch: tap the miniature invoice to open it, tap anywhere else to close it. */
+const heroInvoice = document.querySelector(".hero-stage .service-estimate");
+if (heroInvoice) {
+  heroInvoice.addEventListener("click", (event) => {
+    event.stopPropagation();
+    heroInvoice.closest(".hero-stage").classList.toggle("is-open");
+  });
+  document.addEventListener("click", () =>
+    heroInvoice.closest(".hero-stage").classList.remove("is-open"),
+  );
+}

@@ -315,44 +315,27 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__layout">
           <div class="hero__content">
-            <p class="eyebrow">Le service tech que votre galerie n’a pas.</p>
+            <div class="hero-stage">
             <h1 id="hero-title">
-              Faire fonctionner<br />
-              la technologie pour
-              <span class="hero-rotator-group"
+              <span class="hero-line"
+                ><span class="hero-line__l">Faire</span
+                ><span class="hero-gap" aria-hidden="true"></span
+                ><span class="hero-line__r">fonctionner</span></span
+              >
+              <span class="hero-line"
+                ><span class="hero-line__l">la technologie pour</span
+                ><span class="hero-gap hero-gap--invoice" aria-hidden="true"></span
+                ><span class="hero-line__r"><span class="hero-rotator-group"
                 ><span class="hero-rotator" id="hero-rotator" aria-hidden="true"
                   ><span class="hero-rotator__mask"
                     ><span class="hero-rotator__measure"></span
-                    ><span class="hero-rotator__word">les galeries</span></span
+                    ><span class="hero-rotator__word">le monde de l’art</span></span
                   ><span class="hero-rotator__rule"></span></span
-                ><span class="visually-hidden">les galeries</span>.</span
+                ><span class="visually-hidden">le monde de l’art</span>.</span
+              ></span></span
               >
             </h1>
-            <p class="hero__copy">
-              Des sites web plus solides et des outils connectés, jusqu’aux logiciels sur mesure et à l’IA : des solutions concrètes pour le monde de l’art.
-            </p>
-            <ul class="reassurances" aria-label="Avantages du service">
-              <li><i data-lucide="badge-euro" aria-hidden="true"></i>Tarifs clairs</li>
-              <li><i data-lucide="badge-check" aria-hidden="true"></i>Un seul contact</li>
-              <li><i data-lucide="plug" aria-hidden="true"></i>Adapté à vos méthodes</li>
-            </ul>
-            <div class="hero__actions">
-              <a class="button" href="#products">Voir les produits <span aria-hidden="true">→</span></a>
-              <a
-                class="outline-button"
-                href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet."
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Parler de votre projet sur WhatsApp"
-                ><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                  ><path
-                    d="M20.52 3.48A11.87 11.87 0 0 0 12.08 0C5.52 0 .18 5.34.18 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.87 11.87 0 0 0 5.77 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.44ZM12.08 21.8a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.74.98 1-3.64-.24-.38a9.87 9.87 0 0 1-1.51-5.25c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.46-4.44 9.9-9.88 9.9Zm5.42-7.4c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08a8.1 8.1 0 0 1-2.4-1.48 9.02 9.02 0 0 1-1.66-2.07c-.18-.3 0-.46.13-.6.13-.12.3-.32.45-.48.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5 0 1.48 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.15 4.56.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"
-                  ></path></svg
-                >Parler de votre projet</a
-              >
-            </div>
-          </div>
-          <aside class="service-estimate" aria-label="Exemple de facture de service">
+            <aside class="service-estimate" tabindex="0" aria-label="Exemple de facture de service">
             <div class="invoice-top">
               <div>
                 <p class="invoice-brand">R.R Studio</p>
@@ -386,6 +369,32 @@
               <span>Paiement après livraison</span><strong>Sans abonnement · Sans forfait</strong>
             </div>
           </aside>
+            </div>
+            <p class="hero__copy">
+              Pour <span class="hero-pick" id="hero-pick"
+                ><button class="hero-pick__btn" type="button" aria-haspopup="listbox" aria-expanded="false"
+                  ><span class="hero-pick__label">Site web</span
+                  ><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.8 5 6.8l3-3" /></svg></button
+                ><span class="hero-pick__menu" role="listbox" hidden></span></span
+              >, des outils aux applications sur mesure et à l’IA :<br class="m-br" /><span class="copy-tail"> nous rendons la technologie utile pour <span class="visually-hidden">le monde de l’art</span><span class="hero-tag" id="hero-tag" aria-hidden="true"><span class="hero-tag__mask"><span class="hero-tag__word">le monde de l’art</span></span><span class="hero-tag__measure"></span></span></span>
+            </p>
+            <div class="hero__actions">
+              <a class="button" href="#tasks">Parcourir les tâches <span aria-hidden="true">→</span></a>
+              <a
+                class="outline-button"
+                href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet."
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Parler de votre projet sur WhatsApp"
+                ><img class="cta-logo" src="/logos/whatsapp.svg" alt="" width="44" height="44" /><span class="cta-label"><span>Parler de votre projet</span></span></a
+              >
+            </div>
+            <ul class="reassurances" aria-label="Avantages du service">
+              <li><i data-lucide="badge-euro" aria-hidden="true"></i>Tarifs clairs</li>
+              <li><i data-lucide="badge-check" aria-hidden="true"></i>Un seul contact</li>
+              <li><i data-lucide="plug" aria-hidden="true"></i>Adapté à vos méthodes</li>
+            </ul>
+          </div>
         </div>
               <div class="hero__strip" id="services">
           <p class="hero__strip-label">Mes domaines</p>
@@ -418,7 +427,7 @@
         <p class="studio-statement__text" data-reveal>R.R Studio est un studio indépendant de design et de technologie pour le monde de l’art contemporain.</p>
         <div class="studio-statement__notes">
           <p data-reveal>Je suis <span class="intro-name"><img src="/images/raphael.jpg" alt="" width="40" height="40" />Raphaël</span> et je crois que la technologie peut <span class="intro-chip">servir <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>⁠les</span> galeries</span> de toutes tailles : donner à un galeriste seul les outils d’une méga-galerie, et aider <span class="intro-chip">les <span class="nw"><span class="intro-stack" aria-hidden="true"><img src="/images/team-1.jpg" alt="" width="40" height="40" /><img src="/images/team-2.jpg" alt="" width="40" height="40" /><img src="/images/team-3.jpg" alt="" width="40" height="40" /></span>⁠équipes</span></span> établies à travailler plus simplement.</p>
-          <p data-reveal>Je conçois <span class="intro-chip">des <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>⁠sites</span> web</span> et des outils sur mesure pour les galeries et les artistes, et j’apporte un accompagnement concret, des corrections web <span class="intro-chip">aux <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>⁠améliorations</span> de workflow</span>.</p>
+          <p data-reveal>Je conçois <span class="intro-chip">des <span class="nw"><span class="intro-opening" aria-hidden="true"><img src="/mockups/opening-glyph.jpg" alt="" width="77" height="42" /><i><b>GALERIE</b><u>Exhibitions &nbsp;Artists &nbsp;Fairs</u></i></span>⁠sites</span> web</span> et des outils sur mesure pour les galeries et les artistes, et j’apporte un accompagnement concret, des corrections web <span class="intro-chip">aux <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>⁠améliorations</span> de workflow</span>.</p>
         </div>
       </section>
       <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
