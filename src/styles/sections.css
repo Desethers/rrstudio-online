@@ -7181,7 +7181,8 @@ h2,
 }
 
 /* Small brand logos inline in the tool card subtitles. */
-.software-promo--tools .product-card__body .inline-logo {
+.software-promo--tools .product-card__body .inline-logo,
+.software-promo--tools .software-promo__description .inline-logo {
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -7194,7 +7195,8 @@ h2,
 }
 
 /* Gmail logo sits on a white disc. */
-.software-promo--tools .product-card__body .inline-logo[src$="gmail.png"] {
+.software-promo--tools .product-card__body .inline-logo[src$="gmail.png"],
+.software-promo--tools .software-promo__description .inline-logo[src$="gmail.png"] {
   background: #fff;
   border-radius: 50%;
   box-sizing: border-box;
@@ -9018,4 +9020,475 @@ h2,
 .hero__strip .category-link:hover svg,
 .hero__strip .category-link:focus-visible svg {
   color: var(--foreground);
+}
+
+/* Keeps an inline logo on the same line as the word it belongs to. */
+.software-promo__description .nowrap {
+  white-space: nowrap;
+}
+
+/* Intro logos match the 20px copy; the first one stays with the word before it. */
+.software-promo--tools .software-promo__description .inline-logo,
+.software-promo--tools .software-promo__description .inline-logo[src$="gmail.png"] {
+  background: none;
+  border-radius: 0;
+  height: 22px;
+  margin: 0 6px 0 2px;
+  padding: 0;
+  vertical-align: -4px;
+  width: 22px;
+}
+
+/* Gmail logo in the intro sits in a thin grey circle. */
+.software-promo--tools .software-promo__description .inline-logo[src$="gmail.png"] {
+  background: #fff;
+  border: 0.4px solid #a3a3a3;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+/* Gmail one notch larger. */
+.software-promo--tools .software-promo__description .inline-logo[src$="gmail.png"] {
+  height: 25px;
+  padding: 4px;
+  vertical-align: -6px;
+  width: 25px;
+}
+
+/* Apps intro paragraph on three lines. */
+.software-promo--tools .software-promo__description {
+  max-width: 680px;
+}
+
+/* Inline icon + word chips in the studio intro; the pair never splits across lines. */
+.intro-chip {
+  white-space: nowrap;
+}
+.intro-chip svg {
+  height: 0.95em;
+  margin-right: 0.26em;
+  vertical-align: -0.12em;
+  width: 0.95em;
+}
+
+/* Three overlapping circles before "teams". */
+.intro-chip svg.intro-stack {
+  height: 0.8em;
+  margin-right: 0.3em;
+  vertical-align: -0.06em;
+  width: 1.47em;
+}
+
+/* Overlapping portraits before "teams". */
+.intro-stack {
+  display: inline-flex;
+  margin-right: 0.3em;
+  vertical-align: -0.3em;
+}
+.intro-stack img {
+  border: 2px solid var(--background, #fff);
+  border-radius: 50%;
+  box-sizing: content-box;
+  height: 1.05em;
+  object-fit: cover;
+  opacity: calc(0.3 + 0.7 * var(--a, 1));
+  width: 1.05em;
+}
+.intro-stack img + img {
+  margin-left: -0.42em;
+}
+
+.software-promo--tools .software-promo__description {
+  max-width: 740px;
+}
+
+.software-promo--tools .software-promo__intro {
+  max-width: 740px;
+}
+
+/* Natural wrapping (not balanced) so "Gmail" and its badge land on the second line. */
+.software-promo--tools .software-promo__intro {
+  max-width: 700px;
+}
+.software-promo--tools .software-promo__description p {
+  text-wrap: wrap;
+}
+
+/* Mobile: the four service links share one line under the label. */
+@media (max-width: 640px) {
+  .hero__strip .category-strip {
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .hero__strip .category-link,
+  .hero__strip .category-link + .category-link,
+  .hero__strip .category-link:first-child,
+  .hero__strip .category-link:last-child {
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .hero__strip .category-link svg {
+    height: 14px;
+    width: 14px;
+  }
+  .hero__strip .category-link strong {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+}
+
+/* Mobile studio text: smaller step and justified, so the paragraphs read as one block
+   instead of ragged centred lines. */
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    text-align: left;
+    text-wrap: pretty;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__text {
+    font-size: 24px;
+    line-height: 1.18;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 21px;
+    letter-spacing: -0.005em;
+    line-height: 1.22;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__notes {
+    gap: 16px;
+    margin-top: 32px;
+  }
+  /* Let the chips wrap so lines fill out evenly. */
+  .studio-statement .intro-chip {
+    white-space: normal;
+  }
+}
+
+.studio-statement .nw {
+  white-space: nowrap;
+}
+
+/* Mobile: the glyph sits above the "Add task" button instead of behind it. */
+@media (max-width: 640px) {
+  .task-card .task-glyph {
+    bottom: 62px;
+    right: 16px;
+  }
+}
+
+/* Mobile cards one notch larger. */
+@media (max-width: 640px) {
+  .task-card {
+    padding: 18px;
+    width: 72%;
+  }
+  .task-category {
+    font-size: 10px;
+  }
+  .task-card h3 {
+    font-size: 17px;
+  }
+  .task-price {
+    font-size: 15px;
+  }
+  .task-description {
+    font-size: 13px;
+  }
+  .task-add {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  .task-card .task-glyph {
+    bottom: 66px;
+    right: 18px;
+  }
+}
+
+/* Mobile: the studio text uses the full page width (the 18px page margin only). */
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) {
+    padding-inline: 0;
+  }
+}
+
+/* Mobile cards a bit bigger again. */
+@media (max-width: 640px) {
+  .task-card {
+    padding: 20px;
+    width: 80%;
+  }
+  .task-card.is-expanded {
+    width: 92%;
+  }
+  .task-card.has-glyph {
+    min-height: 372px;
+  }
+  .task-card:has(.task-glyph--tall),
+  .task-card.has-glyph:has(.task-glyph--tall) {
+    min-height: 396px;
+  }
+  .task-card h3 {
+    font-size: 18px;
+  }
+  .task-price {
+    font-size: 16px;
+  }
+  .task-description {
+    font-size: 14px;
+  }
+  .task-card .task-glyph {
+    bottom: 72px;
+    right: 20px;
+    transform: scale(1.15);
+    transform-origin: bottom right;
+  }
+}
+
+/* Mobile: the glyph is centred horizontally in its card. */
+@media (max-width: 640px) {
+  .task-card .task-glyph {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) scale(1.15);
+    transform-origin: bottom center;
+  }
+}
+
+/* Mobile: taller cards, so the glyph's shadow stays clear of the "Add task" button. */
+@media (max-width: 640px) {
+  .task-card.has-glyph {
+    min-height: 392px;
+  }
+  .task-card:has(.task-glyph--tall),
+  .task-card.has-glyph:has(.task-glyph--tall) {
+    min-height: 416px;
+  }
+  .task-card .task-glyph {
+    bottom: 92px;
+  }
+}
+
+/* Mobile has no hover: the glyph tiles keep only a hairline outline, no drop shadow. */
+@media (max-width: 640px) {
+  .task-grid .task-card .task-glyph .tg,
+  .task-grid .task-card .task-glyph .tg img {
+    box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.07);
+    filter: none;
+  }
+}
+
+/* Mobile: all five category filters visible at once, centred on two lines. */
+@media (max-width: 640px) {
+  .tasks .task-filters {
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-inline: auto;
+    max-width: 300px;
+    overflow: visible;
+    padding-inline: 0;
+  }
+}
+
+/* Mobile workshop card: full page width, calmer type, the note separated from the pitch by a hairline. */
+@media (max-width: 640px) {
+  .workshop {
+    padding-inline: 0;
+  }
+  .workshop .workshop-card {
+    border-radius: 20px;
+    gap: 22px;
+    padding: 28px 22px 22px;
+  }
+  .workshop .workshop-card__main h2 {
+    font-size: 26px;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .workshop .workshop-card__main > p:last-child {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .workshop .workshop-card__side {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    gap: 18px;
+    padding-top: 22px;
+  }
+  .workshop .workshop-card__note {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .workshop .workshop-book {
+    gap: 12px;
+    padding: 14px;
+  }
+  .workshop .workshop-book__icon {
+    height: 38px;
+    width: 38px;
+  }
+  .workshop .workshop-book__text small {
+    font-size: 12px;
+  }
+}
+
+/* Mobile: every section uses the same content width, the 18px page margin only. */
+@media (max-width: 640px) {
+  .quote,
+  .faq,
+  .footer-cta {
+    padding-inline: 0;
+  }
+  .site-footer {
+    padding-inline: 18px;
+  }
+}
+
+/* Mobile: an opened card keeps its closed height, so nothing shifts vertically on tap. */
+@media (max-width: 640px) {
+  .task-grid .task-card.has-glyph.is-expanded {
+    min-height: 392px;
+  }
+  .task-grid .task-card.has-glyph.is-expanded:has(.task-glyph--tall) {
+    min-height: 416px;
+  }
+}
+
+/* Pages kept at natural height on the phone carousel sit vertically centred in the pane. */
+.task-card.is-expanded .task-card__media > [data-morph] {
+  top: var(--preview-y, 0px);
+}
+
+/* Mobile: the five category filters sit on a single line. */
+@media (max-width: 640px) {
+  .tasks .task-filters {
+    flex-wrap: nowrap;
+    gap: 2px;
+    justify-content: space-between;
+    margin-inline: 0;
+    max-width: none;
+    overflow-x: auto;
+    padding-inline: 0;
+    scrollbar-width: none;
+  }
+  .tasks .task-filters .filter {
+    font-size: 12px;
+    padding: 8px 9px;
+  }
+}
+
+/* Mobile: a tighter Tasks header. */
+@media (max-width: 640px) {
+  .tasks {
+    padding-block: 44px 36px;
+  }
+  .tasks .section-heading {
+    gap: 10px;
+  }
+  .tasks .section-heading h2 {
+    margin: 4px 0 8px;
+  }
+  .tasks .section-heading p.section-heading__copy {
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 320px;
+  }
+  .tasks .task-filters {
+    margin-block: 24px 14px;
+  }
+}
+
+/* Mobile: the two hero buttons share one line. */
+@media (max-width: 640px) {
+  .hero__actions {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .hero__actions .button {
+    flex: 0 1 auto;
+    gap: 5px;
+    padding-inline: 10px;
+    white-space: nowrap;
+  }
+}
+
+/* Mobile: an opened card stacks its text above the page mockup, which then has the whole
+   card width to lay itself out in. */
+@media (max-width: 640px) {
+  .task-grid {
+    align-items: flex-start;
+  }
+  .task-grid .task-card.is-expanded {
+    flex-direction: column;
+    gap: 16px;
+    height: auto;
+    min-height: 0;
+    width: 92%;
+  }
+  .task-grid .task-card.is-expanded .task-card__body {
+    flex: 0 0 auto;
+  }
+  .task-grid .task-card.is-expanded .task-card__media {
+    border-radius: 10px;
+    flex: 0 0 auto;
+    height: 340px;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+/* Mobile: the PDF page is drawn at a size that suits the stacked card pane. */
+@media (max-width: 640px) {
+  .task-card.is-expanded .task-card__media > .preview-pdf[data-morph] {
+    height: 400px;
+    left: 30px;
+    padding: 28px;
+    top: 24px;
+    width: 300px;
+  }
+}
+
+/* Studio text at the same size as the section titles ("Tools for everyday work."):
+   32px on desktop, 24px on mobile. */
+.studio-statement:not(.studio-services) .studio-statement__text,
+.studio-statement:not(.studio-services) .studio-statement__notes p {
+  font-size: 32px;
+  line-height: 1.15;
+}
+@media (max-width: 640px) {
+  .studio-statement:not(.studio-services) .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    font-size: 24px;
+    line-height: 1.18;
+  }
+}
+
+/* Desktop: the studio text is one left-aligned block of even lines, centred on the page. */
+@media (min-width: 641px) {
+  .studio-statement:not(.studio-services) {
+    text-align: left;
+  }
+  .studio-statement:not(.studio-services) > .eyebrow,
+  .studio-statement:not(.studio-services) .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-statement__notes {
+    margin-inline: auto;
+    max-width: 820px;
+    width: 100%;
+  }
+  .studio-statement:not(.studio-services) .studio-statement__text,
+  .studio-statement:not(.studio-services) .studio-statement__notes p {
+    text-align: left;
+    text-wrap: pretty;
+  }
+  .studio-statement .intro-chip {
+    white-space: normal;
+  }
+}
+
+/* The portrait circle next to "Raphael" matches the size of the team circles. */
+.studio-statement .intro-name img {
+  height: calc(1.05em + 4px);
+  width: calc(1.05em + 4px);
 }

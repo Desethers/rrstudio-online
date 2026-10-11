@@ -771,21 +771,27 @@ function openPreview(task) {
  * thing down to land exactly on the pane — the same way the full-bleed
  * screenshots read as miniatures. Measured after the DOM mutation but
  * before Flip starts tweening, when the layout is already final. */
-const PREVIEW_DESIGN_WIDTH = 560;
+const PREVIEW_DESIGN_WIDTH_DESKTOP = 560;
+/* On the phone the open card is stacked (text, then page), so the page gets the
+ * card's full width and is laid out at a narrower, phone-like design width. */
+const PREVIEW_DESIGN_WIDTH_PHONE = 360;
+const previewDesignWidth = () =>
+  carouselQuery.matches ? PREVIEW_DESIGN_WIDTH_PHONE : PREVIEW_DESIGN_WIDTH_DESKTOP;
 
 function scalePreviewToPane(media) {
   media.style.removeProperty("--preview-scale");
   media.style.removeProperty("--preview-h");
   media.style.removeProperty("--preview-w");
   media.style.removeProperty("--preview-x");
+  media.style.removeProperty("--preview-y");
   const root = media.querySelector("[data-morph]");
   if (!carouselQuery.matches && !root) return;
   const paneWidth = media.clientWidth;
   const paneHeight = media.clientHeight;
   if (!paneWidth || !paneHeight) return;
-  let scale = paneWidth / PREVIEW_DESIGN_WIDTH;
+  let scale = paneWidth / previewDesignWidth();
   let height = paneHeight / scale;
-  media.style.setProperty("--preview-w", `${PREVIEW_DESIGN_WIDTH}px`);
+  media.style.setProperty("--preview-w", `${previewDesignWidth()}px`);
   if (root && !root.matches(".preview-pdf")) {
     // The page is drawn at its design width. If its content is taller than the room
     // the pane leaves at that scale (wide screens), shrink the whole page to fit and
@@ -796,10 +802,16 @@ function scalePreviewToPane(media) {
     if (natural > height) {
       scale = paneHeight / natural;
       height = natural;
+    } else if (carouselQuery.matches && root.matches(".preview-artist")) {
+      // Phone carousel: the artist page has a tile grid that stretches into tall
+      // columns when the pane is taller than needed. Keep it at its natural
+      // height and centre it. Other pages fill the pane, as they always did.
+      height = natural;
+      media.style.setProperty("--preview-y", `${Math.max(0, (paneHeight - natural * scale) / 2)}px`);
     }
     media.style.setProperty(
       "--preview-x",
-      `${Math.max(0, (paneWidth - PREVIEW_DESIGN_WIDTH * scale) / 2)}px`,
+      `${Math.max(0, (paneWidth - previewDesignWidth() * scale) / 2)}px`,
     );
   }
   media.style.setProperty("--preview-scale", `${scale}`);
@@ -970,8 +982,70 @@ function collapseCard(card) {
   media.style.removeProperty("--preview-w");
 }
 
-function expandCard(task, card) {
+/* Flip.getState can jump the page (the html element smooth-scrolls), so the scroll
+ * position is read first, scroll animation is switched off while a card animates, and
+ * the position is put back before frameCard takes over. */
+const rootEl = document.documentElement;
+function stateWithSteadyScroll() {
+  const y = window.scrollY;
+  rootEl.style.scrollBehavior = "auto";
   const state = Flip.getState(grid.querySelectorAll(".task-card"));
+  if (window.scrollY !== y) window.scrollTo({ top: y, behavior: "instant" });
+  return state;
+}
+
+/* Phone carousel: bring a card into frame while it animates. Called after the DOM is
+ * in its final state but before Flip starts, so the card's rect is where it will end
+ * up; the page and the carousel then scroll to it on the same clock as the Flip. */
+function driveFrame(frame, duration, hold = 0.35) {
+  // Plain requestAnimationFrame: it is queued after GSAP's own frame callback, so this
+  // scroll position has the last word each frame over whatever Flip rendered.
+  const t0 = performance.now();
+  const tick = () => {
+    const elapsed = (performance.now() - t0) / 1000;
+    frame(Math.min(1, elapsed / duration));
+    if (elapsed < duration + hold) requestAnimationFrame(tick);
+  };
+  frame(0);
+  requestAnimationFrame(tick);
+}
+
+function frameCard(card, ease) {
+  if (!carouselQuery.matches) {
+    rootEl.style.scrollBehavior = "";
+    return () => {};
+  }
+  const gridRect = grid.getBoundingClientRect();
+  const rect = card.getBoundingClientRect();
+  const margin = 16;
+  const maxLeft = grid.scrollWidth - grid.clientWidth;
+  const fromLeft = grid.scrollLeft;
+  const toLeft = Math.min(maxLeft, Math.max(0, fromLeft + rect.left - gridRect.left - 18));
+  const room = window.innerHeight - margin * 2;
+  let shift = 0;
+  if (rect.height >= room) shift = rect.top - margin;
+  else if (rect.top < margin || rect.bottom > window.innerHeight - margin) {
+    shift = rect.top - (window.innerHeight - rect.height) / 2;
+  }
+  const fromY = window.scrollY;
+  const toY = Math.max(0, fromY + shift);
+  grid.style.scrollSnapType = "none";
+  const curve = gsap.parseEase(ease);
+  // The caller drives this from the Flip's own update, so the scroll lands in the same
+  // frame as the card's movement (Flip resets the page scroll when it renders).
+  return (progress) => {
+    const t = curve(Math.min(1, Math.max(0, progress)));
+    grid.scrollLeft = fromLeft + (toLeft - fromLeft) * t;
+    window.scrollTo({ top: fromY + (toY - fromY) * t, behavior: "instant" });
+    if (progress >= 1) {
+      grid.style.scrollSnapType = "";
+      rootEl.style.scrollBehavior = "";
+    }
+  };
+}
+
+function expandCard(task, card) {
+  const state = stateWithSteadyScroll();
   if (expandedTaskId && expandedTaskId !== task.id) {
     const previous = grid.querySelector(
       `.task-card[data-preview-id="${expandedTaskId}"]`,
@@ -994,27 +1068,18 @@ function expandCard(task, card) {
   // cards — would collapse and yank everything below it up the page.
   // Pin the grid to its current height until the flip settles.
   grid.style.height = `${grid.getBoundingClientRect().height}px`;
+  const frame = frameCard(card, "power2.inOut");
   Flip.from(state, {
-    absolute: true,
+    absolute: !carouselQuery.matches,
     duration: hasGlyph ? 0.45 : 0.6,
     ease: "power2.inOut",
     scale: false,
     onComplete: () => {
       grid.style.height = "";
       if (hasGlyph) morphGlyph(card);
-      // Nudge the carousel's own horizontal scroll only — scrollIntoView()
-      // also re-scrolls the page vertically to "nearest", which yanked the
-      // section below the grid up on every tap.
-      if (!carouselQuery.matches) return;
-      const gridRect = grid.getBoundingClientRect();
-      const cardRect = card.getBoundingClientRect();
-      if (cardRect.right > gridRect.right) {
-        grid.scrollLeft += cardRect.right - gridRect.right;
-      } else if (cardRect.left < gridRect.left) {
-        grid.scrollLeft -= gridRect.left - cardRect.left;
-      }
     },
   });
+  driveFrame(frame, hasGlyph ? 0.45 : 0.6);
   gsap.fromTo(
     media,
     { opacity: 0 },
@@ -1024,15 +1089,16 @@ function expandCard(task, card) {
 
 function collapseExpandedCard() {
   if (!expandedTaskId) return;
-  const state = Flip.getState(grid.querySelectorAll(".task-card"));
+  const state = stateWithSteadyScroll();
   const card = grid.querySelector(
     `.task-card[data-preview-id="${expandedTaskId}"]`,
   );
   if (card) collapseCard(card);
   expandedTaskId = null;
   grid.style.height = `${grid.getBoundingClientRect().height}px`;
+  const frame = card ? frameCard(card, "power2.inOut") : () => {};
   Flip.from(state, {
-    absolute: true,
+    absolute: !carouselQuery.matches,
     duration: 0.5,
     ease: "power2.inOut",
     scale: false,
@@ -1040,6 +1106,7 @@ function collapseExpandedCard() {
       grid.style.height = "";
     },
   });
+  driveFrame(frame, 0.5);
 }
 
 function toggleCardPreview(task, card) {

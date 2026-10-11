@@ -3,6 +3,8 @@
 }
 html {
   scroll-behavior: smooth;
+  /* No rubber-band: it exposes the white body below the dark footer. */
+  overscroll-behavior-y: none;
 }
 body {
   margin: 0;
@@ -35,4 +37,11 @@ p {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+/* The task cards animate their own height; the browser's scroll anchoring would nudge the
+   page on top of that, so the scroll is driven explicitly in main.js instead. */
+html,
+body {
+  overflow-anchor: none;
 }
