@@ -9492,3 +9492,46 @@ h2,
   height: calc(1.05em + 4px);
   width: calc(1.05em + 4px);
 }
+
+/* Mobile: the quote is centred, with the author stacked under it. */
+@media (max-width: 640px) {
+  .quote blockquote,
+  .quote p {
+    text-align: center;
+    text-wrap: balance;
+  }
+  .quote footer {
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+  }
+  .quote footer div,
+  .quote footer span {
+    text-align: center;
+  }
+}
+
+/* Mobile: the author's role breaks onto two balanced lines. */
+@media (max-width: 640px) {
+  .quote footer span {
+    margin-inline: auto;
+    max-width: 240px;
+    text-wrap: balance;
+  }
+}
+
+/* Mobile: the two section subtitles ("Work done for you." / "Tools for everyday work.") share one size. */
+@media (max-width: 640px) {
+  .tasks .section-heading p.section-heading__copy,
+  .software-promo--tools .software-promo__description p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 640px) {
+  .tasks .section-heading p.section-heading__copy {
+    max-width: none;
+  }
+}
