@@ -4586,9 +4586,9 @@ h2,
   width: 0;
 }
 @keyframes wa-scroll {
-  0%, 17% { transform: translateY(calc(120px * var(--wa-s))) scale(var(--wa-s)); }
-  30.6% { transform: translateY(calc(120px * var(--wa-s))) scale(var(--wa-s)); }
-  58.7%, 100% { transform: translateY(calc(-100px * var(--wa-s))) scale(var(--wa-s)); }
+  0%, 17% { transform: translateY(calc(120px * var(--wa-s))) scale(calc(var(--wa-s) * var(--wa-zoom, 1))); }
+  30.6% { transform: translateY(calc(120px * var(--wa-s))) scale(calc(var(--wa-s) * var(--wa-zoom, 1))); }
+  58.7%, 100% { transform: translateY(calc(-100px * var(--wa-s) + var(--wa-shift, 0px))) scale(calc(var(--wa-s) * var(--wa-zoom, 1))); }
 }
 @keyframes wa-wipe {
   0% { clip-path: inset(0 100% 0 0); }
@@ -4623,7 +4623,7 @@ h2,
 }
 @media (prefers-reduced-motion: reduce) {
   .wa-mock__chat, .wa-cap span, .wa-m, .wa-ph, .wa-typed { animation: none; }
-  .wa-mock__chat { transform: translateY(calc(-100px * var(--wa-s))) scale(var(--wa-s)); }
+  .wa-mock__chat { transform: translateY(calc(-100px * var(--wa-s))) scale(calc(var(--wa-s) * var(--wa-zoom, 1))); }
 }
 .product-visual--whatsapp .wa-mock img {
   aspect-ratio: auto;
@@ -11226,4 +11226,189 @@ h2,
   .hero h1 + .hero__copy {
     font-size: 18px;
   }
+}
+
+/* Gmail card: brand line (logo + name) above the title. */
+.product-card__brand {
+  align-items: center;
+  color: var(--muted, #a3a3a3);
+  display: flex;
+  font-size: 14px;
+  font-weight: var(--font-weight-400, 400);
+  gap: 8px;
+  line-height: 1;
+  margin: 0 0 14px;
+}
+.product-card__brand img {
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+/* Gmail card header: logo + name line above the title (overrides the generic card paragraph rules); the title keeps the other cards' size. */
+.software-promo--tools .product-card__body p.product-card__brand:not(.product-tag) {
+  color: var(--muted, #a3a3a3);
+  font-size: 14px;
+  line-height: 1;
+  margin: 0 0 14px;
+  min-height: 0;
+}
+
+/* Tools card titles: 20px, the same size as the task card titles. */
+.software-promo--tools .product-card__body h3 {
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: normal;
+}
+
+/* Gmail card: a still image of the mail, pushed right so its right edge is cropped by the card. */
+.software-promo--tools .product-visual--gmail {
+  overflow: hidden;
+  position: relative;
+}
+.product-visual--gmail .gm-shot {
+  display: block;
+  filter: drop-shadow(0 10px 24px rgba(17, 17, 16, 0.1));
+  height: auto;
+  left: 22%;
+  position: absolute;
+  top: 36px;
+  width: 100%;
+}
+.software-promo--tools .product-visual--gmail .gm-shot {
+  aspect-ratio: 848 / 726;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Gmail card label: text only, smaller (the logo is gone). */
+.software-promo--tools .product-card__body p.product-card__brand:not(.product-tag) {
+  font-size: 12px;
+}
+
+/* Micro Gmail notification inline in the card text: a tiny banner (logo, two text lines, unread dot). */
+.gm-notif-wrap {
+  white-space: nowrap;
+}
+.gm-notif {
+  align-items: center;
+  background: #fff;
+  border-radius: 0.34em;
+  box-shadow: 0 0.08em 0.3em rgba(17, 17, 16, 0.14);
+  display: inline-flex;
+  gap: 0.28em;
+  height: 1.2em;
+  margin-right: 0.3em;
+  padding: 0 0.34em 0 0.26em;
+  position: relative;
+  vertical-align: -0.24em;
+  width: 2.7em;
+}
+.gm-notif img {
+  display: block;
+  flex: none;
+  height: 0.78em;
+  width: 0.78em;
+}
+.gm-notif__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14em;
+}
+.gm-notif i {
+  background: #d4d4d0;
+  border-radius: 999px;
+  display: block;
+  height: 0.11em;
+  width: 0.62em;
+}
+.gm-notif i:first-child {
+  background: #3c4043;
+  width: 0.78em;
+}
+.gm-notif b {
+  background: #ea4335;
+  border: 0.07em solid #fff;
+  border-radius: 50%;
+  height: 0.42em;
+  position: absolute;
+  right: -0.14em;
+  top: -0.16em;
+  width: 0.42em;
+}
+
+/* Tools cards: a light shadow below, on hover only. */
+.software-promo--tools .product-cards > .product-card {
+  transition: box-shadow 0.3s ease;
+}
+.software-promo--tools .product-cards > .product-card:hover,
+.software-promo--tools .product-cards > .product-card:focus-within {
+  box-shadow:
+    0 12px 20px -14px rgba(17, 17, 16, 0.16),
+    0 0 14px -8px rgba(17, 17, 16, 0.08);
+}
+
+/* Gmail card: one more step of zoom into the mail window (the image grows from its top-left corner). */
+.software-promo--tools .product-visual--gmail .gm-shot {
+  width: 110%;
+}
+
+/* Mail subject in regular weight. */
+.gm-line b {
+  font-weight: 400;
+}
+
+/* Micro Gmail notification: its shadow only appears while the card is hovered. */
+.gm-notif {
+  box-shadow: 0 0.08em 0.3em rgba(17, 17, 16, 0);
+  transition: box-shadow 0.3s ease;
+}
+.product-card:hover .gm-notif,
+.product-card:focus-within .gm-notif {
+  box-shadow: 0 0.08em 0.3em rgba(17, 17, 16, 0.14);
+}
+
+/* Studio card button: the expand / collapse icon is black like the label. */
+.studio-card__more svg {
+  color: var(--ink);
+}
+
+/* Morning brief card: same disposition as the Gmail card, the window starts 22% from the left, 36px from the top,
+ * is 110% of the card wide, and the right / bottom edges are cropped by the card. (--mb-s = card width / 480.) */
+.software-promo--tools .mb-stage {
+  left: calc(var(--mb-s) * 66.4px);
+  top: calc(36px - var(--mb-s) * 50.5px);
+  transform: scale(calc(var(--mb-s) * 1.263));
+}
+
+/* Morning brief window: pinned near the top (not centred in the stage) so it lines up with the Gmail card. */
+.software-promo--tools .mb-win {
+  bottom: auto;
+  top: 40px;
+  transform: none;
+}
+
+/* Tools cards: description text one step smaller (13px -> 12px). */
+.software-promo--tools .product-card__body p:not(.product-card__brand):not(.product-tag) {
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: calc(12px * 1.5 * 3);
+}
+
+/* WhatsApp card: no input bar at the bottom, the chat fills the card, and the bubbles are zoomed a little. */
+.product-visual--whatsapp .wa-mock {
+  --wa-zoom: 1.2;
+  --wa-shift: 36px;
+}
+.product-visual--whatsapp .wa-mock__bar {
+  display: none;
+}
+.software-promo--tools .product-visual--whatsapp .wa-mock__stage {
+  flex: 1;
+  height: auto;
+}
+/* The chat is static in this card: apply the zoom and the downward shift directly. */
+.product-visual--whatsapp .wa-mock__chat {
+  transform: translateY(var(--wa-shift, 0px)) scale(calc(var(--wa-s) * var(--wa-zoom, 1)));
 }

@@ -1447,19 +1447,14 @@ document.querySelectorAll(".wa-mock").forEach((mock) => {
   new ResizeObserver(set).observe(mock);
 });
 
-/* Gmail tool visual: scale the stage to its card and play the add-in sequence
- * (compose, open the side panel, search, pick a work, insert it), then loop. */
+/* Gmail tool visual: scale the stage to its card and, on hover, replay the mail on its own:
+ * the message is typed, the artwork lands in the reply, then the window scrolls. */
 document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
   const mock = visual.querySelector(".gm-mock");
   if (!mock) return;
   const bodyEl = mock.querySelector(".gm-body__text");
-  const queryEl = mock.querySelector(".gm-query");
-  const scroller = mock.querySelector(".gm-side__scroll");
-  const results = mock.querySelector(".gm-results");
-  const firstRow = mock.querySelector(".gm-row");
   const body = visual.dataset.gmBody || "";
-  const word = "Elron";
-  const flags = ["is-panel", "is-results", "is-inserted", "is-bump", "is-scrolled"];
+  const flags = ["is-inserted", "is-bump", "is-scrolled"];
   const scale = () => mock.style.setProperty("--gm-s", String(mock.clientWidth / 480));
   scale();
   new ResizeObserver(scale).observe(mock);
@@ -1473,17 +1468,13 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
 
   const showFinal = () => {
     bodyEl.textContent = body;
-    queryEl.textContent = word;
     mock.classList.add("is-inserted", "is-scrolled");
   };
 
   const play = () => {
     stop();
     mock.classList.remove(...flags);
-    firstRow.classList.remove("is-hit");
     bodyEl.textContent = "";
-    queryEl.textContent = "";
-    scroller.scrollTop = 0;
 
     const typeStep = 36;
     const typeEnd = 150 + body.length * typeStep;
@@ -1492,21 +1483,9 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
     }
     at(typeEnd + 250, () => mock.classList.add("is-bump"));
     at(typeEnd + 840, () => mock.classList.remove("is-bump"));
-    at(typeEnd + 300, () => mock.classList.add("is-panel"));
-
-    const searchStart = typeEnd + 700;
-    word.split("").forEach((_, i) => {
-      at(searchStart + i * 320, () => (queryEl.textContent = word.slice(0, i + 1)));
-    });
-    const searchEnd = searchStart + (word.length - 1) * 320;
-    at(searchEnd + 350, () => mock.classList.add("is-results"));
-    at(searchEnd + 800, () => {
-      scroller.scrollTop = Math.max(0, results.offsetTop - 8);
-    });
-    at(searchEnd + 2250, () => firstRow.classList.add("is-hit"));
-    at(searchEnd + 3150, () => mock.classList.add("is-inserted"));
-    at(searchEnd + 5750, () => mock.classList.add("is-scrolled"));
-    at(searchEnd + 9250, play);
+    at(typeEnd + 900, () => mock.classList.add("is-inserted"));
+    at(typeEnd + 3500, () => mock.classList.add("is-scrolled"));
+    at(typeEnd + 7000, play);
   };
 
   /* Rests on the finished frame; plays only while the card is hovered or focused. */
@@ -1516,7 +1495,6 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
   const rest = () => {
     stop();
     mock.classList.remove(...flags);
-    firstRow.classList.remove("is-hit");
     showFinal();
   };
   card.addEventListener("mouseenter", play);
