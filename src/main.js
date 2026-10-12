@@ -2,6 +2,7 @@ import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
+import "./styles/component-mode.css";
 import {
   BadgeCheck,
   BadgeEuro,
@@ -16,6 +17,29 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 
 gsap.registerPlugin(Flip);
+
+/* Component mode (design-components branch): /?component=<name> shows one section of the
+ * page on its own, centred on a white page. The /components/ gallery embeds these views, and
+ * the same URLs are what get recorded for the videos. */
+const COMPONENTS = {
+  hero: ".hero",
+  studio: ".studio-statement:not(.studio-services)",
+  tools: "#products",
+  tasks: "#tasks",
+  workshop: "#ways",
+  quote: ".quote",
+  faq: ".faq",
+};
+{
+  const name = new URLSearchParams(location.search).get("component");
+  const target = name && COMPONENTS[name] && document.querySelector(COMPONENTS[name]);
+  if (target) {
+    document.documentElement.dataset.component = name;
+    target.classList.add("is-component-target");
+    /* The task grid is shown on its Website filter, as in the demo clips. */
+    if (name === "tasks") document.querySelector('.filter[data-filter="website"]')?.setAttribute("data-component-default", "");
+  }
+}
 
 /* The two locales share one build, so every string the page renders at runtime
  * has to exist in both. Pages declare their language on <html lang>. */
@@ -1889,3 +1913,6 @@ if (heroInvoice) {
     toggle();
   });
 })();
+
+/* Component mode: the "tasks" component opens on the Website filter. */
+document.querySelector('.filter[data-component-default]')?.click();

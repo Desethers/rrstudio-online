@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
         fr: path.resolve(__dirname, "fr/index.html"),
+        components: path.resolve(__dirname, "components/index.html"),
       },
     },
   },

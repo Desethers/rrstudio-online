@@ -1,0 +1,36 @@
+/* Component mode: one section on a white page, centred. See COMPONENTS in main.js. */
+html[data-component],
+html[data-component] body {
+  background: #fff;
+  min-height: 100vh;
+}
+html[data-component] .header,
+html[data-component] .site-footer,
+html[data-component] .request-summary,
+html[data-component] main > section:not(.is-component-target) {
+  display: none !important;
+}
+html[data-component] body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+html[data-component] main {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 10px;
+  width: 100%;
+}
+html[data-component] main > .is-component-target {
+  margin: 0 auto;
+  min-height: 0;
+  padding-block: 40px;
+}
+/* The hero's rotating copy and the sections' scroll reveals work as usual; only chrome is removed. */
+html[data-component="tasks"] .tasks .section-heading,
+html[data-component="tasks"] .tasks .task-filters {
+  display: none;
+}
+html[data-component="hero"] .hero {
+  min-height: 0 !important;
+}
