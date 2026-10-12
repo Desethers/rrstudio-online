@@ -31,11 +31,20 @@ const COMPONENTS = {
   faq: ".faq",
 };
 {
-  const name = new URLSearchParams(location.search).get("component");
-  const target = name && COMPONENTS[name] && document.querySelector(COMPONENTS[name]);
+  const params = new URLSearchParams(location.search);
+  const name = params.get("component");
+  /* ?component=task&id=<task id> shows a single task card on its own. */
+  const target =
+    name &&
+    (name === "task" ? document.querySelector("#tasks") : COMPONENTS[name] && document.querySelector(COMPONENTS[name]));
   if (target) {
     document.documentElement.dataset.component = name;
     target.classList.add("is-component-target");
+    if (name === "task") {
+      const style = document.createElement("style");
+      style.textContent = `.task-card:not([data-preview-id="${CSS.escape(params.get("id") || "")}"]) { display: none !important; }`;
+      document.head.append(style);
+    }
     /* The task grid is shown on its Website filter, as in the demo clips. */
     if (name === "tasks") document.querySelector('.filter[data-filter="website"]')?.setAttribute("data-component-default", "");
   }

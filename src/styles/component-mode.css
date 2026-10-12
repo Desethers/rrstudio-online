@@ -34,3 +34,14 @@ html[data-component="tasks"] .tasks .task-filters {
 html[data-component="hero"] .hero {
   min-height: 0 !important;
 }
+
+/* One task card: a single 420px column, centred; the expanded card spans a second auto column. */
+html[data-component="task"] .tasks .section-heading,
+html[data-component="task"] .tasks .task-filters {
+  display: none;
+}
+html[data-component="task"] .task-grid {
+  grid-auto-columns: 420px;
+  grid-template-columns: 420px;
+  justify-content: center;
+}
