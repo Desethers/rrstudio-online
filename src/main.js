@@ -847,6 +847,21 @@ function scalePreviewToPane(media) {
       `${Math.max(0, (paneWidth - previewDesignWidth() * scale) / 2)}px`,
     );
   }
+  if (root && root.matches(".preview-pdf")) {
+    // The PDF page keeps its own size and position from the stylesheet. When the pane is
+    // too short for it at this scale (wide screens: the card only grows a little), shrink
+    // it to fit and centre it, so it never hangs out of the card.
+    root.style.removeProperty("top");
+    root.style.removeProperty("left");
+    const pageW = root.offsetWidth;
+    const pageH = root.offsetHeight;
+    const fit = (paneHeight - 48) / pageH;
+    if (pageH && fit < scale) {
+      scale = Math.max(0.3, fit);
+      root.style.top = `${Math.max(16, (paneHeight - pageH * scale) / 2)}px`;
+      root.style.left = `${Math.max(0, (paneWidth - pageW * scale) / 2)}px`;
+    }
+  }
   media.style.setProperty("--preview-scale", `${scale}`);
   media.style.setProperty("--preview-h", `${height}px`);
 }
