@@ -11412,3 +11412,32 @@ h2,
 .product-visual--whatsapp .wa-mock__chat {
   transform: translateY(var(--wa-shift, 0px)) scale(calc(var(--wa-s) * var(--wa-zoom, 1)));
 }
+
+/* Phone: the Tools cards keep a two-line description across the full width of the card. */
+@media (max-width: 640px) {
+  .software-promo--tools .product-card__body {
+    padding-right: 26px;
+  }
+  .software-promo--tools .product-card__body p:not(.product-card__brand):not(.product-tag) {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    box-sizing: border-box;
+    display: -webkit-box;
+    margin-top: 10px;
+    max-width: none;
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+/* Tools card eyebrows match the task card eyebrows: 14px / 400 on desktop, 10px on phones. */
+.software-promo--tools .product-card__body p.product-card__brand:not(.product-tag) {
+  font-size: 14px;
+  font-weight: 400;
+}
+@media (max-width: 640px) {
+  .software-promo--tools .product-card__body p.product-card__brand:not(.product-tag) {
+    font-size: 10px;
+  }
+}
