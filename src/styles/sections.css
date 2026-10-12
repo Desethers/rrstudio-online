@@ -11466,3 +11466,8 @@ h2,
 .studio-card.is-expanded:hover {
   box-shadow: none;
 }
+
+/* Gmail mail image: no shadow behind the window. */
+.software-promo--tools .product-visual--gmail .gm-shot {
+  filter: none;
+}
