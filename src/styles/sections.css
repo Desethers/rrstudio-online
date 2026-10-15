@@ -9654,7 +9654,7 @@ h2,
   position: absolute;
 }
 .hero-stage:has(.service-estimate:hover) .service-estimate,
-.hero-stage .service-estimate:focus-within {
+.hero-stage .service-estimate:focus-visible {
   box-shadow: 0 30px 60px -30px rgba(17, 17, 16, 0.28);
   top: 50%;
   transform: translate(-50%, -50%) scale(var(--s-open));
@@ -9761,7 +9761,7 @@ h2,
   box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
 }
 .hero-stage:has(.service-estimate:hover) .service-estimate,
-.hero-stage .service-estimate:focus-within {
+.hero-stage .service-estimate:focus-visible {
   border-radius: 20px;
   box-shadow:
     0 0 0 2px rgba(17, 17, 16, 0.07),
@@ -9920,7 +9920,7 @@ h2,
 }
 .hero-stage .service-estimate,
 .hero-stage:has(.service-estimate:hover) .service-estimate,
-.hero-stage .service-estimate:focus-within {
+.hero-stage .service-estimate:focus-visible {
   box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
 }
 /* At rest the ring is drawn at 9px so it still reads as a 1px hairline after the scale-down. */
@@ -9928,7 +9928,7 @@ h2,
   box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
 }
 .hero-stage:has(.service-estimate:hover) .service-estimate,
-.hero-stage .service-estimate:focus-within {
+.hero-stage .service-estimate:focus-visible {
   box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
 }
 
@@ -10012,12 +10012,12 @@ h2,
     box-shadow: 0 0 0 16px rgba(17, 17, 16, 0.09);
   }
   .hero-stage:has(.service-estimate:hover) .service-estimate,
-  .hero-stage .service-estimate:focus-within,
-  .hero-stage .service-estimate:focus {
+  .hero-stage .service-estimate:focus-visible,
+  .hero-stage .service-estimate:focus-visible {
     box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
   }
 }
-.hero-stage .service-estimate:focus {
+.hero-stage .service-estimate:focus-visible {
   outline: none;
   top: 50%;
   transform: translate(-50%, -50%) scale(var(--s-open));
@@ -11470,4 +11470,107 @@ h2,
 /* Gmail mail image: no shadow behind the window. */
 .software-promo--tools .product-visual--gmail .gm-shot {
   filter: none;
+}
+
+/* Inline "opening page" glyph: header pill without any shadow. */
+.intro-opening i {
+  box-shadow: none;
+}
+
+
+
+/* Gmail card: a stack of incoming Gmail notifications (from Vitreen), centred and straight; the
+ * front one moves to the back every few seconds. The cards stay opaque (only their content fades
+ * behind), so no text ever shows through. Designed at 280px, scaled to the card by main.js. */
+.product-visual--gmail .gm-notifs {
+  height: 152px;
+  left: 50%;
+  perspective: 900px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--gn-s, 1));
+  width: 280px;
+}
+.gm-n {
+  background: #fff;
+  border: 1px solid rgba(17, 17, 16, 0.07);
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 124px;
+  left: 0;
+  overflow: hidden;
+  padding: 13px 16px 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: center top;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.7s ease-out;
+}
+.gm-n > * {
+  transition: opacity 0.5s ease-out;
+}
+.gm-n[data-pos="0"] { transform: none; z-index: 3; }
+.gm-n[data-pos="1"] { background: #fbfbfa; transform: translateY(14px) scale(0.94) rotateX(6deg); z-index: 2; }
+.gm-n[data-pos="2"] { background: #f8f8f6; transform: translateY(28px) scale(0.88) rotateX(11deg); z-index: 1; }
+.gm-n[data-pos="1"] > *,
+.gm-n[data-pos="2"] > * {
+  opacity: 0;
+}
+.gm-n__app {
+  align-items: center;
+  color: #8a8a86;
+  display: flex;
+  font-size: 11px;
+  gap: 6px;
+  line-height: 1;
+  margin: 0 0 11px;
+}
+.gm-n__app img {
+  height: 13px;
+  object-fit: contain;
+  width: 13px;
+}
+.gm-n__app time {
+  margin-left: auto;
+}
+.gm-n__msg {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+}
+.gm-n__avatar {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  flex: none;
+  font-size: 11px;
+  font-weight: 500;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+.gm-n__msg p {
+  color: #111110;
+  font-size: 12.5px;
+  line-height: 1.38;
+  margin: 0;
+  min-width: 0;
+}
+.gm-n__msg p b,
+.gm-n__msg p span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gm-n__msg b {
+  font-weight: 500;
+}
+.gm-n__msg p .gm-n__body {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #8a8a86;
+  display: -webkit-box;
+  white-space: normal;
 }

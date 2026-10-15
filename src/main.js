@@ -1518,6 +1518,30 @@ document.querySelectorAll(".product-visual--gmail").forEach((visual) => {
   card.addEventListener("focusout", rest);
 });
 
+/* Gmail tool visual: the notification stack (as on Vitreen) scales with its card and, while
+ * the card is on screen, sends the front notification to the back every 2.2s. */
+document.querySelectorAll(".gm-notifs").forEach((stack) => {
+  const visual = stack.closest(".product-visual") || stack.parentElement;
+  const cards = [...stack.querySelectorAll(".gm-n")];
+  const scale = () => stack.style.setProperty("--gn-s", String(visual.clientWidth / 430));
+  scale();
+  new ResizeObserver(scale).observe(visual);
+  if (cards.length < 2 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let active = 0;
+  let timer = 0;
+  const step = () => {
+    active = (active + 1) % cards.length;
+    cards.forEach((card, i) => {
+      card.dataset.pos = String((i - active + cards.length) % cards.length);
+    });
+  };
+  new IntersectionObserver(([entry]) => {
+    clearInterval(timer);
+    if (entry.isIntersecting) timer = setInterval(step, 2200);
+  }).observe(visual);
+});
+
 /* Studio intro: split into words and reveal them (pale -> ink) as the block scrolls
  * through the viewport. Reduced motion shows everything at once. */
 (() => {
@@ -1847,6 +1871,12 @@ if (heroStage) {
 const heroInvoice = document.querySelector(".hero-stage .service-estimate");
 if (heroInvoice) {
   heroInvoice.addEventListener("click", (event) => {
+    /* With a mouse the hover already opens it: a click must not leave it stuck open
+     * (the click also focuses the card, so drop the focus again). */
+    if (matchMedia("(hover: hover)").matches) {
+      heroInvoice.blur();
+      return;
+    }
     event.stopPropagation();
     heroInvoice.closest(".hero-stage").classList.toggle("is-open");
   });
