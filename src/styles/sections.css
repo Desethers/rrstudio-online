@@ -11755,15 +11755,19 @@ h2,
 }
 .software-promo--tools .product-app__icon {
   align-items: center;
-  border-radius: 12px;
+  border-radius: 11px;
   box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.12);
   color: var(--ink, #111110);
   display: inline-flex;
   flex: none;
-  height: 44px;
+  height: 40px;
   justify-content: center;
   transition: box-shadow 0.2s ease;
-  width: 44px;
+  width: 40px;
+}
+.software-promo--tools .product-app__icon svg {
+  height: 20px;
+  width: 20px;
 }
 .software-promo--tools .product-card:hover .product-app__icon {
   box-shadow: 0 0 0 1px var(--ink, #111110);
@@ -11788,70 +11792,65 @@ h2,
   font-size: 12px;
   line-height: 1.2;
 }
+/* "Let’s talk" is a plain text link (no pill): underlined on hover. */
 .software-promo--tools .product-card__link .product-card__pill {
   align-items: center;
-  border-radius: 999px;
-  box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.12);
-  font-size: 13px;
+  font-size: 14px;
   gap: 5px;
   height: 32px;
-  padding: 0 12px 0 14px;
-  right: 22px;
+  right: 26px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
   top: 32px;
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    color 0.2s ease;
+  transition: text-decoration-color 0.2s ease;
   width: auto;
-  /* Above the card-wide link overlay, so the pill gets its own hover. */
+  /* Above the card-wide link overlay, so the link gets its own hover. */
   z-index: 1;
 }
 .software-promo--tools .product-card__link .product-card__pill:hover {
-  background: var(--ink, #111110);
-  box-shadow: 0 0 0 1px var(--ink, #111110);
-  color: #fff;
+  text-decoration-color: currentColor;
 }
 .software-promo--tools .product-card__link .product-card__pill i {
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   line-height: 1;
+  transition: transform 0.2s ease;
+}
+.software-promo--tools .product-card__link .product-card__pill:hover i {
+  transform: translateX(2px);
 }
 .software-promo--tools .product-card:hover .product-card__link .product-card__pill {
-  box-shadow: 0 0 0 1px var(--ink, #111110);
   transform: none;
 }
 .software-promo--tools .product-card__body {
   padding-right: 26px;
 }
 .software-promo--tools .product-card__body .product-app {
-  padding-right: 130px;
+  padding-right: 100px;
 }
 .product-app__name small {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* Phone: the pill shrinks to a round arrow so the app name and its line keep the width. */
 @media (max-width: 640px) {
   .software-promo--tools .product-app__icon {
     border-radius: 10px;
-    height: 38px;
-    width: 38px;
+    height: 34px;
+    width: 34px;
   }
   .software-promo--tools .product-card__body .product-app {
-    padding-right: 44px;
+    padding-right: 92px;
   }
   .software-promo--tools .product-card__link .product-card__pill {
-    font-size: 0;
-    justify-content: center;
-    padding: 0;
+    font-size: 13px;
     right: 20px;
     top: 29px;
-    width: 32px;
   }
 }
-/* "Let’s talk" opens the form: only the pill is clickable, so swiping or tapping the card
- * never opens a chat by accident. */
+/* "Let’s talk" opens the form: only the link text is clickable, so swiping or tapping the
+ * card never opens it by accident. */
 .software-promo--tools .product-card__add::after {
   content: none;
 }
@@ -12025,4 +12024,42 @@ h2,
   .access-done {
     padding: 30px 20px 24px;
   }
+}
+
+/* Tools cards as connection cards: the tool's logo on top, its name, a two-line
+ * description, then the preview. Chat and Mail show the WhatsApp and Gmail logos;
+ * Assistant and Inventory a white glyph on an ink square. */
+.software-promo--tools .product-card__body .product-app {
+  margin: 0 0 16px;
+  padding-right: 0;
+}
+.software-promo--tools .product-app__icon,
+.software-promo--tools .product-card:hover .product-app__icon {
+  border-radius: 7px;
+  box-shadow: none;
+  height: 28px;
+  width: 28px;
+}
+.software-promo--tools .product-app__icon--logo img {
+  display: block;
+  height: 28px;
+  width: 28px;
+}
+.software-promo--tools .product-app__icon--mark {
+  background: var(--ink, #111110);
+  color: #fff;
+}
+.software-promo--tools .product-app__icon--mark svg {
+  height: 18px;
+  width: 18px;
+}
+.software-promo--tools .product-card__body h3.product-app__title {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+.software-promo--tools .product-card__link .product-card__pill {
+  top: 24px;
 }
