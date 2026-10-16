@@ -1984,3 +1984,118 @@ if (heroInvoice) {
 
 /* Component mode: the "tasks" component opens on the Website filter. */
 document.querySelector('.filter[data-component-default]')?.click();
+
+/* Let’s talk: every Tools card opens the same short form, with its tool ticked. Tools are
+ * never set up straight away: the form asks for a call, and the setup is decided after it.
+ * The request is posted to ACCESS_ENDPOINT (a Formspree form URL, e.g.
+ * "https://formspree.io/f/abcdwxyz"). Until it is set, the form falls back to a
+ * prefilled email so no request is lost. */
+const ACCESS_ENDPOINT = "";
+(() => {
+  const dialog = document.querySelector("#access-modal");
+  if (!dialog) return;
+  const form = dialog.querySelector("#access-form");
+  const done = dialog.querySelector("#access-done");
+  const error = dialog.querySelector("#access-error");
+  const submit = form.querySelector('button[type="submit"]');
+  const copy = {
+    en: {
+      tools: "Choose at least one tool.",
+      gallery: "Enter your gallery name.",
+      email: "Enter a valid email address.",
+      failed: "The request couldn’t be sent. Try again, or write to studio@rrstudio.online.",
+      subject: (gallery) => `Call request — ${gallery}`,
+      body: (d) =>
+        `Hello R.R Studio,\n\nI’d like to talk about: ${d.tools.join(", ")}\n\nGallery: ${d.gallery}\nEmail: ${d.email}\nWebsite: ${d.website || "—"}\nWhere our works are today: ${d.message || "—"}`,
+    },
+    fr: {
+      tools: "Choisissez au moins un outil.",
+      gallery: "Indiquez le nom de votre galerie.",
+      email: "Indiquez une adresse e-mail valide.",
+      failed: "La demande n’a pas pu être envoyée. Réessayez, ou écrivez à studio@rrstudio.online.",
+      subject: (gallery) => `Demande d’échange — ${gallery}`,
+      body: (d) =>
+        `Bonjour R.R Studio,\n\nJ’aimerais parler de : ${d.tools.join(", ")}\n\nGalerie : ${d.gallery}\nE-mail : ${d.email}\nSite : ${d.website || "—"}\nOù sont nos œuvres aujourd’hui : ${d.message || "—"}`,
+    },
+  }[LANG];
+
+  const showError = (message, field) => {
+    error.textContent = message;
+    error.hidden = false;
+    if (field) {
+      field.setAttribute("aria-invalid", "true");
+      field.focus();
+    }
+  };
+  const clearError = () => {
+    error.hidden = true;
+    form.querySelectorAll("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
+  };
+
+  const open = (tool) => {
+    form.reset();
+    clearError();
+    form.hidden = false;
+    done.hidden = true;
+    submit.disabled = false;
+    form.querySelectorAll('input[name="tools"]').forEach((box) => {
+      box.checked = box.value === tool;
+    });
+    dialog.showModal();
+    form.querySelector('input[name="gallery"]').focus();
+  };
+
+  document.querySelectorAll(".product-card__add[data-tool]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      open(link.dataset.tool);
+    });
+  });
+  dialog.querySelector(".modal-close").addEventListener("click", () => dialog.close());
+  dialog.querySelector("[data-access-close]").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  form.addEventListener("input", clearError);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearError();
+    const data = {
+      tools: [...form.querySelectorAll('input[name="tools"]:checked')].map((box) => box.value),
+      gallery: form.gallery.value.trim(),
+      email: form.email.value.trim(),
+      website: form.website.value.trim(),
+      message: form.message.value.trim(),
+    };
+    if (!data.tools.length) return showError(copy.tools, form.querySelector('input[name="tools"]'));
+    if (!data.gallery) return showError(copy.gallery, form.gallery);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return showError(copy.email, form.email);
+
+    if (!ACCESS_ENDPOINT) {
+      window.location.href = `mailto:studio@rrstudio.online?subject=${encodeURIComponent(copy.subject(data.gallery))}&body=${encodeURIComponent(copy.body(data))}`;
+    } else {
+      submit.disabled = true;
+      try {
+        const response = await fetch(ACCESS_ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json", "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...data,
+            tools: data.tools.join(", "),
+            _subject: copy.subject(data.gallery),
+            _replyto: data.email,
+            language: LANG,
+          }),
+        });
+        if (!response.ok) throw new Error(response.status);
+      } catch {
+        submit.disabled = false;
+        return showError(copy.failed);
+      }
+    }
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+  });
+})();

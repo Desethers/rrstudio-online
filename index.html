@@ -370,11 +370,6 @@
           <div class="software-promo__description">
             <p><strong>Small tools, carefully made.</strong> Bring artwork information into your everyday workflow with tools that connect <span class="nowrap"><img class="inline-logo" src="/logos/gmail.png" alt="" width="14" height="14" />Gmail</span>, <span class="nowrap"><img class="inline-logo" src="/logos/whatsapp.svg" alt="" width="14" height="14" />WhatsApp</span> and the systems you already use.</p>
           </div>
-          <a
-            class="button"
-            href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20installation"
-            >Ask about an installation <span aria-hidden="true">↗</span></a
-          >
         </div>
         <div class="product-cards">
           <article class="product-card">
@@ -393,7 +388,7 @@
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 19.5l1-3.3A7.9 7.9 0 0 1 4 12Z"/></svg></span><p class="product-app__name"><strong>Chat</strong><small>for WhatsApp</small></p></div>
               <h3>The selection,<br />in the chat.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Add Chat to your gallery"><span class="product-card__pill"><i aria-hidden="true">+</i>Add</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Chat" aria-label="Talk about Chat"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -426,7 +421,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span><p class="product-app__name"><strong>Mail</strong><small>for Gmail</small></p></div>
               <h3>The artwork,<br />in the reply.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Add Mail to your gallery"><span class="product-card__pill"><i aria-hidden="true">+</i>Add</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Mail" aria-label="Talk about Mail"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -453,7 +448,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><p class="product-app__name"><strong>Assistant</strong><small>Morning brief</small></p></div>
               <h3>Know who<br />is waiting.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Add Assistant to your gallery"><span class="product-card__pill"><i aria-hidden="true">+</i>Add</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Assistant" aria-label="Talk about Assistant"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -480,7 +475,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span><p class="product-app__name"><strong>Inventory</strong><small>Artwork records</small></p></div>
               <h3>Every work,<br />in one record.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Add Inventory to your gallery"><span class="product-card__pill"><i aria-hidden="true">+</i>Add</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Inventory" aria-label="Talk about Inventory"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
         </div>
@@ -963,6 +958,33 @@ here’s the piece you asked about:">
         <p class="modal-price" id="modal-price"></p>
         <p id="modal-description"></p>
         <button class="button" id="modal-add" type="button">Add task</button>
+      </div>
+    </dialog>
+    <dialog class="access-modal" id="access-modal" aria-labelledby="access-title">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <form class="access-form" id="access-form" novalidate>
+        <p class="access-eyebrow">Let’s talk</p>
+        <h2 id="access-title">Let’s talk about your gallery</h2>
+        <p class="access-lead">Every gallery works differently, so we start with a short conversation about how you work. Tell me a little about your gallery.</p>
+        <fieldset class="access-tools">
+          <legend>Tools you’re curious about</legend>
+          <label class="access-tool"><input type="checkbox" name="tools" value="Chat" /><span>Chat</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Mail" /><span>Mail</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Assistant" /><span>Assistant</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Inventory" /><span>Inventory</span></label>
+        </fieldset>
+        <label class="access-field"><span>Gallery name</span><input name="gallery" type="text" autocomplete="organization" required /></label>
+        <label class="access-field"><span>Email</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label class="access-field"><span>Website <em>optional</em></span><input name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourgallery.com" /></label>
+        <label class="access-field"><span>Where are your works today? <em>optional</em></span><textarea name="message" rows="3" placeholder="Artlogic, a spreadsheet, your website…"></textarea></label>
+        <p class="access-error" id="access-error" role="alert" hidden></p>
+        <div class="access-actions">
+          <button class="button" type="submit">Request a call</button>
+          <p class="access-note">I reply by email to plan a short call. We see together whether it’s the right fit.</p>
+        </div>
+      </form>
+      <div class="access-done" id="access-done" hidden tabindex="-1">
+        <p class="access-eyebrow">Let’s talk</p>
+        <h2>Thank you.</h2>
+        <p class="access-lead">I’ll reply by email to suggest a time to talk.</p>
+        <button class="button" type="button" data-access-close>Close</button>
       </div>
     </dialog>
   </body>

@@ -11746,7 +11746,7 @@ h2,
 }
 
 /* Tools cards as app listings: each tool reads as an add-on for the gallery, with an app
- * header (icon, name, "Add-on · for …") and an "+ Add" pill in place of the arrow. */
+ * header (icon, name, platform line) and a "Let’s talk" pill that opens the call request form. */
 .software-promo--tools .product-app {
   align-items: center;
   display: flex;
@@ -11795,7 +11795,7 @@ h2,
   font-size: 13px;
   gap: 5px;
   height: 32px;
-  padding: 0 14px 0 11px;
+  padding: 0 12px 0 14px;
   right: 22px;
   top: 32px;
   transition:
@@ -11812,7 +11812,7 @@ h2,
   color: #fff;
 }
 .software-promo--tools .product-card__link .product-card__pill i {
-  font-size: 16px;
+  font-size: 13px;
   font-style: normal;
   line-height: 1;
 }
@@ -11824,14 +11824,14 @@ h2,
   padding-right: 26px;
 }
 .software-promo--tools .product-card__body .product-app {
-  padding-right: 96px;
+  padding-right: 130px;
 }
 .product-app__name small {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* Phone: the pill shrinks to a round "+" so the app name and its line keep the width. */
+/* Phone: the pill shrinks to a round arrow so the app name and its line keep the width. */
 @media (max-width: 640px) {
   .software-promo--tools .product-app__icon {
     border-radius: 10px;
@@ -11848,5 +11848,181 @@ h2,
     right: 20px;
     top: 29px;
     width: 32px;
+  }
+}
+/* "Let’s talk" opens the form: only the pill is clickable, so swiping or tapping the card
+ * never opens a chat by accident. */
+.software-promo--tools .product-card__add::after {
+  content: none;
+}
+
+/* Let’s talk: one short call request form, opened from every Tools card (main.js). */
+.access-modal {
+  background: var(--background);
+  border: 0;
+  border-radius: 20px;
+  color: var(--ink);
+  max-height: calc(100vh - 48px);
+  max-width: 480px;
+  overflow: auto;
+  padding: 0;
+  width: calc(100vw - 32px);
+}
+.access-modal::backdrop {
+  background: rgba(17, 17, 16, 0.4);
+}
+.access-modal .modal-close {
+  font-size: 22px;
+  height: 34px;
+  width: 34px;
+}
+.access-form,
+.access-done {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px 32px 30px;
+}
+.access-done[hidden],
+.access-error[hidden] {
+  display: none;
+}
+.access-eyebrow {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+.access-modal h2 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: -8px 0 0;
+}
+.access-lead {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: -4px 0 4px;
+}
+.access-tools {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+.access-tools legend,
+.access-field > span {
+  color: var(--ink);
+  font-size: 13px;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.access-field em {
+  color: var(--muted);
+  font-style: normal;
+}
+.access-tool {
+  cursor: pointer;
+  position: relative;
+}
+.access-tool input {
+  opacity: 0;
+  position: absolute;
+}
+.access-tool span {
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.12);
+  display: inline-block;
+  font-size: 13px;
+  padding: 7px 14px;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+.access-tool:hover span {
+  box-shadow: 0 0 0 1px var(--ink);
+}
+.access-tool input:checked + span {
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+  color: #fff;
+}
+.access-tool input:focus-visible + span {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.access-field {
+  display: flex;
+  flex-direction: column;
+}
+.access-field input,
+.access-field textarea {
+  background: var(--surface-soft);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  padding: 11px 14px;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+.access-field input::placeholder,
+.access-field textarea::placeholder {
+  color: var(--subtle);
+}
+.access-field input:focus,
+.access-field textarea:focus {
+  border-color: var(--ink);
+  outline: none;
+}
+.access-field input[aria-invalid="true"] {
+  border-color: #c4352b;
+}
+.access-error {
+  color: #c4352b;
+  font-size: 13px;
+  margin: -4px 0 0;
+}
+.access-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 4px;
+}
+.access-actions .button,
+.access-done .button {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+.access-actions .button[disabled] {
+  opacity: 0.5;
+}
+.access-note {
+  color: var(--muted);
+  flex: 1 1 180px;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+.access-done .button {
+  align-self: flex-start;
+}
+@media (max-width: 640px) {
+  .access-modal {
+    border-radius: 20px 20px 0 0;
+    margin: auto 0 0;
+    max-height: calc(100vh - 24px);
+    max-width: none;
+    width: 100vw;
+  }
+  .access-form,
+  .access-done {
+    padding: 30px 20px 24px;
   }
 }

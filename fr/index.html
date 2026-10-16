@@ -440,11 +440,6 @@
           <div class="software-promo__description">
             <p><strong>De petits outils, faits avec soin.</strong> Intégrez les informations sur vos œuvres à votre quotidien grâce à des outils qui relient <span class="nowrap"><img class="inline-logo" src="/logos/gmail.png" alt="" width="14" height="14" />Gmail</span>, <span class="nowrap"><img class="inline-logo" src="/logos/whatsapp.svg" alt="" width="14" height="14" />WhatsApp</span> et les systèmes que vous utilisez déjà.</p>
           </div>
-          <a
-            class="button"
-            href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20installation"
-            >Demander une installation <span aria-hidden="true">↗</span></a
-          >
         </div>
         <div class="product-cards">
           <article class="product-card">
@@ -455,7 +450,7 @@ voici l’œuvre dont vous parliez :">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span><p class="product-app__name"><strong>Mail</strong><small>pour Gmail</small></p></div>
               <h3>L’œuvre,<br />dans la réponse.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Ajouter Mail à votre galerie"><span class="product-card__pill"><i aria-hidden="true">+</i>Ajouter</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Mail" aria-label="Parler de Mail"><span class="product-card__pill">En parler<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -474,7 +469,7 @@ voici l’œuvre dont vous parliez :">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 19.5l1-3.3A7.9 7.9 0 0 1 4 12Z"/></svg></span><p class="product-app__name"><strong>Chat</strong><small>pour WhatsApp</small></p></div>
               <h3>La sélection,<br />dans la conversation.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Ajouter Chat à votre galerie"><span class="product-card__pill"><i aria-hidden="true">+</i>Ajouter</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Chat" aria-label="Parler de Chat"><span class="product-card__pill">En parler<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -501,7 +496,7 @@ voici l’œuvre dont vous parliez :">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><p class="product-app__name"><strong>Assistant</strong><small>Brief du matin</small></p></div>
               <h3>Sachez qui<br />attend.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Ajouter Assistant à votre galerie"><span class="product-card__pill"><i aria-hidden="true">+</i>Ajouter</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Assistant" aria-label="Parler de Assistant"><span class="product-card__pill">En parler<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
           <article class="product-card">
@@ -528,7 +523,7 @@ voici l’œuvre dont vous parliez :">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span><p class="product-app__name"><strong>Inventory</strong><small>Fiches d’œuvres</small></p></div>
               <h3>Chaque œuvre,<br />dans une fiche.</h3>
-              <a class="product-card__link product-card__add" href="#" aria-label="Ajouter Inventory à votre galerie"><span class="product-card__pill"><i aria-hidden="true">+</i>Ajouter</span></a>
+              <a class="product-card__link product-card__add" href="#request-access" data-tool="Inventory" aria-label="Parler de Inventory"><span class="product-card__pill">En parler<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
         </div>
@@ -1040,6 +1035,33 @@ voici l’œuvre dont vous parliez :">
         <p class="modal-price" id="modal-price"></p>
         <p id="modal-description"></p>
         <button class="button" id="modal-add" type="button">Add task</button>
+      </div>
+    </dialog>
+    <dialog class="access-modal" id="access-modal" aria-labelledby="access-title">
+      <button class="modal-close" type="button" aria-label="Fermer">×</button>
+      <form class="access-form" id="access-form" novalidate>
+        <p class="access-eyebrow">En parler</p>
+        <h2 id="access-title">Parlons de votre galerie</h2>
+        <p class="access-lead">Chaque galerie fonctionne différemment : on commence par un court échange sur votre façon de travailler. Parlez-moi un peu de votre galerie.</p>
+        <fieldset class="access-tools">
+          <legend>Les outils qui vous intéressent</legend>
+          <label class="access-tool"><input type="checkbox" name="tools" value="Chat" /><span>Chat</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Mail" /><span>Mail</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Assistant" /><span>Assistant</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Inventory" /><span>Inventory</span></label>
+        </fieldset>
+        <label class="access-field"><span>Nom de la galerie</span><input name="gallery" type="text" autocomplete="organization" required /></label>
+        <label class="access-field"><span>E-mail</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label class="access-field"><span>Site web <em>facultatif</em></span><input name="website" type="text" inputmode="url" autocomplete="url" placeholder="votregalerie.com" /></label>
+        <label class="access-field"><span>Où sont vos œuvres aujourd’hui ? <em>facultatif</em></span><textarea name="message" rows="3" placeholder="Artlogic, un tableur, votre site…"></textarea></label>
+        <p class="access-error" id="access-error" role="alert" hidden></p>
+        <div class="access-actions">
+          <button class="button" type="submit">Demander un échange</button>
+          <p class="access-note">Je vous réponds par e-mail pour fixer un court échange. On voit ensemble si c’est adapté.</p>
+        </div>
+      </form>
+      <div class="access-done" id="access-done" hidden tabindex="-1">
+        <p class="access-eyebrow">En parler</p>
+        <h2>Merci.</h2>
+        <p class="access-lead">Je vous réponds par e-mail pour vous proposer un moment d’échange.</p>
+        <button class="button" type="button" data-access-close>Fermer</button>
       </div>
     </dialog>
   </body>
