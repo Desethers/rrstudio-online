@@ -9708,7 +9708,7 @@ h2,
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 14px;
-  box-shadow: 0 18px 40px -18px rgba(17, 17, 16, 0.25);
+  box-shadow: 0 14px 32px -18px rgba(17, 17, 16, 0.17);
   display: block;
   left: 50%;
   margin: 8px 0 0;
@@ -11742,5 +11742,111 @@ h2,
   .fold-flap,
   .fold-flap__front::after {
     transition: none;
+  }
+}
+
+/* Tools cards as app listings: each tool reads as an add-on for the gallery, with an app
+ * header (icon, name, "Add-on · for …") and an "+ Add" pill in place of the arrow. */
+.software-promo--tools .product-app {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+.software-promo--tools .product-app__icon {
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.12);
+  color: var(--ink, #111110);
+  display: inline-flex;
+  flex: none;
+  height: 44px;
+  justify-content: center;
+  transition: box-shadow 0.2s ease;
+  width: 44px;
+}
+.software-promo--tools .product-card:hover .product-app__icon {
+  box-shadow: 0 0 0 1px var(--ink, #111110);
+}
+.software-promo--tools .product-card__body .product-app p.product-app__name {
+  -webkit-line-clamp: unset;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  min-height: 0;
+  overflow: visible;
+}
+.product-app__name strong {
+  color: var(--ink, #111110);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.product-app__name small {
+  color: var(--muted, #a3a3a3);
+  font-size: 12px;
+  line-height: 1.2;
+}
+.software-promo--tools .product-card__link .product-card__pill {
+  align-items: center;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(17, 17, 16, 0.12);
+  font-size: 13px;
+  gap: 5px;
+  height: 32px;
+  padding: 0 14px 0 11px;
+  right: 22px;
+  top: 32px;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+  width: auto;
+  /* Above the card-wide link overlay, so the pill gets its own hover. */
+  z-index: 1;
+}
+.software-promo--tools .product-card__link .product-card__pill:hover {
+  background: var(--ink, #111110);
+  box-shadow: 0 0 0 1px var(--ink, #111110);
+  color: #fff;
+}
+.software-promo--tools .product-card__link .product-card__pill i {
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1;
+}
+.software-promo--tools .product-card:hover .product-card__link .product-card__pill {
+  box-shadow: 0 0 0 1px var(--ink, #111110);
+  transform: none;
+}
+.software-promo--tools .product-card__body {
+  padding-right: 26px;
+}
+.software-promo--tools .product-card__body .product-app {
+  padding-right: 96px;
+}
+.product-app__name small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Phone: the pill shrinks to a round "+" so the app name and its line keep the width. */
+@media (max-width: 640px) {
+  .software-promo--tools .product-app__icon {
+    border-radius: 10px;
+    height: 38px;
+    width: 38px;
+  }
+  .software-promo--tools .product-card__body .product-app {
+    padding-right: 44px;
+  }
+  .software-promo--tools .product-card__link .product-card__pill {
+    font-size: 0;
+    justify-content: center;
+    padding: 0;
+    right: 20px;
+    top: 29px;
+    width: 32px;
   }
 }
