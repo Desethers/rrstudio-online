@@ -1234,6 +1234,10 @@ modal.addEventListener("click", (event) => {
   if (event.target === modal) modal.close();
 });
 
+/* Task category pages link back with ?add=<task id>#tasks: that task starts in the estimate. */
+const addedFromPage = new URLSearchParams(window.location.search).get("add");
+if (tasks.some((task) => task.id === addedFromPage)) selected.add(addedFromPage);
+
 renderTasks();
 updateSummary();
 createIcons({

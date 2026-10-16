@@ -12063,3 +12063,55 @@ h2,
 .software-promo--tools .product-card__link .product-card__pill {
   top: 24px;
 }
+
+/* Navbar "Tasks" menu: the link goes to the task grid; hover or keyboard focus opens
+ * the three task category pages under it. */
+.nav-menu {
+  position: relative;
+}
+.nav-menu__panel {
+  background: var(--background);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(17, 17, 16, 0.06),
+    0 14px 32px -18px rgba(17, 17, 16, 0.17);
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  min-width: 200px;
+  opacity: 0;
+  padding: 6px;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  transform: translate(-50%, -4px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.2s var(--ease, ease);
+  z-index: 30;
+}
+/* Invisible bridge so the pointer can travel from the link to the panel. */
+.nav-menu__panel::before {
+  content: "";
+  height: 12px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -12px;
+}
+.nav-menu:hover .nav-menu__panel,
+.nav-menu:focus-within .nav-menu__panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.nav-menu__panel a {
+  border-radius: 9px;
+  color: var(--ink);
+  padding: 9px 12px;
+  white-space: nowrap;
+}
+.nav-menu__panel a:hover,
+.nav-menu__panel a:focus-visible {
+  background: var(--surface-soft);
+}

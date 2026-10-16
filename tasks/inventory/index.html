@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artwork inventory cleanup and imports, including Artlogic — R.R Studio</title>
+    <meta name="description" content="Duplicates, incomplete records, messy categories or a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price." />
+    <link rel="canonical" href="https://rrstudio.online/tasks/inventory/" />
+    <link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/inventory/" />
+    <link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/inventaire/" />
+    <link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/inventory/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="R.R Studio" />
+    <meta property="og:title" content="Artwork inventory cleanup and imports, including Artlogic — R.R Studio" />
+    <meta property="og:description" content="Duplicates, incomplete records, messy categories or a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price." />
+    <meta property="og:url" content="https://rrstudio.online/tasks/inventory/" />
+    <meta property="og:image" content="https://rrstudio.online/images/og-image.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/category.js"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Inventory",
+  "description": "Duplicates, incomplete records, messy categories or a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price.",
+  "url": "https://rrstudio.online/tasks/inventory/",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "R.R Studio",
+    "url": "https://rrstudio.online/"
+  },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "R.R Studio tasks · Inventory",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "price": "120",
+        "priceCurrency": "EUR",
+        "url": "https://rrstudio.online/tasks/inventory/#artlogic-check",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Clean up your Artlogic inventory",
+          "description": "Remove duplicates, complete missing records and make your inventory reliable again."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "150",
+        "priceCurrency": "EUR",
+        "url": "https://rrstudio.online/tasks/inventory/#organise-database",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Organise your inventory",
+          "description": "Clean categories, fields and structure."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "url": "https://rrstudio.online/tasks/inventory/#clean-records",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Clean 50 artwork records",
+          "description": "Fix inconsistent artwork information."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "220",
+        "priceCurrency": "EUR",
+        "url": "https://rrstudio.online/tasks/inventory/#import-artworks",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Import 50 artworks",
+          "description": "Clean and import your spreadsheet or export."
+        }
+      }
+    ]
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you work with Artlogic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. “Clean up your Artlogic inventory” is made for it: duplicates removed, missing records completed and an inventory you can rely on again."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have more than 50 artworks. How is it priced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Import and cleanup tasks are priced per 50 works. Tell me how many works you have and I confirm the price before starting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I only use the exports or access you give me, and only for the task you requested."
+      }
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "R.R Studio",
+      "item": "https://rrstudio.online/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tasks",
+      "item": "https://rrstudio.online/#tasks"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Inventory",
+      "item": "https://rrstudio.online/tasks/inventory/"
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="cat-page">
+    <header class="header">
+      <div class="header__inner">
+        <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
+        <nav class="nav" aria-label="Main navigation"><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/#studio">Studio</a></nav>
+        <a class="button" href="mailto:studio@rrstudio.online">Work with me</a>
+      </div>
+    </header>
+    <main class="cat">
+      <nav class="cat-crumb" aria-label="Breadcrumb"><a href="/#tasks">Tasks</a><span aria-hidden="true">/</span><span aria-current="page">Inventory</span></nav>
+      <section class="cat-hero">
+        <p class="cat-eyebrow">Inventory</p>
+        <h1>Artwork inventory, cleaned and organised.</h1>
+        <p class="cat-lead">Duplicates, incomplete records, messy categories, a spreadsheet to import: I clean and organise your artwork inventory, including in Artlogic. Each task has a fixed price, agreed before I start.</p>
+        <p class="cat-note">Fixed price per task · Payment after approval</p>
+      </section>
+      <section class="cat-section" aria-labelledby="cat-list-title">
+        <h2 id="cat-list-title">Tasks</h2>
+        <ul class="cat-tasks">
+          <li class="cat-task" id="artlogic-check">
+            <div class="cat-task__text"><h3>Clean up your Artlogic inventory</h3><p>Remove duplicates, complete missing records and make your inventory reliable again.</p></div>
+            <p class="cat-task__price">€120</p>
+            <a class="cat-task__add" href="/?add=artlogic-check#tasks" aria-label="Add Clean up your Artlogic inventory to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="organise-database">
+            <div class="cat-task__text"><h3>Organise your inventory</h3><p>Clean categories, fields and structure.</p></div>
+            <p class="cat-task__price">€150</p>
+            <a class="cat-task__add" href="/?add=organise-database#tasks" aria-label="Add Organise your inventory to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="clean-records">
+            <div class="cat-task__text"><h3>Clean 50 artwork records</h3><p>Fix inconsistent artwork information.</p></div>
+            <p class="cat-task__price">€180</p>
+            <a class="cat-task__add" href="/?add=clean-records#tasks" aria-label="Add Clean 50 artwork records to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="import-artworks">
+            <div class="cat-task__text"><h3>Import 50 artworks</h3><p>Clean and import your spreadsheet or export.</p></div>
+            <p class="cat-task__price">€220</p>
+            <a class="cat-task__add" href="/?add=import-artworks#tasks" aria-label="Add Import 50 artworks to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+        </ul>
+      </section>
+      <section class="cat-section">
+        <h2>Why galleries send these tasks</h2>
+        <p>An inventory drifts over time: works entered twice, missing dimensions, three spellings of the same medium. It slows down every PDF and every reply to a collector. These tasks put it back in order.</p>
+      </section>
+      <section class="cat-section">
+        <h2>What I need from you</h2>
+        <!-- TODO (R.R): confirm the file formats and systems you accept (Artlogic, Excel, Google Sheets, CSV, others). -->
+        <ul class="cat-list">
+          <li>An export of your inventory (a spreadsheet or CSV file), or access to the system it lives in.</li>
+          <li>For an import: your spreadsheet and the images of the works.</li>
+          <li>What a clean record means for you: required fields and naming conventions, if you have them.</li>
+        </ul>
+      </section>
+      <section class="cat-section">
+        <h2>How it works</h2>
+        <ol class="cat-steps">
+          <li>Choose a task and send what’s needed. The price is fixed before I start.</li>
+          <li>I confirm the scope, do the work and check every detail by hand.</li>
+          <li>You review the result. Payment happens after you approve it.</li>
+        </ol>
+      </section>
+      <section class="cat-section cat-faq">
+        <h2>Questions</h2>
+          <details>
+            <summary>Do you work with Artlogic?</summary>
+            <p>Yes. “Clean up your Artlogic inventory” is made for it: duplicates removed, missing records completed and an inventory you can rely on again.</p>
+          </details>
+          <details>
+            <summary>I have more than 50 artworks. How is it priced?</summary>
+            <p>Import and cleanup tasks are priced per 50 works. Tell me how many works you have and I confirm the price before starting.</p>
+            <!-- TODO (R.R): confirm how you price larger volumes. -->
+          </details>
+          <details>
+            <summary>What happens to my data?</summary>
+            <p>I only use the exports or access you give me, and only for the task you requested.</p>
+            <!-- TODO (R.R): add your data handling details (where files are kept, when they are deleted). -->
+          </details>
+      </section>
+      <section class="cat-section cat-tool">
+        <h2>A tool that goes with it</h2>
+        <p><strong>Inventory</strong> · Inventory keeps every work, its images and its availability in one record.</p>
+        <a href="/#products">See the tools <span aria-hidden="true">→</span></a>
+      </section>
+      <section class="cat-section cat-more">
+        <h2>Other tasks</h2>
+        <ul>
+          <li><a href="/tasks/website/">Website & visibility <span aria-hidden="true">→</span></a></li>
+          <li><a href="/tasks/sales-material/">Sales material <span aria-hidden="true">→</span></a></li>
+        </ul>
+      </section>
+      <section class="cat-cta">
+        <h2>Not sure which task you need?</h2>
+        <a class="button" href="mailto:studio@rrstudio.online?subject=Question%20about%20a%20task">Write to me <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer class="cat-footer">
+      <p>One person for the tech side of your gallery. Tools installed in your accounts, work at a fixed price.</p>
+      <div>
+        <span>© 2026 R.R Studio</span>
+        <span><span class="lang-current">EN</span> · <a href="/fr/taches/inventaire/" hreflang="fr" aria-label="Voir cette page en français">FR</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

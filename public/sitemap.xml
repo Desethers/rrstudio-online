@@ -17,4 +17,52 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://rrstudio.online/tasks/website/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/website/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/site-web/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/website/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/fr/taches/site-web/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/website/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/site-web/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/website/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/tasks/inventory/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/inventory/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/inventaire/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/inventory/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/fr/taches/inventaire/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/inventory/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/inventaire/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/inventory/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/tasks/sales-material/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/sales-material/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/supports-de-vente/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/sales-material/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/fr/taches/supports-de-vente/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/tasks/sales-material/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/taches/supports-de-vente/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/tasks/sales-material/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -1,0 +1,233 @@
+/* Task category pages: one readable column, the tasks as rows with their price
+ * and an "Add to estimate" link. */
+.cat {
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 48px 24px 96px;
+}
+.cat-crumb {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 14px;
+  gap: 8px;
+}
+.cat-crumb a {
+  color: inherit;
+  text-decoration: none;
+}
+.cat-crumb a:hover {
+  color: var(--ink);
+}
+.cat-crumb [aria-current] {
+  color: var(--ink);
+}
+.cat-hero {
+  padding: 56px 0 24px;
+}
+.cat-eyebrow {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+.cat-hero h1 {
+  font-size: 44px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin: 0;
+}
+.cat-lead {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.55;
+  margin: 20px 0 0;
+}
+.cat-note {
+  color: var(--ink);
+  font-size: 14px;
+  margin: 20px 0 0;
+}
+.cat-section {
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+}
+.cat-section h2,
+.cat-cta h2 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+.cat-section > p,
+.cat-list li,
+.cat-steps li,
+.cat-faq p,
+.cat-tool p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+.cat-group {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 28px 0 4px;
+}
+.cat-tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cat-task {
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-soft);
+  display: grid;
+  gap: 6px 24px;
+  grid-template-columns: 1fr auto auto;
+  padding: 18px 0;
+  scroll-margin-top: 96px;
+}
+.cat-task:last-child {
+  border-bottom: 0;
+}
+.cat-task h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+.cat-task p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+.cat-task .cat-task__price {
+  color: var(--ink);
+  font-size: 16px;
+}
+.cat-task__add,
+.cat-tool a,
+.cat-more a {
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+  white-space: nowrap;
+}
+.cat-task__add:hover,
+.cat-tool a:hover,
+.cat-more a:hover {
+  text-decoration-color: currentColor;
+}
+.cat-task:target {
+  background: var(--surface-soft);
+  border-radius: 12px;
+  margin: 0 -16px;
+  padding: 18px 16px;
+}
+.cat-list,
+.cat-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+}
+.cat-faq details {
+  border-bottom: 1px solid var(--border-soft);
+  padding: 14px 0;
+}
+.cat-faq summary {
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  list-style: none;
+}
+.cat-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cat-faq summary::after {
+  color: var(--muted);
+  content: "+";
+  margin-left: 16px;
+}
+.cat-faq details[open] summary::after {
+  content: "−";
+}
+.cat-faq details p {
+  margin-top: 10px;
+}
+.cat-tool p {
+  margin-bottom: 12px;
+}
+.cat-tool strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.cat-more ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cat-cta {
+  background: var(--surface-soft);
+  border-radius: 22px;
+  margin-top: 24px;
+  padding: 40px 32px;
+  text-align: center;
+}
+.cat-cta .button {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+.cat-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 28px 24px 40px;
+}
+.cat-footer p {
+  margin: 0 0 12px;
+}
+.cat-footer div {
+  display: flex;
+  justify-content: space-between;
+}
+.cat-footer a {
+  color: inherit;
+}
+.cat-footer .lang-current {
+  color: var(--ink);
+}
+@media (max-width: 640px) {
+  .cat {
+    padding: 28px 16px 72px;
+  }
+  .cat-hero {
+    padding-top: 36px;
+  }
+  .cat-hero h1 {
+    font-size: 32px;
+  }
+  .cat-lead {
+    font-size: 16px;
+  }
+  .cat-task {
+    grid-template-columns: 1fr auto;
+  }
+  .cat-task__add {
+    grid-column: 1 / -1;
+  }
+  .cat-footer {
+    padding: 24px 16px 32px;
+  }
+}
