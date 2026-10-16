@@ -1867,27 +1867,74 @@ if (heroStage) {
   window.addEventListener("resize", centreHero);
 }
 
-/* Touch: tap the miniature invoice to open it, tap anywhere else to close it. */
+/* Hero invoice, folded in two like a sheet of paper. The real invoice goes into a sheet that
+ * shows only its top half; a flap hinged on the crease carries a copy of the bottom half on its
+ * front and a blank back. Opening swings the flap down, then the real sheet takes over
+ * (.is-flat). Wide screens: the first hover, focus or tap unfolds it for good. Narrower, the
+ * open invoice covers the title, so it opens on hover or tap and folds back after. */
 const heroInvoice = document.querySelector(".hero-stage .service-estimate");
 if (heroInvoice) {
-  /* The invoice starts folded in two; the first hover, focus or tap unfolds it for good. */
-  const unfold = () => heroInvoice.closest(".hero-stage").classList.add("is-unfolded");
-  ["mouseenter", "focus", "click"].forEach((type) =>
-    heroInvoice.addEventListener(type, unfold, { once: true }),
-  );
+  const stage = heroInvoice.closest(".hero-stage");
+  const sheet = document.createElement("div");
+  sheet.className = "fold-sheet";
+  sheet.append(...heroInvoice.childNodes);
+  const flap = document.createElement("div");
+  flap.className = "fold-flap";
+  flap.innerHTML = '<div class="fold-flap__front"></div><div class="fold-flap__back"></div>';
+  heroInvoice.append(sheet, flap);
+  heroInvoice.dataset.fold = "";
+
+  const wide = matchMedia("(min-width: 1101px)");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  /* The invoice changes with the selected tasks, so the flap gets a fresh copy each time. */
+  const copyBottomHalf = () => {
+    const copy = sheet.cloneNode(true);
+    copy.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+    copy.setAttribute("aria-hidden", "true");
+    flap.firstElementChild.replaceChildren(copy);
+  };
+  const isOpen = () => stage.classList.contains("is-unfolded");
+  const open = () => {
+    if (isOpen()) return;
+    copyBottomHalf();
+    stage.classList.add("is-unfolded");
+    if (reduce.matches) stage.classList.add("is-flat");
+  };
+  const close = () => {
+    if (wide.matches || !isOpen()) return;
+    copyBottomHalf();
+    stage.classList.remove("is-flat", "is-unfolded");
+  };
+  flap.addEventListener("transitionend", (event) => {
+    if (event.target === flap && event.propertyName === "transform" && isOpen()) {
+      stage.classList.add("is-flat");
+    }
+  });
+
+  heroInvoice.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "mouse") open();
+  });
+  heroInvoice.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse") close();
+  });
+  heroInvoice.addEventListener("focus", () => {
+    if (heroInvoice.matches(":focus-visible")) open();
+  });
+  heroInvoice.addEventListener("blur", () => {
+    if (!heroInvoice.matches(":hover")) close();
+  });
   heroInvoice.addEventListener("click", (event) => {
-    /* With a mouse the hover already opens it: a click must not leave it stuck open
-     * (the click also focuses the card, so drop the focus again). */
+    /* With a mouse the hover already opens it; drop the focus the click gave the card. */
     if (matchMedia("(hover: hover)").matches) {
       heroInvoice.blur();
       return;
     }
+    /* Touch: tap the invoice to open it, tap anywhere else to fold it back. */
     event.stopPropagation();
-    heroInvoice.closest(".hero-stage").classList.toggle("is-open");
+    if (isOpen()) close();
+    else open();
   });
-  document.addEventListener("click", () =>
-    heroInvoice.closest(".hero-stage").classList.remove("is-open"),
-  );
+  document.addEventListener("click", close);
 }
 
 /* Studio card: shows the opening line and the first paragraph; the button (or a click on the card)

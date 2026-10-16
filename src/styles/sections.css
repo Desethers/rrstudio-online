@@ -11575,65 +11575,121 @@ h2,
   white-space: normal;
 }
 
-/* Hero invoice: at rest the sheet is folded in two (only the top half shows, with a crease
- * along the fold). The first hover unfolds it and it stays open (.is-unfolded, see main.js). */
-.hero-stage .service-estimate {
-  /* The clip keeps the 9px hairline ring on the top and sides; the fold edge is straight. */
-  clip-path: inset(-12px -12px 50% -12px);
+/* Hero invoice folded in two like a sheet of paper (structure built in main.js):
+ * .fold-sheet holds the invoice and shows only its top half while folded; .fold-flap is
+ * the bottom half, hinged on the crease, lying face down over the top half (its blank back
+ * showing). Unfolding swings the flap down towards the viewer while the sheet grows.
+ * .is-unfolded = open (target), .is-flat = flap landed, the real sheet takes over. */
+.hero-stage .service-estimate[data-fold],
+.hero-stage:has(.service-estimate:hover) .service-estimate[data-fold],
+.hero-stage .service-estimate[data-fold]:focus-visible,
+.hero-stage.is-open .service-estimate[data-fold] {
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+  perspective: 1400px;
+}
+.hero-stage .service-estimate[data-fold] {
+  --ring: 0 0 0 9px rgba(17, 17, 16, 0.09);
   transform: translate(-50%, calc(-50% + var(--inv-h) * var(--s-rest) * 0.25px)) scale(var(--s-rest));
   transition:
-    transform 0.8s var(--ease),
-    clip-path 0.8s var(--ease),
-    top 0.8s var(--ease),
-    box-shadow 0.4s ease;
+    transform 0.9s var(--ease),
+    top 0.9s var(--ease);
 }
-.hero-stage .service-estimate::after {
-  /* Crease on the fold, and the shade of the half that was tucked under. */
-  background: linear-gradient(
-    to bottom,
-    rgba(17, 17, 16, 0.14) 0 9px,
-    rgba(17, 17, 16, 0.06) 9px,
-    rgba(17, 17, 16, 0) 100%
-  );
-  bottom: 0;
-  content: "";
-  left: 0;
-  pointer-events: none;
+.hero-stage.is-unfolded .service-estimate[data-fold] {
+  --ring: 0 0 0 2px rgba(17, 17, 16, 0.06);
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--s-open));
+}
+.fold-sheet {
+  background: var(--surface-warm);
+  border-radius: inherit;
+  box-shadow: var(--ring);
+  box-sizing: border-box;
+  display: inherit;
+  flex-direction: inherit;
+  inset: 0;
+  justify-content: inherit;
+  overflow: hidden;
+  padding: inherit;
   position: absolute;
-  right: 0;
-  top: calc(50% - 9px);
-  transition: opacity 0.9s ease 0.15s;
+  /* Folded: only the top half (the hairline ring is kept on the top and sides). */
+  clip-path: inset(-12px -12px 50% -12px);
 }
-/* Opened (hover, focus or tap): the sheet is unfolded. */
-.hero-stage:has(.service-estimate:hover) .service-estimate,
-.hero-stage .service-estimate:focus-visible,
-.hero-stage.is-open .service-estimate {
+.hero-stage.is-flat .service-estimate > .fold-sheet {
   clip-path: inset(-12px);
 }
-.hero-stage:has(.service-estimate:hover) .service-estimate::after,
-.hero-stage .service-estimate:focus-visible::after,
-.hero-stage.is-open .service-estimate::after {
+.fold-flap {
+  border-radius: inherit;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: rotateX(180deg);
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.45, 0, 0.2, 1);
+  width: 100%;
+}
+.hero-stage.is-unfolded .fold-flap {
+  transform: rotateX(0deg);
+}
+.hero-stage.is-flat .fold-flap {
+  visibility: hidden;
+}
+.fold-flap__front,
+.fold-flap__back {
+  backface-visibility: hidden;
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: var(--ring);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+}
+.fold-flap__back {
+  background: var(--surface-warm);
+  transform: rotateX(180deg);
+}
+/* The flap's copy of the invoice, shifted up so only its bottom half shows. */
+.fold-flap__front > .fold-sheet {
+  box-shadow: none;
+  clip-path: none;
+  height: 200%;
+  inset: auto;
+  left: 0;
+  top: -100%;
+  width: 100%;
+}
+/* Light: the flap darkens as it turns edge-on, the back is shaded where it meets the crease. */
+.fold-flap__front::after,
+.fold-flap__back::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.9s cubic-bezier(0.45, 0, 0.2, 1);
+}
+.fold-flap__front::after {
+  background: linear-gradient(to bottom, rgba(17, 17, 16, 0.18), rgba(17, 17, 16, 0.04));
+  opacity: 1;
+}
+.fold-flap__back::after {
+  background: linear-gradient(to top, rgba(17, 17, 16, 0.07), rgba(17, 17, 16, 0) 40%);
+}
+.hero-stage.is-unfolded .fold-flap__front::after {
   opacity: 0;
 }
-/* Wide screens only: once unfolded it stays open. Narrower, the open invoice covers
- * the title, so it only opens while hovered or tapped and folds back after. */
 @media (min-width: 1101px) {
-  .hero-stage.is-unfolded .service-estimate {
-    box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
-    clip-path: inset(-12px);
-    top: 50%;
-    transform: translate(-50%, -50%) scale(var(--s-open));
-  }
-  .hero-stage.is-unfolded .service-estimate::after {
-    opacity: 0;
-  }
   .hero-stage.is-unfolded .hero-gap {
     width: calc(var(--inv-w) * var(--s-open) * 1px + 1.3em);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-stage .service-estimate,
-  .hero-stage .service-estimate::after {
+  .hero-stage .service-estimate[data-fold],
+  .fold-flap,
+  .fold-flap__front::after {
     transition: none;
   }
 }
