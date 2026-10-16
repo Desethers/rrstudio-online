@@ -1870,6 +1870,11 @@ if (heroStage) {
 /* Touch: tap the miniature invoice to open it, tap anywhere else to close it. */
 const heroInvoice = document.querySelector(".hero-stage .service-estimate");
 if (heroInvoice) {
+  /* The invoice starts folded in two; the first hover, focus or tap unfolds it for good. */
+  const unfold = () => heroInvoice.closest(".hero-stage").classList.add("is-unfolded");
+  ["mouseenter", "focus", "click"].forEach((type) =>
+    heroInvoice.addEventListener(type, unfold, { once: true }),
+  );
   heroInvoice.addEventListener("click", (event) => {
     /* With a mouse the hover already opens it: a click must not leave it stuck open
      * (the click also focuses the card, so drop the focus again). */

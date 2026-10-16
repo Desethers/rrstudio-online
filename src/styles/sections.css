@@ -11574,3 +11574,66 @@ h2,
   display: -webkit-box;
   white-space: normal;
 }
+
+/* Hero invoice: at rest the sheet is folded in two (only the top half shows, with a crease
+ * along the fold). The first hover unfolds it and it stays open (.is-unfolded, see main.js). */
+.hero-stage .service-estimate {
+  /* The clip keeps the 9px hairline ring on the top and sides; the fold edge is straight. */
+  clip-path: inset(-12px -12px 50% -12px);
+  transform: translate(-50%, calc(-50% + var(--inv-h) * var(--s-rest) * 0.25px)) scale(var(--s-rest));
+  transition:
+    transform 0.8s var(--ease),
+    clip-path 0.8s var(--ease),
+    top 0.8s var(--ease),
+    box-shadow 0.4s ease;
+}
+.hero-stage .service-estimate::after {
+  /* Crease on the fold, and the shade of the half that was tucked under. */
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 16, 0.14) 0 9px,
+    rgba(17, 17, 16, 0.06) 9px,
+    rgba(17, 17, 16, 0) 100%
+  );
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 9px);
+  transition: opacity 0.9s ease 0.15s;
+}
+/* Opened (hover, focus or tap): the sheet is unfolded. */
+.hero-stage:has(.service-estimate:hover) .service-estimate,
+.hero-stage .service-estimate:focus-visible,
+.hero-stage.is-open .service-estimate {
+  clip-path: inset(-12px);
+}
+.hero-stage:has(.service-estimate:hover) .service-estimate::after,
+.hero-stage .service-estimate:focus-visible::after,
+.hero-stage.is-open .service-estimate::after {
+  opacity: 0;
+}
+/* Wide screens only: once unfolded it stays open. Narrower, the open invoice covers
+ * the title, so it only opens while hovered or tapped and folds back after. */
+@media (min-width: 1101px) {
+  .hero-stage.is-unfolded .service-estimate {
+    box-shadow: 0 0 0 2px rgba(17, 17, 16, 0.06);
+    clip-path: inset(-12px);
+    top: 50%;
+    transform: translate(-50%, -50%) scale(var(--s-open));
+  }
+  .hero-stage.is-unfolded .service-estimate::after {
+    opacity: 0;
+  }
+  .hero-stage.is-unfolded .hero-gap {
+    width: calc(var(--inv-w) * var(--s-open) * 1px + 1.3em);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage .service-estimate,
+  .hero-stage .service-estimate::after {
+    transition: none;
+  }
+}
