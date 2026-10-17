@@ -64,6 +64,7 @@ if (form) {
             _subject: subject,
             _replyto: data.email,
             language: lang,
+            hp: form.hp.value,
             source: "contact page",
           }),
         });

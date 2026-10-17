@@ -12126,3 +12126,13 @@ h2,
     display: inline-flex;
   }
 }
+
+/* Spam trap in the request forms: out of sight for visitors, filled in by bots. */
+.hp {
+  height: 1px;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+}
