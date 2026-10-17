@@ -6,7 +6,7 @@ R.R Studio (an extension of Vitreen Software) makes technology work for contempo
 
 Contact: studio@rrstudio.online
 Location: Paris, France
-Website: https://rrstudio.online (French: https://rrstudio.online/fr)
+Website: https://www.rrstudio.online (French: https://www.rrstudio.online/fr)
 
 ## Tools
 

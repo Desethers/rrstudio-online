@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rrstudio.online/sitemap.xml
+Sitemap: https://www.rrstudio.online/sitemap.xml
