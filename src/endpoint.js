@@ -2,4 +2,4 @@
 // Contact page form). Set it to a Formspree form URL, e.g.
 // "https://formspree.io/f/abcdwxyz". While empty, the forms fall back to a prefilled
 // email so no request is lost.
-export const ACCESS_ENDPOINT = "";
+export const ACCESS_ENDPOINT = "https://formspree.io/f/mbgdwlkp";
