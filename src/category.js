@@ -6,3 +6,4 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 import "./styles/category.css";
+import "./footer-form.js";

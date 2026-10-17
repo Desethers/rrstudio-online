@@ -4,6 +4,7 @@ import "./styles/components.css";
 import "./styles/sections.css";
 import "./styles/component-mode.css";
 import { ACCESS_ENDPOINT } from "./endpoint.js";
+import "./footer-form.js";
 import {
   BadgeCheck,
   BadgeEuro,
