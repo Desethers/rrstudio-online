@@ -12,6 +12,11 @@ if (form) {
   const lang = form.dataset.lang;
   const copy = JSON.parse(form.dataset.msgs);
 
+  // "/contact/?interest=workshop" opens the form with that interest already ticked.
+  const wanted = new URLSearchParams(window.location.search).get("interest");
+  const preset = wanted && form.querySelector(`input[name="interest"][data-key="${CSS.escape(wanted)}"]`);
+  if (preset) preset.checked = true;
+
   const showError = (message, field) => {
     error.textContent = message;
     error.hidden = false;

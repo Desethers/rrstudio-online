@@ -43,38 +43,6 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do you only work with galleries?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "I work with contemporary art galleries, from solo gallerists to established teams."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to change my tools?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. I work alongside your website and systems rather than replacing them."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a retainer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Tasks have a fixed price, there is no subscription, and no hourly billing."
-      }
-    }
-  ]
-}
-    </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {
@@ -110,10 +78,10 @@
         <form class="contact-form" id="contact-form" novalidate data-lang="en" data-msgs='{"errName": "Enter your name.", "errEmail": "Enter a valid email address.", "errGallery": "Enter your gallery name.", "errMessage": "Tell me a little about what you’d like to do.", "failed": "The message couldn’t be sent. Try again, or write to studio@rrstudio.online.", "subject": "Contact", "greeting": "Hello R.R Studio,", "labels": ["Interested in", "Name", "Email", "Gallery", "Website"], "message": "How can I help?"}'>
           <fieldset class="access-tools">
             <legend>I’m interested in</legend>
-            <label class="access-tool"><input type="checkbox" name="interest" value="Tools" /><span>Tools</span></label>
-            <label class="access-tool"><input type="checkbox" name="interest" value="Tasks" /><span>Tasks</span></label>
-            <label class="access-tool"><input type="checkbox" name="interest" value="Workshop" /><span>Workshop</span></label>
-            <label class="access-tool"><input type="checkbox" name="interest" value="Larger project" /><span>Larger project</span></label>
+            <label class="access-tool"><input type="checkbox" name="interest" value="Tools" data-key="tools" /><span>Tools</span></label>
+            <label class="access-tool"><input type="checkbox" name="interest" value="Tasks" data-key="tasks" /><span>Tasks</span></label>
+            <label class="access-tool"><input type="checkbox" name="interest" value="Workshop" data-key="workshop" /><span>Workshop</span></label>
+            <label class="access-tool"><input type="checkbox" name="interest" value="Larger project" data-key="larger" /><span>Larger project</span></label>
           </fieldset>
           <div class="contact-row">
             <label class="access-field"><span>Name</span><input name="name" type="text" autocomplete="name" required /></label>
@@ -132,30 +100,6 @@
           <p class="cat-lead">I’ll reply by email to suggest a time to talk.</p>
         </div>
         <p class="cat-note">Prefer to write directly? <a href="mailto:studio@rrstudio.online">Email</a> · <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20working%20together." target="_blank" rel="noopener noreferrer">WhatsApp</a> · Based in Paris, France. I work with galleries anywhere.</p>
-      </section>
-      <section class="cat-section">
-        <h2>Ways to work together</h2>
-        <ul class="contact-ways">
-        <li class="contact-way"><div><h3>Tools</h3><p>Chat, Mail, Assistant and Inventory work inside your own accounts. Every gallery works differently, so each tool starts with a short call: I see how you work, and we decide together what to set up.</p></div><a href="/#products">See the tools <span aria-hidden="true">→</span></a></li>
-        <li class="contact-way"><div><h3>Tasks</h3><p>One-off jobs on your website, inventory and sales material. You choose a task, the price is fixed before I start, and you pay after you approve the result. If the agreed outcome isn’t delivered, the task is refunded.</p></div><a href="/#tasks">Browse the tasks <span aria-hidden="true">→</span></a></li>
-        <li class="contact-way"><div><h3>Workshop</h3><p>A hands-on half-day session built around your real material: exhibition texts, collector replies, inventory, sales material. Your team leaves with methods and prompts it can use the next morning. On site or remote, price on request.</p></div><a href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20AI%20workshop">Ask about a workshop <span aria-hidden="true">→</span></a></li>
-        <li class="contact-way"><div><h3>Larger projects</h3><p>For work beyond the task list, such as a new website or a move to a new inventory system, we start with a conversation to see what makes sense and how to organise it.</p></div><a href="mailto:studio@rrstudio.online?subject=R.R%20Studio%20larger%20project">Describe your project <span aria-hidden="true">→</span></a></li>
-        </ul>
-      </section>
-      <section class="cat-section cat-faq">
-        <h2>Questions</h2>
-          <details>
-            <summary>Do you only work with galleries?</summary>
-            <p>I work with contemporary art galleries, from solo gallerists to established teams.</p>
-          </details>
-          <details>
-            <summary>Do I need to change my tools?</summary>
-            <p>No. I work alongside your website and systems rather than replacing them.</p>
-          </details>
-          <details>
-            <summary>Is there a retainer?</summary>
-            <p>No. Tasks have a fixed price, there is no subscription, and no hourly billing.</p>
-          </details>
       </section>
     </main>
     <footer class="cat-footer">
