@@ -65,4 +65,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://rrstudio.online/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/contact/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://rrstudio.online/fr/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rrstudio.online/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://rrstudio.online/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rrstudio.online/contact/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

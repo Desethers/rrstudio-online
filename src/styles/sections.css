@@ -12115,3 +12115,14 @@ h2,
 .nav-menu__panel a:focus-visible {
   background: var(--surface-soft);
 }
+
+/* Header: the nav carries "Contact" on desktop; on phones the nav is hidden and this
+ * button takes the place of the old "Work with me" button. */
+.header .header-contact {
+  display: none;
+}
+@media (max-width: 640px) {
+  .header .header-contact {
+    display: inline-flex;
+  }
+}

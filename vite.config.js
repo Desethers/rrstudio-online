@@ -16,6 +16,8 @@ export default defineConfig({
         fr: path.resolve(__dirname, "fr/index.html"),
         components: path.resolve(__dirname, "components/index.html"),
         // Task category pages (EN + FR).
+        contact: path.resolve(__dirname, "contact/index.html"),
+        contactFr: path.resolve(__dirname, "fr/contact/index.html"),
         tasksWebsite: path.resolve(__dirname, "tasks/website/index.html"),
         tasksInventory: path.resolve(__dirname, "tasks/inventory/index.html"),
         tasksSales: path.resolve(__dirname, "tasks/sales-material/index.html"),

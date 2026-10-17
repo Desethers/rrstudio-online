@@ -3,6 +3,7 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 import "./styles/component-mode.css";
+import { ACCESS_ENDPOINT } from "./endpoint.js";
 import {
   BadgeCheck,
   BadgeEuro,
@@ -1991,10 +1992,8 @@ document.querySelector('.filter[data-component-default]')?.click();
 
 /* Let’s talk: every Tools card opens the same short form, with its tool ticked. Tools are
  * never set up straight away: the form asks for a call, and the setup is decided after it.
- * The request is posted to ACCESS_ENDPOINT (a Formspree form URL, e.g.
- * "https://formspree.io/f/abcdwxyz"). Until it is set, the form falls back to a
- * prefilled email so no request is lost. */
-const ACCESS_ENDPOINT = "";
+ * The request is posted to ACCESS_ENDPOINT (see endpoint.js); until it is set, the form
+ * falls back to a prefilled email so no request is lost. */
 (() => {
   const dialog = document.querySelector("#access-modal");
   if (!dialog) return;

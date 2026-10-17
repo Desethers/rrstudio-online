@@ -231,3 +231,133 @@
     padding: 24px 16px 32px;
   }
 }
+
+/* Contact page */
+.contact-ways {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.contact-way {
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-soft);
+  display: grid;
+  gap: 8px 32px;
+  grid-template-columns: 1fr auto;
+  padding: 24px 0;
+}
+.contact-way:first-child {
+  padding-top: 0;
+}
+.contact-way:last-child {
+  border-bottom: 0;
+}
+.contact-way h3 {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.contact-way p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+.contact-way a {
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+  white-space: nowrap;
+}
+.contact-way a:hover {
+  text-decoration-color: currentColor;
+}
+.contact-channels {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 0;
+}
+.contact-channels .button {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+.contact-channels .contact-wa {
+  background: transparent;
+  color: var(--ink);
+}
+.cat-section .cat-note {
+  color: var(--muted);
+  margin-top: 20px;
+}
+.nav a[aria-current="page"] {
+  color: var(--ink);
+}
+@media (max-width: 640px) {
+  .contact-way {
+    grid-template-columns: 1fr;
+  }
+}
+.contact-channels .button {
+  gap: 6px;
+}
+.cat-list + .contact-channels,
+.cat-section .cat-list {
+  margin-bottom: 0;
+}
+.contact-form-wrap {
+  border-top: 0;
+  padding-top: 8px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-row {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+}
+.contact-form .access-field span {
+  margin-bottom: 8px;
+}
+.contact-form .access-field input,
+.contact-form .access-field textarea {
+  font-size: 16px;
+  padding: 14px 16px;
+}
+.contact-submit {
+  align-self: stretch;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 16px 20px;
+}
+.contact-submit[disabled] {
+  opacity: 0.5;
+}
+.contact-done {
+  padding: 8px 0 4px;
+}
+.contact-done h2 {
+  font-size: 28px;
+}
+.contact-done[hidden],
+.contact-form[hidden] {
+  display: none;
+}
+.contact-form-wrap .cat-note a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+}
+@media (max-width: 640px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+}
