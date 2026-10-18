@@ -12388,6 +12388,17 @@ h2,
     padding: 0;
     width: 44px;
   }
+  .burger {
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 50%;
+  }
+  .burger:focus {
+    outline: none;
+  }
+  .burger:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -4px;
+  }
   .burger span {
     background: var(--ink);
     border-radius: 2px;
@@ -12406,9 +12417,12 @@ h2,
     background: var(--background);
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
     inset: 0;
     opacity: 0;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 96px 18px 32px;
     pointer-events: none;
     position: fixed;
@@ -12427,8 +12441,16 @@ h2,
     transition-delay: 0s;
     visibility: visible;
   }
-  html.menu-open {
+  html.menu-open,
+  html.menu-open body {
     overflow: hidden;
+  }
+  /* Nothing of the page may peek out under (or scroll behind) the menu. */
+  html.menu-open main,
+  html.menu-open .big-footer,
+  html.menu-open .request-summary,
+  html.menu-open .footer-cta {
+    visibility: hidden;
   }
   .mobile-menu__nav {
     display: flex;
