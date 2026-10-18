@@ -5,6 +5,7 @@ import "./styles/sections.css";
 import "./styles/component-mode.css";
 import { ACCESS_ENDPOINT } from "./endpoint.js";
 import "./footer-form.js";
+import "./mobile-menu.js";
 import {
   BadgeCheck,
   BadgeEuro,
@@ -1317,7 +1318,7 @@ const heroRotator = document.querySelector("#hero-rotator");
 if (heroRotator) {
   const HERO_WORDS = {
     en: ["the art world"],
-    fr: ["le monde de l\u2019art"],
+    fr: ["du monde de l\u2019art"],
   };
   const words = HERO_WORDS[LANG];
   const mask = heroRotator.querySelector(".hero-rotator__mask");

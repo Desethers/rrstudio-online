@@ -308,7 +308,18 @@
           <a href="#products">Outils</a><span class="nav-menu"><a href="#tasks">Tâches</a><span class="nav-menu__panel"><a href="/fr/taches/site-web/">Site web et visibilité</a><a href="/fr/taches/inventaire/">Inventaire</a><a href="/fr/taches/supports-de-vente/">Supports de vente</a></span></span><a href="/fr/contact/">Contact</a
           ><a href="#how-it-works" hidden>Comment ça marche</a>
         </nav>
-        <a class="button header-contact" href="/fr/contact/">Contact</a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
+      </div>
+      <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <nav class="mobile-menu__nav" aria-label="Menu principal">
+          <a href="/fr/#products">Outils</a>
+          <a href="/fr/#tasks">Tâches</a>
+          <a class="mobile-menu__sub" href="/fr/taches/site-web/">Site web et visibilité</a>
+          <a class="mobile-menu__sub" href="/fr/taches/inventaire/">Inventaire</a>
+          <a class="mobile-menu__sub" href="/fr/taches/supports-de-vente/">Supports de vente</a>
+          <a href="/fr/contact/">Contact</a>
+        </nav>
+        <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/" hreflang="en" aria-label="View the site in English">EN</a></p>
       </div>
     </header>
     <main id="top">
@@ -316,22 +327,22 @@
         <div class="hero__layout">
           <div class="hero__content">
             <div class="hero-stage">
-            <h1 id="hero-title" aria-label="Faire travailler la technologie pour le monde de l’art.">
+            <h1 id="hero-title" aria-label="Mettre la technologie au service du monde de l’art.">
               <span class="hero-line"
-                ><span class="hero-line__l">Faire travailler</span
+                ><span class="hero-line__l">Mettre</span
                 ><span class="hero-gap" aria-hidden="true"></span
                 ><span class="hero-line__r">la technologie</span></span
               >
               <span class="hero-line"
-                ><span class="hero-line__l">pour</span
+                ><span class="hero-line__l">au service</span
                 ><span class="hero-gap hero-gap--invoice" aria-hidden="true"></span
                 ><span class="hero-line__r"><span class="hero-rotator-group"
                 ><span class="hero-rotator" id="hero-rotator" aria-hidden="true"
                   ><span class="hero-rotator__mask"
                     ><span class="hero-rotator__measure"></span
-                    ><span class="hero-rotator__word">le monde de l’art</span></span
+                    ><span class="hero-rotator__word">du monde de l’art</span></span
                   ><span class="hero-rotator__rule"></span></span
-                ><span class="visually-hidden">le monde de l’art</span>.</span
+                ><span class="visually-hidden">du monde de l’art</span>.</span
               ></span></span
               >
             </h1>
@@ -955,7 +966,7 @@ voici l’œuvre dont vous parliez :">
       </section>
       <section class="footer-cta" aria-labelledby="footer-cta-title">
         <h2 id="footer-cta-title">De quoi votre galerie <span class="nw">a-t-elle besoin ?</span></h2>
-        <p>Un site à mettre à jour, un inventaire à remettre en ordre, un outil à installer. Dites-moi ce que vous avez en tête.</p>
+        <p>Un site à mettre à jour, un inventaire à remettre en ordre, un outil à installer. <span class="nw">Dites-moi</span> ce que vous avez en tête.</p>
         <a class="button" href="/fr/contact/">Me contacter</a>
         <small>Prix fixes. Sans abonnement.</small>
       </section>
@@ -963,7 +974,7 @@ voici l’œuvre dont vous parliez :">
     <footer class="big-footer">
       <div class="big-footer__main">
         <div class="big-footer__lead">
-          <p class="big-footer__statement">Une seule personne pour le côté <br />tech de votre galerie.</p>
+          <p class="big-footer__statement">La tech de votre galerie, <br />confiée à une seule personne.</p>
           <form class="big-footer__form" novalidate data-lang="fr" data-msgs='{"ok": "Merci, je reviens vers vous.", "invalid": "Indiquez une adresse e-mail valide.", "failed": "L’envoi a échoué. Réessayez, ou écrivez à studio@rrstudio.online."}'>
             <p class="big-footer__stay">Restons en contact</p>
             <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />

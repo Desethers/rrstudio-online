@@ -149,8 +149,19 @@
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
         <nav class="nav" aria-label="Main navigation"><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
-        <a class="button header-contact" href="/contact/">Contact</a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
       </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <nav class="mobile-menu__nav" aria-label="Main menu">
+        <a href="/#products">Tools</a>
+        <a href="/#tasks">Tasks</a>
+        <a class="mobile-menu__sub" href="/tasks/website/">Website &amp; visibility</a>
+        <a class="mobile-menu__sub" href="/tasks/inventory/">Inventory</a>
+        <a class="mobile-menu__sub" href="/tasks/sales-material/">Sales material</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <p class="mobile-menu__lang"><span class="lang-current">EN</span><i aria-hidden="true">·</i><a href="/fr/taches/inventaire/" hreflang="fr" aria-label="Voir le site en français">FR</a></p>
+    </div>
     </header>
     <main class="cat">
       <nav class="cat-crumb" aria-label="Breadcrumb"><a href="/#tasks">Tasks</a><span aria-hidden="true">/</span><span aria-current="page">Inventory</span></nav>
