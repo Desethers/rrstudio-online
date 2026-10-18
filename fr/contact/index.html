@@ -70,20 +70,30 @@
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <nav class="mobile-menu__nav" aria-label="Menu principal">
-        <a href="/fr/#products">Outils</a>
-        <a href="/fr/#tasks">Tâches</a>
-        <a class="mobile-menu__sub" href="/fr/taches/site-web/">Site web et visibilité</a>
-        <a class="mobile-menu__sub" href="/fr/taches/inventaire/">Inventaire</a>
-        <a class="mobile-menu__sub" href="/fr/taches/supports-de-vente/">Supports de vente</a>
-        <a href="/fr/contact/">Contact</a>
+        <a class="mm-card" href="/fr/#products">
+          <span class="mm-eyebrow">Outils</span>
+          <span class="mm-row">Chat, Mail, Assistant, Inventory<span class="mm-arrow" aria-hidden="true">↗</span></span>
+          <span class="mm-icons" aria-hidden="true"><span class="mm-ic"><img src="/logos/whatsapp.svg" alt="" width="22" height="22" /></span><span class="mm-ic"><img src="/logos/gmail.png" alt="" width="22" height="22" /></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></span>
+        </a>
+        <div class="mm-card">
+          <p class="mm-eyebrow">Tâches à prix fixe</p>
+          <a class="mm-row" href="/fr/taches/site-web/">Site web et visibilité<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/fr/taches/inventaire/">Inventaire<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/fr/taches/supports-de-vente/">Supports de vente<span class="mm-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <a class="mm-card mm-card--row" href="/fr/#ways"><span class="mm-row">Atelier IA<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-cta" href="/fr/contact/">Me contacter</a>
       </nav>
-      <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/contact/" hreflang="en" aria-label="View the site in English">EN</a></p>
+      <div class="mobile-menu__foot">
+        <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/contact/" hreflang="en" aria-label="View the site in English">EN</a></p>
+        <a href="mailto:studio@rrstudio.online">studio@rrstudio.online</a>
+      </div>
     </div>
     </header>
     <main class="cat">
       <section class="cat-hero">
-        <h1>Parlons-en.</h1>
-        <p class="cat-lead">Parlez-moi de votre galerie et de ce que vous aimeriez faire. Je vous réponds par e-mail pour fixer un court échange, et nous voyons ensemble ce qui a du sens.</p>
+        <h1>Parlons‑en.</h1>
+        <p class="cat-lead">Parlez‑moi de votre galerie et de ce que vous aimeriez faire. Je vous réponds par e‑mail pour fixer un court échange, et nous voyons ensemble ce qui a du sens.</p>
       </section>
       <section class="cat-section contact-form-wrap" id="contact">
         <form class="contact-form" id="contact-form" novalidate data-lang="fr" data-msgs='{"errName": "Indiquez votre nom.", "errEmail": "Indiquez une adresse e-mail valide.", "errGallery": "Indiquez le nom de votre galerie.", "errMessage": "Dites-moi en quelques mots ce que vous aimeriez faire.", "failed": "Le message n’a pas pu être envoyé. Réessayez, ou écrivez à studio@rrstudio.online.", "subject": "Contact", "greeting": "Bonjour R.R Studio,", "labels": ["Ce qui m’intéresse", "Nom", "E-mail", "Galerie", "Site"], "message": "Comment puis-je vous aider ?"}'>
@@ -97,21 +107,21 @@
           </fieldset>
           <div class="contact-row">
             <label class="access-field"><span>Nom</span><input name="name" type="text" autocomplete="name" required /></label>
-            <label class="access-field"><span>E-mail</span><input name="email" type="email" autocomplete="email" required /></label>
+            <label class="access-field"><span>E‑mail</span><input name="email" type="email" autocomplete="email" required /></label>
           </div>
           <label class="access-field"><span>Nom de la galerie</span><input name="gallery" type="text" autocomplete="organization" required /></label>
           <label class="access-field"><span>Site web <em>facultatif</em></span><input name="website" type="text" inputmode="url" autocomplete="url" placeholder="votregalerie.com" /></label>
-          <label class="access-field"><span>Comment puis-je vous aider ?</span><textarea name="message" rows="5" placeholder="Ce que vous aimeriez faire, et les outils que vous utilisez aujourd’hui (Artlogic, un tableur, Gmail, WhatsApp…)" required></textarea></label>
+          <label class="access-field"><span>Comment puis‑je vous aider ?</span><textarea name="message" rows="4" placeholder="Ce que vous aimeriez faire, et les outils que vous utilisez aujourd’hui (Artlogic, un tableur, Gmail, WhatsApp…)" required></textarea></label>
           <p class="access-error" id="contact-error" role="alert" hidden></p>
           <!-- TODO (R.R): ajouter ton délai de réponse habituel, si tu veux t’y engager. -->
           <button class="button contact-submit" type="submit">Envoyer le message</button>
-          <p class="access-note">Je vous réponds par e-mail pour fixer un court échange.</p>
+          <p class="access-note">Je vous réponds par e‑mail pour fixer un court échange.</p>
         </form>
         <div class="contact-done" id="contact-done" hidden tabindex="-1">
           <h2>Merci.</h2>
-          <p class="cat-lead">Je vous réponds par e-mail pour vous proposer un moment d’échange.</p>
+          <p class="cat-lead">Je vous réponds par e‑mail pour vous proposer un moment d’échange.</p>
         </div>
-        <p class="cat-note">Vous préférez écrire directement ? <a href="mailto:studio@rrstudio.online">E-mail</a> · <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20d%E2%80%99une%20collaboration." target="_blank" rel="noopener noreferrer">WhatsApp</a> · Basé à Paris. Je travaille avec des galeries partout.</p>
+        <p class="cat-note">Vous préférez écrire directement ? <a href="mailto:studio@rrstudio.online">E‑mail</a> · <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20d%E2%80%99une%20collaboration." target="_blank" rel="noopener noreferrer">WhatsApp</a> · Basé à Paris. Je travaille avec des galeries partout.</p>
       </section>
     </main>
     <footer class="big-footer">
@@ -126,7 +136,7 @@
               <input type="email" name="email" placeholder="Votre e-mail" aria-label="Votre e-mail" autocomplete="email" required />
               <button type="submit" aria-label="Envoyer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
-            <p class="big-footer__status" role="status">J’utilise votre e-mail uniquement pour vous répondre.</p>
+            <p class="big-footer__status" role="status">J’utilise votre e‑mail uniquement pour vous répondre.</p>
           </form>
         </div>
         <nav class="big-footer__cols" aria-label="Pied de page">
@@ -149,7 +159,7 @@
           <a href="/fr/#ways">Atelier</a>
           <a href="/fr/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="mailto:studio@rrstudio.online">E-mail</a>
+          <a href="mailto:studio@rrstudio.online">E‑mail</a>
         </div>
         </nav>
       </div>

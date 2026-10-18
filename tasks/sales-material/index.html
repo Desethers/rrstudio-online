@@ -131,14 +131,24 @@
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <nav class="mobile-menu__nav" aria-label="Main menu">
-        <a href="/#products">Tools</a>
-        <a href="/#tasks">Tasks</a>
-        <a class="mobile-menu__sub" href="/tasks/website/">Website &amp; visibility</a>
-        <a class="mobile-menu__sub" href="/tasks/inventory/">Inventory</a>
-        <a class="mobile-menu__sub" href="/tasks/sales-material/">Sales material</a>
-        <a href="/contact/">Contact</a>
+        <a class="mm-card" href="/#products">
+          <span class="mm-eyebrow">Tools</span>
+          <span class="mm-row">Chat, Mail, Assistant, Inventory<span class="mm-arrow" aria-hidden="true">↗</span></span>
+          <span class="mm-icons" aria-hidden="true"><span class="mm-ic"><img src="/logos/whatsapp.svg" alt="" width="22" height="22" /></span><span class="mm-ic"><img src="/logos/gmail.png" alt="" width="22" height="22" /></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></span>
+        </a>
+        <div class="mm-card">
+          <p class="mm-eyebrow">Fixed‑price tasks</p>
+          <a class="mm-row" href="/tasks/website/">Website &amp; visibility<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/tasks/inventory/">Inventory<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/tasks/sales-material/">Sales material<span class="mm-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <a class="mm-card mm-card--row" href="/#ways"><span class="mm-row">AI workshop<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-cta" href="/contact/">Get in touch</a>
       </nav>
-      <p class="mobile-menu__lang"><span class="lang-current">EN</span><i aria-hidden="true">·</i><a href="/fr/taches/supports-de-vente/" hreflang="fr" aria-label="Voir le site en français">FR</a></p>
+      <div class="mobile-menu__foot">
+        <p class="mobile-menu__lang"><span class="lang-current">EN</span><i aria-hidden="true">·</i><a href="/fr/taches/supports-de-vente/" hreflang="fr" aria-label="Voir le site en français">FR</a></p>
+        <a href="mailto:studio@rrstudio.online">studio@rrstudio.online</a>
+      </div>
     </div>
     </header>
     <main class="cat">
@@ -153,7 +163,7 @@
         <h2 id="cat-list-title">Tasks</h2>
         <ul class="cat-tasks">
           <li class="cat-task" id="collector-pdf">
-            <div class="cat-task__text"><h3>Collector PDF</h3><p>A clean, gallery-ready PDF prepared from selected artworks.</p></div>
+            <div class="cat-task__text"><h3>Collector PDF</h3><p>A clean, gallery‑ready PDF prepared from selected artworks.</p></div>
             <p class="cat-task__price">€80</p>
             <a class="cat-task__add" href="/?add=collector-pdf#tasks" aria-label="Add Collector PDF to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>

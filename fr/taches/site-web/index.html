@@ -175,14 +175,24 @@
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <nav class="mobile-menu__nav" aria-label="Menu principal">
-        <a href="/fr/#products">Outils</a>
-        <a href="/fr/#tasks">Tâches</a>
-        <a class="mobile-menu__sub" href="/fr/taches/site-web/">Site web et visibilité</a>
-        <a class="mobile-menu__sub" href="/fr/taches/inventaire/">Inventaire</a>
-        <a class="mobile-menu__sub" href="/fr/taches/supports-de-vente/">Supports de vente</a>
-        <a href="/fr/contact/">Contact</a>
+        <a class="mm-card" href="/fr/#products">
+          <span class="mm-eyebrow">Outils</span>
+          <span class="mm-row">Chat, Mail, Assistant, Inventory<span class="mm-arrow" aria-hidden="true">↗</span></span>
+          <span class="mm-icons" aria-hidden="true"><span class="mm-ic"><img src="/logos/whatsapp.svg" alt="" width="22" height="22" /></span><span class="mm-ic"><img src="/logos/gmail.png" alt="" width="22" height="22" /></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></span>
+        </a>
+        <div class="mm-card">
+          <p class="mm-eyebrow">Tâches à prix fixe</p>
+          <a class="mm-row" href="/fr/taches/site-web/">Site web et visibilité<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/fr/taches/inventaire/">Inventaire<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          <a class="mm-row" href="/fr/taches/supports-de-vente/">Supports de vente<span class="mm-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <a class="mm-card mm-card--row" href="/fr/#ways"><span class="mm-row">Atelier IA<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-cta" href="/fr/contact/">Me contacter</a>
       </nav>
-      <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/tasks/website/" hreflang="en" aria-label="View the site in English">EN</a></p>
+      <div class="mobile-menu__foot">
+        <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/tasks/website/" hreflang="en" aria-label="View the site in English">EN</a></p>
+        <a href="mailto:studio@rrstudio.online">studio@rrstudio.online</a>
+      </div>
     </div>
     </header>
     <main class="cat">
@@ -255,12 +265,12 @@
       <section class="cat-section cat-faq">
         <h2>Questions</h2>
           <details>
-            <summary>Travaillez-vous avec la plateforme de mon site ?</summary>
-            <p>Indiquez-moi la plateforme de votre site en envoyant la tâche. Je confirme que je peux intervenir avant de commencer.</p>
+            <summary>Travaillez‑vous avec la plateforme de mon site ?</summary>
+            <p>Indiquez‑moi la plateforme de votre site en envoyant la tâche. Je confirme que je peux intervenir avant de commencer.</p>
             <!-- TODO (R.R): remplacer par les plateformes réellement prises en charge. -->
           </details>
           <details>
-            <summary>Dois-je changer de site ?</summary>
+            <summary>Dois‑je changer de site ?</summary>
             <p>Non. Je travaille sur le site que vous avez déjà.</p>
           </details>
           <details>
@@ -278,7 +288,7 @@
       </section>
       <section class="cat-cta">
         <h2>Vous ne savez pas quelle tâche choisir ?</h2>
-        <a class="button" href="mailto:studio@rrstudio.online?subject=Question%20sur%20une%20tâche">Écrivez-moi <span aria-hidden="true">↗</span></a>
+        <a class="button" href="mailto:studio@rrstudio.online?subject=Question%20sur%20une%20tâche">Écrivez‑moi <span aria-hidden="true">↗</span></a>
       </section>
     </main>
     <footer class="big-footer">
@@ -293,7 +303,7 @@
               <input type="email" name="email" placeholder="Votre e-mail" aria-label="Votre e-mail" autocomplete="email" required />
               <button type="submit" aria-label="Envoyer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
-            <p class="big-footer__status" role="status">J’utilise votre e-mail uniquement pour vous répondre.</p>
+            <p class="big-footer__status" role="status">J’utilise votre e‑mail uniquement pour vous répondre.</p>
           </form>
         </div>
         <nav class="big-footer__cols" aria-label="Pied de page">
@@ -316,7 +326,7 @@
           <a href="/fr/#ways">Atelier</a>
           <a href="/fr/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="mailto:studio@rrstudio.online">E-mail</a>
+          <a href="mailto:studio@rrstudio.online">E‑mail</a>
         </div>
         </nav>
       </div>

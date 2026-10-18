@@ -312,14 +312,24 @@
       </div>
       <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <nav class="mobile-menu__nav" aria-label="Menu principal">
-          <a href="/fr/#products">Outils</a>
-          <a href="/fr/#tasks">Tâches</a>
-          <a class="mobile-menu__sub" href="/fr/taches/site-web/">Site web et visibilité</a>
-          <a class="mobile-menu__sub" href="/fr/taches/inventaire/">Inventaire</a>
-          <a class="mobile-menu__sub" href="/fr/taches/supports-de-vente/">Supports de vente</a>
-          <a href="/fr/contact/">Contact</a>
+          <a class="mm-card" href="/fr/#products">
+            <span class="mm-eyebrow">Outils</span>
+            <span class="mm-row">Chat, Mail, Assistant, Inventory<span class="mm-arrow" aria-hidden="true">↗</span></span>
+            <span class="mm-icons" aria-hidden="true"><span class="mm-ic"><img src="/logos/whatsapp.svg" alt="" width="22" height="22" /></span><span class="mm-ic"><img src="/logos/gmail.png" alt="" width="22" height="22" /></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></span>
+          </a>
+          <div class="mm-card">
+            <p class="mm-eyebrow">Tâches à prix fixe</p>
+            <a class="mm-row" href="/fr/taches/site-web/">Site web et visibilité<span class="mm-arrow" aria-hidden="true">↗</span></a>
+            <a class="mm-row" href="/fr/taches/inventaire/">Inventaire<span class="mm-arrow" aria-hidden="true">↗</span></a>
+            <a class="mm-row" href="/fr/taches/supports-de-vente/">Supports de vente<span class="mm-arrow" aria-hidden="true">↗</span></a>
+          </div>
+          <a class="mm-card mm-card--row" href="/fr/#ways"><span class="mm-row">Atelier IA<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+          <a class="mm-cta" href="/fr/contact/">Me contacter</a>
         </nav>
-        <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/" hreflang="en" aria-label="View the site in English">EN</a></p>
+        <div class="mobile-menu__foot">
+          <p class="mobile-menu__lang"><span class="lang-current">FR</span><i aria-hidden="true">·</i><a href="/" hreflang="en" aria-label="View the site in English">EN</a></p>
+          <a href="mailto:studio@rrstudio.online">studio@rrstudio.online</a>
+        </div>
       </div>
     </header>
     <main id="top">
@@ -370,7 +380,7 @@
               <div class="invoice-items" id="invoice-items"></div>
             </div>
             <div class="invoice-totals">
-              <div><span>Sous-total</span><strong id="invoice-subtotal">€0</strong></div>
+              <div><span>Sous‑total</span><strong id="invoice-subtotal">€0</strong></div>
               <div><span>TVA</span><strong>—</strong></div>
               <div class="invoice-total">
                 <span>Total</span><strong id="invoice-total">€0</strong>
@@ -438,7 +448,7 @@
         <p class="eyebrow">Le studio</p>
         <p class="studio-statement__text" data-reveal>R.R Studio est un studio indépendant de design et de technologie pour le monde de l’art contemporain.</p>
         <div class="studio-statement__notes">
-          <p data-reveal>Je suis <span class="intro-name"><img src="/images/raphael.jpg" alt="" width="40" height="40" />Raphaël</span> et je crois que la technologie peut <span class="intro-chip">servir <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>⁠les</span> galeries</span> de toutes tailles<span class="intro-tail"> : donner à un galeriste seul les outils d’une méga-galerie, et aider <span class="intro-chip">les <span class="nw"><span class="intro-stack" aria-hidden="true"><img src="/images/team-1.jpg" alt="" width="40" height="40" /><img src="/images/team-2.jpg" alt="" width="40" height="40" /><img src="/images/team-3.jpg" alt="" width="40" height="40" /></span>⁠équipes</span></span> établies à travailler plus simplement.</span></p>
+          <p data-reveal>Je suis <span class="intro-name"><img src="/images/raphael.jpg" alt="" width="40" height="40" />Raphaël</span> et je crois que la technologie peut <span class="intro-chip">servir <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>⁠les</span> galeries</span> de toutes tailles<span class="intro-tail"> : donner à un galeriste seul les outils d’une méga‑galerie, et aider <span class="intro-chip">les <span class="nw"><span class="intro-stack" aria-hidden="true"><img src="/images/team-1.jpg" alt="" width="40" height="40" /><img src="/images/team-2.jpg" alt="" width="40" height="40" /><img src="/images/team-3.jpg" alt="" width="40" height="40" /></span>⁠équipes</span></span> établies à travailler plus simplement.</span></p>
           <p data-reveal>Je conçois <span class="intro-chip">des <span class="nw"><span class="intro-opening" aria-hidden="true"><img src="/mockups/opening-glyph.jpg" alt="" width="77" height="42" /><i><b>GALERIE</b><u>Exhibitions &nbsp;Artists &nbsp;Fairs</u></i></span>⁠sites</span> web</span> et des outils sur mesure pour les galeries et les artistes, et j’apporte un accompagnement concret, des corrections web <span class="intro-chip">aux <span class="nw"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>⁠améliorations</span> de workflow</span>.</p>
         </div>
           <button class="studio-card__more" type="button" aria-expanded="false"><span class="studio-card__label">Lire la suite</span><svg class="i-expand" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><svg class="i-collapse" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
@@ -470,7 +480,7 @@ voici l’œuvre dont vous parliez :">
               <div class="wa-mock" role="img" aria-label="Conversation WhatsApp où la commande /pdf génère un PDF de sélection d’œuvres">
               <div class="wa-mock__stage">
                 <div class="wa-mock__chat">
-                  <div class="wa-b wa-b--in wa-b1"><p>Bonjour, Horizon de Sacha Elron est-elle toujours disponible ? Et à quel prix ?</p><span class="wa-b__time">11:45</span></div>
+                  <div class="wa-b wa-b--in wa-b1"><p>Bonjour, Horizon de Sacha Elron est‑elle toujours disponible ? Et à quel prix ?</p><span class="wa-b__time">11:45</span></div>
                   <div class="wa-b wa-b--out wa-b2"><p>Bonjour Henry, oui, elle est toujours disponible. Je vous envoie les détails juste ici.</p><span class="wa-b__time">11:46</span></div>
                   <div class="wa-b wa-b--out wa-b--card wa-b3"><span class="wa-fwd"><svg viewBox="0 0 16 12" width="12" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 1.5l4.5 4.5L10 10.5M14.5 6H6.5C4 6 2 7.8 1.5 10.5"/></svg>Transféré</span><img src="/mockups/whatsapp/horizon.jpg" alt="" /><p>Sacha Elron — Untitled (Horizon), 2024<br />Acrylique sur toile · 180 × 180 cm<br />8 000 €</p><span class="wa-b__time">11:46 <svg class="wa-check" viewBox="0 0 16 10" fill="none"><path d="m.6 5.1 2.6 2.6L8 1.1M5.1 6.4l1.4 1.3 4.8-6.6" stroke="#3497F9" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></svg></span></div>
                 </div>
@@ -498,7 +508,7 @@ voici l’œuvre dont vous parliez :">
                     <div class="mb-chips"><span>Une personne</span><span>Une œuvre</span><span>Une réponse</span><span>Ma journée</span><em>↵ Entrée pour envoyer</em></div>
                     <div class="mb-answer">
                       <div class="mb-bubble">Qui attend une réponse ce matin ?</div>
-                      <div class="mb-card"><p>Un collectionneur attend une réponse :</p><p>- « <b>Marie Beaumont</b> » a écrit sur WhatsApp le 9 septembre : « Evening field » est-elle toujours disponible, et quelles sont ses dimensions ?</p></div>
+                      <div class="mb-card"><p>Un collectionneur attend une réponse :</p><p>- « <b>Marie Beaumont</b> » a écrit sur WhatsApp le 9 septembre : « Evening field » est‑elle toujours disponible, et quelles sont ses dimensions ?</p></div>
                       <small>Depuis vos données · searchConversations</small>
                       <small class="mb-clear">↺ Effacer</small>
                     </div>
@@ -768,7 +778,7 @@ voici l’œuvre dont vous parliez :">
             <h3>Collector PDF</h3>
             <p class="task-price">€80</p>
             <p class="task-description">
-              A clean, gallery-ready PDF prepared from selected artworks.
+              A clean, gallery‑ready PDF prepared from selected artworks.
             </p>
             <button
               class="task-add"
@@ -845,7 +855,7 @@ voici l’œuvre dont vous parliez :">
               <p class="process-card__eyebrow">Pris en charge par moi</p>
               <h3>Je confirme, je produis et je vérifie.</h3>
               <p>
-                Je vous réponds si quelque chose manque, je réalise la tâche et je vérifie chaque détail moi-même. Vous n’entendez parler de moi que lorsqu’une décision est nécessaire.
+                Je vous réponds si quelque chose manque, je réalise la tâche et je vérifie chaque détail moi‑même. Vous n’entendez parler de moi que lorsqu’une décision est nécessaire.
               </p>
             </div>
             <div class="work-mockup" aria-hidden="true">
@@ -872,7 +882,7 @@ voici l’œuvre dont vous parliez :">
               <p class="process-card__eyebrow">Validez avant paiement</p>
               <h3>Vérifiez la livraison, puis payez.</h3>
               <p>
-                Je vous envoie le travail terminé par email. Approuvez-le ou demandez une
+                Je vous envoie le travail terminé par email. Approuvez‑le ou demandez une
                 correction, puis payez après la livraison. Si je ne peux pas corriger le tir, vous êtes remboursé.
               </p>
             </div>
@@ -884,7 +894,7 @@ voici l’œuvre dont vous parliez :">
               </div>
               <p>
                 <strong>Votre page d’exposition est en ligne.</strong><br />Tout a été publié et
-                vérifié. Répondez pour approuver, ou dites-moi ce qu’il faut changer.
+                vérifié. Répondez pour approuver, ou dites‑moi ce qu’il faut changer.
               </p>
               <div class="delivery-reply">
                 <span>Vous avez répondu</span>
@@ -908,7 +918,7 @@ voici l’œuvre dont vous parliez :">
             <p class="workshop-card__note">Je travaille sur vos propres documents : vos textes, votre inventaire, votre boîte mail. Vous repartez avec des prompts et des méthodes que vous gardez, que vous soyez galeriste seul ou équipe établie.</p>
             <a class="workshop-book" href="/fr/contact/?interest=workshop">
               <span class="workshop-book__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17h.01M12 17h.01"/></svg></span>
-              <span class="workshop-book__text"><strong>Réserver une séance</strong><small>Demi-journée · Sur place ou à distance · Tarif sur demande</small></span>
+              <span class="workshop-book__text"><strong>Réserver une séance</strong><small>Demi‑journée · Sur place ou à distance · Tarif sur demande</small></span>
               <span class="workshop-book__arrow" aria-hidden="true">↗</span>
             </a>
           </div>
@@ -944,20 +954,20 @@ voici l’œuvre dont vous parliez :">
             </p>
           </details>
           <details>
-            <summary><span>Puis-je demander plusieurs tâches ?</span></summary>
+            <summary><span>Puis‑je demander plusieurs tâches ?</span></summary>
             <p>
               Oui. Ajoutez les tâches dont vous avez besoin et je confirme le périmètre et le total avant de commencer.
             </p>
           </details>
           <details>
-            <summary><span>Dois-je changer mes outils actuels ?</span></summary>
+            <summary><span>Dois‑je changer mes outils actuels ?</span></summary>
             <p>
               Non. Je travaille avec les outils que vous utilisez déjà, y compris votre site
               actuel, vos exports Artlogic et vos fichiers partagés.
             </p>
           </details>
           <details>
-            <summary><span>Que se passe-t-il si je ne suis pas satisfait du résultat ?</span></summary>
+            <summary><span>Que se passe‑t‑il si je ne suis pas satisfait du résultat ?</span></summary>
             <p>
               Je corrige le tir. Si je ne peux pas livrer le résultat convenu, la tâche est remboursée.
             </p>
@@ -965,8 +975,8 @@ voici l’œuvre dont vous parliez :">
         </div>
       </section>
       <section class="footer-cta" aria-labelledby="footer-cta-title">
-        <h2 id="footer-cta-title">De quoi votre galerie <span class="nw">a-t-elle besoin ?</span></h2>
-        <p>Un site à mettre à jour, un inventaire à remettre en ordre, un outil à installer. <span class="nw">Dites-moi</span> ce que vous avez en tête.</p>
+        <h2 id="footer-cta-title">De quoi votre galerie <span class="nw">a‑t‑elle besoin ?</span></h2>
+        <p>Un site à mettre à jour, un inventaire à remettre en ordre, un outil à installer. <span class="nw">Dites‑moi</span> ce que vous avez en tête.</p>
         <a class="button" href="/fr/contact/">Me contacter</a>
         <small>Prix fixes. Sans abonnement.</small>
       </section>
@@ -983,7 +993,7 @@ voici l’œuvre dont vous parliez :">
               <input type="email" name="email" placeholder="Votre e-mail" aria-label="Votre e-mail" autocomplete="email" required />
               <button type="submit" aria-label="Envoyer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
-            <p class="big-footer__status" role="status">J’utilise votre e-mail uniquement pour vous répondre.</p>
+            <p class="big-footer__status" role="status">J’utilise votre e‑mail uniquement pour vous répondre.</p>
           </form>
         </div>
         <nav class="big-footer__cols" aria-label="Pied de page">
@@ -1006,7 +1016,7 @@ voici l’œuvre dont vous parliez :">
           <a href="/fr/#ways">Atelier</a>
           <a href="/fr/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="mailto:studio@rrstudio.online">E-mail</a>
+          <a href="mailto:studio@rrstudio.online">E‑mail</a>
         </div>
         </nav>
       </div>
@@ -1055,25 +1065,25 @@ voici l’œuvre dont vous parliez :">
         <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <p class="access-eyebrow">En parler</p>
         <h2 id="access-title">Parlons de votre galerie</h2>
-        <p class="access-lead">Chaque galerie fonctionne différemment : on commence par un court échange sur votre façon de travailler. Parlez-moi un peu de votre galerie.</p>
+        <p class="access-lead">Chaque galerie fonctionne différemment : on commence par un court échange sur votre façon de travailler. Parlez‑moi un peu de votre galerie.</p>
         <fieldset class="access-tools">
           <legend>Les outils qui vous intéressent</legend>
           <label class="access-tool"><input type="checkbox" name="tools" value="Chat" /><span>Chat</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Mail" /><span>Mail</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Assistant" /><span>Assistant</span></label><label class="access-tool"><input type="checkbox" name="tools" value="Inventory" /><span>Inventory</span></label>
         </fieldset>
         <label class="access-field"><span>Nom de la galerie</span><input name="gallery" type="text" autocomplete="organization" required /></label>
-        <label class="access-field"><span>E-mail</span><input name="email" type="email" autocomplete="email" required /></label>
+        <label class="access-field"><span>E‑mail</span><input name="email" type="email" autocomplete="email" required /></label>
         <label class="access-field"><span>Site web <em>facultatif</em></span><input name="website" type="text" inputmode="url" autocomplete="url" placeholder="votregalerie.com" /></label>
         <label class="access-field"><span>Où sont vos œuvres aujourd’hui ? <em>facultatif</em></span><textarea name="message" rows="3" placeholder="Artlogic, un tableur, votre site…"></textarea></label>
         <p class="access-error" id="access-error" role="alert" hidden></p>
         <div class="access-actions">
           <button class="button" type="submit">Demander un échange</button>
-          <p class="access-note">Je vous réponds par e-mail pour fixer un court échange. On voit ensemble si c’est adapté.</p>
+          <p class="access-note">Je vous réponds par e‑mail pour fixer un court échange. On voit ensemble si c’est adapté.</p>
         </div>
       </form>
       <div class="access-done" id="access-done" hidden tabindex="-1">
         <p class="access-eyebrow">En parler</p>
         <h2>Merci.</h2>
-        <p class="access-lead">Je vous réponds par e-mail pour vous proposer un moment d’échange.</p>
+        <p class="access-lead">Je vous réponds par e‑mail pour vous proposer un moment d’échange.</p>
         <button class="button" type="button" data-access-close>Fermer</button>
       </div>
     </dialog>

@@ -317,7 +317,7 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 .contact-row {
   display: grid;
@@ -325,12 +325,13 @@
   grid-template-columns: 1fr 1fr;
 }
 .contact-form .access-field span {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .contact-form .access-field input,
 .contact-form .access-field textarea {
+  /* 16px keeps iOS from zooming into the field on focus. */
   font-size: 16px;
-  padding: 14px 16px;
+  padding: 9px 14px;
 }
 .contact-submit {
   align-self: stretch;
@@ -360,4 +361,18 @@
   .contact-row {
     grid-template-columns: 1fr;
   }
+}
+/* Phones: the four interest pills fit on one line. */
+@media (max-width: 640px) {
+  .contact-form .access-tools {
+    gap: 6px;
+  }
+  .contact-form .access-tool span {
+    font-size: 12.5px;
+    padding: 7px 11px;
+  }
+}
+/* The dialog sizes its note with flex-basis; in this column form that became 180px of height. */
+.contact-form .access-note {
+  flex: none;
 }
