@@ -12152,11 +12152,11 @@ h2,
 }
 .big-footer__statement {
   text-wrap: balance;
-  font-size: clamp(34px, 4.4vw, 62px);
+  font-size: clamp(22px, 2.3vw, 32px);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.06;
-  margin: 0 0 44px;
+  margin: 0 0 30px;
 }
 .big-footer__stay {
   font-size: 14px;
@@ -12283,8 +12283,8 @@ h2,
     padding: 64px 18px 28px;
   }
   .big-footer__statement {
-    font-size: 32px;
-    margin-bottom: 32px;
+    font-size: 22px;
+    margin-bottom: 24px;
   }
   .big-footer__statement br {
     display: none;
