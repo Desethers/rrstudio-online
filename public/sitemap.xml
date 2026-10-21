@@ -3,82 +3,72 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.rrstudio.online</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online" />
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.rrstudio.online/fr</loc>
+    <loc>https://www.rrstudio.online/fr/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online" />
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/tasks/website/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/website/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/site-web/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/website/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/fr/taches/site-web/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/website/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/site-web/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/website/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/tasks/inventory/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/inventory/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/inventaire/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/inventory/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/fr/taches/inventaire/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/inventory/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/inventaire/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/inventory/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/tasks/sales-material/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/sales-material/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/supports-de-vente/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/sales-material/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/fr/taches/supports-de-vente/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/sales-material/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/supports-de-vente/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/tasks/sales-material/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/contact/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/contact/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/contact/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/contact/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.rrstudio.online/fr/contact/</loc>
+    <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rrstudio.online/contact/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/contact/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rrstudio.online/contact/" />
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>
