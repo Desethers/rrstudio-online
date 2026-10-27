@@ -9,12 +9,15 @@ import "./mobile-menu.js";
 import {
   BadgeCheck,
   BadgeEuro,
+  Clock,
   createIcons,
   Database,
   Files,
+  MapPin,
   Monitor,
   Plug,
   Search,
+  Wrench,
 } from "lucide";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
@@ -65,7 +68,10 @@ if (/^\/(fr\/)?tasks\/?$/.test(location.pathname)) {
 }
 
 /* Prices read "€120" in English and "120 €" in French. */
-const price = (amount) => (LANG === "fr" ? `${amount}\u00a0€` : `€${amount}`);
+const price = (amount) => {
+  const n = amount.toLocaleString(LANG === "fr" ? "fr-FR" : "en-GB");
+  return LANG === "fr" ? `${n}\u00a0€` : `€${n}`;
+};
 
 const TASK_COPY = {
   en: {
@@ -77,15 +83,21 @@ const TASK_COPY = {
     },
     "opening-website": {
       label: "Website",
-      title: "Prepare for an opening",
+      title: "Fix your website on mobile",
       description:
-        "Homepage, exhibition and artist pages refreshed and ready before opening.",
+        "Fix broken layouts, awkward image crops and display issues on your gallery website.",
     },
     "artist-page": {
       label: "Website",
       title: "Add an artist page",
       description:
         "Biography, works, images and basic metadata added to the gallery website.",
+    },
+    "translate-exhibition": {
+      label: "Website",
+      title: "Translate your exhibition",
+      description:
+        "Translate exhibition texts, artist biographies and artwork descriptions into natural English or French.",
     },
     "update-artworks": {
       label: "Website",
@@ -102,29 +114,41 @@ const TASK_COPY = {
     "organise-database": {
       label: "Inventory",
       title: "Organise your inventory",
-      description: "Clean categories, fields and structure.",
+      description: "Set clear categories and fields in your existing inventory; no record-by-record edits.",
+    },
+    "pdf-to-records": {
+      label: "Inventory",
+      title: "Turn PDFs into artwork records",
+      description:
+        "Turn artwork lists, catalogues and PDFs into clean, structured records, ready for your inventory.",
     },
     "import-artworks": {
       label: "Inventory",
       title: "Import 50 artworks",
-      description: "Clean and import your spreadsheet or export.",
+      description: "Import up to 50 structured artwork rows from a spreadsheet into your existing inventory.",
     },
     "clean-records": {
       label: "Inventory",
       title: "Clean 50 artwork records",
-      description: "Fix inconsistent artwork information.",
+      description: "Correct inconsistent fields in up to 50 existing artwork records.",
     },
     "artlogic-check": {
       label: "Inventory",
-      title: "Clean up your Artlogic inventory",
+      title: "Check your Artlogic inventory",
       description:
-        "Remove duplicates, complete missing records and make your inventory reliable again.",
+        "Review one Artlogic export for duplicates and missing fields; receive a fix list, not data changes.",
     },
     "collector-pdf": {
       label: "Sales material",
       title: "Collector PDF",
       description:
-        "A clean, gallery-ready PDF prepared from selected artworks.",
+        "A gallery-ready PDF of selected works, ready to send to a collector.",
+    },
+    "collector-emails": {
+      label: "Sales material",
+      title: "Prepare your collector emails",
+      description:
+        "Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups.",
     },
     "viewing-room": {
       label: "Sales material",
@@ -134,8 +158,22 @@ const TASK_COPY = {
     },
     "seo-check": {
       label: "Visibility",
-      title: "Artist Google indexing",
-      description: "Find the main issues.",
+      title: "Check artist page visibility",
+      description:
+        "Review one artist page for Google indexing issues; receive a fix list, not site changes.",
+    },
+    "ai-search": {
+      label: "Visibility",
+      title: "Prepare your gallery for AI search",
+      description:
+        "Help AI search tools better discover and understand your gallery, artists and exhibitions.",
+    },
+    "website-migration": {
+      label: "Website Migration",
+      title: "Move beyond WordPress.",
+      description:
+        "A faster gallery website, an easy-to-use CMS, and all your artists, exhibitions and artworks in one place.",
+      note: "Website migration, CMS setup and SEO redirects included. Complex migrations quoted separately.",
     },
   },
   fr: {
@@ -147,15 +185,21 @@ const TASK_COPY = {
     },
     "opening-website": {
       label: "Site web",
-      title: "Préparer un vernissage",
+      title: "Corriger votre site sur mobile",
       description:
-        "Accueil, exposition et pages artistes actualisés et prêts avant l’ouverture.",
+        "Corriger les problèmes de mise en page, les recadrages d’images inadaptés et les défauts d’affichage sur le site de votre galerie.",
     },
     "artist-page": {
       label: "Site web",
       title: "Ajouter une page artiste",
       description:
         "Biographie, œuvres, images et informations de base ajoutées au site de la galerie.",
+    },
+    "translate-exhibition": {
+      label: "Site web",
+      title: "Traduire votre exposition",
+      description:
+        "Traduire vos textes d’exposition, biographies et descriptions d’œuvres en anglais ou en français, avec un ton naturel.",
     },
     "update-artworks": {
       label: "Site web",
@@ -172,29 +216,41 @@ const TASK_COPY = {
     "organise-database": {
       label: "Inventaire",
       title: "Organiser votre inventaire",
-      description: "Catégories, champs et structure remis au propre.",
+      description: "Clarifier les catégories et les champs de votre inventaire, sans retoucher chaque fiche.",
+    },
+    "pdf-to-records": {
+      label: "Inventaire",
+      title: "Transformer vos PDF en fiches d’œuvres",
+      description:
+        "Transformer listes d’œuvres, catalogues et PDF en fiches structurées, prêtes pour votre inventaire.",
     },
     "import-artworks": {
       label: "Inventaire",
       title: "Importer 50 œuvres",
-      description: "Nettoyage et import de votre tableur ou de votre export.",
+      description: "Importer jusqu’à 50 lignes structurées depuis un tableur dans votre inventaire existant.",
     },
     "clean-records": {
       label: "Inventaire",
       title: "Nettoyer 50 fiches d’œuvres",
-      description: "Correction des informations d’œuvres incohérentes.",
+      description: "Corriger les champs incohérents de 50 fiches d’œuvres existantes au maximum.",
     },
     "artlogic-check": {
       label: "Inventaire",
-      title: "Nettoyer votre inventaire Artlogic",
+      title: "Vérifier votre inventaire Artlogic",
       description:
-        "Doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable.",
+        "Repérer les doublons et champs manquants dans un export Artlogic ; recevoir une liste de corrections, sans modifier les données.",
     },
     "collector-pdf": {
       label: "Supports de vente",
       title: "PDF collectionneur",
       description:
-        "Un PDF net, prêt à envoyer, préparé à partir des œuvres sélectionnées.",
+        "Un PDF des œuvres sélectionnées, aux couleurs de la galerie et prêt à envoyer.",
+    },
+    "collector-emails": {
+      label: "Supports de vente",
+      title: "Préparer vos e-mails aux collectionneurs",
+      description:
+        "Transformer les informations sur vos œuvres en modèles d’e-mails prêts à utiliser pour les demandes et les relances.",
     },
     "viewing-room": {
       label: "Supports de vente",
@@ -204,8 +260,22 @@ const TASK_COPY = {
     },
     "seo-check": {
       label: "Visibilité",
-      title: "Indexation Google artiste",
-      description: "Identification des principaux problèmes.",
+      title: "Vérifier la visibilité d’une page artiste",
+      description:
+        "Examiner les problèmes d’indexation Google d’une page artiste ; recevoir une liste de corrections, sans modifier le site.",
+    },
+    "ai-search": {
+      label: "Visibilité",
+      title: "Préparer votre galerie à la recherche par IA",
+      description:
+        "Aider les outils de recherche par IA à mieux découvrir et comprendre votre galerie, vos artistes et vos expositions.",
+    },
+    "website-migration": {
+      label: "Migration de site",
+      title: "Laisser WordPress derrière vous.",
+      description:
+        "Un site de galerie plus rapide, un CMS simple à utiliser, et tous vos artistes, expositions et œuvres au même endroit.",
+      note: "Migration du site, mise en place du CMS et redirections SEO incluses. Migrations complexes sur devis.",
     },
   },
 };
@@ -216,6 +286,7 @@ const UI = {
     added: "Added",
     remove: "Remove task",
     preview: (title) => `Preview ${title}`,
+    from: (amount) => `From ${amount}`,
     taskCount: (n) => `${n} task${n === 1 ? "" : "s"}`,
     estimated: (total) => `${price(total)} estimated`,
     moreTasks: (n) => `+${n} more task${n === 1 ? "" : "s"}`,
@@ -230,6 +301,7 @@ const UI = {
     added: "Ajoutée",
     remove: "Retirer",
     preview: (title) => `Aperçu : ${title}`,
+    from: (amount) => `À partir de ${amount}`,
     taskCount: (n) => `${n} tâche${n === 1 ? "" : "s"}`,
     estimated: (total) => `${price(total)} estimés`,
     moreTasks: (n) =>
@@ -361,20 +433,123 @@ const PREVIEW = {
 
 const pv = PREVIEW[LANG];
 
+/* A restrained document preview for tasks whose deliverable is a reviewed
+ * file or a short change report, rather than a published gallery page. */
+const TASK_BRIEFS = {
+  en: {
+    "translate-exhibition": {
+      file: "EN ↔ FR",
+      heading: "Reviewed translation",
+      items: [
+        "Up to 1,500 words of exhibition, artist or artwork text.",
+        "Art terminology and gallery tone checked by a person.",
+        "Editable document; website publication not included.",
+      ],
+    },
+    "pdf-to-records": {
+      file: "PDF → CSV",
+      heading: "Artwork records",
+      items: [
+        "Up to 50 works from supplied PDFs or catalogues.",
+        "Artist, title, year, medium, dimensions and price reviewed.",
+        "Excel or CSV; no CRM import or missing-data research.",
+      ],
+    },
+    "artlogic-check": {
+      file: "ARTLOGIC",
+      heading: "Inventory check",
+      items: [
+        "One export reviewed for duplicates and missing fields.",
+        "A prioritised fix list; no records changed.",
+      ],
+    },
+    "collector-emails": {
+      file: "EMAIL DRAFTS",
+      heading: "Collector replies",
+      items: [
+        "Five templates for enquiries, prices, follow-ups and invitations.",
+        "Written in your gallery’s tone, ready to adapt and send.",
+        "No private inbox access or automated sending.",
+      ],
+    },
+    "ai-search": {
+      file: "SITE UPDATES",
+      heading: "Gallery information",
+      items: [
+        "Review crawlability, metadata, artists and exhibitions.",
+        "Implement agreed changes; send a short change summary.",
+        "No promise of inclusion or ranking in AI search.",
+      ],
+    },
+  },
+  fr: {
+    "translate-exhibition": {
+      file: "EN ↔ FR",
+      heading: "Traduction relue",
+      items: [
+        "Jusqu’à 1 500 mots sur une exposition, un artiste ou des œuvres.",
+        "Terminologie et ton de la galerie vérifiés par une personne.",
+        "Document modifiable ; publication sur le site non comprise.",
+      ],
+    },
+    "pdf-to-records": {
+      file: "PDF → CSV",
+      heading: "Fiches d’œuvres",
+      items: [
+        "Jusqu’à 50 œuvres issues de PDF ou catalogues fournis.",
+        "Artiste, titre, année, technique, dimensions et prix vérifiés.",
+        "Excel ou CSV ; sans import CRM ni recherche de données manquantes.",
+      ],
+    },
+    "artlogic-check": {
+      file: "ARTLOGIC",
+      heading: "Vérification d’inventaire",
+      items: [
+        "Un export contrôlé pour les doublons et champs manquants.",
+        "Une liste de corrections prioritaires ; aucune fiche modifiée.",
+      ],
+    },
+    "collector-emails": {
+      file: "E-MAILS",
+      heading: "Réponses aux collectionneurs",
+      items: [
+        "Cinq modèles : demandes, prix, relances et invitations.",
+        "Adaptés au ton de votre galerie, prêts à personnaliser.",
+        "Sans accès à votre messagerie ni envoi automatique.",
+      ],
+    },
+    "ai-search": {
+      file: "SITE WEB",
+      heading: "Informations de la galerie",
+      items: [
+        "Examen de l’accès aux pages, métadonnées, artistes et expositions.",
+        "Modifications convenues et court récapitulatif des changements.",
+        "Aucune promesse d’apparition ou de classement dans l’IA.",
+      ],
+    },
+  },
+};
+
 /* Ids, categories and prices are shared; only the wording differs per locale. */
 const tasks = [
   { id: "publish-exhibition", category: "website", price: 120 },
-  { id: "opening-website", category: "website", price: 220 },
+  { id: "opening-website", category: "website", price: 290 },
   { id: "artist-page", category: "website", price: 90 },
+  { id: "translate-exhibition", category: "website", price: 190 },
   { id: "update-artworks", category: "website", price: 90 },
   { id: "fix-website-issue", category: "website", price: 90 },
   { id: "organise-database", category: "database", price: 150 },
+  { id: "pdf-to-records", category: "database", price: 290 },
   { id: "import-artworks", category: "database", price: 220 },
   { id: "clean-records", category: "database", price: 180 },
   { id: "artlogic-check", category: "database", price: 120 },
   { id: "collector-pdf", category: "sales-material", price: 80 },
+  { id: "collector-emails", category: "sales-material", price: 250 },
   { id: "viewing-room", category: "sales-material", price: 120 },
   { id: "seo-check", category: "visibility", price: 120 },
+  /* Bento card spanning two grid columns, on the left of the final row next to the last task. Priced "from". */
+  { id: "website-migration", category: "website", price: 890, from: true, wide: true },
+  { id: "ai-search", category: "visibility", price: 290 },
 ].map((task) => ({ ...task, ...TASK_COPY[LANG][task.id] }));
 
 const grid = document.querySelector("#task-grid");
@@ -470,15 +645,63 @@ const TASK_GLYPHS = {
     </div>`,
 };
 
+Object.entries(TASK_BRIEFS[LANG]).forEach(([id, brief]) => {
+  TASK_GLYPHS[id] = `<div class="task-glyph task-glyph--brief" aria-hidden="true">
+    <span class="tg tg--brief-back"></span>
+    <span class="tg tg--brief-front"><small>${brief.file}</small><strong>${brief.heading}</strong><i></i><i></i></span>
+  </div>`;
+});
+
+/* The migration card's glyph, built from the same tiles as the other task glyphs: the old
+ * WordPress page behind, the gallery CMS in front, and the redirect that keeps old links working. */
+const MIGRATION_GLYPH = (() => {
+  const fr = LANG === "fr";
+  const rows = [
+    ["/mockups/gmail/painting-01.jpg", "Evening Field", fr ? "Disponible" : "Available", "ok"],
+    ["/mockups/whatsapp/horizon.jpg", "Untitled (Horizon)", fr ? "Réservée" : "On hold", "hold"],
+    ["/mockups/artworks/g2.jpg", "Shared Light", fr ? "Vendue" : "Sold", "sold"],
+  ];
+  return `<div class="task-glyph task-glyph--migration" aria-hidden="true">
+      <span class="tg tg--wp"><span class="tg--wp__bar"><i></i><i></i><i></i><u>fieldsrowe.com/?p=1847</u></span><b>Fields &amp; Rowe Gallery</b><em>${fr ? "Accueil · À propos · Artistes · Actualités" : "Home · About · Artists · News"}</em><s></s><small>${fr ? "Publié par admin" : "Posted by admin"}</small></span>
+      <span class="tg tg--cms"><span class="tg--cms__tabs"><u>${fr ? "Artistes" : "Artists"}</u><u class="is-on">${fr ? "Œuvres" : "Artworks"}</u><u>${fr ? "Expositions" : "Exhibitions"}</u></span>${rows
+        .map(([src, title, status, tone]) => `<span class="tg--cms__row"><img src="${src}" alt="" /><b>${title}</b><em class="tg-st tg-st--${tone}">${status}</em></span>`)
+        .join("")}</span>
+      <span class="tg tg--redirect">301 · /?p=1847 → /artists/sacha-elron</span>
+    </div>`;
+})();
+
+/* Phones show the task grid as a carousel of small slides; a full-width card would not fit
+ * there, so it is rendered just under the carousel instead. */
+const taskFeature = document.createElement("div");
+taskFeature.className = "task-feature";
+grid?.after(taskFeature);
+
+function wideTaskCard(task) {
+  const isSelected = selected.has(task.id);
+  return `
+    <article class="task-card task-card--wide has-glyph" data-preview-id="${task.id}" data-wide>
+      <div class="task-card__body">
+        <p class="task-category">${task.label}</p><h3>${task.title}</h3><p class="task-price">${task.from ? t.from(price(task.price)) : price(task.price)}</p><p class="task-description">${task.description}</p><p class="task-note">${task.note}</p>
+        <button class="task-add ${isSelected ? "is-selected" : ""}" type="button" data-task-id="${task.id}" aria-pressed="${isSelected}">${isSelected ? t.added : t.add}</button>
+      </div>
+      ${MIGRATION_GLYPH}
+    </article>`;
+}
+
 function renderTasks() {
   expandedTaskId = null;
   const visibleTasks =
     activeFilter === "all"
       ? tasks
       : tasks.filter((task) => task.category === activeFilter);
+  const apart = carouselQuery.matches;
+  taskFeature.innerHTML = apart
+    ? visibleTasks.filter((task) => task.wide).map(wideTaskCard).join("")
+    : "";
   grid.innerHTML = visibleTasks
+    .filter((task) => !(apart && task.wide))
     .map(
-      (task) => `
+      (task) => task.wide ? wideTaskCard(task) : `
     <article class="task-card${TASK_GLYPHS[task.id] ? " has-glyph" : ""}" data-preview-id="${task.id}" tabindex="0" role="button" aria-expanded="false" aria-label="${t.preview(task.title)}">
       <div class="task-card__body">
         <p class="task-category">${task.label}</p><h3>${task.title}</h3><p class="task-price">${price(task.price)}</p><p class="task-description">${task.description}</p>
@@ -635,6 +858,10 @@ function artworksPageMarkup() {
 }
 
 function previewMarkup(task) {
+  const brief = TASK_BRIEFS[LANG][task.id];
+  if (brief) {
+    return `<div class="preview-brief"><div class="preview-brief__sheet"><small>${brief.file}</small><h3>${brief.heading}</h3><ul>${brief.items.map((item) => `<li>${item}</li>`).join("")}</ul></div></div>`;
+  }
   if (task.id === "publish-exhibition") return exhibitionPageMarkup();
   if (task.id === "update-artworks") return artworksPageMarkup();
   if (task.id === "artist-page") return artistPageMarkup();
@@ -911,7 +1138,7 @@ const MORPH_MAP = {
 
 function prepareMorph(task, media) {
   const root = media.firstElementChild;
-  if (!root || !TASK_GLYPHS[task.id]) return;
+  if (!root || !TASK_GLYPHS[task.id] || TASK_BRIEFS[LANG][task.id]) return;
   root.setAttribute("data-morph", "");
   const cfg = MORPH_MAP[task.id];
   if (!cfg) return;
@@ -1188,10 +1415,18 @@ document.querySelector(".category-strip").addEventListener("click", (event) => {
     );
   renderTasks();
 });
+taskFeature.addEventListener("click", (event) => {
+  const button = event.target.closest(".task-add");
+  if (!button) return;
+  const { taskId } = button.dataset;
+  selected.has(taskId) ? selected.delete(taskId) : selected.add(taskId);
+  renderTasks();
+  updateSummary();
+});
 grid.addEventListener("click", (event) => {
   const button = event.target.closest(".task-add");
   if (!button) {
-    const card = event.target.closest(".task-card");
+    const card = event.target.closest(".task-card:not([data-wide])");
     if (card)
       toggleCardPreview(
         tasks.find((task) => task.id === card.dataset.previewId),
@@ -1206,7 +1441,7 @@ grid.addEventListener("click", (event) => {
 });
 grid.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" && event.key !== " ") return;
-  const card = event.target.closest(".task-card");
+  const card = event.target.closest(".task-card:not([data-wide])");
   if (!card) return;
   event.preventDefault();
   toggleCardPreview(
@@ -1221,7 +1456,10 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && expandedTaskId) collapseExpandedCard();
 });
-carouselQuery.addEventListener("change", () => collapseExpandedCard());
+carouselQuery.addEventListener("change", () => {
+  collapseExpandedCard();
+  renderTasks();
+});
 document
   .querySelector(".modal-close")
   .addEventListener("click", () => modal.close());
@@ -1244,7 +1482,7 @@ if (tasks.some((task) => task.id === addedFromPage)) selected.add(addedFromPage)
 renderTasks();
 updateSummary();
 createIcons({
-  icons: { BadgeCheck, BadgeEuro, Database, Files, Monitor, Plug, Search },
+  icons: { BadgeCheck, BadgeEuro, Clock, Database, Files, MapPin, Monitor, Plug, Search, Wrench },
 });
 
 // Drag the estimate ticket down to collapse it to a peeking strip, or up to reopen it.
@@ -1549,8 +1787,8 @@ document.querySelectorAll(".gm-notifs").forEach((stack) => {
   }).observe(visual);
 });
 
-/* Studio intro: split into words and reveal them (pale -> ink) as the block scrolls
- * through the viewport. Reduced motion shows everything at once. */
+/* Studio intro: split into words, each at its final colour (the scroll-linked reveal is off;
+ * the text shows in full). */
 (() => {
   const section = document.querySelector(".studio-statement, .studio-intro");
   if (!section) return;
@@ -1586,30 +1824,6 @@ document.querySelectorAll(".gm-notifs").forEach((stack) => {
     });
   };
   section.querySelectorAll("[data-reveal]").forEach(split);
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const update = () => {
-    const rect = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-    // 0 when the block's top reaches 85% of the viewport, 1 when its bottom reaches 55%.
-    const p = Math.min(1, Math.max(0, (vh * 0.85 - rect.top) / (rect.height + vh * 0.3)));
-    const n = words.length;
-    words.forEach((w, i) => {
-      const a = Math.min(1, Math.max(0, p * (n + 6) - i) / 3);
-      w.style.setProperty("--a", a.toFixed(3));
-    });
-  };
-  let queued = false;
-  const tick = () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(() => {
-      queued = false;
-      update();
-    });
-  };
-  addEventListener("scroll", tick, { passive: true });
-  addEventListener("resize", tick);
-  update();
 })();
 
 /* Tools carousel: prev / next buttons and a pagination pill (one dot per reachable

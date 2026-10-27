@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery website updates at a fixed price — R.R Studio</title>
-    <meta name="description" content="Exhibition pages, openings, artist pages, website fixes and Google indexing for art galleries. Fixed price per task, agreed before I start." />
+    <meta name="description" content="Exhibition pages, translations, website fixes and practical visibility work for galleries. Fixed price per task." />
     <link rel="canonical" href="https://www.rrstudio.online/tasks/website/" />
     <link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/website/" />
     <link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/site-web/" />
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="R.R Studio" />
     <meta property="og:title" content="Gallery website updates at a fixed price — R.R Studio" />
-    <meta property="og:description" content="Exhibition pages, openings, artist pages, website fixes and Google indexing for art galleries. Fixed price per task, agreed before I start." />
+    <meta property="og:description" content="Exhibition pages, translations, website fixes and practical visibility work for galleries. Fixed price per task." />
     <meta property="og:url" content="https://www.rrstudio.online/tasks/website/" />
     <meta property="og:image" content="https://www.rrstudio.online/images/og-image.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Website & visibility",
-  "description": "Exhibition pages, openings, artist pages, website fixes and Google indexing for art galleries. Fixed price per task, agreed before I start.",
+  "description": "Exhibition pages, translations, website fixes and practical visibility work for galleries. Fixed price per task.",
   "url": "https://www.rrstudio.online/tasks/website/",
   "provider": {
     "@type": "ProfessionalService",
@@ -50,13 +50,13 @@
       },
       {
         "@type": "Offer",
-        "price": "220",
+        "price": "290",
         "priceCurrency": "EUR",
         "url": "https://www.rrstudio.online/tasks/website/#opening-website",
         "itemOffered": {
           "@type": "Service",
-          "name": "Prepare for an opening",
-          "description": "Homepage, exhibition and artist pages refreshed and ready before opening."
+          "name": "Fix your website on mobile",
+          "description": "Fix broken layouts, awkward image crops and display issues on your gallery website."
         }
       },
       {
@@ -68,6 +68,17 @@
           "@type": "Service",
           "name": "Add an artist page",
           "description": "Biography, works, images and basic metadata added to the gallery website."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "190",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/tasks/website/#translate-exhibition",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Translate your exhibition",
+          "description": "Translate exhibition texts, artist biographies and artwork descriptions into natural English or French."
         }
       },
       {
@@ -99,8 +110,19 @@
         "url": "https://www.rrstudio.online/tasks/website/#seo-check",
         "itemOffered": {
           "@type": "Service",
-          "name": "Artist Google indexing",
-          "description": "Find the main issues keeping an artist page out of Google."
+          "name": "Check artist page visibility",
+          "description": "Review one artist page for Google indexing issues; receive a fix list, not site changes."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "290",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/tasks/website/#ai-search",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Prepare your gallery for AI search",
+          "description": "Help AI search tools better discover and understand your gallery, artists and exhibitions."
         }
       }
     ]
@@ -170,7 +192,7 @@
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
-        <nav class="nav" aria-label="Main navigation"><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
+        <nav class="nav" aria-label="Main navigation"><a href="/#ai">AI for art dealers</a><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -186,7 +208,7 @@
           <a class="mm-row" href="/tasks/inventory/">Inventory<span class="mm-arrow" aria-hidden="true">↗</span></a>
           <a class="mm-row" href="/tasks/sales-material/">Sales material<span class="mm-arrow" aria-hidden="true">↗</span></a>
         </div>
-        <a class="mm-card mm-card--row" href="/#ways"><span class="mm-row">AI workshop<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-card mm-card--row" href="/#ai"><span class="mm-row">AI for art dealers<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
         <a class="mm-cta" href="/contact/">Get in touch</a>
       </nav>
       <div class="mobile-menu__foot">
@@ -212,14 +234,19 @@
             <a class="cat-task__add" href="/?add=publish-exhibition#tasks" aria-label="Add Publish an exhibition to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
           <li class="cat-task" id="opening-website">
-            <div class="cat-task__text"><h3>Prepare for an opening</h3><p>Homepage, exhibition and artist pages refreshed and ready before opening.</p></div>
-            <p class="cat-task__price">€220</p>
-            <a class="cat-task__add" href="/?add=opening-website#tasks" aria-label="Add Prepare for an opening to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+            <div class="cat-task__text"><h3>Fix your website on mobile</h3><p>Fix broken layouts, awkward image crops and display issues on your gallery website.</p></div>
+            <p class="cat-task__price">€290</p>
+            <a class="cat-task__add" href="/?add=opening-website#tasks" aria-label="Add Fix your website on mobile to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
           <li class="cat-task" id="artist-page">
             <div class="cat-task__text"><h3>Add an artist page</h3><p>Biography, works, images and basic metadata added to the gallery website.</p></div>
             <p class="cat-task__price">€90</p>
             <a class="cat-task__add" href="/?add=artist-page#tasks" aria-label="Add Add an artist page to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="translate-exhibition">
+            <div class="cat-task__text"><h3>Translate your exhibition</h3><p>Translate exhibition texts, artist biographies and artwork descriptions into natural English or French.</p><ul class="cat-task__scope"><li>Up to 1,500 words, English ↔ French. AI-assisted translation with human review of art terminology and tone.</li><li>Delivered as an editable document; website publication is not included.</li></ul></div>
+            <p class="cat-task__price">€190</p>
+            <a class="cat-task__add" href="/?add=translate-exhibition#tasks" aria-label="Add Translate your exhibition to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
           <li class="cat-task" id="update-artworks">
             <div class="cat-task__text"><h3>Update 10 artworks</h3><p>Update images, captions, availability or other artwork information.</p></div>
@@ -235,9 +262,14 @@
         <h3 class="cat-group">Visibility</h3>
         <ul class="cat-tasks">
           <li class="cat-task" id="seo-check">
-            <div class="cat-task__text"><h3>Artist Google indexing</h3><p>Find the main issues keeping an artist page out of Google.</p></div>
+            <div class="cat-task__text"><h3>Check artist page visibility</h3><p>Review one artist page for Google indexing issues; receive a fix list, not site changes.</p></div>
             <p class="cat-task__price">€120</p>
-            <a class="cat-task__add" href="/?add=seo-check#tasks" aria-label="Add Artist Google indexing to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+            <a class="cat-task__add" href="/?add=seo-check#tasks" aria-label="Add Check artist page visibility to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="ai-search">
+            <div class="cat-task__text"><h3>Prepare your gallery for AI search</h3><p>Help AI search tools better discover and understand your gallery, artists and exhibitions.</p><ul class="cat-task__scope"><li>Review crawlability, relevant indexing issues, metadata and artist or exhibition information on existing pages.</li><li>Implement agreed technical and structured-data improvements, then provide a short summary of changes.</li><li>No promise of inclusion or ranking in ChatGPT, Gemini or Google AI.</li></ul></div>
+            <p class="cat-task__price">€290</p>
+            <a class="cat-task__add" href="/?add=ai-search#tasks" aria-label="Add Prepare your gallery for AI search to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
         </ul>
       </section>
@@ -323,7 +355,7 @@
         <div>
           <a class="big-footer__title" href="/#studio">Studio</a>
           <a href="/#studio">About</a>
-          <a href="/#ways">Workshop</a>
+          <a href="/#ways">Gallery AI Starter</a>
           <a href="/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="mailto:studio@rrstudio.online">Email</a>

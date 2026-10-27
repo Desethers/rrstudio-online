@@ -10,17 +10,21 @@ const COMPONENTS = [
   { name: "faq", title: "FAQ", note: "Questions and answers", w: 1440, h: 720 },
   /* One tile per task card: ?component=task&id=<task id>. */
   { name: "task", id: "publish-exhibition", title: "Publish an exhibition", note: "Task card · Website", w: 900, h: 600 },
-  { name: "task", id: "opening-website", title: "Prepare for an opening", note: "Task card · Website", w: 900, h: 600 },
+  { name: "task", id: "opening-website", title: "Fix your website on mobile", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "artist-page", title: "Add an artist page", note: "Task card · Website", w: 900, h: 600 },
+  { name: "task", id: "translate-exhibition", title: "Translate your exhibition", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "update-artworks", title: "Update 10 artworks", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "fix-website-issue", title: "Fix a website issue", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "organise-database", title: "Organise your inventory", note: "Task card · Inventory", w: 900, h: 600 },
+  { name: "task", id: "pdf-to-records", title: "Turn PDFs into artwork records", note: "Task card · Inventory", w: 900, h: 600 },
   { name: "task", id: "import-artworks", title: "Import 50 artworks", note: "Task card · Inventory", w: 900, h: 600 },
   { name: "task", id: "clean-records", title: "Clean 50 artwork records", note: "Task card · Inventory", w: 900, h: 600 },
-  { name: "task", id: "artlogic-check", title: "Clean up your Artlogic inventory", note: "Task card · Inventory", w: 900, h: 600 },
+  { name: "task", id: "artlogic-check", title: "Check your Artlogic inventory", note: "Task card · Inventory", w: 900, h: 600 },
   { name: "task", id: "collector-pdf", title: "Collector PDF", note: "Task card · Sales material", w: 900, h: 600 },
+  { name: "task", id: "collector-emails", title: "Prepare your collector emails", note: "Task card · Sales material", w: 900, h: 600 },
   { name: "task", id: "viewing-room", title: "Private viewing room", note: "Task card · Sales material", w: 900, h: 600 },
-  { name: "task", id: "seo-check", title: "Artist Google indexing", note: "Task card · Visibility", w: 900, h: 600 },
+  { name: "task", id: "seo-check", title: "Check artist page visibility", note: "Task card · Visibility", w: 900, h: 600 },
+  { name: "task", id: "ai-search", title: "Prepare your gallery for AI search", note: "Task card · Visibility", w: 900, h: 600 },
 ];
 
 const url = (c) => `/?component=${c.name}${c.id ? `&id=${c.id}` : ""}`;

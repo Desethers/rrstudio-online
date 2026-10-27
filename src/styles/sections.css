@@ -5209,6 +5209,88 @@ h2,
   position: absolute;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.task-glyph--brief {
+  height: 82px;
+}
+.tg--brief-back,
+.tg--brief-front {
+  height: 72px;
+  width: 112px;
+}
+.tg--brief-back {
+  left: 16px;
+  top: 8px;
+  transform: rotate(4deg);
+}
+.tg--brief-front {
+  left: 2px;
+  padding: 11px;
+  top: 0;
+}
+.tg--brief-front small,
+.tg--brief-front strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tg--brief-front small {
+  color: var(--muted);
+  font-size: 5px;
+  letter-spacing: 0.08em;
+}
+.tg--brief-front strong {
+  font-size: 7px;
+  font-weight: var(--font-weight-500);
+  margin: 7px 0;
+}
+.tg--brief-front i {
+  background: var(--line);
+  display: block;
+  height: 2px;
+  margin-top: 5px;
+  width: 90%;
+}
+.tg--brief-front i:last-child {
+  width: 64%;
+}
+.task-card.is-expanded .task-glyph--brief {
+  opacity: 0;
+}
+.preview-brief {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.preview-brief__sheet {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-width: 430px;
+  padding: 24px;
+  width: 100%;
+}
+.preview-brief__sheet > small {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.preview-brief__sheet h3 {
+  font-size: 22px;
+  font-weight: var(--font-weight-400);
+  margin: 12px 0 16px;
+}
+.preview-brief__sheet ul {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  padding-left: 18px;
+}
+.preview-brief__sheet li + li {
+  margin-top: 8px;
+}
 .tg--image {
   height: 46px;
   left: 20px;
@@ -12555,4 +12637,522 @@ h2,
   html[lang="fr"] .hero h1 {
     font-size: min(calc(var(--fs) * 1px), 7vw);
   }
+}
+
+/* AI for art dealers: a centred heading like the Apps intro, then three numbered steps on thin rules. */
+.ai-galleries {
+  padding: 104px 22px 16px;
+}
+.ai-galleries__intro {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  max-width: 700px;
+  text-align: center;
+}
+.ai-galleries__intro .eyebrow {
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+#ai-title {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+#ai-title span {
+  display: block;
+}
+.ai-galleries__copy {
+  color: var(--muted);
+  font-size: 20px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.4;
+  margin: 18px 0 0;
+  max-width: 600px;
+  text-wrap: balance;
+}
+.ai-steps {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 64px auto 0;
+  max-width: 1040px;
+  padding: 0;
+}
+.ai-step {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.ai-step__num {
+  color: var(--subtle);
+  display: block;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 28px;
+}
+.ai-step h3 {
+  font-size: 20px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+.ai-step p {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.45;
+  margin: 10px 0 0;
+  max-width: 32ch;
+}
+.ai-galleries__link {
+  color: var(--ink);
+  display: table;
+  font-size: 15px;
+  margin: 44px auto 0;
+  text-decoration: none;
+}
+.ai-galleries__link span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.ai-galleries__link:hover span,
+.ai-galleries__link:focus-visible span {
+  transform: translateX(3px);
+}
+@media (max-width: 640px) {
+  .ai-galleries {
+    padding: 64px 0 8px;
+  }
+  #ai-title {
+    font-size: 24px;
+  }
+  .ai-galleries__copy {
+    font-size: 17px;
+  }
+  .ai-steps {
+    gap: 28px;
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+  .ai-step__num {
+    margin-bottom: 14px;
+  }
+  .ai-step h3 {
+    font-size: 18px;
+  }
+  .ai-step p {
+    font-size: 15px;
+    max-width: none;
+  }
+}
+
+/* Gallery AI Starter: the pitch on the left, the offer (price, facts, button) in a quiet panel on the right. */
+.workshop .workshop-card {
+  align-items: center;
+}
+.workshop .workshop-card__main > p.workshop-card__lead {
+  color: #a3a3a0;
+  font-size: 20px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.4;
+  margin: 14px 0 0;
+  max-width: 44ch;
+}
+.workshop .workshop-card__side.workshop-offer {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  gap: 20px;
+  padding: 28px;
+}
+.workshop-offer__price {
+  align-items: baseline;
+  color: #fff;
+  display: flex;
+  font-size: 36px;
+  font-weight: var(--font-weight-400);
+  gap: 10px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.workshop-offer__price span {
+  color: #8a8a86;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.workshop .workshop-offer ul {
+  gap: 14px;
+  margin: 4px 0;
+}
+.workshop .workshop-offer li {
+  align-items: center;
+  border-top: 0;
+  display: flex;
+  font-size: 15px;
+  font-weight: var(--font-weight-300);
+  gap: 12px;
+  padding: 0;
+}
+.workshop .workshop-offer li svg {
+  color: #8a8a86;
+  flex: none;
+  height: 18px;
+  stroke-width: 1.6;
+  width: 18px;
+}
+.workshop-offer__form {
+  display: grid;
+  gap: 10px;
+}
+.workshop-offer__field {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dcdcd8;
+  border-radius: 14px;
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+}
+.workshop-offer__field input {
+  background: transparent;
+  border: 0;
+  color: #111110;
+  flex: 1;
+  font: inherit;
+  font-size: 15px;
+  min-width: 0;
+  outline: none;
+  padding: 0 12px;
+}
+.workshop-offer__field input::placeholder {
+  color: #a3a3a3;
+}
+.workshop-offer__field:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+.workshop-offer__field button {
+  background: #111110;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  flex: none;
+  font: inherit;
+  font-size: 15px;
+  padding: 12px 18px;
+  transition: background-color 0.2s ease;
+}
+.workshop-offer__field button:hover,
+.workshop-offer__field button:focus-visible {
+  background: #2a2a28;
+}
+.workshop-offer__field button:disabled {
+  opacity: 0.6;
+}
+.workshop-offer__status {
+  color: #8a8a86;
+  font-size: 13px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+.workshop-offer__form[data-state="done"] .workshop-offer__status {
+  color: #e6e6e2;
+}
+.workshop-offer__form[data-state="error"] .workshop-offer__status {
+  color: #f0a08f;
+}
+@media (max-width: 640px) {
+  .workshop .workshop-card__main > p.workshop-card__lead {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .workshop .workshop-card__side.workshop-offer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 16px;
+    padding: 22px 18px 18px;
+  }
+  .workshop-offer__price {
+    font-size: 30px;
+  }
+}
+
+/* Website migration: a bento task card spanning two grid columns. Same height, padding and type
+ * as the other task cards; its glyph is wider to fill the extra column. */
+.task-card.task-card--wide {
+  grid-column: span 2;
+}
+.task-card--wide .task-card__body {
+  max-width: calc(100% - 340px);
+}
+.task-card--wide .task-note {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.35;
+  margin: 8px 0 0;
+}
+.task-glyph--migration {
+  height: 150px;
+  width: 300px;
+}
+.tg--wp {
+  background: #f4f4f1;
+  color: #8f8f8b;
+  font-family: Georgia, "Times New Roman", serif;
+  height: 112px;
+  left: 0;
+  padding: 0 9px;
+  top: 22px;
+  width: 150px;
+  z-index: 1;
+}
+.tg--wp__bar {
+  align-items: center;
+  border-bottom: 1px solid #e6e6e2;
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  margin: 0 -9px 8px;
+  padding: 0 7px;
+}
+.tg--wp__bar i {
+  background: #d8d8d4;
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+.tg--wp__bar u {
+  font-family: var(--font-sans);
+  font-size: 5px;
+  margin-left: 5px;
+  text-decoration: none;
+}
+.tg--wp b {
+  color: #6f6f6b;
+  display: block;
+  font-size: 9px;
+}
+.tg--wp em {
+  border-block: 1px solid #e6e6e2;
+  color: #5b7fa8;
+  display: block;
+  font-size: 5px;
+  font-style: normal;
+  margin: 5px 0 6px;
+  padding: 2px 0;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.tg--wp s {
+  background: #e3e3df;
+  display: block;
+  height: 34px;
+  width: 64%;
+}
+.tg--wp small {
+  display: block;
+  font-size: 5px;
+  font-style: italic;
+  margin-top: 5px;
+}
+.tg--cms {
+  height: 122px;
+  left: 102px;
+  padding: 8px 9px;
+  top: 0;
+  width: 198px;
+  z-index: 2;
+}
+.tg--cms__tabs {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 5px;
+}
+.tg--cms__tabs u {
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 6px;
+  padding: 2px 6px;
+  text-decoration: none;
+}
+.tg--cms__tabs .is-on {
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+.tg--cms__row {
+  align-items: center;
+  border-top: 1px solid var(--border-soft);
+  display: grid;
+  gap: 7px;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  padding: 5px 0;
+}
+.tg--cms__row img {
+  border-radius: 2px;
+  display: block;
+  height: 18px;
+  object-fit: cover;
+  width: 18px;
+}
+.tg--cms__row b {
+  font-size: 7px;
+  font-weight: var(--font-weight-500);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tg-st {
+  border-radius: 999px;
+  font-size: 5.5px;
+  font-style: normal;
+  padding: 2px 5px;
+}
+.tg-st--ok {
+  background: #e8f3ec;
+  color: #1d7a46;
+}
+.tg-st--hold {
+  background: #f7efe2;
+  color: #9a6a1f;
+}
+.tg-st--sold {
+  background: var(--surface-soft);
+  color: var(--muted);
+}
+.tg--redirect {
+  background: rgba(28, 28, 26, 0.9);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 5.5px;
+  height: 16px;
+  left: 18px;
+  letter-spacing: 0.02em;
+  line-height: 16px;
+  padding: 0 9px;
+  top: 128px;
+  white-space: nowrap;
+  z-index: 3;
+}
+.task-card:hover .tg--wp {
+  transform: translate(-3px, 2px);
+}
+.task-card:hover .tg--cms {
+  transform: translate(2px, -2px);
+}
+.task-card:hover .tg--redirect {
+  transform: translateY(2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .task-glyph--migration .tg {
+    transition: none;
+  }
+}
+
+/* Narrower grid columns: the glyph a size down, so the text keeps its width. */
+@media (min-width: 641px) and (max-width: 1100px) {
+  .task-card--wide .task-card__body {
+    max-width: calc(100% - 280px);
+  }
+  .task-glyph--migration {
+    zoom: 0.82;
+  }
+}
+
+/* Mobile: the card sits under the task carousel, full width, with the glyph under its text. */
+.task-feature:empty {
+  display: none;
+}
+@media (max-width: 640px) {
+  .task-feature {
+    margin-top: 16px;
+  }
+  .task-feature .task-card.task-card--wide {
+    flex-direction: column;
+    height: auto;
+    width: auto;
+  }
+  .task-feature .task-card--wide .task-card__body {
+    max-width: none;
+  }
+  .task-feature .task-card--wide .task-description {
+    -webkit-line-clamp: unset;
+    margin-bottom: 0;
+  }
+  .task-feature .task-card--wide .task-note {
+    font-size: var(--font-size-12);
+    line-height: 1.3;
+    margin: 6px 0 14px;
+  }
+  .task-feature .task-card .task-glyph--migration {
+    align-self: center;
+    bottom: auto;
+    left: auto;
+    margin-top: 20px;
+    position: relative;
+    right: auto;
+    transform: none;
+  }
+}
+/* Mobile: the email field and the button stack, both full width. */
+.workshop-offer > * {
+  min-width: 0;
+}
+@media (max-width: 640px) {
+  .workshop-offer__field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .workshop-offer__field input {
+    padding: 12px;
+  }
+}
+
+/* Task card labels as pills. */
+.task-card .task-category {
+  align-self: flex-start;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--ink);
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 10px;
+}
+@media (max-width: 640px) {
+  .task-card .task-category {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}
+
+/* Task card hover: white surface with a 0.5px grey stroke (the hairline is always there,
+ * transparent at rest, so nothing shifts). */
+.task-card {
+  border-width: 0.5px;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.task-card:hover,
+.task-card:focus-visible {
+  background: var(--background);
+  border-color: #cfcfcb;
+}
+
+/* Category filters: same corner radius as the task card labels. */
+.task-filters .filter {
+  border-radius: 10px;
+}
+
+/* Hero picker: same corner radius as the task labels and filters. */
+.hero-pick .hero-pick__btn {
+  border-radius: 10px;
 }

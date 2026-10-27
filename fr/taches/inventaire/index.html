@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nettoyage d’inventaire d’œuvres et Artlogic — R.R Studio</title>
-    <meta name="description" content="Doublons, fiches incomplètes, tableur à importer : nettoyage et import d’inventaire d’œuvres pour galeries, Artlogic compris, à prix fixe." />
+    <meta name="description" content="Vérification d’inventaire, nettoyage de fiches, import de tableur et conversion de PDF pour galeries, à prix fixe." />
     <link rel="canonical" href="https://www.rrstudio.online/fr/taches/inventaire/" />
     <link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/inventory/" />
     <link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/inventaire/" />
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="R.R Studio" />
     <meta property="og:title" content="Nettoyage d’inventaire d’œuvres et Artlogic — R.R Studio" />
-    <meta property="og:description" content="Doublons, fiches incomplètes, tableur à importer : nettoyage et import d’inventaire d’œuvres pour galeries, Artlogic compris, à prix fixe." />
+    <meta property="og:description" content="Vérification d’inventaire, nettoyage de fiches, import de tableur et conversion de PDF pour galeries, à prix fixe." />
     <meta property="og:url" content="https://www.rrstudio.online/fr/taches/inventaire/" />
     <meta property="og:image" content="https://www.rrstudio.online/images/og-image.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Inventaire",
-  "description": "Doublons, fiches incomplètes, tableur à importer : nettoyage et import d’inventaire d’œuvres pour galeries, Artlogic compris, à prix fixe.",
+  "description": "Vérification d’inventaire, nettoyage de fiches, import de tableur et conversion de PDF pour galeries, à prix fixe.",
   "url": "https://www.rrstudio.online/fr/taches/inventaire/",
   "provider": {
     "@type": "ProfessionalService",
@@ -39,35 +39,24 @@
     "itemListElement": [
       {
         "@type": "Offer",
-        "price": "120",
-        "priceCurrency": "EUR",
-        "url": "https://www.rrstudio.online/fr/taches/inventaire/#artlogic-check",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Nettoyer votre inventaire Artlogic",
-          "description": "Doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable."
-        }
-      },
-      {
-        "@type": "Offer",
         "price": "150",
         "priceCurrency": "EUR",
         "url": "https://www.rrstudio.online/fr/taches/inventaire/#organise-database",
         "itemOffered": {
           "@type": "Service",
           "name": "Organiser votre inventaire",
-          "description": "Catégories, champs et structure remis au propre."
+          "description": "Clarifier les catégories et les champs de votre inventaire, sans retoucher chaque fiche."
         }
       },
       {
         "@type": "Offer",
-        "price": "180",
+        "price": "290",
         "priceCurrency": "EUR",
-        "url": "https://www.rrstudio.online/fr/taches/inventaire/#clean-records",
+        "url": "https://www.rrstudio.online/fr/taches/inventaire/#pdf-to-records",
         "itemOffered": {
           "@type": "Service",
-          "name": "Nettoyer 50 fiches d’œuvres",
-          "description": "Correction des informations d’œuvres incohérentes."
+          "name": "Transformer vos PDF en fiches d’œuvres",
+          "description": "Transformer listes d’œuvres, catalogues et PDF en fiches structurées, prêtes pour votre inventaire."
         }
       },
       {
@@ -78,7 +67,29 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Importer 50 œuvres",
-          "description": "Nettoyage et import de votre tableur ou de votre export."
+          "description": "Importer jusqu’à 50 lignes structurées depuis un tableur dans votre inventaire existant."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/fr/taches/inventaire/#clean-records",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Nettoyer 50 fiches d’œuvres",
+          "description": "Corriger les champs incohérents de 50 fiches d’œuvres existantes au maximum."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "120",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/fr/taches/inventaire/#artlogic-check",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Vérifier votre inventaire Artlogic",
+          "description": "Repérer les doublons et champs manquants dans un export Artlogic ; recevoir une liste de corrections, sans modifier les données."
         }
       }
     ]
@@ -95,7 +106,7 @@
       "name": "Travaillez-vous avec Artlogic ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. « Nettoyer votre inventaire Artlogic » est fait pour ça : doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable."
+        "text": "Oui. Je peux vérifier les doublons et les champs manquants dans un export Artlogic, puis vous remettre une liste de corrections. Cette vérification ne modifie pas vos données."
       }
     },
     {
@@ -103,7 +114,7 @@
       "name": "J’ai plus de 50 œuvres. Comment est-ce facturé ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Les tâches d’import et de nettoyage sont facturées par lot de 50 œuvres. Indiquez-moi combien d’œuvres vous avez, je vous confirme le prix avant de commencer."
+        "text": "L’import, le nettoyage et la conversion de PDF couvrent jusqu’à 50 œuvres. Indiquez-moi combien d’œuvres vous avez : je confirme le périmètre et le prix avant de commencer."
       }
     },
     {
@@ -148,7 +159,7 @@
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/fr/" aria-label="Accueil R.R Studio">R.R <span>Studio</span></a>
-        <nav class="nav" aria-label="Navigation principale"><a href="/fr/#products">Outils</a><span class="nav-menu"><a href="/fr/#tasks">Tâches</a><span class="nav-menu__panel"><a href="/fr/taches/site-web/">Site web et visibilité</a><a href="/fr/taches/inventaire/">Inventaire</a><a href="/fr/taches/supports-de-vente/">Supports de vente</a></span></span><a href="/fr/contact/">Contact</a></nav>
+        <nav class="nav" aria-label="Navigation principale"><a href="/fr/#ai">L’IA pour les marchands d’art</a><a href="/fr/#products">Outils</a><span class="nav-menu"><a href="/fr/#tasks">Tâches</a><span class="nav-menu__panel"><a href="/fr/taches/site-web/">Site web et visibilité</a><a href="/fr/taches/inventaire/">Inventaire</a><a href="/fr/taches/supports-de-vente/">Supports de vente</a></span></span><a href="/fr/contact/">Contact</a></nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -164,7 +175,7 @@
           <a class="mm-row" href="/fr/taches/inventaire/">Inventaire<span class="mm-arrow" aria-hidden="true">↗</span></a>
           <a class="mm-row" href="/fr/taches/supports-de-vente/">Supports de vente<span class="mm-arrow" aria-hidden="true">↗</span></a>
         </div>
-        <a class="mm-card mm-card--row" href="/fr/#ways"><span class="mm-row">Atelier IA<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-card mm-card--row" href="/fr/#ai"><span class="mm-row">L’IA pour les marchands d’art<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
         <a class="mm-cta" href="/fr/contact/">Me contacter</a>
       </nav>
       <div class="mobile-menu__foot">
@@ -184,25 +195,30 @@
       <section class="cat-section" aria-labelledby="cat-list-title">
         <h2 id="cat-list-title">Les tâches</h2>
         <ul class="cat-tasks">
-          <li class="cat-task" id="artlogic-check">
-            <div class="cat-task__text"><h3>Nettoyer votre inventaire Artlogic</h3><p>Doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable.</p></div>
-            <p class="cat-task__price">120 €</p>
-            <a class="cat-task__add" href="/fr/?add=artlogic-check#tasks" aria-label="Ajouter « Nettoyer votre inventaire Artlogic » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
-          </li>
           <li class="cat-task" id="organise-database">
-            <div class="cat-task__text"><h3>Organiser votre inventaire</h3><p>Catégories, champs et structure remis au propre.</p></div>
+            <div class="cat-task__text"><h3>Organiser votre inventaire</h3><p>Clarifier les catégories et les champs de votre inventaire, sans retoucher chaque fiche.</p></div>
             <p class="cat-task__price">150 €</p>
             <a class="cat-task__add" href="/fr/?add=organise-database#tasks" aria-label="Ajouter « Organiser votre inventaire » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
           </li>
+          <li class="cat-task" id="pdf-to-records">
+            <div class="cat-task__text"><h3>Transformer vos PDF en fiches d’œuvres</h3><p>Transformer listes d’œuvres, catalogues et PDF en fiches structurées, prêtes pour votre inventaire.</p><ul class="cat-task__scope"><li>Jusqu’à 50 œuvres issues de listes, catalogues ou PDF fournis : artiste, titre, année, technique, dimensions et prix extraits avec l’IA puis vérifiés par une personne.</li><li>Livraison en Excel ou CSV. Sans import dans un CRM ni recherche des informations manquantes.</li></ul></div>
+            <p class="cat-task__price">290 €</p>
+            <a class="cat-task__add" href="/fr/?add=pdf-to-records#tasks" aria-label="Ajouter « Transformer vos PDF en fiches d’œuvres » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="import-artworks">
+            <div class="cat-task__text"><h3>Importer 50 œuvres</h3><p>Importer jusqu’à 50 lignes structurées depuis un tableur dans votre inventaire existant.</p></div>
+            <p class="cat-task__price">220 €</p>
+            <a class="cat-task__add" href="/fr/?add=import-artworks#tasks" aria-label="Ajouter « Importer 50 œuvres » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
+          </li>
           <li class="cat-task" id="clean-records">
-            <div class="cat-task__text"><h3>Nettoyer 50 fiches d’œuvres</h3><p>Correction des informations d’œuvres incohérentes.</p></div>
+            <div class="cat-task__text"><h3>Nettoyer 50 fiches d’œuvres</h3><p>Corriger les champs incohérents de 50 fiches d’œuvres existantes au maximum.</p></div>
             <p class="cat-task__price">180 €</p>
             <a class="cat-task__add" href="/fr/?add=clean-records#tasks" aria-label="Ajouter « Nettoyer 50 fiches d’œuvres » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
           </li>
-          <li class="cat-task" id="import-artworks">
-            <div class="cat-task__text"><h3>Importer 50 œuvres</h3><p>Nettoyage et import de votre tableur ou de votre export.</p></div>
-            <p class="cat-task__price">220 €</p>
-            <a class="cat-task__add" href="/fr/?add=import-artworks#tasks" aria-label="Ajouter « Importer 50 œuvres » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
+          <li class="cat-task" id="artlogic-check">
+            <div class="cat-task__text"><h3>Vérifier votre inventaire Artlogic</h3><p>Repérer les doublons et champs manquants dans un export Artlogic ; recevoir une liste de corrections, sans modifier les données.</p></div>
+            <p class="cat-task__price">120 €</p>
+            <a class="cat-task__add" href="/fr/?add=artlogic-check#tasks" aria-label="Ajouter « Vérifier votre inventaire Artlogic » à votre devis">Ajouter au devis <span aria-hidden="true">→</span></a>
           </li>
         </ul>
       </section>
@@ -216,6 +232,7 @@
         <ul class="cat-list">
           <li>Un export de votre inventaire (tableur ou fichier CSV), ou un accès à l’outil où il se trouve.</li>
           <li>Pour un import : votre tableur et les images des œuvres.</li>
+          <li>Pour convertir des PDF : les listes d’œuvres ou catalogues à structurer.</li>
           <li>Ce qu’est une fiche propre pour vous : champs obligatoires et conventions de nommage, si vous en avez.</li>
         </ul>
       </section>
@@ -231,11 +248,11 @@
         <h2>Questions</h2>
           <details>
             <summary>Travaillez‑vous avec Artlogic ?</summary>
-            <p>Oui. « Nettoyer votre inventaire Artlogic » est fait pour ça : doublons supprimés, fiches incomplètes complétées, et un inventaire à nouveau fiable.</p>
+            <p>Oui. Je peux vérifier les doublons et les champs manquants dans un export Artlogic, puis vous remettre une liste de corrections. Cette vérification ne modifie pas vos données.</p>
           </details>
           <details>
             <summary>J’ai plus de 50 œuvres. Comment est‑ce facturé ?</summary>
-            <p>Les tâches d’import et de nettoyage sont facturées par lot de 50 œuvres. Indiquez‑moi combien d’œuvres vous avez, je vous confirme le prix avant de commencer.</p>
+            <p>L’import, le nettoyage et la conversion de PDF couvrent jusqu’à 50 œuvres. Indiquez‑moi combien d’œuvres vous avez : je confirme le périmètre et le prix avant de commencer.</p>
             <!-- TODO (R.R): confirmer comment tu factures les gros volumes. -->
           </details>
           <details>
@@ -293,7 +310,7 @@
         <div>
           <a class="big-footer__title" href="/fr/#studio">Studio</a>
           <a href="/fr/#studio">À propos</a>
-          <a href="/fr/#ways">Atelier</a>
+          <a href="/fr/#ways">Gallery AI Starter</a>
           <a href="/fr/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Bonjour%2C%20j%E2%80%99aimerais%20parler%20de%20mon%20projet." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="mailto:studio@rrstudio.online">E‑mail</a>

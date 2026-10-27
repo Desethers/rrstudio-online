@@ -59,11 +59,22 @@
         "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" },
         "sameAs": ["https://www.instagram.com/r.r.studio.paris/"],
         "brand": { "@type": "Brand", "name": "R.R Studio" },
-        "priceRange": "€80–€220",
+        "priceRange": "€80–€890",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "R.R Studio tasks",
           "itemListElement": [
+            {
+              "@type": "Offer",
+              "price": "290",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Gallery AI Starter",
+                "description": "One 60-minute hands-on session to set up AI tools for the gallery's everyday work, from collector emails to artwork descriptions and sales materials. Custom integrations are quoted separately.",
+                "category": "AI for art dealers"
+              }
+            },
             {
               "@type": "Offer",
               "price": "120",
@@ -77,12 +88,12 @@
             },
             {
               "@type": "Offer",
-              "price": "220",
+              "price": "290",
               "priceCurrency": "EUR",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Prepare for an opening",
-                "description": "Homepage, exhibition and artist pages refreshed and ready before opening.",
+                "name": "Fix your website on mobile",
+                "description": "Fix broken layouts, awkward image crops and display issues on your gallery website.",
                 "category": "Website"
               }
             },
@@ -94,6 +105,17 @@
                 "@type": "Service",
                 "name": "Add an artist page",
                 "description": "Biography, works, images and basic metadata added to the gallery website.",
+                "category": "Website"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "190",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Translate your exhibition",
+                "description": "Translate exhibition texts, artist biographies and artwork descriptions into natural English or French.",
                 "category": "Website"
               }
             },
@@ -115,7 +137,17 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Fix a website issue",
-                "description": "Investigate and fix one defined issue on the gallery website.",
+                "description": "Something looks wrong or stopped working? I investigate and fix one defined issue.",
+                "category": "Website"
+              }
+            },
+            {
+              "@type": "Offer",
+              "priceSpecification": { "@type": "PriceSpecification", "minPrice": "890", "priceCurrency": "EUR" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Move beyond WordPress",
+                "description": "Migration from WordPress to a faster gallery website with an easy-to-use CMS for artists, exhibitions and artworks. Website migration, CMS setup and SEO redirects included; complex migrations quoted separately.",
                 "category": "Website"
               }
             },
@@ -126,7 +158,18 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Organise your inventory",
-                "description": "Clean categories, fields and structure of the collector/artwork inventory.",
+                "description": "Set clear categories and fields in your existing inventory; no record-by-record edits.",
+                "category": "Inventory"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "290",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Turn PDFs into artwork records",
+                "description": "Turn artwork lists, catalogues and PDFs into clean, structured records, ready for your inventory.",
                 "category": "Inventory"
               }
             },
@@ -137,7 +180,7 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Import 50 artworks",
-                "description": "Clean and import a spreadsheet or export into the gallery inventory.",
+                "description": "Import up to 50 structured artwork rows from a spreadsheet into your existing inventory.",
                 "category": "Inventory"
               }
             },
@@ -148,7 +191,7 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Clean 50 artwork records",
-                "description": "Fix inconsistent artwork information across the inventory.",
+                "description": "Correct inconsistent fields in up to 50 existing artwork records.",
                 "category": "Inventory"
               }
             },
@@ -158,8 +201,8 @@
               "priceCurrency": "EUR",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Clean up your Artlogic inventory",
-                "description": "Remove duplicates, complete missing records and make an Artlogic inventory reliable again.",
+                "name": "Check your Artlogic inventory",
+                "description": "Review one Artlogic export for duplicates and missing fields; receive a fix list, not data changes.",
                 "category": "Inventory"
               }
             },
@@ -170,7 +213,18 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Collector PDF",
-                "description": "A clean, gallery-ready PDF prepared from selected artworks.",
+                "description": "A gallery-ready PDF of selected works, ready to send to a collector.",
+                "category": "Sales material"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "250",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Prepare your collector emails",
+                "description": "Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups.",
                 "category": "Sales material"
               }
             },
@@ -191,8 +245,19 @@
               "priceCurrency": "EUR",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Artist Google indexing",
-                "description": "Find the main SEO issues on an artist page.",
+                "name": "Check artist page visibility",
+                "description": "Review one artist page for Google indexing issues; receive a fix list, not site changes.",
+                "category": "Visibility"
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "290",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Prepare your gallery for AI search",
+                "description": "Help AI search tools better discover and understand your gallery, artists and exhibitions.",
                 "category": "Visibility"
               }
             }
@@ -246,7 +311,7 @@
       <div class="header__inner">
         <a class="brand" href="#top">R.R <span>Studio</span></a>
         <nav class="nav" aria-label="Main navigation">
-          <a href="#products">Tools</a><span class="nav-menu"><a href="#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a
+          <a href="#ai">AI for art dealers</a><a href="#products">Tools</a><span class="nav-menu"><a href="#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a
           ><a href="#how-it-works" hidden>How it works</a>
         </nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
@@ -264,7 +329,7 @@
             <a class="mm-row" href="/tasks/inventory/">Inventory<span class="mm-arrow" aria-hidden="true">↗</span></a>
             <a class="mm-row" href="/tasks/sales-material/">Sales material<span class="mm-arrow" aria-hidden="true">↗</span></a>
           </div>
-          <a class="mm-card mm-card--row" href="/#ways"><span class="mm-row">AI workshop<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+          <a class="mm-card mm-card--row" href="/#ai"><span class="mm-row">AI for art dealers<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
           <a class="mm-cta" href="/contact/">Get in touch</a>
         </nav>
         <div class="mobile-menu__foot">
@@ -395,12 +460,37 @@
           <button class="studio-card__more" type="button" aria-expanded="false"><span class="studio-card__label">Read more</span><svg class="i-expand" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><svg class="i-collapse" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
         </div>
       </section>
+      <section class="ai-galleries" id="ai" aria-labelledby="ai-title">
+        <div class="ai-galleries__intro">
+          <p class="eyebrow">AI for art dealers</p>
+          <h2 id="ai-title"><span>Your gallery already has the tools.</span> <span>Let’s make them work smarter.</span></h2>
+          <p class="ai-galleries__copy">Put AI to work with your artworks, emails and existing systems. Start with a practical session, connect your information, and introduce small tools that make everyday work easier.</p>
+        </div>
+        <ol class="ai-steps">
+          <li class="ai-step">
+            <span class="ai-step__num">01</span>
+            <h3>Learn what AI can do</h3>
+            <p>Explore practical uses for your team, using real gallery tasks and examples.</p>
+          </li>
+          <li class="ai-step">
+            <span class="ai-step__num">02</span>
+            <h3>Connect what you already use</h3>
+            <p>Bring artwork information into the tools where you already work, from inventories to Gmail.</p>
+          </li>
+          <li class="ai-step">
+            <span class="ai-step__num">03</span>
+            <h3>Make repetitive work easier</h3>
+            <p>Set up AI‑assisted workflows for finding information, preparing replies and handling documents.</p>
+          </li>
+        </ol>
+        <a class="ai-galleries__link" href="#ways">Start with the Gallery AI Starter <span aria-hidden="true">→</span></a>
+      </section>
       <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
         <div class="software-promo__intro">
           <p class="eyebrow">Apps</p>
           <h2 id="software-promo-title">Tools for working with art.</h2>
           <div class="software-promo__description">
-            <p>Small, carefully made tools for galleries and art advisors. Find artwork information, share it with collectors, and work directly from <span class="nowrap"><img class="inline-logo" src="/logos/gmail.png" alt="" width="14" height="14" />Gmail</span> and <span class="nowrap"><img class="inline-logo" src="/logos/whatsapp.svg" alt="" width="14" height="14" />WhatsApp</span>.</p>
+            <p>Small, carefully made tools for galleries and art advisors. Your artwork information, ready when a collector writes, directly in <span class="nowrap"><img class="inline-logo" src="/logos/gmail.png" alt="" width="14" height="14" />Gmail</span> and <span class="nowrap"><img class="inline-logo" src="/logos/whatsapp.svg" alt="" width="14" height="14" />WhatsApp</span>.</p>
           </div>
         </div>
         <div class="product-cards">
@@ -420,7 +510,7 @@
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon product-app__icon--logo" aria-hidden="true"><img src="/logos/whatsapp.svg" alt="" width="28" height="28" /></span></div>
               <h3 class="product-app__title">Chat</h3>
-              <p>Chat sends works and PDF selections to your collectors, right from WhatsApp.</p>
+              <p>Find artwork details and share them with collectors directly from WhatsApp.</p>
               <a class="product-card__link product-card__add" href="#request-access" data-tool="Chat" aria-label="Talk about Chat"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
@@ -454,7 +544,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon product-app__icon--logo" aria-hidden="true"><img src="/logos/gmail.png" alt="" width="28" height="28" /></span></div>
               <h3 class="product-app__title">Mail</h3>
-              <p>Mail finds the work a collector asks about and adds it to your Gmail reply.</p>
+              <p>Find artwork information and prepare replies without leaving Gmail.</p>
               <a class="product-card__link product-card__add" href="#request-access" data-tool="Mail" aria-label="Talk about Mail"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
@@ -482,7 +572,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon product-app__icon--mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span></div>
               <h3 class="product-app__title">Assistant</h3>
-              <p>Every morning, Assistant tells you who is waiting for a reply.</p>
+              <p>Find the information and context you need to follow up with collectors.</p>
               <a class="product-card__link product-card__add" href="#request-access" data-tool="Assistant" aria-label="Talk about Assistant"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
@@ -510,7 +600,7 @@ here’s the piece you asked about:">
             <div class="product-card__body">
               <div class="product-app"><span class="product-app__icon product-app__icon--mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></div>
               <h3 class="product-app__title">Inventory</h3>
-              <p>Inventory keeps every work, its images and its availability in one record.</p>
+              <p>Keep artwork information organised and ready to use across your tools.</p>
               <a class="product-card__link product-card__add" href="#request-access" data-tool="Inventory" aria-label="Talk about Inventory"><span class="product-card__pill">Let’s talk<i aria-hidden="true">→</i></span></a>
             </div>
           </article>
@@ -540,244 +630,127 @@ here’s the piece you asked about:">
         </div>
         <div class="task-grid" id="task-grid" aria-live="polite">
           <!-- Static fallback: mirrors renderTasks() in src/main.js so crawlers and no-JS clients see the full task list. JS replaces this with the same markup on load. -->
-          <article
-            class="task-card"
-            data-preview-id="publish-exhibition"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Publish an exhibition"
-          >
+          <article class="task-card" data-preview-id="publish-exhibition" tabindex="0" role="button" aria-label="Preview Publish an exhibition">
             <p class="task-category">Website</p>
             <h3>Publish an exhibition</h3>
             <p class="task-price">€120</p>
-            <p class="task-description">
-              Text, images and dates turned into a published exhibition page.
-            </p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="publish-exhibition"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Text, images and dates turned into a published exhibition page.</p>
+            <button class="task-add" type="button" data-task-id="publish-exhibition" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="opening-website"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Prepare for an opening"
-          >
+          <article class="task-card" data-preview-id="opening-website" tabindex="0" role="button" aria-label="Preview Fix your website on mobile">
             <p class="task-category">Website</p>
-            <h3>Prepare for an opening</h3>
-            <p class="task-price">€220</p>
-            <p class="task-description">
-              Homepage, exhibition and artist pages refreshed and ready before opening.
-            </p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="opening-website"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <h3>Fix your website on mobile</h3>
+            <p class="task-price">€290</p>
+            <p class="task-description">Fix broken layouts, awkward image crops and display issues on your gallery website.</p>
+            <button class="task-add" type="button" data-task-id="opening-website" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="artist-page"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Add an artist page"
-          >
+          <article class="task-card" data-preview-id="artist-page" tabindex="0" role="button" aria-label="Preview Add an artist page">
             <p class="task-category">Website</p>
             <h3>Add an artist page</h3>
             <p class="task-price">€90</p>
-            <p class="task-description">
-              Biography, works, images and basic metadata added to the gallery website.
-            </p>
-            <button class="task-add" type="button" data-task-id="artist-page" aria-pressed="false">
-              Add task
-            </button>
+            <p class="task-description">Biography, works, images and basic metadata added to the gallery website.</p>
+            <button class="task-add" type="button" data-task-id="artist-page" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="update-artworks"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Update 10 artworks"
-          >
+          <article class="task-card" data-preview-id="translate-exhibition" tabindex="0" role="button" aria-label="Preview Translate your exhibition">
+            <p class="task-category">Website</p>
+            <h3>Translate your exhibition</h3>
+            <p class="task-price">€190</p>
+            <p class="task-description">Translate exhibition texts, artist biographies and artwork descriptions into natural English or French.</p>
+            <button class="task-add" type="button" data-task-id="translate-exhibition" aria-pressed="false">Add task</button>
+          </article>
+          <article class="task-card" data-preview-id="update-artworks" tabindex="0" role="button" aria-label="Preview Update 10 artworks">
             <p class="task-category">Website</p>
             <h3>Update 10 artworks</h3>
             <p class="task-price">€90</p>
-            <p class="task-description">
-              Update images, captions, availability or other artwork information.
-            </p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="update-artworks"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Update images, captions, availability or other artwork information.</p>
+            <button class="task-add" type="button" data-task-id="update-artworks" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="fix-website-issue"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Fix a website issue"
-          >
+          <article class="task-card" data-preview-id="fix-website-issue" tabindex="0" role="button" aria-label="Preview Fix a website issue">
             <p class="task-category">Website</p>
             <h3>Fix a website issue</h3>
             <p class="task-price">€90</p>
-            <p class="task-description">
-              Something looks wrong or stopped working? I investigate and fix one defined issue.
-            </p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="fix-website-issue"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Something looks wrong or stopped working? I investigate and fix one defined issue.</p>
+            <button class="task-add" type="button" data-task-id="fix-website-issue" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="organise-database"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Organise your inventory"
-          >
+          <article class="task-card" data-preview-id="organise-database" tabindex="0" role="button" aria-label="Preview Organise your inventory">
             <p class="task-category">Inventory</p>
             <h3>Organise your inventory</h3>
             <p class="task-price">€150</p>
-            <p class="task-description">Clean categories, fields and structure.</p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="organise-database"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Set clear categories and fields in your existing inventory; no record-by-record edits.</p>
+            <button class="task-add" type="button" data-task-id="organise-database" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="import-artworks"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Import 50 artworks"
-          >
+          <article class="task-card" data-preview-id="pdf-to-records" tabindex="0" role="button" aria-label="Preview Turn PDFs into artwork records">
+            <p class="task-category">Inventory</p>
+            <h3>Turn PDFs into artwork records</h3>
+            <p class="task-price">€290</p>
+            <p class="task-description">Turn artwork lists, catalogues and PDFs into clean, structured records, ready for your inventory.</p>
+            <button class="task-add" type="button" data-task-id="pdf-to-records" aria-pressed="false">Add task</button>
+          </article>
+          <article class="task-card" data-preview-id="import-artworks" tabindex="0" role="button" aria-label="Preview Import 50 artworks">
             <p class="task-category">Inventory</p>
             <h3>Import 50 artworks</h3>
             <p class="task-price">€220</p>
-            <p class="task-description">Clean and import your spreadsheet or export.</p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="import-artworks"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Import up to 50 structured artwork rows from a spreadsheet into your existing inventory.</p>
+            <button class="task-add" type="button" data-task-id="import-artworks" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="clean-records"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Clean 50 artwork records"
-          >
+          <article class="task-card" data-preview-id="clean-records" tabindex="0" role="button" aria-label="Preview Clean 50 artwork records">
             <p class="task-category">Inventory</p>
             <h3>Clean 50 artwork records</h3>
             <p class="task-price">€180</p>
-            <p class="task-description">Fix inconsistent artwork information.</p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="clean-records"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Correct inconsistent fields in up to 50 existing artwork records.</p>
+            <button class="task-add" type="button" data-task-id="clean-records" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="artlogic-check"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Artlogic inventory check"
-          >
+          <article class="task-card" data-preview-id="artlogic-check" tabindex="0" role="button" aria-label="Preview Check your Artlogic inventory">
             <p class="task-category">Inventory</p>
-            <h3>Artlogic inventory check</h3>
+            <h3>Check your Artlogic inventory</h3>
             <p class="task-price">€120</p>
-            <p class="task-description">Find what needs cleaning or reorganising.</p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="artlogic-check"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">Review one Artlogic export for duplicates and missing fields; receive a fix list, not data changes.</p>
+            <button class="task-add" type="button" data-task-id="artlogic-check" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="collector-pdf"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Collector PDF"
-          >
+          <article class="task-card" data-preview-id="collector-pdf" tabindex="0" role="button" aria-label="Preview Collector PDF">
             <p class="task-category">Sales material</p>
             <h3>Collector PDF</h3>
             <p class="task-price">€80</p>
-            <p class="task-description">
-              A clean, gallery‑ready PDF prepared from selected artworks.
-            </p>
-            <button
-              class="task-add"
-              type="button"
-              data-task-id="collector-pdf"
-              aria-pressed="false"
-            >
-              Add task
-            </button>
+            <p class="task-description">A gallery-ready PDF of selected works, ready to send to a collector.</p>
+            <button class="task-add" type="button" data-task-id="collector-pdf" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="viewing-room"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Private viewing room"
-          >
+          <article class="task-card" data-preview-id="collector-emails" tabindex="0" role="button" aria-label="Preview Prepare your collector emails">
+            <p class="task-category">Sales material</p>
+            <h3>Prepare your collector emails</h3>
+            <p class="task-price">€250</p>
+            <p class="task-description">Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups.</p>
+            <button class="task-add" type="button" data-task-id="collector-emails" aria-pressed="false">Add task</button>
+          </article>
+          <article class="task-card" data-preview-id="viewing-room" tabindex="0" role="button" aria-label="Preview Private viewing room">
             <p class="task-category">Sales material</p>
             <h3>Private viewing room</h3>
             <p class="task-price">€120</p>
-            <p class="task-description">
-              Prepare and publish a private online artwork selection for a collector.
-            </p>
-            <button class="task-add" type="button" data-task-id="viewing-room" aria-pressed="false">
-              Add task
-            </button>
+            <p class="task-description">Prepare and publish a private online artwork selection for a collector.</p>
+            <button class="task-add" type="button" data-task-id="viewing-room" aria-pressed="false">Add task</button>
           </article>
-          <article
-            class="task-card"
-            data-preview-id="seo-check"
-            tabindex="0"
-            role="button"
-            aria-label="Preview Artist Google indexing"
-          >
+          <article class="task-card" data-preview-id="seo-check" tabindex="0" role="button" aria-label="Preview Check artist page visibility">
             <p class="task-category">Visibility</p>
-            <h3>Artist Google indexing</h3>
+            <h3>Check artist page visibility</h3>
             <p class="task-price">€120</p>
-            <p class="task-description">Find the main issues.</p>
-            <button class="task-add" type="button" data-task-id="seo-check" aria-pressed="false">
-              Add task
-            </button>
+            <p class="task-description">Review one artist page for Google indexing issues; receive a fix list, not site changes.</p>
+            <button class="task-add" type="button" data-task-id="seo-check" aria-pressed="false">Add task</button>
+          </article>
+          <article class="task-card task-card--wide" data-preview-id="website-migration" data-wide>
+            <div class="task-card__body">
+              <p class="task-category">Website Migration</p>
+              <h3>Move beyond WordPress.</h3>
+              <p class="task-price">From €890</p>
+              <p class="task-description">A faster gallery website, an easy-to-use CMS, and all your artists, exhibitions and artworks in one place.</p>
+              <p class="task-note">Website migration, CMS setup and SEO redirects included. Complex migrations quoted separately.</p>
+              <button class="task-add" type="button" data-task-id="website-migration" aria-pressed="false">Add task</button>
+            </div>
+          </article>
+          <article class="task-card" data-preview-id="ai-search" tabindex="0" role="button" aria-label="Preview Prepare your gallery for AI search">
+            <p class="task-category">Visibility</p>
+            <h3>Prepare your gallery for AI search</h3>
+            <p class="task-price">€290</p>
+            <p class="task-description">Help AI search tools better discover and understand your gallery, artists and exhibitions.</p>
+            <button class="task-add" type="button" data-task-id="ai-search" aria-pressed="false">Add task</button>
           </article>
         </div>
       </section>
@@ -867,17 +840,25 @@ here’s the piece you asked about:">
       <section class="workshop" id="ways" aria-labelledby="ways-title">
         <article class="workshop-card">
           <div class="workshop-card__main">
-            <p class="eyebrow">Workshop</p>
-            <h2 id="ways-title">Get your team started with AI.</h2>
-            <p>A hands‑on session built around your real tasks: exhibition texts, collector replies, inventory, sales material. Your team leaves with methods and prompts it can use the next morning.</p>
+            <p class="eyebrow">Gallery AI Starter</p>
+            <h2 id="ways-title">Put AI to work in your gallery.</h2>
+            <p class="workshop-card__lead">A hands‑on session to set up AI tools for your gallery’s everyday work. From writing collector emails to preparing artwork descriptions and sales materials.</p>
           </div>
-          <div class="workshop-card__side">
-            <p class="workshop-card__note">I work on your own material: your texts, your inventory, your inbox. You leave with prompts and workflows you keep, whether you’re a solo gallerist or an established team.</p>
-            <a class="workshop-book" href="/contact/?interest=workshop">
-              <span class="workshop-book__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17h.01M12 17h.01"/></svg></span>
-              <span class="workshop-book__text"><strong>Book a session</strong><small>Half‑day · On site or remote · Price on request</small></span>
-              <span class="workshop-book__arrow" aria-hidden="true">↗</span>
-            </a>
+          <div class="workshop-card__side workshop-offer">
+            <p class="workshop-offer__price">€290<span>fixed price</span></p>
+            <ul>
+              <li><i data-lucide="clock" aria-hidden="true"></i>One 60‑minute session</li>
+              <li><i data-lucide="wrench" aria-hidden="true"></i>Initial AI setup included</li>
+              <li><i data-lucide="map-pin" aria-hidden="true"></i>On site or remote</li>
+            </ul>
+            <form class="workshop-offer__form" novalidate data-lang="en" data-source="starter" data-msgs='{"ok": "Thank you. I’ll email you a link to book a time.", "invalid": "Enter a valid email address.", "failed": "Couldn’t send. Try again, or write to studio@rrstudio.online."}'>
+              <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="workshop-offer__field">
+                <input type="email" name="email" placeholder="you@yourgallery.com" aria-label="Your email" autocomplete="email" required />
+                <button type="submit">Book a demo</button>
+              </div>
+              <p class="workshop-offer__status" role="status">I’ll email you a link to book a time. Custom integrations quoted separately.</p>
+            </form>
           </div>
         </article>
       </section>
@@ -931,9 +912,9 @@ here’s the piece you asked about:">
         </div>
       </section>
       <section class="footer-cta" aria-labelledby="footer-cta-title">
-        <h2 id="footer-cta-title">What does your gallery need?</h2>
-        <p>A website to update, an inventory to tidy, a tool to set up. Tell me what you have in mind.</p>
-        <a class="button" href="/contact/">Get in touch</a>
+        <h2 id="footer-cta-title">Have a task you’d rather not do manually?</h2>
+        <p>Tell us how your gallery works. We’ll help you find a practical way to make it easier.</p>
+        <a class="button" href="/contact/">Tell us what you need</a>
         <small>Fixed prices. No retainer.</small>
       </section>
     </main>
@@ -969,7 +950,8 @@ here’s the piece you asked about:">
         <div>
           <a class="big-footer__title" href="/#studio">Studio</a>
           <a href="/#studio">About</a>
-          <a href="/#ways">Workshop</a>
+          <a href="/#ai">AI for art dealers</a>
+          <a href="/#ways">Gallery AI Starter</a>
           <a href="/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="mailto:studio@rrstudio.online">Email</a>

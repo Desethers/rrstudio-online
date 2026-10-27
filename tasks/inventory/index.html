@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artlogic and artwork inventory cleanup — R.R Studio</title>
-    <meta name="description" content="Duplicates, messy records, a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price." />
+    <meta name="description" content="Inventory checks, record cleanup, spreadsheet imports and PDF-to-record conversion for galleries at a fixed price." />
     <link rel="canonical" href="https://www.rrstudio.online/tasks/inventory/" />
     <link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/inventory/" />
     <link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/inventaire/" />
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="R.R Studio" />
     <meta property="og:title" content="Artlogic and artwork inventory cleanup — R.R Studio" />
-    <meta property="og:description" content="Duplicates, messy records, a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price." />
+    <meta property="og:description" content="Inventory checks, record cleanup, spreadsheet imports and PDF-to-record conversion for galleries at a fixed price." />
     <meta property="og:url" content="https://www.rrstudio.online/tasks/inventory/" />
     <meta property="og:image" content="https://www.rrstudio.online/images/og-image.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Inventory",
-  "description": "Duplicates, messy records, a spreadsheet to import: artwork inventory cleanup and imports for galleries, including Artlogic, at a fixed price.",
+  "description": "Inventory checks, record cleanup, spreadsheet imports and PDF-to-record conversion for galleries at a fixed price.",
   "url": "https://www.rrstudio.online/tasks/inventory/",
   "provider": {
     "@type": "ProfessionalService",
@@ -39,35 +39,24 @@
     "itemListElement": [
       {
         "@type": "Offer",
-        "price": "120",
-        "priceCurrency": "EUR",
-        "url": "https://www.rrstudio.online/tasks/inventory/#artlogic-check",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Clean up your Artlogic inventory",
-          "description": "Remove duplicates, complete missing records and make your inventory reliable again."
-        }
-      },
-      {
-        "@type": "Offer",
         "price": "150",
         "priceCurrency": "EUR",
         "url": "https://www.rrstudio.online/tasks/inventory/#organise-database",
         "itemOffered": {
           "@type": "Service",
           "name": "Organise your inventory",
-          "description": "Clean categories, fields and structure."
+          "description": "Set clear categories and fields in your existing inventory; no record-by-record edits."
         }
       },
       {
         "@type": "Offer",
-        "price": "180",
+        "price": "290",
         "priceCurrency": "EUR",
-        "url": "https://www.rrstudio.online/tasks/inventory/#clean-records",
+        "url": "https://www.rrstudio.online/tasks/inventory/#pdf-to-records",
         "itemOffered": {
           "@type": "Service",
-          "name": "Clean 50 artwork records",
-          "description": "Fix inconsistent artwork information."
+          "name": "Turn PDFs into artwork records",
+          "description": "Turn artwork lists, catalogues and PDFs into clean, structured records, ready for your inventory."
         }
       },
       {
@@ -78,7 +67,29 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Import 50 artworks",
-          "description": "Clean and import your spreadsheet or export."
+          "description": "Import up to 50 structured artwork rows from a spreadsheet into your existing inventory."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/tasks/inventory/#clean-records",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Clean 50 artwork records",
+          "description": "Correct inconsistent fields in up to 50 existing artwork records."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "120",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/tasks/inventory/#artlogic-check",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Check your Artlogic inventory",
+          "description": "Review one Artlogic export for duplicates and missing fields; receive a fix list, not data changes."
         }
       }
     ]
@@ -95,7 +106,7 @@
       "name": "Do you work with Artlogic?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. “Clean up your Artlogic inventory” is made for it: duplicates removed, missing records completed and an inventory you can rely on again."
+        "text": "Yes. I can review one Artlogic export for duplicates and missing fields, then send you a fix list. This check does not change your data."
       }
     },
     {
@@ -103,7 +114,7 @@
       "name": "I have more than 50 artworks. How is it priced?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Import and cleanup tasks are priced per 50 works. Tell me how many works you have and I confirm the price before starting."
+        "text": "Import, cleanup and PDF-to-records tasks cover up to 50 works. Tell me how many works you have and I confirm the scope and price before starting."
       }
     },
     {
@@ -148,7 +159,7 @@
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
-        <nav class="nav" aria-label="Main navigation"><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
+        <nav class="nav" aria-label="Main navigation"><a href="/#ai">AI for art dealers</a><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -164,7 +175,7 @@
           <a class="mm-row" href="/tasks/inventory/">Inventory<span class="mm-arrow" aria-hidden="true">↗</span></a>
           <a class="mm-row" href="/tasks/sales-material/">Sales material<span class="mm-arrow" aria-hidden="true">↗</span></a>
         </div>
-        <a class="mm-card mm-card--row" href="/#ways"><span class="mm-row">AI workshop<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-card mm-card--row" href="/#ai"><span class="mm-row">AI for art dealers<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
         <a class="mm-cta" href="/contact/">Get in touch</a>
       </nav>
       <div class="mobile-menu__foot">
@@ -184,25 +195,30 @@
       <section class="cat-section" aria-labelledby="cat-list-title">
         <h2 id="cat-list-title">Tasks</h2>
         <ul class="cat-tasks">
-          <li class="cat-task" id="artlogic-check">
-            <div class="cat-task__text"><h3>Clean up your Artlogic inventory</h3><p>Remove duplicates, complete missing records and make your inventory reliable again.</p></div>
-            <p class="cat-task__price">€120</p>
-            <a class="cat-task__add" href="/?add=artlogic-check#tasks" aria-label="Add Clean up your Artlogic inventory to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
-          </li>
           <li class="cat-task" id="organise-database">
-            <div class="cat-task__text"><h3>Organise your inventory</h3><p>Clean categories, fields and structure.</p></div>
+            <div class="cat-task__text"><h3>Organise your inventory</h3><p>Set clear categories and fields in your existing inventory; no record-by-record edits.</p></div>
             <p class="cat-task__price">€150</p>
             <a class="cat-task__add" href="/?add=organise-database#tasks" aria-label="Add Organise your inventory to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
+          <li class="cat-task" id="pdf-to-records">
+            <div class="cat-task__text"><h3>Turn PDFs into artwork records</h3><p>Turn artwork lists, catalogues and PDFs into clean, structured records, ready for your inventory.</p><ul class="cat-task__scope"><li>Up to 50 works from supplied lists, catalogues or PDFs; artist, title, year, medium, dimensions and price extracted with AI and reviewed by a person.</li><li>Delivered as Excel or CSV. No CRM import or research of missing information.</li></ul></div>
+            <p class="cat-task__price">€290</p>
+            <a class="cat-task__add" href="/?add=pdf-to-records#tasks" aria-label="Add Turn PDFs into artwork records to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="import-artworks">
+            <div class="cat-task__text"><h3>Import 50 artworks</h3><p>Import up to 50 structured artwork rows from a spreadsheet into your existing inventory.</p></div>
+            <p class="cat-task__price">€220</p>
+            <a class="cat-task__add" href="/?add=import-artworks#tasks" aria-label="Add Import 50 artworks to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
           <li class="cat-task" id="clean-records">
-            <div class="cat-task__text"><h3>Clean 50 artwork records</h3><p>Fix inconsistent artwork information.</p></div>
+            <div class="cat-task__text"><h3>Clean 50 artwork records</h3><p>Correct inconsistent fields in up to 50 existing artwork records.</p></div>
             <p class="cat-task__price">€180</p>
             <a class="cat-task__add" href="/?add=clean-records#tasks" aria-label="Add Clean 50 artwork records to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
-          <li class="cat-task" id="import-artworks">
-            <div class="cat-task__text"><h3>Import 50 artworks</h3><p>Clean and import your spreadsheet or export.</p></div>
-            <p class="cat-task__price">€220</p>
-            <a class="cat-task__add" href="/?add=import-artworks#tasks" aria-label="Add Import 50 artworks to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          <li class="cat-task" id="artlogic-check">
+            <div class="cat-task__text"><h3>Check your Artlogic inventory</h3><p>Review one Artlogic export for duplicates and missing fields; receive a fix list, not data changes.</p></div>
+            <p class="cat-task__price">€120</p>
+            <a class="cat-task__add" href="/?add=artlogic-check#tasks" aria-label="Add Check your Artlogic inventory to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
         </ul>
       </section>
@@ -216,6 +232,7 @@
         <ul class="cat-list">
           <li>An export of your inventory (a spreadsheet or CSV file), or access to the system it lives in.</li>
           <li>For an import: your spreadsheet and the images of the works.</li>
+          <li>For PDF-to-records: the artwork lists or catalogues you want converted.</li>
           <li>What a clean record means for you: required fields and naming conventions, if you have them.</li>
         </ul>
       </section>
@@ -231,11 +248,11 @@
         <h2>Questions</h2>
           <details>
             <summary>Do you work with Artlogic?</summary>
-            <p>Yes. “Clean up your Artlogic inventory” is made for it: duplicates removed, missing records completed and an inventory you can rely on again.</p>
+            <p>Yes. I can review one Artlogic export for duplicates and missing fields, then send you a fix list. This check does not change your data.</p>
           </details>
           <details>
             <summary>I have more than 50 artworks. How is it priced?</summary>
-            <p>Import and cleanup tasks are priced per 50 works. Tell me how many works you have and I confirm the price before starting.</p>
+            <p>Import, cleanup and PDF-to-records tasks cover up to 50 works. Tell me how many works you have and I confirm the scope and price before starting.</p>
             <!-- TODO (R.R): confirm how you price larger volumes. -->
           </details>
           <details>
@@ -293,7 +310,7 @@
         <div>
           <a class="big-footer__title" href="/#studio">Studio</a>
           <a href="/#studio">About</a>
-          <a href="/#ways">Workshop</a>
+          <a href="/#ways">Gallery AI Starter</a>
           <a href="/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="mailto:studio@rrstudio.online">Email</a>

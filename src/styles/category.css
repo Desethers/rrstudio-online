@@ -103,6 +103,16 @@
   line-height: 1.5;
   margin: 0;
 }
+.cat-task__scope {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.cat-task__scope li + li {
+  margin-top: 4px;
+}
 .cat-task .cat-task__price {
   color: var(--ink);
   font-size: 16px;

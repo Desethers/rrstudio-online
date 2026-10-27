@@ -1,10 +1,10 @@
-// Footer form: leave an email address and the studio gets an email (POST /api/contact,
-// source "footer"). No account, no list: the address only lands in the studio's inbox.
+// Email-only forms (site footer, Gallery AI Starter card): leave an email address and the studio
+// gets an email (POST /api/contact, source from data-source, "footer" by default). No account,
+// no list: the address only lands in the studio's inbox.
 import { ACCESS_ENDPOINT } from "./endpoint.js";
 
-const form = document.querySelector(".big-footer__form");
-if (form) {
-  const status = form.querySelector(".big-footer__status");
+document.querySelectorAll(".big-footer__form, .workshop-offer__form").forEach((form) => {
+  const status = form.querySelector('[role="status"]');
   const field = form.querySelector('input[name="email"]');
   const button = form.querySelector('button[type="submit"]');
   const lang = form.dataset.lang;
@@ -32,7 +32,7 @@ if (form) {
       const response = await fetch(ACCESS_ENDPOINT, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({ email, language: lang, source: "footer", hp: form.hp.value }),
+        body: JSON.stringify({ email, language: lang, source: form.dataset.source || "footer", hp: form.hp.value }),
       });
       if (!response.ok) throw new Error(response.status);
     } catch {
@@ -44,4 +44,4 @@ if (form) {
     button.disabled = false;
     say(msgs.ok, "done");
   });
-}
+});

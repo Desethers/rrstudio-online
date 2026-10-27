@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collector PDFs and viewing rooms for galleries — R.R Studio</title>
-    <meta name="description" content="Gallery-ready collector PDFs and private online viewing rooms, prepared from your selected works at a fixed price." />
+    <meta name="description" content="Collector PDFs, private viewing rooms and tailored email templates for galleries at a fixed price." />
     <link rel="canonical" href="https://www.rrstudio.online/tasks/sales-material/" />
     <link rel="alternate" hreflang="en" href="https://www.rrstudio.online/tasks/sales-material/" />
     <link rel="alternate" hreflang="fr" href="https://www.rrstudio.online/fr/taches/supports-de-vente/" />
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="R.R Studio" />
     <meta property="og:title" content="Collector PDFs and viewing rooms for galleries — R.R Studio" />
-    <meta property="og:description" content="Gallery-ready collector PDFs and private online viewing rooms, prepared from your selected works at a fixed price." />
+    <meta property="og:description" content="Collector PDFs, private viewing rooms and tailored email templates for galleries at a fixed price." />
     <meta property="og:url" content="https://www.rrstudio.online/tasks/sales-material/" />
     <meta property="og:image" content="https://www.rrstudio.online/images/og-image.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Sales material",
-  "description": "Gallery-ready collector PDFs and private online viewing rooms, prepared from your selected works at a fixed price.",
+  "description": "Collector PDFs, private viewing rooms and tailored email templates for galleries at a fixed price.",
   "url": "https://www.rrstudio.online/tasks/sales-material/",
   "provider": {
     "@type": "ProfessionalService",
@@ -45,7 +45,18 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Collector PDF",
-          "description": "A clean, gallery-ready PDF prepared from selected artworks."
+          "description": "A gallery-ready PDF of selected works, ready to send to a collector."
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "250",
+        "priceCurrency": "EUR",
+        "url": "https://www.rrstudio.online/tasks/sales-material/#collector-emails",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Prepare your collector emails",
+          "description": "Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups."
         }
       },
       {
@@ -126,7 +137,7 @@
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
-        <nav class="nav" aria-label="Main navigation"><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
+        <nav class="nav" aria-label="Main navigation"><a href="/#ai">AI for art dealers</a><a href="/#products">Tools</a><span class="nav-menu"><a href="/#tasks">Tasks</a><span class="nav-menu__panel"><a href="/tasks/website/">Website &amp; visibility</a><a href="/tasks/inventory/">Inventory</a><a href="/tasks/sales-material/">Sales material</a></span></span><a href="/contact/">Contact</a></nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
       </div>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
@@ -142,7 +153,7 @@
           <a class="mm-row" href="/tasks/inventory/">Inventory<span class="mm-arrow" aria-hidden="true">↗</span></a>
           <a class="mm-row" href="/tasks/sales-material/">Sales material<span class="mm-arrow" aria-hidden="true">↗</span></a>
         </div>
-        <a class="mm-card mm-card--row" href="/#ways"><span class="mm-row">AI workshop<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
+        <a class="mm-card mm-card--row" href="/#ai"><span class="mm-row">AI for art dealers<span class="mm-arrow" aria-hidden="true">↗</span></span></a>
         <a class="mm-cta" href="/contact/">Get in touch</a>
       </nav>
       <div class="mobile-menu__foot">
@@ -163,9 +174,14 @@
         <h2 id="cat-list-title">Tasks</h2>
         <ul class="cat-tasks">
           <li class="cat-task" id="collector-pdf">
-            <div class="cat-task__text"><h3>Collector PDF</h3><p>A clean, gallery‑ready PDF prepared from selected artworks.</p></div>
+            <div class="cat-task__text"><h3>Collector PDF</h3><p>A gallery-ready PDF of selected works, ready to send to a collector.</p></div>
             <p class="cat-task__price">€80</p>
             <a class="cat-task__add" href="/?add=collector-pdf#tasks" aria-label="Add Collector PDF to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
+          </li>
+          <li class="cat-task" id="collector-emails">
+            <div class="cat-task__text"><h3>Prepare your collector emails</h3><p>Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups.</p><ul class="cat-task__scope"><li>Five templates for artwork enquiries, availability, information and prices, follow-ups and exhibition invitations.</li><li>Adapted to your gallery’s tone. No access to private emails and no automated sending.</li></ul></div>
+            <p class="cat-task__price">€250</p>
+            <a class="cat-task__add" href="/?add=collector-emails#tasks" aria-label="Add Prepare your collector emails to your estimate">Add to estimate <span aria-hidden="true">→</span></a>
           </li>
           <li class="cat-task" id="viewing-room">
             <div class="cat-task__text"><h3>Private viewing room</h3><p>Prepare and publish a private online artwork selection for a collector.</p></div>
@@ -176,7 +192,7 @@
       </section>
       <section class="cat-section">
         <h2>Why galleries send these tasks</h2>
-        <p>When a collector asks what is available, the answer should go out quickly and look like the gallery. These tasks prepare the material, so all you have to do is send it.</p>
+        <p>When a collector asks what is available, the answer should go out quickly and sound like the gallery. These tasks prepare a PDF, an online selection or the words for your reply.</p>
       </section>
       <section class="cat-section">
         <h2>What I need from you</h2>
@@ -185,6 +201,7 @@
           <li>The works to include: titles or inventory references.</li>
           <li>Images, captions and prices (or “price on request”).</li>
           <li>Your logo, and an existing PDF or layout you like, if you have one.</li>
+          <li>For email templates: artwork details, your preferred tone and the situations you reply to most often. No inbox access is needed.</li>
         </ul>
       </section>
       <section class="cat-section">
@@ -261,7 +278,7 @@
         <div>
           <a class="big-footer__title" href="/#studio">Studio</a>
           <a href="/#studio">About</a>
-          <a href="/#ways">Workshop</a>
+          <a href="/#ways">Gallery AI Starter</a>
           <a href="/contact/">Contact</a>
           <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="mailto:studio@rrstudio.online">Email</a>

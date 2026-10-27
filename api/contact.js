@@ -17,7 +17,8 @@ const LABELS = {
     intro: "Someone wrote from the website. Reply to this email to answer them directly.",
     fields: { interest: "Interested in", name: "Name", email: "Email", gallery: "Gallery", website: "Website", message: "Message" },
     introFooter: "Someone left their email in the site footer. Reply to this email to write to them.",
-    source: { contact: "Contact page", dialog: "“Let’s talk” on a tool card", footer: "Site footer" },
+    introStarter: "Someone wants to book a Gallery AI Starter call. Reply with your Cal.com link so they can pick a time.",
+    source: { contact: "Contact page", dialog: "“Let’s talk” on a tool card", footer: "Site footer", starter: "Gallery AI Starter card" },
     footer: "Sent from rrstudio.online",
     reply: "Reply",
   },
@@ -26,7 +27,8 @@ const LABELS = {
     intro: "Quelqu’un a écrit depuis le site. Répondez à cet e-mail pour lui répondre directement.",
     fields: { interest: "Ce qui l’intéresse", name: "Nom", email: "E-mail", gallery: "Galerie", website: "Site web", message: "Message" },
     introFooter: "Quelqu’un a laissé son e-mail dans le pied de page du site. Répondez à cet e-mail pour lui écrire.",
-    source: { contact: "Page Contact", dialog: "« En parler » sur une carte d’outil", footer: "Pied de page du site" },
+    introStarter: "Quelqu’un veut réserver un appel Gallery AI Starter. Répondez avec votre lien Cal.com pour qu’il choisisse un créneau.",
+    source: { contact: "Page Contact", dialog: "« En parler » sur une carte d’outil", footer: "Pied de page du site", starter: "Carte Gallery AI Starter" },
     footer: "Envoyé depuis rrstudio.online",
     reply: "Répondre",
   },
@@ -72,7 +74,7 @@ function render(data, lang) {
           <tr><td style="padding:36px 36px 8px;font-family:Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;">
             <p style="margin:0 0 28px;font-size:15px;letter-spacing:-0.3px;color:#111110;">R.R <span style="color:#a3a3a3;">Studio</span></p>
             <h1 style="margin:0 0 10px;font-size:26px;font-weight:400;letter-spacing:-0.02em;line-height:1.15;color:#111110;">${escapeHtml(t.heading)}</h1>
-            <p style="margin:0;font-size:14px;line-height:1.55;color:#7a7a76;">${escapeHtml(data.source === "footer" ? t.introFooter : t.intro)}</p>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#7a7a76;">${escapeHtml(data.source === "footer" ? t.introFooter : data.source === "starter" ? t.introStarter : t.intro)}</p>
           </td></tr>
           <tr><td style="padding:20px 36px 8px;font-family:Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -142,19 +144,26 @@ export default async function handler(req, res) {
     gallery: line(body.gallery, 160),
     website: line(body.website, 200),
     message: text(body.message),
-    source: body.source === "contact page" ? "contact" : body.source === "footer" ? "footer" : "dialog",
+    source:
+      body.source === "contact page"
+        ? "contact"
+        : body.source === "footer" || body.source === "starter"
+          ? body.source
+          : "dialog",
   };
 
   if (!EMAIL.test(data.email)) return res.status(400).json({ ok: false, error: "invalid_email" });
-  // The footer form only asks for an email address; the other forms need more.
-  if (data.source !== "footer") {
+  // The footer and Gallery AI Starter forms only ask for an email address; the other forms need more.
+  if (data.source !== "footer" && data.source !== "starter") {
     if (!data.gallery) return res.status(400).json({ ok: false, error: "missing_gallery" });
     if (!data.message && !data.interest) return res.status(400).json({ ok: false, error: "missing_content" });
   }
 
   data.subject =
     line(body._subject, 150) ||
-    (data.source === "footer"
+    (data.source === "starter"
+      ? `${lang === "fr" ? "Appel Gallery AI Starter" : "Gallery AI Starter call"} — ${data.email}`
+      : data.source === "footer"
       ? `${lang === "fr" ? "Adresse laissée sur le site" : "Email left on the site"} — ${data.email}`
       : `${lang === "fr" ? "Demande" : "Request"} — ${data.gallery}`);
 
