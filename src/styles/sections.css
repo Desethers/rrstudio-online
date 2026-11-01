@@ -12750,9 +12750,12 @@ h2,
   }
 }
 
-/* Gallery AI Starter: the pitch on the left, the offer (price, facts, button) in a quiet panel on the right. */
+/* Gallery AI Starter: one open card, with room for the email field beside the pitch. */
 .workshop .workshop-card {
-  align-items: center;
+  align-items: start;
+  gap: clamp(40px, 5vw, 72px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 48px;
 }
 .workshop .workshop-card__main > p.workshop-card__lead {
   color: #a3a3a0;
@@ -12763,11 +12766,11 @@ h2,
   max-width: 44ch;
 }
 .workshop .workshop-card__side.workshop-offer {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  gap: 20px;
-  padding: 28px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  gap: 28px;
+  padding: 0;
 }
 .workshop-offer__price {
   align-items: baseline;
@@ -12786,7 +12789,7 @@ h2,
   letter-spacing: 0;
 }
 .workshop .workshop-offer ul {
-  gap: 14px;
+  gap: 16px;
   margin: 4px 0;
 }
 .workshop .workshop-offer li {
@@ -12807,7 +12810,8 @@ h2,
 }
 .workshop-offer__form {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 8px;
 }
 .workshop-offer__field {
   align-items: center;
@@ -12815,8 +12819,8 @@ h2,
   border: 1px solid #dcdcd8;
   border-radius: 14px;
   display: flex;
-  gap: 6px;
-  padding: 5px;
+  gap: 8px;
+  padding: 6px;
 }
 .workshop-offer__field input {
   background: transparent;
@@ -12827,7 +12831,7 @@ h2,
   font-size: 15px;
   min-width: 0;
   outline: none;
-  padding: 0 12px;
+  padding: 12px;
 }
 .workshop-offer__field input::placeholder {
   color: #a3a3a3;
@@ -12860,7 +12864,7 @@ h2,
   font-weight: var(--font-weight-300);
   line-height: 1.4;
   margin: 0;
-  text-align: center;
+  text-align: left;
 }
 .workshop-offer__form[data-state="done"] .workshop-offer__status {
   color: #e6e6e2;
@@ -12868,15 +12872,26 @@ h2,
 .workshop-offer__form[data-state="error"] .workshop-offer__status {
   color: #f0a08f;
 }
+@media (max-width: 1024px) {
+  .workshop .workshop-card {
+    gap: 36px;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 36px;
+  }
+}
 @media (max-width: 640px) {
+  .workshop .workshop-card {
+    gap: 28px;
+    padding: 28px 22px;
+  }
   .workshop .workshop-card__main > p.workshop-card__lead {
     font-size: 15px;
     line-height: 1.45;
   }
   .workshop .workshop-card__side.workshop-offer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 16px;
-    padding: 22px 18px 18px;
+    gap: 22px;
+    padding: 24px 0 0;
   }
   .workshop-offer__price {
     font-size: 30px;
@@ -13155,4 +13170,435 @@ h2,
 /* Hero picker: same corner radius as the task labels and filters. */
 .hero-pick .hero-pick__btn {
   border-radius: 10px;
+}
+
+/* Strategic offers: scoped below the approved hero. */
+.studio-offers { display: grid; gap: 24px; padding: 64px 22px 0; }
+.studio-offer { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; padding: 56px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-warm); }
+.studio-offer__copy { min-width: 0; }
+.studio-offer .eyebrow { margin: 0 0 28px; }
+.studio-offer h2 { font-size: clamp(28px, 3.2vw, 44px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.studio-offer__subtitle { font-size: 23px; line-height: 1.3; letter-spacing: -.025em; margin: 18px 0; text-wrap: balance; }
+.studio-offer__copy > p:not([class]) { color: #686863; font-size: 15px; line-height: 1.6; max-width: 48ch; margin: 0 0 28px; }
+.integration-map { min-width: 0; padding: 32px 0; text-align: center; }
+.integration-map__label, .integration-map__note { font-size: 12px; color: #686863; margin: 0 0 20px; }
+.integration-map__note { margin: 24px 0 0; }
+.integration-map__tools { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.integration-map__tools > span { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 60px; padding: 12px; background: var(--background); border: 1px solid var(--border); border-radius: var(--radius); font-size: 14px; }
+.integration-map__tools img { object-fit: contain; }
+.integration-map__bridge { display: flex; flex-direction: column; align-items: center; }
+.integration-map__bridge > span { height: 32px; width: 1px; background: #c8c8c2; }
+.integration-map__bridge b { border: 1px solid var(--border); padding: 12px 24px; font-size: 12px; font-weight: 400; border-radius: var(--radius); }
+.studio-offer--website { background: var(--foreground); color: var(--background); align-items: start; }
+.studio-offer--website .eyebrow { color: #b6b6af; }
+.studio-offer--website .studio-offer__copy > p:not([class]) { color: #c4c4be; }
+.studio-offer--website .button { background: var(--background); color: var(--foreground); }
+.website-offer__price { font-size: 88px; line-height: 1; letter-spacing: -.065em; margin: 0 0 28px; }
+.website-offer__price span { display: block; font-size: 12px; letter-spacing: 0; line-height: 1.5; margin-top: 10px; color: #c4c4be; }
+.website-offer__terms { scroll-margin-top: 32px; }
+.website-offer__terms ul { padding-left: 17px; margin: 0 0 24px; font-size: 13px; line-height: 1.6; color: #c4c4be; }
+.website-offer__terms li + li { margin-top: 9px; }
+.website-offer__terms > a { font-size: 14px; text-underline-offset: 5px; }
+.studio-process { padding: 80px 22px 0; }
+.studio-process > .eyebrow, .studio-process > h2 { text-align: center; }
+.studio-process > h2 { font-size: 28px; margin: 16px 0 0; }
+.studio-process .ai-steps { margin-top: 36px; }
+@media (max-width: 760px) {
+  .studio-offers { padding: 48px 0 0; gap: 16px; }
+  .studio-offer { grid-template-columns: minmax(0, 1fr); padding: 28px 22px; gap: 32px; }
+  .studio-offer__subtitle { font-size: 20px; }
+  .integration-map { padding: 0; }
+  .website-offer__price { font-size: 72px; }
+  .studio-process { padding: 56px 12px 0; }
+  .studio-process .ai-steps { grid-template-columns: 1fr; gap: 24px; }
+}
+.studio-offers { grid-template-columns: minmax(0, 1fr); }
+.studio-offer, .website-offer__terms { min-width: 0; }
+
+/* Approved subtitle update and familiar tools, below the invoice composition. */
+.hero .hero__copy--connected {
+  max-width: 650px;
+  text-wrap: balance;
+  white-space: normal;
+}
+/* Carry the original subtitle's interactive labels into the new copy. */
+.hero__copy--connected .hero-tag { vertical-align: baseline; }
+.hero__copy--connected .hero-copy__closing { display: inline-block; margin-top: .35em; }
+
+
+/* The word tools and each familiar app share one inline rolling slot. */
+.hero-tool-wheel {
+  display: inline-block;
+  width: 2.7em;
+  height: 1.6em;
+  overflow: hidden;
+  vertical-align: -.4em;
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+.hero-tool-wheel__track {
+  display: block;
+  animation: hero-tool-wheel 14.4s infinite;
+}
+.hero-tool-wheel__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.6em;
+  font-size: 1em;
+}
+.hero-tool-wheel__item img { display: block; width: 1.25em; height: 1.25em; object-fit: contain; }
+@keyframes hero-tool-wheel {
+  0%, 11.67% { transform: translateY(0); }
+  16.67%, 28.33% { transform: translateY(-1.6em); }
+  33.33%, 45% { transform: translateY(-3.2em); }
+  50%, 61.67% { transform: translateY(-4.8em); }
+  66.67%, 78.33% { transform: translateY(-6.4em); }
+  83.33%, 95% { transform: translateY(-8em); }
+  100% { transform: translateY(-9.6em); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-tool-wheel__track { animation: none; }
+}
+
+.hero-tool-phrase { white-space: nowrap; }
+.hero-tool-wheel { background: transparent; }
+
+/* One spacing step between the title composition and the subtitle block. */
+.hero-stage:has(+ .hero__copy--connected) { margin-bottom: 36px; }
+
+/* Let the title and invoice follow the subtitle's two spacing steps. */
+.hero-stage:has(+ .hero__copy--connected) { top: 24px; }
+
+.hero-tool-wheel__item { color: var(--hero-meta); }
+
+/* Keep the tools wheel on the opening line on desktop. */
+@media (min-width: 761px) {
+  .hero .hero__copy--connected { max-width: 850px; text-wrap: initial; }
+  .hero-copy__opening { display: block; white-space: nowrap; }
+}
+
+/* Move the complete approved hero content one spacing step lower. */
+.hero__content:has(.hero__copy--connected) { position: relative; top: 8px; }
+
+/* A standard CTA at rest; reveal the monochrome WhatsApp mark on hover or focus. */
+.hero__actions .outline-button.whatsapp-hover {
+  position: relative;
+  animation: none;
+  background: var(--background);
+  border: 1px solid var(--border);
+  padding: 0 32px;
+  gap: 0;
+  clip-path: none;
+  box-shadow: none;
+  transform: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.hero__actions .outline-button.whatsapp-hover .cta-label {
+  animation: none;
+  opacity: 1;
+  grid-template-columns: 1fr;
+}
+.hero__actions .outline-button.whatsapp-hover .cta-logo {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border-radius: 0;
+  animation: none;
+  opacity: 0;
+  transform: translate(-5px, -50%);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.hero__actions .outline-button.whatsapp-hover:hover,
+.hero__actions .outline-button.whatsapp-hover:focus-visible {
+  border-color: var(--ink);
+  box-shadow: 0 3px 8px -3px rgba(17,17,16,.1);
+}
+.hero__actions .outline-button.whatsapp-hover:hover .cta-logo,
+.hero__actions .outline-button.whatsapp-hover:focus-visible .cta-logo {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+@media (max-width: 640px) {
+  .hero__actions .outline-button.whatsapp-hover { padding-inline: 26px; }
+  .hero__actions .outline-button.whatsapp-hover .cta-logo { width: 30px; height: 30px; left: -2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button.whatsapp-hover .cta-logo { transition: none; }
+}
+
+.hero__actions .whatsapp-hover .cta-label {
+  color: var(--hero-meta);
+  transition: color .2s ease;
+}
+.hero__actions .whatsapp-hover:hover .cta-label,
+.hero__actions .whatsapp-hover:focus-visible .cta-label {
+  color: var(--ink);
+}
+
+/* Studio Partner: retain the card's text spacing without the old secondary title or list. */
+.studio-offer--website .studio-offer__copy > h2 + p { margin-top: 18px; }
+.website-offer__terms > p {
+  color: #c4c4be;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+/* A small arc of existing task cards, followed by the full catalogue on demand. */
+.tasks--foldable .task-fan {
+  position: relative;
+  height: 420px;
+  margin: 40px auto 16px;
+  isolation: isolate;
+}
+.tasks--foldable .task-fan[hidden],
+.tasks--foldable .task-catalogue[hidden] { display: none; }
+.task-fan .task-card {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 290px;
+  height: 340px;
+  min-height: 0;
+  margin: 0;
+  padding: 24px;
+  overflow: hidden;
+  pointer-events: none;
+  border: .5px solid var(--border);
+  background: var(--surface-warm);
+  box-shadow: 0 8px 24px -16px rgba(17,17,16,.2);
+  transform-origin: 50% 110%;
+  transform: translateX(calc(-50% + (var(--fan-index) - 1.5) * 185px)) translateY(calc((var(--fan-index) - 1.5) * (var(--fan-index) - 1.5) * 3px)) rotate(calc((var(--fan-index) - 1.5) * 2deg));
+  z-index: calc(var(--fan-index) + 1);
+}
+.task-fan .task-card h3 { font-size: 20px; }
+.task-fan .task-card .task-price { font-size: 19px; }
+.task-fan .task-card .task-description { font-size: 13px; line-height: 1.5; }
+.task-fan .task-card .task-category { font-size: 11px; }
+.task-catalogue-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 24px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.task-catalogue-toggle > span:last-child { display: flex; }
+.task-catalogue-toggle:hover { background: var(--border); }
+.task-catalogue-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.task-catalogue-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+@media (max-width: 760px) {
+  .tasks--foldable .task-fan { height: 360px; margin-top: 28px; }
+  .task-fan .task-card {
+    width: min(230px, 62vw);
+    height: 290px;
+    padding: 18px;
+    transform: translateX(calc(-50% + (var(--fan-index) - 1.5) * 34px)) translateY(calc((var(--fan-index) - 1.5) * (var(--fan-index) - 1.5) * 6px)) rotate(calc((var(--fan-index) - 1.5) * 5deg));
+  }
+  .task-fan .task-card h3 { font-size: 17px; }
+  .task-fan .task-card .task-description { font-size: 12px; }
+}
+.task-fan .task-card .task-glyph {
+  left: auto;
+  right: 12px;
+  bottom: 14px;
+  transform: scale(.72);
+  transform-origin: bottom right;
+}
+@media (max-width: 760px) {
+  .task-fan .task-card {
+    width: min(230px, 54vw);
+    transform: translateX(calc(-50% + (var(--fan-index) - 1.5) * 38px)) translateY(calc((var(--fan-index) - 1.5) * (var(--fan-index) - 1.5) * 2px)) rotate(calc((var(--fan-index) - 1.5) * 2deg));
+  }
+  .task-fan .task-card .task-glyph { transform: scale(.55); }
+}
+
+/* Try a centred composition inside the fanned task previews. */
+.task-fan .task-card { height: 380px; text-align: center; }
+.task-fan .task-card__body { align-items: center; flex: 0 0 auto; width: 100%; }
+.task-fan .task-card .task-description { max-width: 28ch; }
+.task-fan .task-card .task-add { align-self: center; margin-top: 16px; }
+.task-fan .task-card .task-glyph {
+  left: 50%;
+  right: auto;
+  bottom: 18px;
+  transform: translateX(-50%) scale(.9);
+  transform-origin: bottom center;
+}
+.tasks--foldable .task-fan { height: 450px; }
+@media (max-width: 760px) {
+  .task-fan .task-card { height: 370px; }
+  .tasks--foldable .task-fan { height: 430px; }
+  .task-fan .task-card .task-glyph { transform: translateX(-50%) scale(.7); }
+}
+
+/* Restore the original glyph hover and let the preview cards rise gently. */
+.task-fan .task-card {
+  pointer-events: auto;
+  transition: translate .35s cubic-bezier(.22,1,.36,1), scale .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, background-color .2s ease, border-color .2s ease;
+}
+@media (hover: hover) {
+  .task-fan .task-card:hover {
+    translate: 0 -12px;
+    scale: 1.035;
+    z-index: 10;
+    background: var(--background);
+    border-color: #cfcfcb;
+    box-shadow: 0 18px 38px -20px rgba(17,17,16,.25);
+  }
+}
+.task-fan .task-card:focus-within {
+  translate: 0 -12px;
+  scale: 1.035;
+  z-index: 10;
+  background: var(--background);
+  border-color: #cfcfcb;
+}
+@media (prefers-reduced-motion: reduce) {
+  .task-fan .task-card { transition: none; }
+  .task-fan .task-card:hover, .task-fan .task-card:focus-within { translate: none; scale: none; }
+}
+.task-fan .task-card { cursor: pointer; }
+.task-fan .task-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+/* Open a landscape card within the fan, keeping its neighbours behind it. */
+.task-fan .task-card.is-fan-expanded {
+  width: min(540px, calc(100% - 24px));
+  height: 380px;
+  min-height: 0;
+  top: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 28px;
+  padding: 30px;
+  text-align: left;
+  transform: translateX(-50%) rotate(-1deg);
+  translate: none;
+  scale: none;
+  z-index: 20;
+  cursor: default;
+  background: var(--background);
+  box-shadow: 0 20px 48px -25px rgba(17,17,16,.28);
+}
+.task-fan .task-card.is-fan-expanded .task-card__body {
+  flex: 0 0 190px;
+  width: 190px;
+  align-items: flex-start;
+}
+.task-fan .task-card.is-fan-expanded .task-add { align-self: flex-start; margin-top: auto; }
+.task-fan .task-card.is-fan-expanded .task-card__media {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.task-fan .task-card.is-fan-expanded .task-glyph {
+  left: 50%;
+  right: auto;
+  bottom: 22px;
+  opacity: 1;
+  z-index: 2;
+}
+.task-fan-close {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  font-size: 21px;
+  cursor: pointer;
+}
+.task-fan .task-card.is-fan-expanded .task-card__media > .preview-pdf[data-morph] {
+  left: var(--preview-x, 0px);
+  top: var(--preview-y, 0px);
+}
+@media (max-width: 760px) {
+  .task-fan .task-card.is-fan-expanded {
+    width: calc(100% - 8px);
+    height: 300px;
+    padding: 24px 14px;
+    gap: 12px;
+    transform: translateX(-50%) rotate(-.5deg);
+  }
+  .task-fan .task-card.is-fan-expanded .task-card__body { flex: 0 0 42%; width: 42%; }
+  .task-fan .task-card.is-fan-expanded h3 { font-size: 15px; }
+  .task-fan .task-card.is-fan-expanded .task-category { font-size: 10px; }
+  .task-fan .task-card.is-fan-expanded .task-description { font-size: 11px; }
+}
+
+/* No resting shadow on stacked cards, including the open landscape card. */
+.task-fan .task-card,
+.task-fan .task-card.is-fan-expanded { box-shadow: none; }
+@media (hover: hover) {
+  .task-fan .task-card:hover,
+  .task-fan .task-card.is-fan-expanded:hover {
+    box-shadow: 0 8px 22px -16px rgba(17, 17, 16, .14);
+  }
+}
+
+/* Keep the stacked cards' warm surface on hover and focus. */
+.task-fan .task-card:hover,
+.task-fan .task-card:focus-within { background: var(--surface-warm); }
+
+/* Restrained, random offsets are sampled once per card on page load. */
+.task-fan .task-card:not(.is-fan-expanded) {
+  transform: translateX(calc(-50% + var(--stack-x-desktop))) translateY(var(--stack-y)) rotate(var(--stack-angle));
+}
+@media (max-width: 760px) {
+  .task-fan .task-card:not(.is-fan-expanded) {
+    transform: translateX(calc(-50% + var(--stack-x-mobile))) translateY(var(--stack-y)) rotate(var(--stack-angle));
+  }
+}
+
+/* Preserve the actual artwork photographs in the compact artist-page preview. */
+.task-fan .is-fan-expanded .preview-artist .ar-works {
+  flex: none;
+  align-items: start;
+  overflow: visible;
+}
+.task-fan .is-fan-expanded .preview-artist .ar-works > .ex-slot { min-width: 0; }
+.task-fan .is-fan-expanded .preview-artist .ar-works img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 420 / 302;
+  object-fit: contain;
+}
+.task-fan .is-fan-expanded .preview-artist .ar-works {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-height: 0;
+}
+.task-fan .is-fan-expanded .tg--works {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }

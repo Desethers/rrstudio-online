@@ -93,11 +93,11 @@ const TASK_COPY = {
       description:
         "Biography, works, images and basic metadata added to the gallery website.",
     },
-    "translate-exhibition": {
+    "connect-inventory": {
       label: "Website",
-      title: "Translate your exhibition",
+      title: "Connect your website to your inventory",
       description:
-        "Translate exhibition texts, artist biographies and artwork descriptions into natural English or French.",
+        "Keep selected artwork information updated on your website without entering it twice.",
     },
     "update-artworks": {
       label: "Website",
@@ -195,11 +195,11 @@ const TASK_COPY = {
       description:
         "Biographie, œuvres, images et informations de base ajoutées au site de la galerie.",
     },
-    "translate-exhibition": {
+    "connect-inventory": {
       label: "Site web",
-      title: "Traduire votre exposition",
+      title: "Relier votre site web à votre inventaire",
       description:
-        "Traduire vos textes d’exposition, biographies et descriptions d’œuvres en anglais ou en français, avec un ton naturel.",
+        "Garder certaines informations de vos œuvres à jour sur votre site, sans double saisie.",
     },
     "update-artworks": {
       label: "Site web",
@@ -437,13 +437,12 @@ const pv = PREVIEW[LANG];
  * file or a short change report, rather than a published gallery page. */
 const TASK_BRIEFS = {
   en: {
-    "translate-exhibition": {
-      file: "EN ↔ FR",
-      heading: "Reviewed translation",
+    "connect-inventory": {
+      file: "INVENTORY → WEBSITE",
+      heading: "Connected artwork information",
       items: [
-        "Up to 1,500 words of exhibition, artist or artwork text.",
-        "Art terminology and gallery tone checked by a person.",
-        "Editable document; website publication not included.",
+        "One connection between compatible systems.",
+        "Predefined artwork fields kept updated on your website.",
       ],
     },
     "pdf-to-records": {
@@ -483,13 +482,12 @@ const TASK_BRIEFS = {
     },
   },
   fr: {
-    "translate-exhibition": {
-      file: "EN ↔ FR",
-      heading: "Traduction relue",
+    "connect-inventory": {
+      file: "INVENTAIRE → SITE WEB",
+      heading: "Connexion à l’inventaire",
       items: [
-        "Jusqu’à 1 500 mots sur une exposition, un artiste ou des œuvres.",
-        "Terminologie et ton de la galerie vérifiés par une personne.",
-        "Document modifiable ; publication sur le site non comprise.",
+        "Une connexion sur des systèmes compatibles.",
+        "Des champs d’œuvres prédéfinis, tenus à jour sur votre site.",
       ],
     },
     "pdf-to-records": {
@@ -535,7 +533,7 @@ const tasks = [
   { id: "publish-exhibition", category: "website", price: 120 },
   { id: "opening-website", category: "website", price: 290 },
   { id: "artist-page", category: "website", price: 90 },
-  { id: "translate-exhibition", category: "website", price: 190 },
+  { id: "connect-inventory", category: "website", price: 490 },
   { id: "update-artworks", category: "website", price: 90 },
   { id: "fix-website-issue", category: "website", price: 90 },
   { id: "organise-database", category: "database", price: 150 },
@@ -1062,7 +1060,12 @@ function scalePreviewToPane(media) {
     root.style.height = "auto";
     const natural = root.scrollHeight;
     root.style.removeProperty("height");
-    if (natural > height) {
+    if (media.closest('.is-fan-expanded') && root.matches('.preview-artist')) {
+      // Keep artwork proportions instead of stretching the works row to fill the pane.
+      scale = Math.min(scale, paneHeight / Math.max(1, natural));
+      height = natural;
+      media.style.setProperty('--preview-y', `${Math.max(0, (paneHeight - natural * scale) / 2)}px`);
+    } else if (natural > height) {
       scale = paneHeight / natural;
       height = natural;
     } else if (carouselQuery.matches && root.matches(".preview-artist")) {
@@ -1160,13 +1163,28 @@ function prepareMorph(task, media) {
  * around them. Slots and chrome start hidden (.is-morph). */
 const FLY_ORDER = { btns: 0, title: 1, text: 2, image: 3, photo: 0, nav: 1, hero: 2, cta: 3, portrait: 0, name: 1, bio: 2, works: 3, w1: 0, w2: 1, w3: 2, w4: 2, w5: 3, pill: 4, bar: 0, broken: 1, caption: 2, note: 3 };
 
+const glyphMorphTimelines = new WeakMap();
+
 function morphGlyph(card) {
   const glyph = card.querySelector(".task-glyph");
   const page = card.querySelector("[data-morph]");
   if (!glyph || !page) return;
-  const tiles = [...glyph.querySelectorAll(".tg")];
+  const tiles = [...glyph.querySelectorAll(".tg")].flatMap(tile => {
+    if (!card.classList.contains('is-fan-expanded') || !tile.matches('.tg--works')) return [tile];
+    const images = [...tile.querySelectorAll('img')];
+    if (!page.querySelector('[data-slot="work1"]')) return [tile];
+    images.forEach((image, index) => { image.dataset.morphKey = `work${index + 1}`; });
+    return images;
+  });
   gsap.killTweensOf(tiles);
   const slots = [...page.querySelectorAll(".ex-slot")];
+  glyphMorphTimelines.get(card)?.kill();
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    page.classList.remove('is-morph');
+    gsap.set(tiles, { opacity: 0 });
+    return;
+  }
+  const choreographed = card.classList.contains('is-fan-expanded');
   const tl = gsap.timeline({
     onComplete: () =>
       slots.forEach((slot) => {
@@ -1174,13 +1192,14 @@ function morphGlyph(card) {
         ["--ex-extra", "--ex-a", "--ex-r", "--ex-bg"].forEach((p) => slot.style.removeProperty(p));
       }),
   });
+  glyphMorphTimelines.set(card, tl);
   // Shared-element transition: each real element of the page starts exactly where
   // its glyph tile is (uniformly scaled down, so nothing stretches) and travels to
   // its place with transforms only — no layout work per frame. The tile's shape is
   // matched at the start by a backing card (::before, grows away) and a clip-path
   // (shrinks away), both paint-only.
   tiles.forEach((tile) => {
-    const key = [...tile.classList].find((c) => c.startsWith("tg--"))?.slice(4);
+    const key = tile.dataset.morphKey || [...tile.classList].find((c) => c.startsWith("tg--"))?.slice(4);
     const slot = page.querySelector(`[data-slot="${key}"]`);
     if (!slot) {
       // A tile with no counterpart on the page simply dissolves as the others fly.
@@ -1198,14 +1217,22 @@ function morphGlyph(card) {
     const clip = Math.max(0, H - tileH);
     const extra = Math.max(0, tileH - H);
     const bottom = clip > 0 ? clip : -(extra + 24);
-    const at = (FLY_ORDER[key] ?? tiles.indexOf(tile)) * 0.05;
+    const image = ['image', 'photo', 'portrait', 'hero', 'w1', 'w2', 'w3', 'w4', 'w5', 'works', 'work1', 'work2', 'work3'].includes(key);
+    const action = ['btns', 'cta', 'pill'].includes(key);
+    const variation = [...key].reduce((sum, letter) => sum + letter.charCodeAt(0), 0);
+    const at = choreographed
+      ? (/^work[1-3]$/.test(key) ? .045 + (Number(key.slice(-1)) - 1) * .055
+        : image ? .015 + (variation % 3) * .018 : action ? .23 : .105 + (variation % 4) * .023)
+      : (FLY_ORDER[key] ?? tiles.indexOf(tile)) * .05;
+    const startX = (from.left - to.left) / pageScale;
+    const startY = (from.top - to.top) / pageScale;
     tl.set(
       slot,
       {
         opacity: 1,
         transformOrigin: "0 0",
-        x: (from.left - to.left) / pageScale,
-        y: (from.top - to.top) / pageScale,
+        x: startX,
+        y: startY,
         scale: k0,
         clipPath: `inset(-24px -24px ${bottom}px -24px)`,
         "--ex-extra": `${extra}px`,
@@ -1216,33 +1243,58 @@ function morphGlyph(card) {
       at,
     );
     tl.set(tile, { opacity: 0 }, at);
-    tl.to(
-      slot,
-      {
-        x: 0,
-        y: 0,
-        scale: 1,
-        clipPath: "inset(-24px -24px -24px -24px)",
-        "--ex-extra": "0px",
-        "--ex-a": 0,
-        "--ex-r": "0px",
-        duration: 0.55,
-        ease: "power3.inOut",
-        force3D: true,
-      },
-      at,
-    );
+    const finish = {
+      x: 0, y: 0, scale: 1, rotation: 0,
+      clipPath: "inset(-24px -24px -24px -24px)",
+      "--ex-extra": "0px", "--ex-a": 0, "--ex-r": "0px",
+    };
+    if (choreographed) {
+      const duration = image ? .73 + (variation % 2) * .035 : action ? .49 : .58 + (variation % 3) * .025;
+      const direction = variation % 2 ? 1 : -1;
+      const motion = { progress: 0 };
+      const controlX = startX * .42 + direction * (image ? 9 : 5) / pageScale;
+      const controlY = startY * .42 - (image ? 12 : 6) / pageScale;
+      const easing = image ? 'power2.inOut' : action ? 'power2.out' : 'power3.out';
+      const setX = gsap.quickSetter(slot, 'x', 'px');
+      const setY = gsap.quickSetter(slot, 'y', 'px');
+      const setScale = gsap.quickSetter(slot, 'scale');
+      const setRotation = gsap.quickSetter(slot, 'rotation', 'deg');
+      // Keep each tile's own timing, but travel on one uninterrupted curve.
+      tl.to(motion, {
+        progress: 1,
+        duration,
+        ease: easing,
+        onUpdate: () => {
+          const p = motion.progress;
+          const remaining = 1 - p;
+          setX(remaining * remaining * startX + 2 * remaining * p * controlX);
+          setY(remaining * remaining * startY + 2 * remaining * p * controlY);
+          setScale(k0 + (1 - k0) * p);
+          setRotation(direction * (image ? .5 : .3) * Math.sin(Math.PI * p));
+        },
+      }, at);
+      tl.to(slot, {
+        clipPath: finish.clipPath,
+        '--ex-extra': '0px', '--ex-a': 0, '--ex-r': '0px',
+        duration,
+        ease: easing,
+      }, at);
+    } else {
+      tl.to(slot, { ...finish, duration: .55, ease: 'power3.inOut', force3D: true }, at);
+    }
   });
   tl.fromTo(
     page.querySelectorAll(".ex-chrome"),
     { opacity: 0, y: 6 },
-    { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.035 },
-    0.4,
+    { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: choreographed ? .047 : .035 },
+    choreographed ? .36 : .4,
   );
 }
 
 function resetGlyph(card) {
-  const tiles = card.querySelectorAll(".task-glyph .tg");
+  glyphMorphTimelines.get(card)?.kill();
+  glyphMorphTimelines.delete(card);
+  const tiles = card.querySelectorAll(".task-glyph .tg, .task-glyph .tg img");
   if (!tiles.length) return;
   gsap.killTweensOf(tiles);
   gsap.set(tiles, { clearProps: "transform,opacity,boxShadow,width,height,fontSize,lineHeight" });
@@ -2006,8 +2058,8 @@ if (heroPick) {
 const heroTag = document.querySelector("#hero-tag");
 if (heroTag && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const TAG_WORDS = {
-    en: ["the art world", "galleries", "artists", "art advisors", "art foundations"],
-    fr: ["le monde de l\u2019art", "les galeries", "les artistes", "les art advisors", "les fondations"],
+    en: ["your gallery", "art dealers", "art advisors", "art foundations"],
+    fr: ["votre galerie", "les marchands d’art", "les conseillers en art", "les fondations"],
   };
   const tagWords = TAG_WORDS[LANG];
   const tagMask = heroTag.querySelector(".hero-tag__mask");
@@ -2317,5 +2369,181 @@ document.querySelector('.filter[data-component-default]')?.click();
     form.hidden = true;
     done.hidden = false;
     done.focus();
+  });
+})();
+
+/* A quiet, fanned preview keeps the task catalogue secondary until requested. */
+(() => {
+  const section = document.querySelector('#tasks');
+  const taskGrid = section?.querySelector('#task-grid');
+  const filters = section?.querySelector('.task-filters');
+  if (!section || !taskGrid || !filters || document.documentElement.dataset.component) return;
+
+  const fan = document.createElement('div');
+  fan.className = 'task-fan';
+  fan.setAttribute('aria-label', LANG === 'fr' ? 'Exemples de tâches' : 'Example tasks');
+  const cards = [...taskGrid.querySelectorAll('.task-card:not(.task-card--wide)')];
+  [0, 6, 11, 2].forEach((index, position) => {
+    const card = cards[index]?.cloneNode(true);
+    if (!card) return;
+    card.style.setProperty('--fan-index', position);
+    const jitter = (range) => (Math.random() * 2 - 1) * range;
+    card.style.setProperty('--stack-x-desktop', `${(position - 1.5) * 170 + jitter(3)}px`);
+    card.style.setProperty('--stack-x-mobile', `${(position - 1.5) * 32 + jitter(1)}px`);
+    card.style.setProperty('--stack-y', `${(position - 1.5) ** 2 * 8 + jitter(1)}px`);
+    card.style.setProperty('--stack-angle', `${(position - 1.5) * 1.6 + jitter(.25)}deg`);
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+    fan.append(card);
+  });
+
+  const syncFanSelection = () => {
+    fan.querySelectorAll('.task-add').forEach(button => {
+      const isSelected = selected.has(button.dataset.taskId);
+      button.classList.toggle('is-selected', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+      button.textContent = isSelected ? t.added : t.add;
+    });
+  };
+  let expandedFanCard = null;
+  const reducedFanMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const closeFanCard = (animate = true) => {
+    if (!expandedFanCard) return;
+    const card = expandedFanCard;
+    const state = animate && !reducedFanMotion() ? Flip.getState(card) : null;
+    expandedFanCard = null;
+    card.querySelector('.task-fan-close')?.remove();
+    collapseCard(card);
+    card.classList.remove('is-fan-expanded');
+    fan.classList.remove('has-expanded-card');
+    if (state) Flip.from(state, { duration: .5, ease: 'power3.inOut', scale: false });
+  };
+  const openFanCard = card => {
+    if (card === expandedFanCard) return closeFanCard();
+    const task = tasks.find(item => item.id === card.dataset.previewId);
+    if (!task) return;
+    closeFanCard(false);
+    const state = reducedFanMotion() ? null : Flip.getState(card);
+    expandedFanCard = card;
+    card.classList.add('is-expanded', 'is-fan-expanded');
+    card.setAttribute('aria-expanded', 'true');
+    fan.classList.add('has-expanded-card');
+    const media = card.querySelector('.task-card__media');
+    media.innerHTML = previewMarkup(task);
+    prepareMorph(task, media);
+    const works = media.querySelector('.ar-works');
+    if (works) {
+      works.classList.remove('ex-slot');
+      works.removeAttribute('data-slot');
+      [...works.querySelectorAll('img')].forEach((image, index) => {
+        const slot = document.createElement('span');
+        slot.className = 'ex-slot';
+        slot.dataset.slot = `work${index + 1}`;
+        image.width = 420;
+        image.height = 302;
+        image.before(slot);
+        slot.append(image);
+      });
+    }
+    scalePreviewToPane(media);
+    const page = media.querySelector('[data-morph]');
+    const hasMorph = Boolean(page && card.querySelector('.task-glyph'));
+    if (hasMorph && state) page.classList.add('is-morph');
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'task-fan-close';
+    close.setAttribute('aria-label', LANG === 'fr' ? 'Replier la carte' : 'Close card');
+    close.textContent = '×';
+    card.append(close);
+    const imagesReady = Promise.all([...media.querySelectorAll('img')].map(image => image.decode().catch(() => {})));
+    const finish = async () => {
+      await imagesReady;
+      if (expandedFanCard !== card || media.querySelector('[data-morph]') !== page) return;
+      scalePreviewToPane(media);
+      if (hasMorph && state) morphGlyph(card);
+    };
+    if (state) Flip.from(state, { duration: .6, ease: 'power3.inOut', scale: false, onComplete: finish });
+    else finish();
+  };
+  document.addEventListener('click', event => {
+    if (expandedFanCard && !event.target.closest('.task-fan')) closeFanCard();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeFanCard();
+  });
+  window.addEventListener('resize', () => {
+    if (expandedFanCard) scalePreviewToPane(expandedFanCard.querySelector('.task-card__media'));
+  });
+  fan.addEventListener('keydown', event => {
+    if (event.target.closest('button') || !['Enter', ' '].includes(event.key)) return;
+    const card = event.target.closest('.task-card');
+    if (!card) return;
+    event.preventDefault();
+    openFanCard(card);
+  });
+  fan.addEventListener('click', event => {
+    if (event.target.closest('.task-fan-close')) { closeFanCard(); return; }
+    if (event.target.closest('.task-card__media')) return;
+    const button = event.target.closest('.task-add');
+    if (!button) {
+      const card = event.target.closest('.task-card');
+      if (card) openFanCard(card);
+      return;
+    }
+    const taskId = button.dataset.taskId;
+    selected.has(taskId) ? selected.delete(taskId) : selected.add(taskId);
+    renderTasks();
+    updateSummary();
+    syncFanSelection();
+  });
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'task-catalogue-toggle';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'task-catalogue');
+  const label = document.createElement('span');
+  const icon = document.createElement('span');
+  icon.setAttribute('aria-hidden', 'true');
+  icon.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+  toggle.append(label, icon);
+
+  const catalogue = document.createElement('div');
+  catalogue.className = 'task-catalogue';
+  catalogue.id = 'task-catalogue';
+  filters.before(fan, toggle, catalogue);
+  catalogue.append(filters, taskGrid, taskFeature);
+  catalogue.hidden = true;
+  section.classList.add('tasks--foldable');
+
+  const setExpanded = (expanded, animate = false) => {
+    const previousTop = toggle.getBoundingClientRect().top;
+    closeFanCard(false);
+    syncFanSelection();
+    catalogue.hidden = !expanded;
+    fan.hidden = expanded;
+    toggle.setAttribute('aria-expanded', String(expanded));
+    label.textContent = LANG === 'fr'
+      ? (expanded ? 'Replier les tâches' : 'Voir toutes les tâches')
+      : (expanded ? 'Close tasks' : 'Explore all tasks');
+    if (animate) {
+      window.scrollBy({ top: toggle.getBoundingClientRect().top - previousTop, behavior: 'instant' });
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        (expanded ? catalogue : fan).animate(
+          [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' },
+        );
+      }
+    }
+  };
+  setExpanded(false);
+  toggle.addEventListener('click', () => setExpanded(catalogue.hidden, true));
+  filters.addEventListener('click', () => setExpanded(true));
+  document.querySelector('.category-strip')?.addEventListener('click', event => {
+    if (event.target.closest('.category-link')) setExpanded(true);
+  });
+  document.addEventListener('click', event => {
+    if (event.target.closest('a[href="#tasks"], a[href="/#tasks"], a[href="/fr/#tasks"]')) setExpanded(true);
   });
 })();

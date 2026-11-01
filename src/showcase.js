@@ -12,7 +12,7 @@ const COMPONENTS = [
   { name: "task", id: "publish-exhibition", title: "Publish an exhibition", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "opening-website", title: "Fix your website on mobile", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "artist-page", title: "Add an artist page", note: "Task card · Website", w: 900, h: 600 },
-  { name: "task", id: "translate-exhibition", title: "Translate your exhibition", note: "Task card · Website", w: 900, h: 600 },
+  { name: "task", id: "connect-inventory", title: "Connect your website to your inventory", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "update-artworks", title: "Update 10 artworks", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "fix-website-issue", title: "Fix a website issue", note: "Task card · Website", w: 900, h: 600 },
   { name: "task", id: "organise-database", title: "Organise your inventory", note: "Task card · Inventory", w: 900, h: 600 },
