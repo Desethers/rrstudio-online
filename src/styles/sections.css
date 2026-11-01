@@ -13833,14 +13833,14 @@ main > .workshop { padding-top: 100px; padding-bottom: 100px; }
   main > .tasks,
   main > .workshop { padding-top: 64px; padding-bottom: 64px; }
 }
-/* Even more air: 140px above and below each section (280px between two), 88px on phones. */
+/* Section rhythm: 120px above and below each section, 80px on phones. */
 main > .studio-process,
 main > .power-up,
 main > .software-promo.software-promo--tools,
 main > .tasks,
 main > .workshop,
 main > .quote,
-main > .faq { padding-top: 140px; padding-bottom: 140px; }
+main > .faq { padding-top: 120px; padding-bottom: 120px; }
 @media (max-width: 640px) {
   main > .studio-process,
   main > .power-up,
@@ -13848,5 +13848,72 @@ main > .faq { padding-top: 140px; padding-bottom: 140px; }
   main > .tasks,
   main > .workshop,
   main > .quote,
-  main > .faq { padding-top: 88px; padding-bottom: 88px; }
+  main > .faq { padding-top: 80px; padding-bottom: 80px; }
+}
+
+/* Studio Partner: editorial pitch alongside the four parts of the partnership. */
+.workshop .workshop-card.studio-partner {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 36px clamp(36px, 5vw, 80px);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 28px;
+  background: #111110;
+}
+.studio-partner .workshop-card__main { min-width: 0; }
+.studio-partner .workshop-card__main .eyebrow {
+  margin: 0 0 28px;
+  color: #8f8f8b;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.workshop .studio-partner .workshop-card__main h2 {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(27px, 2.5vw, 36px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+.workshop .studio-partner .workshop-card__main > p.workshop-card__lead {
+  max-width: 40ch;
+  margin: 22px 0 0;
+  color: #aaa9a6;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.studio-partner__support { margin-top: 42px; }
+.workshop .studio-partner .studio-partner__support h3 {
+  margin: 0;
+  max-width: none;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -.015em;
+}
+.studio-partner__support p { margin: 14px 0 0; color: #92928e; font-size: 18px; line-height: 1.5; }
+.workshop .studio-partner .studio-partner-cta { display: inline-flex; gap: 8px; margin-top: 28px; }
+.studio-partner__features { min-width: 0; padding-top: 57px; }
+.studio-partner__features ul { display: grid; gap: 30px; margin: 0; padding: 0; list-style: none; }
+.studio-partner__features li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 18px; align-items: start; }
+.studio-partner__features svg { width: 23px; height: 23px; margin-top: 8px; color: #c2c2be; }
+.workshop .studio-partner .studio-partner__features h3 { max-width: none; margin: 0; font-size: 22px; font-weight: 400; line-height: 1.4; letter-spacing: -.015em; }
+.studio-partner__features p { margin: 8px 0 0; color: #92928e; font-size: 17px; line-height: 1.5; }
+.studio-partner__terms { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-top: 22px; border-top: 1px solid #ffffff14; scroll-margin-top: 28px; }
+.studio-partner__terms p { margin: 0; color: #858580; font-size: 12px; line-height: 1.6; }
+@media (max-width: 760px) {
+  .workshop .workshop-card.studio-partner { grid-template-columns: minmax(0, 1fr); gap: 30px; padding: 30px 24px; border-radius: 22px; }
+  .studio-partner .workshop-card__main .eyebrow { margin-bottom: 20px; font-size: 12px; }
+  .workshop .studio-partner .workshop-card__main h2 { font-size: 28px; line-height: 1.3; text-wrap: pretty; }
+  .workshop .studio-partner .workshop-card__main > p.workshop-card__lead { margin-top: 18px; font-size: 17px; line-height: 1.5; }
+  .studio-partner__support { margin-top: 28px; }
+  .workshop .studio-partner .studio-partner__support h3 { font-size: 18px; }
+  .studio-partner__support p { font-size: 16px; margin-top: 10px; }
+  .studio-partner__features { padding-top: 26px; border-top: 1px solid #ffffff14; }
+  .studio-partner__features ul { gap: 24px; }
+  .workshop .studio-partner .studio-partner__features h3 { font-size: 20px; }
+  .studio-partner__features p { font-size: 15px; margin-top: 5px; }
+  .studio-partner__features svg { margin-top: 3px; }
+  .studio-partner__terms { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
