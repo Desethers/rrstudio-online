@@ -3,6 +3,7 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 import "./styles/component-mode.css";
+import "./styles/product-scenes.css";
 import { ACCESS_ENDPOINT } from "./endpoint.js";
 import "./footer-form.js";
 import "./mobile-menu.js";
@@ -1050,6 +1051,22 @@ function scalePreviewToPane(media) {
   const paneWidth = media.clientWidth;
   const paneHeight = media.clientHeight;
   if (!paneWidth || !paneHeight) return;
+  if (root && media.closest('.is-fan-expanded')) {
+    const designWidth = root.matches('.preview-pdf') ? 350 : root.matches('.preview-artist') && !carouselQuery.matches ? 420 : previewDesignWidth();
+    media.style.setProperty('--preview-w', `${designWidth}px`);
+    const previousHeight = root.style.height;
+    if (!root.matches('.preview-pdf')) root.style.height = 'auto';
+    const naturalHeight = Math.max(root.scrollHeight, root.offsetHeight, 1);
+    if (previousHeight) root.style.height = previousHeight;
+    else root.style.removeProperty('height');
+    const inset = 8;
+    const fitScale = Math.min((paneWidth - inset * 2) / designWidth, (paneHeight - inset * 2) / naturalHeight);
+    media.style.setProperty('--preview-scale', `${Math.max(.01, fitScale)}`);
+    media.style.setProperty('--preview-h', `${naturalHeight}px`);
+    media.style.setProperty('--preview-x', `${(paneWidth - designWidth * fitScale) / 2}px`);
+    media.style.setProperty('--preview-y', `${(paneHeight - naturalHeight * fitScale) / 2}px`);
+    return;
+  }
   let scale = paneWidth / previewDesignWidth();
   let height = paneHeight / scale;
   media.style.setProperty("--preview-w", `${previewDesignWidth()}px`);
@@ -1185,14 +1202,26 @@ function morphGlyph(card) {
     return;
   }
   const choreographed = card.classList.contains('is-fan-expanded');
+  if (choreographed) card.classList.add('is-glyph-moving');
   const tl = gsap.timeline({
-    onComplete: () =>
+    onComplete: () => {
       slots.forEach((slot) => {
+        // The last animated frame already matches the resting layout exactly.
+        gsap.set(slot, { x: 0, y: 0, scale: 1, rotation: 0 });
         gsap.set(slot, { clearProps: "transform,clipPath" });
         ["--ex-extra", "--ex-a", "--ex-r", "--ex-bg"].forEach((p) => slot.style.removeProperty(p));
-      }),
+      });
+      card.classList.remove('is-glyph-moving');
+    },
   });
   glyphMorphTimelines.set(card, tl);
+  if (choreographed) {
+    tl.fromTo(page,
+      { '--preview-paper': 0 },
+      { '--preview-paper': 1, duration: .36, ease: 'power2.inOut' },
+      .48,
+    );
+  }
   // Shared-element transition: each real element of the page starts exactly where
   // its glyph tile is (uniformly scaled down, so nothing stretches) and travels to
   // its place with transforms only — no layout work per frame. The tile's shape is
@@ -1211,7 +1240,9 @@ function morphGlyph(card) {
     const W = slot.offsetWidth || to.width;
     const H = slot.offsetHeight || to.height;
     const pageScale = to.width / W;
-    const k0 = from.width / to.width;
+    const relative = choreographed ? Flip.convertCoordinates(tile, slot) : null;
+    const k0 = relative ? Math.hypot(relative.a, relative.b) * tile.offsetWidth / W : from.width / to.width;
+    const startRotation = relative ? Math.atan2(relative.b, relative.a) * 180 / Math.PI : 0;
     const tileBg = getComputedStyle(tile).backgroundColor;
     const tileH = (from.height * W) / from.width;
     const clip = Math.max(0, H - tileH);
@@ -1224,8 +1255,8 @@ function morphGlyph(card) {
       ? (/^work[1-3]$/.test(key) ? .045 + (Number(key.slice(-1)) - 1) * .055
         : image ? .015 + (variation % 3) * .018 : action ? .23 : .105 + (variation % 4) * .023)
       : (FLY_ORDER[key] ?? tiles.indexOf(tile)) * .05;
-    const startX = (from.left - to.left) / pageScale;
-    const startY = (from.top - to.top) / pageScale;
+    const startX = relative ? relative.e : (from.left - to.left) / pageScale;
+    const startY = relative ? relative.f : (from.top - to.top) / pageScale;
     tl.set(
       slot,
       {
@@ -1234,6 +1265,7 @@ function morphGlyph(card) {
         x: startX,
         y: startY,
         scale: k0,
+        rotation: startRotation,
         clipPath: `inset(-24px -24px ${bottom}px -24px)`,
         "--ex-extra": `${extra}px`,
         "--ex-a": tileBg === "rgba(0, 0, 0, 0)" ? 0 : 1,
@@ -1249,16 +1281,12 @@ function morphGlyph(card) {
       "--ex-extra": "0px", "--ex-a": 0, "--ex-r": "0px",
     };
     if (choreographed) {
-      const duration = image ? .73 + (variation % 2) * .035 : action ? .49 : .58 + (variation % 3) * .025;
+      const duration = image ? .86 + (variation % 2) * .035 : action ? .49 : .58 + (variation % 3) * .025;
       const direction = variation % 2 ? 1 : -1;
       const motion = { progress: 0 };
       const controlX = startX * .42 + direction * (image ? 9 : 5) / pageScale;
       const controlY = startY * .42 - (image ? 12 : 6) / pageScale;
-      const easing = image ? 'power2.inOut' : action ? 'power2.out' : 'power3.out';
-      const setX = gsap.quickSetter(slot, 'x', 'px');
-      const setY = gsap.quickSetter(slot, 'y', 'px');
-      const setScale = gsap.quickSetter(slot, 'scale');
-      const setRotation = gsap.quickSetter(slot, 'rotation', 'deg');
+      const easing = image ? 'power3.out' : action ? 'power2.out' : 'power3.out';
       // Keep each tile's own timing, but travel on one uninterrupted curve.
       tl.to(motion, {
         progress: 1,
@@ -1267,10 +1295,13 @@ function morphGlyph(card) {
         onUpdate: () => {
           const p = motion.progress;
           const remaining = 1 - p;
-          setX(remaining * remaining * startX + 2 * remaining * p * controlX);
-          setY(remaining * remaining * startY + 2 * remaining * p * controlY);
-          setScale(k0 + (1 - k0) * p);
-          setRotation(direction * (image ? .5 : .3) * Math.sin(Math.PI * p));
+          gsap.set(slot, {
+            x: remaining * remaining * startX + 2 * remaining * p * controlX,
+            y: remaining * remaining * startY + 2 * remaining * p * controlY,
+            scale: k0 + (1 - k0) * p,
+            rotation: startRotation * remaining + direction * (image ? .5 : .3) * Math.sin(Math.PI * p),
+            force3D: true,
+          });
         },
       }, at);
       tl.to(slot, {
@@ -1292,6 +1323,7 @@ function morphGlyph(card) {
 }
 
 function resetGlyph(card) {
+  card.classList.remove('is-glyph-moving');
   glyphMorphTimelines.get(card)?.kill();
   glyphMorphTimelines.delete(card);
   const tiles = card.querySelectorAll(".task-glyph .tg, .task-glyph .tg img");
@@ -1611,6 +1643,7 @@ if (heroRotator) {
     fr: ["du monde de l\u2019art"],
   };
   const words = HERO_WORDS[LANG];
+  if (words.length === 1) heroRotator.classList.add('hero-rotator--static');
   const mask = heroRotator.querySelector(".hero-rotator__mask");
   const measure = heroRotator.querySelector(".hero-rotator__measure");
   const word = heroRotator.querySelector(".hero-rotator__word");
@@ -1673,7 +1706,7 @@ if (heroRotator) {
       word.classList.remove("is-swapping");
       pinned = widthOf(words[index]);
       mask.style.transition = "none";
-      mask.style.width = `${pinned}px`;
+      mask.style.width = words.length === 1 ? 'max-content' : `${pinned}px`;
       void mask.offsetWidth;
       mask.style.transition = "";
     };
@@ -1888,8 +1921,9 @@ document.querySelectorAll(".gm-notifs").forEach((stack) => {
   const dotsEl = nav.querySelector(".product-cards__dots");
   const pageLabel = nav.dataset.pageLabel || "Page";
   const step = () => {
-    const card = track.querySelector(".product-card");
-    return card ? card.getBoundingClientRect().width + 16 : track.clientWidth;
+    const [card, nextCard] = track.querySelectorAll(".product-card");
+    if (card && nextCard) return nextCard.offsetLeft - card.offsetLeft;
+    return card ? card.offsetWidth : track.clientWidth;
   };
   const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
   const positions = () => {
@@ -2059,9 +2093,10 @@ const heroTag = document.querySelector("#hero-tag");
 if (heroTag && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const TAG_WORDS = {
     en: ["your gallery", "art dealers", "art advisors", "art foundations"],
-    fr: ["votre galerie", "les marchands d’art", "les conseillers en art", "les fondations"],
+    fr: ["votre galerie", "marchands d’art", "fondations d’art", "art advisors"],
   };
   const tagWords = TAG_WORDS[LANG];
+  const tagPrefix = document.querySelector('#hero-tag-prefix');
   const tagMask = heroTag.querySelector(".hero-tag__mask");
   const tagWord = heroTag.querySelector(".hero-tag__word");
   const tagMeasure = heroTag.querySelector(".hero-tag__measure");
@@ -2090,6 +2125,7 @@ if (heroTag && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     );
     leave.onfinish = () => {
       tagWord.textContent = next;
+      if (tagPrefix) tagPrefix.textContent = tagIndex === 0 ? 'à' : 'aux';
       leave.cancel();
       tagWord.animate(
         [
@@ -2382,6 +2418,7 @@ document.querySelector('.filter[data-component-default]')?.click();
   const fan = document.createElement('div');
   fan.className = 'task-fan';
   fan.setAttribute('aria-label', LANG === 'fr' ? 'Exemples de tâches' : 'Example tasks');
+  const foldedCardStyles = new WeakMap();
   const cards = [...taskGrid.querySelectorAll('.task-card:not(.task-card--wide)')];
   [0, 6, 11, 2].forEach((index, position) => {
     const card = cards[index]?.cloneNode(true);
@@ -2390,11 +2427,13 @@ document.querySelector('.filter[data-component-default]')?.click();
     const jitter = (range) => (Math.random() * 2 - 1) * range;
     card.style.setProperty('--stack-x-desktop', `${(position - 1.5) * 170 + jitter(3)}px`);
     card.style.setProperty('--stack-x-mobile', `${(position - 1.5) * 32 + jitter(1)}px`);
-    card.style.setProperty('--stack-y', `${(position - 1.5) ** 2 * 8 + jitter(1)}px`);
+    card.style.setProperty('--stack-y', `${(position - 1.5) ** 2 * 8 + [0, -4, 3, -2][position] + jitter(1)}px`);
     card.style.setProperty('--stack-angle', `${(position - 1.5) * 1.6 + jitter(.25)}deg`);
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
     card.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+    foldedCardStyles.set(card, card.style.cssText);
+    card.addEventListener('pointerleave', () => card.classList.remove('is-stack-resting'));
     fan.append(card);
   });
 
@@ -2411,19 +2450,31 @@ document.querySelector('.filter[data-component-default]')?.click();
   const closeFanCard = (animate = true) => {
     if (!expandedFanCard) return;
     const card = expandedFanCard;
+    Flip.killFlipsOf(card, true);
+    const focused = document.activeElement;
+    // A mouse click must not leave the collapsed card in its keyboard lift state.
+    if (card.contains(focused) && !focused.matches(':focus-visible')) focused.blur();
     const state = animate && !reducedFanMotion() ? Flip.getState(card) : null;
     expandedFanCard = null;
     card.querySelector('.task-fan-close')?.remove();
     collapseCard(card);
     card.classList.remove('is-fan-expanded');
+    card.classList.add('is-stack-resting');
     fan.classList.remove('has-expanded-card');
-    if (state) Flip.from(state, { duration: .5, ease: 'power3.inOut', scale: false });
+    const restoreFoldedStyle = () => { card.style.cssText = foldedCardStyles.get(card); };
+    restoreFoldedStyle();
+    if (state) Flip.from(state, {
+      duration: .5, ease: 'power3.inOut', scale: false,
+      onComplete: restoreFoldedStyle,
+    });
   };
   const openFanCard = card => {
     if (card === expandedFanCard) return closeFanCard();
     const task = tasks.find(item => item.id === card.dataset.previewId);
     if (!task) return;
     closeFanCard(false);
+    Flip.killFlipsOf(card, true);
+    card.classList.remove('is-stack-resting');
     const state = reducedFanMotion() ? null : Flip.getState(card);
     expandedFanCard = card;
     card.classList.add('is-expanded', 'is-fan-expanded');
@@ -2517,24 +2568,63 @@ document.querySelector('.filter[data-component-default]')?.click();
   catalogue.hidden = true;
   section.classList.add('tasks--foldable');
 
+  let catalogueTransition = null;
   const setExpanded = (expanded, animate = false) => {
-    const previousTop = toggle.getBoundingClientRect().top;
+    const changed = catalogue.hidden === expanded;
+    catalogueTransition?.progress(1);
     closeFanCard(false);
     syncFanSelection();
+    const fanCards = [...fan.querySelectorAll('.task-card')];
+    const gridCards = [...taskGrid.querySelectorAll('.task-card')];
+    const linkCard = card => {
+      const key = `catalogue-${card.dataset.previewId}`;
+      card.dataset.flipId = key;
+      const glyph = card.querySelector('.task-glyph');
+      if (glyph) glyph.dataset.flipId = `${key}-glyph`;
+      return glyph ? [card, glyph] : [card];
+    };
+    const sourceCards = expanded ? fanCards : gridCards;
+    const targetCards = expanded ? gridCards : fanCards;
+    const sourceElements = sourceCards.flatMap(linkCard);
+    const targetElements = targetCards.flatMap(linkCard);
+    const shouldAnimate = animate && changed && !reducedFanMotion();
+    const state = shouldAnimate ? Flip.getState([...sourceElements, toggle]) : null;
+
     catalogue.hidden = !expanded;
     fan.hidden = expanded;
     toggle.setAttribute('aria-expanded', String(expanded));
     label.textContent = LANG === 'fr'
       ? (expanded ? 'Replier les tâches' : 'Voir toutes les tâches')
       : (expanded ? 'Close tasks' : 'Explore all tasks');
-    if (animate) {
-      window.scrollBy({ top: toggle.getBoundingClientRect().top - previousTop, behavior: 'instant' });
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        (expanded ? catalogue : fan).animate(
-          [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' },
-        );
-      }
+    if (!state) return;
+
+    const sourceIds = new Set(sourceElements.map(element => element.dataset.flipId));
+    const sharedTargets = targetElements.filter(element => sourceIds.has(element.dataset.flipId));
+    const arrivingCards = targetCards.filter(card => !sourceIds.has(card.dataset.flipId));
+    section.classList.add('is-unfolding');
+    toggle.disabled = true;
+    const finish = () => {
+      section.classList.remove('is-unfolding');
+      toggle.disabled = false;
+      gsap.set([filters, ...arrivingCards], { clearProps: 'opacity,transform' });
+      catalogueTransition = null;
+    };
+    catalogueTransition = Flip.from(state, {
+      targets: [...sharedTargets, toggle],
+      nested: true,
+      scale: true,
+      duration: .7,
+      ease: 'power3.inOut',
+      prune: true,
+      onComplete: finish,
+    });
+    if (expanded) {
+      catalogueTransition.fromTo(filters,
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, .22);
+      catalogueTransition.fromTo(arrivingCards,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: .4, stagger: .018, ease: 'power2.out' }, .22);
     }
   };
   setExpanded(false);
@@ -2547,3 +2637,10 @@ document.querySelector('.filter[data-component-default]')?.click();
     if (event.target.closest('a[href="#tasks"], a[href="/#tasks"], a[href="/fr/#tasks"]')) setExpanded(true);
   });
 })();
+
+/* Fit the layered product scenes without changing the carousel's card dimensions. */
+document.querySelectorAll('.product-scene').forEach(scene => {
+  const fit = () => scene.style.setProperty('--ps-scale', String(scene.clientWidth / 360));
+  fit();
+  new ResizeObserver(fit).observe(scene);
+});

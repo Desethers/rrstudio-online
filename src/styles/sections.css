@@ -13239,7 +13239,7 @@ h2,
 }
 .hero-tool-wheel__track {
   display: block;
-  animation: hero-tool-wheel 14.4s infinite;
+  animation: hero-tool-wheel 9.6s infinite;
 }
 .hero-tool-wheel__item {
   display: flex;
@@ -13460,7 +13460,7 @@ h2,
     box-shadow: 0 18px 38px -20px rgba(17,17,16,.25);
   }
 }
-.task-fan .task-card:focus-within {
+.task-fan .task-card:focus-visible {
   translate: 0 -12px;
   scale: 1.035;
   z-index: 10;
@@ -13469,7 +13469,7 @@ h2,
 }
 @media (prefers-reduced-motion: reduce) {
   .task-fan .task-card { transition: none; }
-  .task-fan .task-card:hover, .task-fan .task-card:focus-within { translate: none; scale: none; }
+  .task-fan .task-card:hover, .task-fan .task-card:focus-visible { translate: none; scale: none; }
 }
 .task-fan .task-card { cursor: pointer; }
 .task-fan .task-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
@@ -13566,7 +13566,7 @@ h2,
 
 /* Keep the stacked cards' warm surface on hover and focus. */
 .task-fan .task-card:hover,
-.task-fan .task-card:focus-within { background: var(--surface-warm); }
+.task-fan .task-card:focus-visible { background: var(--surface-warm); }
 
 /* Restrained, random offsets are sampled once per card on page load. */
 .task-fan .task-card:not(.is-fan-expanded) {
@@ -13601,4 +13601,252 @@ h2,
   background: transparent;
   border: 0;
   box-shadow: none;
+}
+
+/* Keep hover and clicks from competing with the stack-to-catalogue transition. */
+.tasks--foldable.is-unfolding .task-card,
+.tasks--foldable.is-unfolding .task-filters { pointer-events: none; }
+.task-catalogue-toggle:disabled { cursor: default; }
+
+/* Let the glyph assemble before revealing the white page behind it. */
+.task-fan .task-card__media > .preview-exhibit.is-morph {
+  background-color: rgba(255, 255, 255, var(--preview-paper, 0));
+}
+
+/* Keep flying glyph elements visible as they cross into the preview pane. */
+.task-fan .task-card.is-glyph-moving .task-card__media,
+.task-fan .task-card.is-glyph-moving .task-card__media > [data-morph] {
+  overflow: visible;
+}
+
+/* Balance the compact open card and fit the entire preview inside its pane. */
+@media (min-width: 761px) {
+  .task-fan .task-card.is-fan-expanded { padding: 26px 24px; gap: 20px; }
+  .task-fan .task-card.is-fan-expanded .task-card__body { flex-basis: 170px; width: 170px; }
+}
+.task-fan .task-card.is-fan-expanded .task-card__media > [data-morph] {
+  left: var(--preview-x, 0px);
+  top: var(--preview-y, 0px);
+}
+
+/* A closed card settles back before hover can lift it again. */
+.task-fan .task-card.is-stack-resting {
+  translate: none;
+  scale: none;
+}
+
+/* Studio Partner reuses the former Starter card's layout and typography. */
+.workshop .studio-partner-cta {
+  justify-self: start;
+  background: var(--background);
+  color: var(--ink);
+}
+
+/* Use the same hero title scale and vertical rhythm in both languages. */
+@media (min-width: 641px) {
+  html[lang="fr"] .hero h1 { font-size: calc(var(--fs) * 1px); }
+}
+@media (max-width: 640px) {
+  .hero-stage:has(+ .hero__copy--connected) { min-height: calc(var(--fs) * 2.8px); }
+}
+
+/* Reserve real space for the enlarged WhatsApp glyph on hover. */
+.hero__actions .outline-button.whatsapp-hover { padding-inline: 56px 28px; }
+.hero__actions .outline-button.whatsapp-hover .cta-logo { left: 12px; }
+.hero__actions .outline-button.whatsapp-hover .cta-label {
+  transform: translateX(-14px);
+  transition: color .2s ease, transform .25s ease;
+}
+.hero__actions .outline-button.whatsapp-hover:hover .cta-label,
+.hero__actions .outline-button.whatsapp-hover:focus-visible .cta-label { transform: translateX(0); }
+@media (max-width: 640px) {
+  .hero__actions .outline-button.whatsapp-hover { padding-inline: 42px 18px; }
+  .hero__actions .outline-button.whatsapp-hover .cta-logo { left: 8px; }
+  .hero__actions .outline-button.whatsapp-hover .cta-label { transform: translateX(-12px); }
+  .hero__actions .outline-button.whatsapp-hover:hover .cta-label,
+  .hero__actions .outline-button.whatsapp-hover:focus-visible .cta-label { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions .outline-button.whatsapp-hover .cta-label { transition: none; }
+}
+
+/* WhatsApp glyph one size step smaller. */
+.hero__actions .outline-button.whatsapp-hover .cta-logo { width: 30px; height: 30px; }
+@media (max-width: 640px) {
+  .hero__actions .outline-button.whatsapp-hover .cta-logo { width: 26px; height: 26px; }
+}
+
+/* The fixed title ending must follow font-size changes without a stale pixel mask. */
+.hero-rotator--static .hero-rotator__mask {
+  clip-path: none;
+  transition: none;
+  will-change: auto;
+}
+
+/* No more software: centred intro like the other sections, then one open line of tools:
+ * your tools, R.R Studio in the middle, your AI. Same 10px labels as the task cards. */
+.connect-tools { padding: 104px 22px 16px; text-align: center; }
+.connect-tools__intro { display: flex; flex-direction: column; align-items: center; margin-inline: auto; max-width: 700px; }
+.connect-tools__intro .eyebrow { font-size: 14px; margin: 0 0 14px; }
+#integration-title { font-size: 32px; line-height: 1.15; margin: 0; text-wrap: balance; }
+.connect-tools__copy { color: var(--muted); font-size: 20px; font-weight: var(--font-weight-300); line-height: 1.4; margin: 18px 0 0; max-width: 620px; text-wrap: balance; }
+.connect-map { display: flex; align-items: center; justify-content: center; gap: 0; margin: 64px auto 0; max-width: 1040px; }
+.connect-map__group { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; position: relative; padding-top: 26px; }
+.connect-map__group > p { position: absolute; top: 0; left: 0; right: 0; margin: 0; font-size: 12px; color: var(--muted); }
+.connect-map__group > span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--background); font-size: 14px; color: var(--ink); white-space: nowrap; }
+.connect-map__group img, .connect-map__group svg { display: block; flex: none; width: 16px; height: 16px; object-fit: contain; }
+.connect-map__link { display: flex; align-items: center; flex: 1 1 auto; min-width: 140px; max-width: 220px; padding-top: 26px; }
+.connect-map__link i { flex: 1; height: 1px; background: var(--border); }
+.connect-map__link b { padding: 9px 14px; border-radius: 10px; background: var(--ink); color: var(--background); font-size: 13px; font-weight: var(--font-weight-400); white-space: nowrap; }
+.connect-tools__note { margin: 28px 0 0; font-size: 13px; color: var(--muted); font-weight: var(--font-weight-300); }
+.connect-tools .ai-galleries__link { margin-top: 28px; }
+@media (max-width: 860px) {
+  .connect-map { flex-direction: column; }
+  .connect-map__link { flex-direction: column; min-width: 0; max-width: none; padding: 12px 0 0; }
+  .connect-map__link i { width: 1px; height: 24px; flex: none; }
+  .connect-map__group + .connect-map__link + .connect-map__group { margin-top: 12px; }
+}
+@media (max-width: 640px) {
+  .connect-tools { padding: 64px 0 8px; }
+  #integration-title { font-size: 24px; }
+  .connect-tools__copy { font-size: 17px; }
+  .connect-map { margin-top: 40px; }
+}
+/* "No more software" now opens the Apps section: the line of tools sits between the intro and the cards. */
+.connect-tools.connect-tools--in-apps { padding: 0; }
+.connect-tools--in-apps .connect-map { margin-top: 0; }
+.connect-tools--in-apps .connect-map__group,
+.connect-tools--in-apps .connect-map__link { padding-top: 0; }
+
+/* No more software: centred intro, then the same tools twice, like an engine revving up.
+ * Today: each tool apart, faded, the rev meter low. With R.R Studio: the tools joined on one
+ * line, full colour, the meter at full revs. */
+.power-up { padding: 104px 22px 16px; text-align: center; }
+.power-up__intro { display: flex; flex-direction: column; align-items: center; margin-inline: auto; max-width: 700px; }
+.power-up__intro .eyebrow { font-size: 14px; margin: 0 0 14px; }
+#power-up-title { font-size: 32px; line-height: 1.15; margin: 0; text-wrap: balance; }
+.power-up__copy { color: var(--muted); font-size: 20px; font-weight: var(--font-weight-300); line-height: 1.4; margin: 18px 0 0; max-width: 620px; text-wrap: balance; }
+.power-up__visual { display: grid; gap: 12px; margin: 56px auto 0; max-width: 1080px; text-align: left; }
+.power-up__row { display: grid; grid-template-columns: 120px minmax(0, 1fr) 150px; align-items: center; gap: 24px; padding: 22px 0; border-top: 1px solid var(--border); }
+.power-up__row:last-child { border-bottom: 1px solid var(--border); }
+.power-up__label { margin: 0; font-size: 13px; color: var(--muted); }
+.power-up__row--after .power-up__label { color: var(--ink); }
+.power-up__tools { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.power-up__tools > span { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--background); font-size: 14px; color: var(--ink); white-space: nowrap; }
+.power-up__tools img, .power-up__tools svg { display: block; flex: none; width: 16px; height: 16px; object-fit: contain; }
+/* Today: apart and faded. */
+.power-up__row--before .power-up__tools { gap: 8px 14px; }
+.power-up__row--before .power-up__tools > span { color: var(--muted); border-style: dashed; }
+.power-up__row--before .power-up__tools img, .power-up__row--before .power-up__tools svg { filter: grayscale(1); opacity: .5; }
+/* With R.R Studio: joined on one line. */
+.power-up__row--after .power-up__tools { width: fit-content; }
+.power-up__row--after .power-up__tools::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--ink); }
+.power-up__row--after .power-up__tools > span { border-color: var(--ink); }
+/* Rev meter: twelve bars rising like a tachometer. */
+.power-up__rev { display: grid; justify-items: end; gap: 8px; }
+.power-up__meter { display: flex; align-items: flex-end; gap: 3px; height: 30px; }
+.power-up__meter i { width: 4px; height: calc(6px + var(--i) * 2px); border-radius: 1px; background: var(--border); }
+.power-up__meter i.is-on { background: var(--ink); }
+.power-up__row--before .power-up__meter i.is-on { background: var(--muted); }
+.power-up__state { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.power-up__row--after .power-up__state { color: var(--ink); }
+.power-up .ai-galleries__link { margin-top: 36px; }
+@media (max-width: 960px) {
+  .power-up__row { grid-template-columns: minmax(0, 1fr) auto; gap: 14px 20px; }
+  .power-up__label { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .power-up { padding: 64px 0 8px; }
+  #power-up-title { font-size: 24px; }
+  .power-up__copy { font-size: 17px; }
+  .power-up__visual { margin-top: 36px; }
+  .power-up__row { grid-template-columns: minmax(0, 1fr); }
+  .power-up__rev { justify-items: start; grid-auto-flow: column; align-items: end; justify-content: start; }
+  .power-up__row--after .power-up__tools::before { display: none; }
+  .power-up__tools > span { font-size: 13px; padding: 7px 11px; }
+}
+/* Two columns: the text on the left, the rev-up visual on the right. */
+@media (min-width: 1200px) {
+  .power-up { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 64px; align-items: center; max-width: 1180px; margin-inline: auto; text-align: left; }
+  .power-up__intro { align-items: flex-start; margin: 0; }
+  .power-up__copy { text-wrap: pretty; }
+  .power-up__visual { margin: 0; }
+  .power-up__row { grid-template-columns: minmax(0, 1fr) auto; gap: 14px 20px; }
+  .power-up__label { grid-column: 1 / -1; }
+}
+.power-up .ai-galleries__link { margin: 28px 0 0; }
+@media (max-width: 1199px) {
+  .power-up__intro .ai-galleries__link { margin: 28px auto 0; }
+  .power-up__visual { margin-top: 40px; }
+}
+@media (min-width: 1200px) {
+  .power-up__row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "label rev" "tools tools"; gap: 16px 20px; align-items: end; }
+  .power-up__label { grid-area: label; grid-column: auto; }
+  .power-up__rev { grid-area: rev; grid-auto-flow: column; align-items: end; gap: 10px; }
+  .power-up__tools { grid-area: tools; flex-wrap: nowrap; }
+  .power-up__tools > span { padding: 8px 11px; font-size: 13px; gap: 7px; }
+  .power-up__row--before .power-up__tools { gap: 10px; }
+}
+
+/* No more software visual: one collector question, three of your tools each bring their piece,
+ * and the AI writes the answer from all three. */
+.flow { display: grid; gap: 0; max-width: 620px; margin: 40px auto 0; text-align: left; }
+.flow__card { padding: 16px 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--background); }
+.flow__who { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
+.flow__who img { display: block; width: 14px; height: 14px; }
+.flow__card p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.flow__ask { justify-self: center; max-width: 420px; background: var(--surface-soft); border-color: transparent; }
+.flow__answer { border-color: var(--ink); }
+.flow__lines { display: block; width: 100%; height: 36px; overflow: visible; }
+.flow__lines path { fill: none; stroke: #cfcfcb; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.flow__sources { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.flow__source { display: grid; gap: 6px; justify-items: center; padding: 12px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--background); text-align: center; }
+.flow__tool { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+.flow__tool img { display: block; width: 14px; height: 14px; object-fit: contain; }
+.flow__source b { font-size: 13px; font-weight: var(--font-weight-400); color: var(--ink); }
+@media (min-width: 961px) {
+  .power-up { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 64px; align-items: center; max-width: 1180px; margin-inline: auto; text-align: left; }
+  .power-up__intro { align-items: flex-start; margin: 0; }
+  .power-up__intro .ai-galleries__link { margin: 28px 0 0; }
+  .flow { margin: 0; max-width: none; }
+}
+@media (max-width: 640px) {
+  .flow__sources { grid-template-columns: 1fr; }
+  .flow__lines { height: 24px; }
+  .flow__card p { font-size: 14px; }
+}
+@media (max-width: 640px) {
+  .flow__lines { display: none; }
+  .flow { gap: 10px; }
+}
+
+/* More air between sections: the same 100px above and below each (200px between two). */
+main > .studio-process,
+main > .power-up,
+main > .software-promo.software-promo--tools,
+main > .tasks,
+main > .workshop { padding-top: 100px; padding-bottom: 100px; }
+@media (max-width: 640px) {
+  main > .studio-process,
+  main > .power-up,
+  main > .software-promo.software-promo--tools,
+  main > .tasks,
+  main > .workshop { padding-top: 64px; padding-bottom: 64px; }
+}
+/* Even more air: 140px above and below each section (280px between two), 88px on phones. */
+main > .studio-process,
+main > .power-up,
+main > .software-promo.software-promo--tools,
+main > .tasks,
+main > .workshop,
+main > .quote,
+main > .faq { padding-top: 140px; padding-bottom: 140px; }
+@media (max-width: 640px) {
+  main > .studio-process,
+  main > .power-up,
+  main > .software-promo.software-promo--tools,
+  main > .tasks,
+  main > .workshop,
+  main > .quote,
+  main > .faq { padding-top: 88px; padding-bottom: 88px; }
 }
