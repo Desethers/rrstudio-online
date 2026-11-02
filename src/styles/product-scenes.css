@@ -386,7 +386,7 @@
   border-radius: 0 0 21px 21px;
 }
 .ps-stage .ps-panel.ps-gos {
-  top: 12px;
+  top: 44px;
   left: 24px;
   width: 560px;
   min-height: 640px;
@@ -567,3 +567,6 @@
 @media (hover: hover) {
   .software-promo--tools .product-cards > .product-card:hover { box-shadow: 0 14px 28px -22px rgba(17,17,16,.18); }
 }
+/* Tool card icons keep their size on hover (no zoom). */
+.software-promo--tools .product-cards > .product-card .product-app__icon,
+.software-promo--tools .product-cards > .product-card:hover .product-app__icon { width: 24px; height: 24px; }
