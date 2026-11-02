@@ -13917,3 +13917,8 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
   .studio-partner__features svg { margin-top: 3px; }
   .studio-partner__terms { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
+
+/* Quote: centred, with the photo, name and title as one centred line under it. */
+.quote blockquote { margin-inline: auto; text-align: center; }
+.quote blockquote p { text-align: center; text-wrap: balance; }
+.quote blockquote footer { justify-content: center; text-align: left; }

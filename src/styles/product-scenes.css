@@ -570,3 +570,10 @@
 /* Tool card icons keep their size on hover (no zoom). */
 .software-promo--tools .product-cards > .product-card .product-app__icon,
 .software-promo--tools .product-cards > .product-card:hover .product-app__icon { width: 24px; height: 24px; }
+/* Mail: without the recipient and subject lines, the message starts lower, clear of the card's logo. */
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { padding-top: 30px; }
+/* A hairline above the message, where the compose fields used to end. */
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { margin-top: 18px; padding-top: 14px; border-top: 1px solid #e8eaed; }
+/* The hairline is thinner and stops at the text margins instead of spanning the whole card. */
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { position: relative; border-top: 0; }
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body::before { content: ""; position: absolute; top: 0; left: 22px; right: 22px; height: 0.5px; background: #dadce0; }
