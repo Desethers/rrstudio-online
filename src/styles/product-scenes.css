@@ -577,3 +577,65 @@
 /* The hairline is thinner and stops at the text margins instead of spanning the whole card. */
 .software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { position: relative; border-top: 0; }
 .software-promo--tools .product-cards .product-scene--gmail .ps-compose-body::before { content: ""; position: absolute; top: 0; left: 22px; right: 22px; height: 0.5px; background: #dadce0; }
+
+/* Inventory: the Gallery OS artwork record (dashboard ArtworkForm.tsx), drawn at app scale with
+ * its zinc palette and shrunk as one block, below the card header. It fits the card's width (the
+ * image stays inside) and runs off the bottom edge. The main image sits in the media column
+ * itself, without a white frame around it. */
+.software-promo--tools .product-cards .product-scene--artwork { overflow: hidden; border-radius: 0 0 21px 21px; }
+.ps-stage .ps-panel.ps-gr {
+  top: 44px;
+  left: 18px;
+  width: 620px;
+  min-height: 680px;
+  padding: 0;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(24, 24, 27, .04);
+  color: #18181b;
+  font: 13px/1.45 system-ui, -apple-system, sans-serif;
+  scale: .52;
+  transform-origin: top left;
+}
+.ps-gr__head { padding: 12px 24px; border-bottom: 1px solid #e4e4e7; }
+.ps-gr__back { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: #a1a1aa; }
+.ps-gr__title { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-top: 8px; }
+.ps-gr__title > span:first-child { display: grid; gap: 2px; }
+.ps-gr__title b { font-size: 16px; font-weight: 500; color: #18181b; }
+.ps-gr__title small { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #3f3f46; }
+.ps-gr__title small em { font-style: normal; color: #d4d4d8; }
+.ps-gr__title small i { width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
+.ps-gr__save { padding: 7px 14px; border-radius: 8px; background: #18181b; color: #fff; font-size: 12px; font-weight: 500; }
+.ps-gr__grid { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 28px; padding: 24px; }
+.ps-gr__main { display: grid; gap: 18px; align-content: start; }
+.ps-stage .ps-gr .ps-gr__group { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #a1a1aa; }
+.ps-stage .ps-gr .ps-gr__group--rule { margin-top: 6px; padding-top: 22px; border-top: 1px solid #f4f4f5; }
+.ps-gr__field { display: grid; gap: 6px; min-width: 0; }
+.ps-gr__field label { font-size: 11px; font-weight: 500; color: #3f3f46; }
+.ps-gr__input { position: relative; display: flex; align-items: center; height: 32px; padding: 0 12px; border: 1px solid #e4e4e7; border-radius: 6px; font-size: 13px; color: #18181b; white-space: nowrap; overflow: hidden; }
+.ps-gr__input em { position: absolute; right: 12px; display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-style: normal; color: #059669; }
+.ps-gr__row { display: flex; gap: 16px; }
+.ps-gr__row > .ps-gr__field { flex: 1; }
+.ps-gr__row > .ps-gr__field--year { flex: 0 0 112px; }
+.ps-gr__dims { display: flex; align-items: flex-start; gap: 8px; }
+.ps-gr__dims > b { height: 30px; display: flex; align-items: center; font-weight: 400; color: #d4d4d8; }
+.ps-gr__dim { display: grid; gap: 4px; }
+.ps-gr__dim i { display: flex; align-items: center; justify-content: center; width: 64px; height: 30px; border: 1px solid #e4e4e7; border-radius: 6px; font-style: normal; font-size: 13px; font-variant-numeric: tabular-nums; }
+.ps-gr__dim small { text-align: center; font-size: 10px; color: #a1a1aa; }
+.ps-gr__pills { display: flex; gap: 6px; }
+.ps-gr__pills span { padding: 4px 12px; border: 1px solid #e4e4e7; border-radius: 999px; font-size: 12px; color: #52525b; }
+.ps-gr__pills .is-on { background: #18181b; border-color: #18181b; color: #fff; }
+.ps-gr__media { display: grid; gap: 10px; align-content: start; }
+.ps-stage .ps-gr .ps-gr__media-head { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 12px; font-weight: 500; color: #27272a; }
+.ps-gr__media-head svg { color: #a1a1aa; }
+.ps-gr__media-head span { margin-left: auto; font-size: 11px; font-weight: 400; color: #a1a1aa; }
+.ps-gr__image { position: relative; display: block; aspect-ratio: 1; border-radius: 8px; overflow: hidden; }
+.software-promo--tools .product-scene--artwork .ps-gr__image img { display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 0; box-shadow: none; background: none; }
+.ps-gr__image em { position: absolute; left: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .9); color: #047857; font-size: 10px; font-style: normal; }
+.ps-gr__thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.software-promo--tools .product-scene--artwork .ps-gr__thumbs img { display: block; width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; border-radius: 6px; box-shadow: none; background: none; }
+.ps-gr__thumbs i { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border: 2px dashed #e4e4e7; border-radius: 6px; font-style: normal; font-size: 16px; color: #a1a1aa; }
+/* Mail: the message moves up and the hairline is gone. */
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { margin-top: 0; padding-top: 22px; border-top: 0; }
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-body::before { display: none; }

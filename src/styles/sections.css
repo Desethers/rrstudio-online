@@ -9654,7 +9654,7 @@ h2,
   --fs: 72;
   --inv-w: 560;
   --inv-h: 540;
-  --s-rest: calc(var(--fs) * 1.1 / var(--inv-h));
+  --s-rest: calc(var(--fs) * 1.5 / var(--inv-h));
   --s-open: 0.5;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   min-height: 0;
@@ -9836,7 +9836,7 @@ h2,
 .hero-stage .service-estimate {
   border: 0;
   border-radius: 40px;
-  box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
+  box-shadow: 0 0 0 6.5px rgba(17, 17, 16, 0.09);
 }
 .hero-stage:has(.service-estimate:hover) .service-estimate,
 .hero-stage .service-estimate:focus-visible {
@@ -10003,7 +10003,7 @@ h2,
 }
 /* At rest the ring is drawn at 9px so it still reads as a 1px hairline after the scale-down. */
 .hero-stage .service-estimate {
-  box-shadow: 0 0 0 9px rgba(17, 17, 16, 0.09);
+  box-shadow: 0 0 0 6.5px rgba(17, 17, 16, 0.09);
 }
 .hero-stage:has(.service-estimate:hover) .service-estimate,
 .hero-stage .service-estimate:focus-visible {
@@ -10087,7 +10087,7 @@ h2,
     --s-open: calc(var(--s-rest) * 2);
   }
   .hero-stage .service-estimate {
-    box-shadow: 0 0 0 16px rgba(17, 17, 16, 0.09);
+    box-shadow: 0 0 0 11.5px rgba(17, 17, 16, 0.09);
   }
   .hero-stage:has(.service-estimate:hover) .service-estimate,
   .hero-stage .service-estimate:focus-visible,
@@ -13148,20 +13148,6 @@ h2,
   }
 }
 
-/* Task card hover: white surface with a 0.5px grey stroke (the hairline is always there,
- * transparent at rest, so nothing shifts). */
-.task-card {
-  border-width: 0.5px;
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease;
-}
-.task-card:hover,
-.task-card:focus-visible {
-  background: var(--background);
-  border-color: #cfcfcb;
-}
-
 /* Category filters: same corner radius as the task card labels. */
 .task-filters .filter {
   border-radius: 10px;
@@ -13922,3 +13908,9 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 .quote blockquote { margin-inline: auto; text-align: center; }
 .quote blockquote p { text-align: center; text-wrap: balance; }
 .quote blockquote footer { justify-content: center; text-align: left; }
+/* Apps title: each sentence on its own line. */
+#software-promo-title span { display: block; }
+#software-promo-title span { text-wrap: balance; }
+
+/* The close button sits at the end of the opened grid, with room above it. */
+.task-catalogue + .task-catalogue-toggle { margin: 40px auto 0; }

@@ -2563,7 +2563,7 @@ document.querySelector('.filter[data-component-default]')?.click();
   const catalogue = document.createElement('div');
   catalogue.className = 'task-catalogue';
   catalogue.id = 'task-catalogue';
-  filters.before(fan, toggle, catalogue);
+  filters.before(fan, catalogue, toggle);
   catalogue.append(filters, taskGrid, taskFeature);
   catalogue.hidden = true;
   section.classList.add('tasks--foldable');
