@@ -639,3 +639,19 @@
 /* Mail: the message moves up and the hairline is gone. */
 .software-promo--tools .product-cards .product-scene--gmail .ps-compose-body { margin-top: 0; padding-top: 22px; border-top: 0; }
 .software-promo--tools .product-cards .product-scene--gmail .ps-compose-body::before { display: none; }
+/* Mail: the Send row sits one notch higher in the card. */
+.software-promo--tools .product-cards .product-scene--gmail .ps-compose-toolbar { flex: 0 0 57px; padding-bottom: 20px; }
+/* Inventory: the whole record stays inside the card and ends about 20px above its bottom edge (the
+ * same room the Mail card keeps under its Send row); the fields share the extra height. */
+.ps-stage .ps-panel.ps-gr { min-height: 645px; display: flex; flex-direction: column; }
+.ps-gr__head { flex: none; }
+.ps-gr__grid { flex: 1; padding-bottom: 28px; }
+.ps-gr__main { align-content: space-between; }
+/* Inventory: no outline around the record. */
+.ps-stage .ps-panel.ps-gr { border: 0; box-shadow: none; }
+/* Inventory: the record is one notch taller, starting a little higher and ending closer to the bottom. */
+.ps-stage .ps-panel.ps-gr { top: 34px; min-height: 680px; }
+/* Inventory: the bottom of the record moves up, leaving a wider margin under it. */
+.ps-stage .ps-panel.ps-gr { min-height: 658px; }
+/* Inventory: one more notch of height, gained at the top (the bottom margin stays). */
+.ps-stage .ps-panel.ps-gr { top: 20px; min-height: 685px; }

@@ -13914,3 +13914,5 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 
 /* The close button sits at the end of the opened grid, with room above it. */
 .task-catalogue + .task-catalogue-toggle { margin: 40px auto 0; }
+/* Apps description: one sentence per line, each balanced when it has to wrap. */
+.software-promo--tools .software-promo__description p span { display: block; text-wrap: balance; }
