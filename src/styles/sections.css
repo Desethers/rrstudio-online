@@ -11529,11 +11529,9 @@ h2,
   }
 }
 
-/* Studio card: shadow one step lighter. */
+/* Studio card: shadow appears only on hover. */
 .studio-card {
-  box-shadow:
-    0 10px 18px -14px rgba(17, 17, 16, 0.08),
-    0 0 16px -8px rgba(17, 17, 16, 0.05);
+  box-shadow: none;
 }
 .studio-card:hover {
   box-shadow:
@@ -13916,3 +13914,36 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 .task-catalogue + .task-catalogue-toggle { margin: 40px auto 0; }
 /* Apps description: one sentence per line, each balanced when it has to wrap. */
 .software-promo--tools .software-promo__description p span { display: block; text-wrap: balance; }
+
+/* Closing sentence follows the original three-step editorial layout. */
+.studio-process__closing {
+  max-width: 680px;
+  margin: 40px auto 0;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+@media (max-width: 640px) {
+  .studio-process__closing { font-size: 17px; }
+}
+
+.studio-process .studio-process__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 12px;
+  color: var(--ink);
+  stroke-width: 1.5;
+}
+@media (max-width: 640px) {
+  .studio-process .studio-process__icon { margin-bottom: 12px; }
+}
+
+.studio-process .ai-step { border-top: 0; }
+
+.studio-partner__form { margin-top: 32px; max-width: 400px; }
+.studio-partner__form .big-footer__stay { color: #c2c2be; }
+.studio-partner__form .big-footer__status { font-size: 12px; line-height: 1.5; }

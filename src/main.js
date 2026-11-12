@@ -8,6 +8,8 @@ import { ACCESS_ENDPOINT } from "./endpoint.js";
 import "./footer-form.js";
 import "./mobile-menu.js";
 import {
+  BrainCircuit,
+  Send,
   BadgeCheck,
   BadgeEuro,
   Clock,
@@ -1566,7 +1568,7 @@ if (tasks.some((task) => task.id === addedFromPage)) selected.add(addedFromPage)
 renderTasks();
 updateSummary();
 createIcons({
-  icons: { BadgeCheck, BadgeEuro, Clock, Database, Files, MapPin, Monitor, Plug, Search, Wrench },
+  icons: { BrainCircuit, Send, BadgeCheck, BadgeEuro, Clock, Database, Files, MapPin, Monitor, Plug, Search, Wrench },
 });
 
 // Drag the estimate ticket down to collapse it to a peeking strip, or up to reopen it.

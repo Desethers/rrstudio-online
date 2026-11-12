@@ -18,7 +18,7 @@ const LABELS = {
     fields: { interest: "Interested in", name: "Name", email: "Email", gallery: "Gallery", website: "Website", message: "Message" },
     introFooter: "Someone left their email in the site footer. Reply to this email to write to them.",
     introStarter: "Someone wants to book a Gallery AI Starter call. Reply with your Cal.com link so they can pick a time.",
-    source: { contact: "Contact page", dialog: "“Let’s talk” on a tool card", footer: "Site footer", starter: "Gallery AI Starter card" },
+    source: { contact: "Contact page", dialog: "“Let’s talk” on a tool card", footer: "Site footer", partner: "Studio Partner", starter: "Gallery AI Starter card" },
     footer: "Sent from rrstudio.online",
     reply: "Reply",
   },
@@ -28,7 +28,7 @@ const LABELS = {
     fields: { interest: "Ce qui l’intéresse", name: "Nom", email: "E-mail", gallery: "Galerie", website: "Site web", message: "Message" },
     introFooter: "Quelqu’un a laissé son e-mail dans le pied de page du site. Répondez à cet e-mail pour lui écrire.",
     introStarter: "Quelqu’un veut réserver un appel Gallery AI Starter. Répondez avec votre lien Cal.com pour qu’il choisisse un créneau.",
-    source: { contact: "Page Contact", dialog: "« En parler » sur une carte d’outil", footer: "Pied de page du site", starter: "Carte Gallery AI Starter" },
+    source: { contact: "Page Contact", dialog: "« En parler » sur une carte d’outil", footer: "Pied de page du site", partner: "Studio Partner", starter: "Carte Gallery AI Starter" },
     footer: "Envoyé depuis rrstudio.online",
     reply: "Répondre",
   },
@@ -147,21 +147,23 @@ export default async function handler(req, res) {
     source:
       body.source === "contact page"
         ? "contact"
-        : body.source === "footer" || body.source === "starter"
+        : body.source === "footer" || body.source === "starter" || body.source === "partner"
           ? body.source
           : "dialog",
   };
 
   if (!EMAIL.test(data.email)) return res.status(400).json({ ok: false, error: "invalid_email" });
   // The footer and Gallery AI Starter forms only ask for an email address; the other forms need more.
-  if (data.source !== "footer" && data.source !== "starter") {
+  if (data.source !== "footer" && data.source !== "starter" && data.source !== "partner") {
     if (!data.gallery) return res.status(400).json({ ok: false, error: "missing_gallery" });
     if (!data.message && !data.interest) return res.status(400).json({ ok: false, error: "missing_content" });
   }
 
   data.subject =
     line(body._subject, 150) ||
-    (data.source === "starter"
+    (data.source === "partner"
+      ? `Studio Partner — ${data.email}`
+      : data.source === "starter"
       ? `${lang === "fr" ? "Appel Gallery AI Starter" : "Gallery AI Starter call"} — ${data.email}`
       : data.source === "footer"
       ? `${lang === "fr" ? "Adresse laissée sur le site" : "Email left on the site"} — ${data.email}`
