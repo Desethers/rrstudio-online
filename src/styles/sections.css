@@ -13944,6 +13944,90 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 
 .studio-process .ai-step { border-top: 0; }
 
-.studio-partner__form { margin-top: 32px; max-width: 400px; }
+.studio-partner__form { margin-top: 32px; width: 100%; max-width: none; }
+.studio-partner__form .big-footer__field { width: 100%; max-width: none; }
 .studio-partner__form .big-footer__stay { color: #c2c2be; }
 .studio-partner__form .big-footer__status { font-size: 12px; line-height: 1.5; }
+
+.studio-partner .workshop-card__main .eyebrow { text-transform: none; }
+
+/* A compact contact card within Studio Partner. */
+.studio-partner__support {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid #ffffff14;
+  border-radius: 20px;
+  background: #ffffff05;
+}
+.workshop .studio-partner .studio-partner__support h3 { font-size: 18px; line-height: 1.35; }
+.studio-partner__support > p { margin-top: 10px; font-size: 15px; line-height: 1.5; }
+.studio-partner__support .studio-partner__form { margin-top: 20px; }
+.studio-partner__form .big-footer__stay { margin-bottom: 10px; font-size: 13px; }
+.studio-partner__form .big-footer__field { padding: 4px 4px 4px 14px; gap: 10px; }
+.studio-partner__form .big-footer__field input { padding: 8px 0; font-size: 14px; }
+.studio-partner__form .big-footer__field button { width: 32px; height: 32px; }
+@media (max-width: 640px) {
+  .studio-partner__support { padding: 20px; }
+}
+
+@media (min-width: 761px) {
+  .workshop .workshop-card.studio-partner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    column-gap: clamp(64px, 8vw, 112px);
+  }
+  .studio-partner__features { display: flex; padding-bottom: 24px; }
+  .studio-partner__features ul {
+    width: 100%;
+    align-content: space-between;
+    gap: 30px;
+  }
+}
+
+/* Studio Partner: light outer card, dark contact inset. */
+.workshop .workshop-card.studio-partner {
+  background: var(--background);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+.studio-partner .workshop-card__main .eyebrow { color: var(--muted); }
+.workshop .studio-partner .workshop-card__main > h2,
+.workshop .studio-partner .studio-partner__features h3 { color: var(--ink); }
+.workshop .studio-partner .workshop-card__main > p.workshop-card__lead,
+.studio-partner__features p { color: var(--muted); }
+.studio-partner__features svg { color: var(--ink); }
+.studio-partner__support { background: #111110; border-color: #111110; color: #fff; }
+.workshop .studio-partner .studio-partner__support h3 { color: #fff; }
+.studio-partner__support > p { color: #92928e; }
+@media (max-width: 760px) {
+  .studio-partner__features { border-top-color: var(--border); }
+}
+
+/* An open editorial layout with rules between the services. */
+.workshop .workshop-card.studio-partner { border: 0; }
+.studio-partner__support { border: 0; }
+.studio-partner__features ul { gap: 0; }
+.studio-partner__features li { padding: 24px 0; }
+.studio-partner__features li:first-child { padding-top: 0; }
+.studio-partner__features li + li { border-top: 1px solid var(--border); }
+.workshop .studio-partner .studio-partner__features h3 {
+  font-size: 20px;
+  font-weight: var(--font-weight-400);
+  letter-spacing: -.02em;
+}
+.studio-partner__features p { font-size: 16px; font-weight: var(--font-weight-300); }
+@media (min-width: 761px) {
+  .studio-partner__features { padding-bottom: 0; }
+  .studio-partner__features ul { align-content: normal; grid-template-rows: repeat(4, 1fr); }
+}
+@media (max-width: 760px) {
+  .studio-partner__features { border-top: 0; }
+}
+
+/* Compact service rows: useful copy takes the place of stretched whitespace. */
+.studio-partner__features li { padding: 18px 0; }
+.studio-partner__features p { margin-top: 6px; max-width: 43ch; line-height: 1.5; }
+@media (min-width: 761px) {
+  .studio-partner__features { align-self: center; padding-top: 0; }
+  .studio-partner__features ul { grid-template-rows: none; align-content: start; }
+}
