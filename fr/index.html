@@ -363,13 +363,30 @@
         }
       }
     </style>
-  </head>
+  <style>
+/* Studio-led Apps presentation — reuses R.R Studio design tokens and components. */
+.studio-apps-editorial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:clamp(24px,5vw,84px);margin:clamp(34px,5vw,82px) 0 52px;padding:32px 0;border-top:1px solid var(--border,#ddd);border-bottom:1px solid var(--border,#ddd)}
+.studio-apps-editorial__lead{max-width:420px}
+.studio-apps-editorial__lead>p:last-child{font-size:clamp(19px,2.3vw,29px);font-weight:400;line-height:1.38;letter-spacing:-.035em;margin:25px 0 0}
+.studio-apps-editorial__list{display:flex;flex-direction:column}
+.studio-apps-editorial__list>a{display:grid;grid-template-columns:28px minmax(0,1fr) 22px;gap:18px;align-items:center;padding:21px 0;text-decoration:none;color:inherit;border-bottom:1px solid var(--border,#ddd)}
+.studio-apps-editorial__list>a:first-child{border-top:1px solid var(--border,#ddd)}
+.studio-apps-editorial__list strong{display:block;font-size:clamp(18px,2.5vw,28px);font-weight:450;letter-spacing:-.045em;line-height:1.15}
+.studio-apps-editorial__list small{display:block;font-size:13px;line-height:1.5;margin-top:7px;opacity:.65}
+.studio-apps-editorial__num{font-size:11px;opacity:.55}
+.studio-apps-editorial__list>a>span:last-child{font-size:20px;transition:transform .2s ease}
+.studio-apps-editorial__list>a:hover>span:last-child{transform:translate(3px,-3px)}
+.studio-apps-subheading{display:flex;align-items:baseline;justify-content:space-between;gap:30px;margin:0 0 22px}
+.studio-apps-subheading>p:last-child{max-width:520px;font-size:14px;line-height:1.6;opacity:.7}
+@media(max-width:760px){.studio-apps-editorial{grid-template-columns:1fr;gap:28px;margin:36px 0}.studio-apps-editorial__lead>p:last-child{margin-top:16px}.studio-apps-subheading{display:block}.studio-apps-subheading>p:last-child{margin-top:10px}.studio-apps-editorial__list>a{gap:10px}}
+</style>
+</head>
   <body>
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="#top">R.R <span>Studio</span></a>
         <nav class="nav" aria-label="Navigation principale">
-          <a href="#products">Outils</a><span class="nav-menu"><a href="#tasks">Tâches</a><span class="nav-menu__panel"><a href="/fr/taches/site-web/">Site web et visibilité</a><a href="/fr/taches/inventaire/">Inventaire</a><a href="/fr/taches/supports-de-vente/">Supports de vente</a></span></span><a href="/fr/contact/">Contact</a
+          <a href="#products">Apps</a><span class="nav-menu"><a href="#tasks">Tasks</a><span class="nav-menu__panel"><a href="/fr/taches/site-web/">Site web et visibilité</a><a href="/fr/taches/inventaire/">Inventaire</a><a href="/fr/taches/supports-de-vente/">Supports de vente</a></span></span><a href="#ways">Partner</a><a href="/fr/contact/">Contact</a
           ><a href="#how-it-works" hidden>Comment ça marche</a>
         </nav>
         <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
@@ -377,8 +394,8 @@
       <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <nav class="mobile-menu__nav" aria-label="Menu principal">
           <a class="mm-card" href="/fr/#products">
-            <span class="mm-eyebrow">Outils</span>
-            <span class="mm-row">Chat, Mail, Assistant, Inventory<span class="mm-arrow" aria-hidden="true">↗</span></span>
+            <span class="mm-eyebrow">Apps</span>
+            <span class="mm-row">Applications et outils sur mesure<span class="mm-arrow" aria-hidden="true">↗</span></span>
             <span class="mm-icons" aria-hidden="true"><span class="mm-ic"><img src="/logos/whatsapp.svg" alt="" width="22" height="22" /></span><span class="mm-ic"><img src="/logos/gmail.png" alt="" width="22" height="22" /></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6"/></svg></span><span class="mm-ic mm-ic--mark"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></span></span>
           </a>
           <div class="mm-card">
@@ -450,7 +467,7 @@
               </div>
             </div>
             <div class="invoice-footer">
-              <span>Paiement après livraison</span><strong>Sans abonnement · Sans forfait</strong>
+              <span>Paiement après livraison</span><strong>Tâches à prix fixe · Sans forfait</strong>
             </div>
           </aside>
             </div>
@@ -511,20 +528,32 @@
         </div>
       </section>
       <section class="studio-process" aria-labelledby="studio-process-title">
-        <p class="eyebrow">Notre accompagnement</p>
-        <h2 id="studio-process-title">Du site web à vos applications, un seul studio.</h2>
+        <p class="eyebrow">Notre méthode</p>
+        <h2 id="studio-process-title">Du besoin à l’outil. Un seul studio.</h2>
         <ol class="ai-steps"><li class="ai-step"><i class="studio-process__icon" data-lucide="brain-circuit" aria-hidden="true"></i><h3>Comprendre</h3><p>Nous relions les informations sur les œuvres, les échanges avec les collectionneurs et l’activité de la galerie pour faire ressortir l’essentiel.</p></li><li class="ai-step"><i class="studio-process__icon" data-lucide="plug" aria-hidden="true"></i><h3>Connecter</h3><p>Nous réunissons les outils et les informations que votre galerie utilise déjà, de Gmail et Drive à votre inventaire d’œuvres.</p></li><li class="ai-step"><i class="studio-process__icon" data-lucide="send" aria-hidden="true"></i><h3>Agir</h3><p>Nous transformons ce contexte en actions concrètes : préparer des réponses aux collectionneurs, envoyer des synthèses à l’équipe et actualiser les fiches d’œuvres.</p></li></ol>
-        <p class="studio-process__closing">Une couche d’IA sur vos outils existants, pas une nouvelle application à apprendre.</p>
+        <p class="studio-process__closing">Des solutions adaptées à votre organisation, sans vous imposer un nouveau logiciel.</p>
         <a class="ai-galleries__link" href="/fr/contact/">Dites-nous ce qu’il vous faut <span aria-hidden="true">→</span></a>
       </section>
       <section class="software-promo software-promo--tools" id="products" aria-labelledby="software-promo-title">
         <div class="software-promo__intro">
           <p class="eyebrow">Apps</p>
-          <h2 id="software-promo-title"><span>De petits outils.</span> <span>Adaptés à votre façon de travailler.</span></h2>
+          <h2 id="software-promo-title"><span>Vos méthodes.</span> <span>Vos applications.</span></h2>
           <div class="software-promo__description">
-            <p><span>Inventaire, e‑mails aux collectionneurs, suivi quotidien.</span> <span>Des outils que nous créons ou adaptons à vos besoins.</span></p>
+            <p><span>Nous dessinons et développons des applications pour les galeries, marchands et conseillers en art.</span> <span>De petits outils ciblés aux logiciels métier sur mesure, en partant de votre façon de travailler.</span></p>
           </div>
         </div>
+<div class="studio-apps-editorial" aria-label="Exemples d'applications métier">
+          <div class="studio-apps-editorial__lead">
+            <p class="eyebrow">Ce que nous pouvons construire</p>
+            <p>Un problème précis mérite parfois mieux qu’un logiciel de plus. Nous créons l’outil qui manque à votre organisation — et le connectons à ceux que vous avez déjà.</p>
+          </div>
+          <div class="studio-apps-editorial__list">
+            <a href="/fr/contact/?project=artwork-inventory"><span class="studio-apps-editorial__num">01</span><span><strong>Artwork inventory</strong><small>Œuvres, documents, prix et disponibilités</small></span><span aria-hidden="true">↗</span></a>
+            <a href="/fr/contact/?project=collector-crm"><span class="studio-apps-editorial__num">02</span><span><strong>Collector relationships</strong><small>Contacts, conversations et relances</small></span><span aria-hidden="true">↗</span></a>
+            <a href="/fr/contact/?project=exhibition-workflow"><span class="studio-apps-editorial__num">03</span><span><strong>Exhibition workflows</strong><small>Prêts, transports, plannings et équipes</small></span><span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="studio-apps-subheading"><p class="eyebrow">Des outils plus légers</p><p>Parfois, une petite application suffit. Voici quelques exemples de ce que nous pouvons intégrer à vos habitudes.</p></div>
         <div class="product-cards product-cards--line">
           <article class="product-card">
             <div class="product-visual product-visual--gmail product-scene product-scene--gmail" role="img" aria-label="Un brouillon Gmail avec une œuvre et ses informations insérées, prêt à envoyer."><div class="ps-stage" aria-hidden="true">
