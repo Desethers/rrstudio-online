@@ -110,9 +110,9 @@ const TASK_COPY = {
     },
     "fix-website-issue": {
       label: "Website",
-      title: "Fix a website issue",
+      title: "Fix my website",
       description:
-        "Something looks wrong or stopped working? I investigate and fix one defined issue.",
+        "Mobile issues, broken pages, slow loading or small improvements.",
     },
     "organise-database": {
       label: "Inventory",
@@ -127,13 +127,13 @@ const TASK_COPY = {
     },
     "import-artworks": {
       label: "Inventory",
-      title: "Import 50 artworks",
-      description: "Import up to 50 structured artwork rows from a spreadsheet into your existing inventory.",
+      title: "Migrate my inventory",
+      description: "Move artwork data between spreadsheets and existing inventory tools.",
     },
     "clean-records": {
       label: "Inventory",
-      title: "Clean 50 artwork records",
-      description: "Correct inconsistent fields in up to 50 existing artwork records.",
+      title: "Clean up my inventory",
+      description: "Organize artwork records, images, dimensions, prices and availability.",
     },
     "artlogic-check": {
       label: "Inventory",
@@ -149,34 +149,33 @@ const TASK_COPY = {
     },
     "collector-emails": {
       label: "Sales material",
-      title: "Prepare your collector emails",
+      title: "Set up my newsletter",
       description:
-        "Turn your artwork information into ready-to-use email templates for collector inquiries and follow-ups.",
+        "Connect your mailing list, signup form and newsletter tool.",
     },
     "viewing-room": {
       label: "Sales material",
-      title: "Private viewing room",
+      title: "Prepare my gallery for an art fair",
       description:
-        "Prepare and publish a private online artwork selection for a collector.",
+        "Update fair artworks, publish fair page, check prices and prepare a collector email.",
     },
     "seo-check": {
       label: "Visibility",
-      title: "Check artist page visibility",
+      title: "Improve my Google visibility",
       description:
-        "Review one artist page for Google indexing issues; receive a fix list, not site changes.",
+        "Improve your website's SEO so collectors can find you.",
     },
     "ai-search": {
       label: "Visibility",
-      title: "Prepare your gallery for AI search",
+      title: "Make my website AI-ready",
       description:
-        "Help AI search tools better discover and understand your gallery, artists and exhibitions.",
+        "Help AI search engines understand your artists, artworks and exhibitions.",
     },
     "website-migration": {
       label: "Website Migration",
       title: "Move beyond WordPress.",
       description:
-        "A faster gallery website, an easy-to-use CMS, and all your artists, exhibitions and artworks in one place.",
-      note: "Website migration, CMS setup and SEO redirects included. Complex migrations quoted separately.",
+        "Move your gallery website to a faster, more flexible platform. Manage artists, exhibitions and artworks from one simple CMS. No coding required.",
     },
   },
   fr: {
@@ -212,9 +211,9 @@ const TASK_COPY = {
     },
     "fix-website-issue": {
       label: "Site web",
-      title: "Corriger un problème sur le site",
+      title: "Réparer mon site",
       description:
-        "Quelque chose s’affiche mal ou ne fonctionne plus ? Je cherche et je corrige un problème défini.",
+        "Problèmes mobiles, pages cassées, lenteurs ou petites améliorations.",
     },
     "organise-database": {
       label: "Inventaire",
@@ -229,13 +228,13 @@ const TASK_COPY = {
     },
     "import-artworks": {
       label: "Inventaire",
-      title: "Importer 50 œuvres",
-      description: "Importer jusqu’à 50 lignes structurées depuis un tableur dans votre inventaire existant.",
+      title: "Migrer mon inventaire",
+      description: "Déplacer les données d’œuvres entre tableurs et outils d’inventaire existants.",
     },
     "clean-records": {
       label: "Inventaire",
-      title: "Nettoyer 50 fiches d’œuvres",
-      description: "Corriger les champs incohérents de 50 fiches d’œuvres existantes au maximum.",
+      title: "Remettre mon inventaire en ordre",
+      description: "Organiser les fiches d’œuvres, images, dimensions, prix et disponibilités.",
     },
     "artlogic-check": {
       label: "Inventaire",
@@ -251,34 +250,33 @@ const TASK_COPY = {
     },
     "collector-emails": {
       label: "Supports de vente",
-      title: "Préparer vos e-mails aux collectionneurs",
+      title: "Mettre en place ma newsletter",
       description:
-        "Transformer les informations sur vos œuvres en modèles d’e-mails prêts à utiliser pour les demandes et les relances.",
+        "Connecter votre liste de diffusion, formulaire d’inscription et outil de newsletter.",
     },
     "viewing-room": {
       label: "Supports de vente",
-      title: "Viewing room privée",
+      title: "Préparer ma galerie pour une foire",
       description:
-        "Préparation et mise en ligne d’une sélection privée d’œuvres pour un collectionneur.",
+        "Mettre à jour les œuvres de la foire, publier la page, vérifier les prix et préparer un e-mail aux collectionneurs.",
     },
     "seo-check": {
       label: "Visibilité",
-      title: "Vérifier la visibilité d’une page artiste",
+      title: "Améliorer ma visibilité sur Google",
       description:
-        "Examiner les problèmes d’indexation Google d’une page artiste ; recevoir une liste de corrections, sans modifier le site.",
+        "Améliorer le SEO de votre site pour que les collectionneurs vous trouvent.",
     },
     "ai-search": {
       label: "Visibilité",
-      title: "Préparer votre galerie à la recherche par IA",
+      title: "Rendre mon site prêt pour l’IA",
       description:
-        "Aider les outils de recherche par IA à mieux découvrir et comprendre votre galerie, vos artistes et vos expositions.",
+        "Aider les moteurs de recherche IA à comprendre vos artistes, œuvres et expositions.",
     },
     "website-migration": {
       label: "Migration de site",
       title: "Laisser WordPress derrière vous.",
       description:
-        "Un site de galerie plus rapide, un CMS simple à utiliser, et tous vos artistes, expositions et œuvres au même endroit.",
-      note: "Migration du site, mise en place du CMS et redirections SEO incluses. Migrations complexes sur devis.",
+        "Passez votre site de galerie sur une plateforme plus rapide et plus souple. Gérez artistes, expositions et œuvres depuis un seul CMS simple. Aucun code requis.",
     },
   },
 };
@@ -533,24 +531,15 @@ const TASK_BRIEFS = {
 
 /* Ids, categories and prices are shared; only the wording differs per locale. */
 const tasks = [
-  { id: "publish-exhibition", category: "website", price: 120 },
-  { id: "opening-website", category: "website", price: 290 },
-  { id: "artist-page", category: "website", price: 90 },
-  { id: "connect-inventory", category: "website", price: 490 },
-  { id: "update-artworks", category: "website", price: 90 },
-  { id: "fix-website-issue", category: "website", price: 90 },
-  { id: "organise-database", category: "database", price: 150 },
-  { id: "pdf-to-records", category: "database", price: 290 },
-  { id: "import-artworks", category: "database", price: 220 },
-  { id: "clean-records", category: "database", price: 180 },
-  { id: "artlogic-check", category: "database", price: 120 },
-  { id: "collector-pdf", category: "sales-material", price: 80 },
-  { id: "collector-emails", category: "sales-material", price: 250 },
-  { id: "viewing-room", category: "sales-material", price: 120 },
-  { id: "seo-check", category: "visibility", price: 120 },
-  /* Bento card spanning two grid columns, on the left of the final row next to the last task. Priced "from". */
-  { id: "website-migration", category: "website", price: 890, from: true, wide: true },
-  { id: "ai-search", category: "visibility", price: 290 },
+  { id: "publish-exhibition", category: "website", price: 250 },
+  { id: "clean-records", category: "database", price: 380 },
+  { id: "seo-check", category: "visibility", price: 350 },
+  { id: "ai-search", category: "visibility", price: 390 },
+  { id: "viewing-room", category: "sales-material", price: 490 },
+  { id: "collector-emails", category: "sales-material", price: 290 },
+  { id: "import-artworks", category: "database", price: 490 },
+  { id: "fix-website-issue", category: "website", price: 190 },
+  { id: "website-migration", category: "website", price: 890 },
 ].map((task) => ({ ...task, ...TASK_COPY[LANG][task.id] }));
 
 const grid = document.querySelector("#task-grid");
@@ -2422,7 +2411,7 @@ document.querySelector('.filter[data-component-default]')?.click();
   fan.setAttribute('aria-label', LANG === 'fr' ? 'Exemples de tâches' : 'Example tasks');
   const foldedCardStyles = new WeakMap();
   const cards = [...taskGrid.querySelectorAll('.task-card:not(.task-card--wide)')];
-  [0, 6, 11, 2].forEach((index, position) => {
+  [0, 6, 4, 2].forEach((index, position) => {
     const card = cards[index]?.cloneNode(true);
     if (!card) return;
     card.style.setProperty('--fan-index', position);
@@ -2611,22 +2600,32 @@ document.querySelector('.filter[data-component-default]')?.click();
       gsap.set([filters, ...arrivingCards], { clearProps: 'opacity,transform' });
       catalogueTransition = null;
     };
+    /* The fanned cards travel one after the other (each with its own glyph), the toggle follows
+     * the layout without delay, and the cards that were not in the fan rise out of the stack
+     * in reading order once the first ones are underway. */
+    const sharedOrder = targetCards.filter(card => sourceIds.has(card.dataset.flipId));
+    const travelDelay = (index, element) => {
+      const card = element.closest('.task-card');
+      const position = sharedOrder.indexOf(card);
+      return position < 0 ? 0 : position * .07;
+    };
     catalogueTransition = Flip.from(state, {
       targets: [...sharedTargets, toggle],
       nested: true,
       scale: true,
-      duration: .7,
-      ease: 'power3.inOut',
+      duration: 1,
+      ease: 'expo.inOut',
+      stagger: travelDelay,
       prune: true,
       onComplete: finish,
     });
     if (expanded) {
       catalogueTransition.fromTo(filters,
-        { opacity: 0, y: 8 },
-        { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, .22);
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, .35);
       catalogueTransition.fromTo(arrivingCards,
-        { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: .4, stagger: .018, ease: 'power2.out' }, .22);
+        { opacity: 0, y: 36, scale: .94, transformOrigin: '50% 0%' },
+        { opacity: 1, y: 0, scale: 1, duration: .75, stagger: .06, ease: 'power3.out' }, .4);
     }
   };
   setExpanded(false);

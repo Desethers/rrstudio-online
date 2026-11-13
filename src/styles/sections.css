@@ -9654,7 +9654,7 @@ h2,
   --fs: 72;
   --inv-w: 560;
   --inv-h: 540;
-  --s-rest: calc(var(--fs) * 1.5 / var(--inv-h));
+  --s-rest: calc(var(--fs) * 2.3 / var(--inv-h));
   --s-open: 0.5;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   min-height: 0;
@@ -11669,7 +11669,7 @@ h2,
 }
 .hero-stage .service-estimate[data-fold] {
   /* About a 1px hairline once scaled down to the miniature. */
-  --ring: 0 0 0 5px rgba(17, 17, 16, 0.07);
+  --ring: 0 0 0 3px rgba(17, 17, 16, 0.07);
   transform: translate(-50%, calc(-50% + var(--inv-h) * var(--s-rest) * 0.25px)) scale(var(--s-rest));
   transition:
     transform 0.6s var(--ease),
@@ -14030,4 +14030,35 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 @media (min-width: 761px) {
   .studio-partner__features { align-self: center; padding-top: 0; }
   .studio-partner__features ul { grid-template-rows: none; align-content: start; }
+}
+
+/* Smoother fan hover: one long ease for every property, the hovered card straightens as it
+ * lifts, and its neighbours step back slightly so the change reads as one movement. */
+.task-fan .task-card:not(.is-fan-expanded) {
+  --fan-ease: cubic-bezier(.33, 1, .68, 1);
+  transition:
+    translate .7s var(--fan-ease),
+    scale .7s var(--fan-ease),
+    rotate .7s var(--fan-ease),
+    box-shadow .7s var(--fan-ease),
+    border-color .4s ease,
+    opacity .5s ease;
+  will-change: translate, scale, rotate;
+}
+@media (hover: hover) {
+  .task-fan .task-card:not(.is-fan-expanded):hover {
+    translate: 0 -8px;
+    scale: 1.01;
+    rotate: calc(var(--stack-angle) * -.5);
+    box-shadow: 0 14px 30px -22px rgba(17, 17, 16, .18);
+  }
+}
+.task-fan .task-card.is-stack-resting {
+  translate: none;
+  scale: none;
+  rotate: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .task-fan .task-card:not(.is-fan-expanded) { transition: none; }
+  .task-fan .task-card:not(.is-fan-expanded):hover,
 }
