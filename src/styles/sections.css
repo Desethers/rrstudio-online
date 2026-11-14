@@ -2315,15 +2315,14 @@ h1 {
     margin-bottom: 20px;
   }
   .faq summary {
-    font-size: 13px;
+    font-size: 17px;
+    line-height: 1.4;
     gap: 16px;
     padding-block: 20px;
   }
   .faq summary span {
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
   }
   .faq summary::after {
     flex: 0 0 28px;
@@ -14802,4 +14801,18 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 @media (max-width: 640px) {
   html[lang] .hero-copy__audience + br { display: none; }
   .hero-tool-wheel__item img { width: 1.5em; height: 1.5em; }
+}
+
+/* Bring the mobile hero title closer to the navigation. */
+@media (max-width: 640px) {
+  .hero { padding-top: 24px; }
+  .hero-stage:has(+ .hero__copy--connected) { top: 0; }
+}
+
+@media (max-width: 640px) {
+  html[lang="fr"] .tasks-copy-line { display: block; }
+}
+
+@media (max-width: 640px) {
+  .hero-copy__audience { margin-top: 6px; }
 }
