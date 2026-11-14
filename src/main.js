@@ -2560,73 +2560,66 @@ document.querySelector('.filter[data-component-default]')?.click();
   section.classList.add('tasks--foldable');
 
   let catalogueTransition = null;
+  /* Unfold: the fan fades and folds away while the catalogue opens in height and its cards rise
+   * in one after the other. Fold is the same movement reversed. No element is scaled, so text
+   * and previews never distort. */
   const setExpanded = (expanded, animate = false) => {
     const changed = catalogue.hidden === expanded;
     catalogueTransition?.progress(1);
     closeFanCard(false);
     syncFanSelection();
-    const fanCards = [...fan.querySelectorAll('.task-card')];
     const gridCards = [...taskGrid.querySelectorAll('.task-card')];
-    const linkCard = card => {
-      const key = `catalogue-${card.dataset.previewId}`;
-      card.dataset.flipId = key;
-      const glyph = card.querySelector('.task-glyph');
-      if (glyph) glyph.dataset.flipId = `${key}-glyph`;
-      return glyph ? [card, glyph] : [card];
-    };
-    const sourceCards = expanded ? fanCards : gridCards;
-    const targetCards = expanded ? gridCards : fanCards;
-    const sourceElements = sourceCards.flatMap(linkCard);
-    const targetElements = targetCards.flatMap(linkCard);
     const shouldAnimate = animate && changed && !reducedFanMotion();
-    const state = shouldAnimate ? Flip.getState([...sourceElements, toggle]) : null;
-
-    catalogue.hidden = !expanded;
-    fan.hidden = expanded;
     toggle.setAttribute('aria-expanded', String(expanded));
     label.textContent = LANG === 'fr'
       ? (expanded ? 'Replier les tâches' : 'Voir toutes les tâches')
       : (expanded ? 'Close tasks' : 'Explore all tasks');
-    if (!state) return;
+    if (!shouldAnimate) {
+      catalogue.hidden = !expanded;
+      fan.hidden = expanded;
+      return;
+    }
 
-    const sourceIds = new Set(sourceElements.map(element => element.dataset.flipId));
-    const sharedTargets = targetElements.filter(element => sourceIds.has(element.dataset.flipId));
-    const arrivingCards = targetCards.filter(card => !sourceIds.has(card.dataset.flipId));
     section.classList.add('is-unfolding');
     toggle.disabled = true;
-    const finish = () => {
+    const cleanup = () => {
+      catalogue.hidden = !expanded;
+      fan.hidden = expanded;
+      gsap.set([fan, catalogue, filters, ...gridCards], { clearProps: 'all' });
       section.classList.remove('is-unfolding');
       toggle.disabled = false;
-      gsap.set([filters, ...arrivingCards], { clearProps: 'opacity,transform' });
       catalogueTransition = null;
     };
-    /* The fanned cards travel one after the other (each with its own glyph), the toggle follows
-     * the layout without delay, and the cards that were not in the fan rise out of the stack
-     * in reading order once the first ones are underway. */
-    const sharedOrder = targetCards.filter(card => sourceIds.has(card.dataset.flipId));
-    const travelDelay = (index, element) => {
-      const card = element.closest('.task-card');
-      const position = sharedOrder.indexOf(card);
-      return position < 0 ? 0 : position * .07;
+    const tl = gsap.timeline({ onComplete: cleanup });
+    const spacing = () => {
+      const cs = getComputedStyle(fan);
+      return { height: fan.offsetHeight, marginTop: parseFloat(cs.marginTop), marginBottom: parseFloat(cs.marginBottom) };
     };
-    catalogueTransition = Flip.from(state, {
-      targets: [...sharedTargets, toggle],
-      nested: true,
-      scale: true,
-      duration: 1,
-      ease: 'expo.inOut',
-      stagger: travelDelay,
-      prune: true,
-      onComplete: finish,
-    });
+    const fanBox = spacing();
+    gsap.set(fan, { overflow: 'hidden' });
     if (expanded) {
-      catalogueTransition.fromTo(filters,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, .35);
-      catalogueTransition.fromTo(arrivingCards,
-        { opacity: 0, y: 36, scale: .94, transformOrigin: '50% 0%' },
-        { opacity: 1, y: 0, scale: 1, duration: .75, stagger: .06, ease: 'power3.out' }, .4);
+      catalogue.hidden = false;
+      gsap.set(catalogue, { height: 0, overflow: 'hidden' });
+      gsap.set([filters, ...gridCards], { opacity: 0, y: 26 });
+      tl.to(fan, { opacity: 0, y: -16, duration: .45, ease: 'power2.out' }, 0)
+        .to(fan, { height: 0, marginTop: 0, marginBottom: 0, duration: 1, ease: 'power3.inOut' }, .08)
+        .to(catalogue, { height: 'auto', duration: 1, ease: 'power3.inOut' }, .08)
+        .to(filters, { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, .4)
+        .to(gridCards, { opacity: 1, y: 0, duration: .8, stagger: .06, ease: 'power3.out' }, .45);
+    } else {
+      fan.hidden = false;
+      const open = spacing();
+      gsap.set(fan, { height: 0, marginTop: 0, marginBottom: 0, opacity: 0, y: 16, overflow: 'hidden' });
+      gsap.set(catalogue, { height: catalogue.offsetHeight, overflow: 'hidden' });
+      fan.style.height = '0px';
+      const target = fanBox.height ? fanBox : open;
+      tl.to(gridCards, { opacity: 0, y: 18, duration: .35, stagger: { each: .02, from: 'end' }, ease: 'power2.in' }, 0)
+        .to(filters, { opacity: 0, duration: .25 }, 0)
+        .to(catalogue, { height: 0, duration: .9, ease: 'power3.inOut' }, .25)
+        .to(fan, { height: target.height || 450, marginTop: target.marginTop, marginBottom: target.marginBottom, duration: .9, ease: 'power3.inOut' }, .25)
+        .to(fan, { opacity: 1, y: 0, duration: .55, ease: 'power2.out' }, .6);
     }
+    catalogueTransition = tl;
   };
   setExpanded(false);
   toggle.addEventListener('click', () => setExpanded(catalogue.hidden, true));

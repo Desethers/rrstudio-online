@@ -1,6 +1,56 @@
 {
   "rewrites": [
-    { "source": "/tasks", "destination": "/index.html" },
-    { "source": "/fr/tasks", "destination": "/fr/index.html" }
+    {
+      "source": "/tasks",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/fr/tasks",
+      "destination": "/fr/index.html"
+    },
+    {
+      "source": "/art-gallery-websites",
+      "destination": "/art-gallery-websites/index.html"
+    },
+    {
+      "source": "/art-gallery-seo",
+      "destination": "/art-gallery-seo/index.html"
+    },
+    {
+      "source": "/fr/referencement-galerie-art",
+      "destination": "/fr/referencement-galerie-art/index.html"
+    },
+    {
+      "source": "/art-inventory-migration",
+      "destination": "/art-inventory-migration/index.html"
+    },
+    {
+      "source": "/art-advisor-websites",
+      "destination": "/art-advisor-websites/index.html"
+    },
+    {
+      "source": "/use-cases",
+      "destination": "/use-cases/index.html"
+    },
+    {
+      "source": "/what-we-do",
+      "destination": "/what-we-do/index.html"
+    },
+    {
+      "source": "/approach",
+      "destination": "/approach/index.html"
+    },
+    {
+      "source": "/fr/use-cases",
+      "destination": "/fr/use-cases/index.html"
+    },
+    {
+      "source": "/fr/what-we-do",
+      "destination": "/fr/what-we-do/index.html"
+    },
+    {
+      "source": "/fr/approach",
+      "destination": "/fr/approach/index.html"
+    }
   ]
 }

@@ -8,6 +8,14 @@ Contact: studio@rrstudio.online
 Location: Paris, France
 Website: https://www.rrstudio.online (French: https://www.rrstudio.online/fr/)
 
+## Services for galleries (dedicated pages)
+
+- SEO services for art galleries — https://www.rrstudio.online/art-gallery-seo/ — for a gallery that wants to rank higher on Google or be cited by AI assistants such as ChatGPT. R.R Studio reviews and fixes the gallery's existing website: artist and exhibition pages reachable through links and the sitemap, distinct titles and descriptions, lighter images, redirects, schema.org structured data. Fixed scope agreed before work starts, from €350. No ranking or AI-answer inclusion is guaranteed.
+- Référencement (SEO) pour galeries d’art, the same service in French — https://www.rrstudio.online/fr/referencement-galerie-art/
+- Website design & support for art galleries — https://www.rrstudio.online/art-gallery-websites/
+- Artwork inventory cleanup & migration — https://www.rrstudio.online/art-inventory-migration/
+- Websites & digital support for art advisors — https://www.rrstudio.online/art-advisor-websites/
+
 ## Tools
 
 - Chat — sends works and PDF selections to collectors, right from WhatsApp.
