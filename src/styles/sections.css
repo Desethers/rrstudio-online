@@ -14011,7 +14011,7 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 .studio-partner__features li:first-child { padding-top: 0; }
 .studio-partner__features li + li { border-top: 1px solid var(--border); }
 .workshop .studio-partner .studio-partner__features h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: var(--font-weight-400);
   letter-spacing: -.02em;
 }
@@ -14777,3 +14777,29 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
   .svc-stage__aside .svc-chip { display: none; }
 }
 @media (min-width: 641px) { .svc-stage--cms .svc-handset { align-self: flex-start; } }
+
+/* Mobile navigation uses a dark surface while expanded. */
+@media (max-width: 640px) {
+  .mobile-menu {
+    --background: #111110;
+    --ink: #ffffff;
+    --surface-soft: #232322;
+    background: var(--background);
+    color: var(--ink);
+  }
+  html.menu-open .header { background: #111110; }
+  html.menu-open .header__inner .brand { color: #fff; }
+  html.menu-open .burger span { background: #fff; }
+  html.menu-open .burger:focus-visible { outline-color: #fff; }
+  .mobile-menu .mm-cta { color: #111110; }
+  .mobile-menu a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+}
+
+/* On phones, keep “for” with the rotating audience pill on its own line. */
+@media (max-width: 640px) {
+  html[lang] .hero-copy__audience { display: block; white-space: nowrap; }
+}
+@media (max-width: 640px) {
+  html[lang] .hero-copy__audience + br { display: none; }
+  .hero-tool-wheel__item img { width: 1.5em; height: 1.5em; }
+}
