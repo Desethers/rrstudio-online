@@ -24,7 +24,7 @@
 <script type="module" src="/src/category.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Artwork inventory cleanup & migration", "description": "Clean artwork records and move inventory data between spreadsheets and gallery tools. Field mapping, sample imports and reconciliation before an agreed handover.", "url": "https://www.rrstudio.online/art-inventory-migration/", "provider": {"@type": "Organization", "@id": "https://www.rrstudio.online/#organization", "name": "R.R Studio", "url": "https://www.rrstudio.online/", "email": "studio@rrstudio.online"}}</script>
 </head>
-<body class="cat-page">
+<body class="cat-page svc-page">
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
@@ -40,20 +40,93 @@
     </div>
     </header>
 
-<main class="cat">
-<nav class="cat-crumb" aria-label="Breadcrumb"><a href="/">Studio</a><span aria-hidden="true">/</span><span aria-current="page">Artwork inventory cleanup &amp; migration</span></nav>
-<section class="cat-hero" aria-labelledby="page-title">
-<p class="cat-eyebrow">R.R Studio · Services</p>
+<main class="svc">
+<header class="svc-head">
+<nav class="svc-crumb" aria-label="Breadcrumb"><a href="/">Studio</a><span aria-hidden="true">/</span><span aria-current="page">Services</span></nav>
 <h1 id="page-title">Artwork inventory cleanup &amp; migration</h1>
-<p class="cat-lead">Moving an inventory is not just uploading a spreadsheet. Names, dimensions, availability and image references need to mean the same thing in the new system. I help galleries prepare the records and check what arrived.</p>
-<p class="cat-note">Independent studio. Direct collaboration. Scope agreed before work starts.</p>
+<p class="svc-lead">Moving an inventory is not just uploading a spreadsheet. Names, dimensions, availability and image references need to mean the same thing in the new system. I help galleries prepare the records and check what arrived.</p>
+<p class="svc-note">Independent studio. Direct collaboration. Scope agreed before work starts.</p>
+</header>
+
+<div class="svc-stage" aria-hidden="true">
+<div class="svc-stage__col svc-stage__col--left">
+<div class="svc-chip"><i></i><div><strong>artworks.xlsx</strong><span>Source export, kept as is</span></div><b class="svc-swap"><em>Messy</em><em>Clean</em></b></div>
+<div class="svc-card">
+<p class="svc-card__title"><span class="svc-card__dot">≠</span>Inconsistent fields</p>
+<div class="svc-card__inner"><strong class="svc-card__big svc-swap svc-swap--rank"><em>37</em><em>0</em></strong><div class="svc-bar svc-bar--down"><i></i></div><dl><div><dt>Artist names</dt><dd>3<em> spellings → 1</em></dd></div><div><dt>Dimensions</dt><dd>4<em> formats → 1</em></dd></div></dl></div>
+</div>
+</div>
+<div class="svc-stage__col svc-stage__col--center">
+<div class="svc-browser svc-browser--sheet">
+<div class="svc-browser__top"><i></i><i></i><i></i><span>Inventory · artworks</span></div>
+<div class="svc-grid"><div class="svc-grid__row svc-grid__row--head"><span>Artist</span><span>Title</span><span>Dimensions</span><span>Status</span></div><div class="svc-grid__row "><span>Sacha Elron</span><span>Untitled (Horizon)</span><span><span class="svc-swap svc-cell--fix"><em>140x140</em><em>140 × 140 cm</em></span></span><span><span class="svc-swap svc-cell--fix"><em>avail.</em><em>Available</em></span></span></div><div class="svc-grid__row "><span><span class="svc-swap svc-cell--fix"><em>ELRON, Sacha</em><em>Sacha Elron</em></span></span><span>Amber Nocturne</span><span><span class="svc-swap svc-cell--fix"><em>59 in</em><em>150 × 150 cm</em></span></span><span><span class="svc-swap svc-cell--fix"><em>SOLD?</em><em>Sold</em></span></span></div><div class="svc-grid__row "><span><span class="svc-swap svc-cell--fix"><em>S. Elron</em><em>Sacha Elron</em></span></span><span>Crimson Field</span><span><span class="svc-swap svc-cell--fix"><em>130 x 110cm</em><em>130 × 110 cm</em></span></span><span><span class="svc-swap svc-cell--fix"><em>—</em><em>Available</em></span></span></div><div class="svc-grid__row svc-grid__row--dup"><span>Sacha Elron</span><span>Untitled (Horizon)</span><span>140*140</span><span><b class="svc-swap"><em>available</em><em>Duplicate</em></b></span></div><div class="svc-grid__row "><span>Sacha Elron</span><span>Dawn Study No. 7</span><span><span class="svc-swap svc-cell--fix"><em>30cm sq</em><em>30 × 30 cm</em></span></span><span><span class="svc-swap svc-cell--fix"><em>res</em><em>Reserved</em></span></span></div></div>
+</div>
+</div>
+<div class="svc-stage__col svc-stage__col--right">
+<div class="svc-card">
+<p class="svc-card__title">Reconciliation</p>
+<div class="svc-card__inner"><strong class="svc-card__big">198<em> / 214</em></strong><div class="svc-bar"><i></i></div><dl><div><dt>Records moved</dt><dd>198</dd></div><div><dt>Flagged for your review</dt><dd>16</dd></div></dl></div>
+</div>
+<div class="svc-card svc-card--plain">
+<p class="svc-plan__title">Migration, step by step</p><p class="svc-plan__sub">Agreed scope</p>
+<ul class="svc-plan"><li class="is-done"><i></i><span>Field mapping</span><b>Done</b></li><li class="is-done"><i></i><span>Sample import</span><b>Approved</b></li><li class="is-doing"><i></i><span>Full import</span><b>In progress</b></li></ul>
+</div>
+</div>
+<p class="svc-stage__note">Illustration with sample data. Volumes and image handling are specified in each quote.</p>
+</div>
+
+<section class="svc-group" aria-labelledby="work-title">
+<h2 class="svc-title" id="work-title">Get the records ready before moving them</h2>
+<article class="svc-block">
+<div class="svc-row"><h3>Duplicates &amp; names</h3><p>Identify duplicate artwork records, inconsistent artist names and missing references without silently merging uncertain matches.</p></div>
+<div class="svc-panel" aria-hidden="true"><svg class="svc-merge" viewBox="0 0 520 240" fill="none">
+<path class="svc-merge__line" pathLength="1" d="M170 50C260 50 250 120 340 120" />
+<path class="svc-merge__line" pathLength="1" d="M170 120H340" />
+<path class="svc-merge__line" pathLength="1" d="M170 190C260 190 250 120 340 120" />
+<text class="svc-merge__src" x="160" y="55">ELRON, Sacha</text>
+<text class="svc-merge__src" x="160" y="125">S. Elron</text>
+<text class="svc-merge__src" x="160" y="195">Sacha  Elron</text>
+<g class="svc-merge__out"><rect x="340" y="98" width="150" height="44" rx="22" /><text x="415" y="125">Sacha Elron</text></g>
+</svg><p class="svc-panel__caption"><span class="svc-swap"><em>3 spellings of one artist</em><em>1 name, uncertain matches flagged</em></span></p></div>
+</article>
+<article class="svc-block">
+<div class="svc-row"><h3>Standard fields</h3><p>Standardise fields such as dimensions, media, currency and availability against rules agreed with the gallery.</p></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-weight svc-weight--text">
+<div class="svc-weight__num svc-swap"><em>140x140</em><em>140 × 140<small>cm</small></em></div>
+<div class="svc-weight__bar"><i></i></div>
+<div class="svc-weight__meta"><span>Dimensions</span><span class="svc-swap"><em>4 formats in the export</em><em>1 rule, agreed with the gallery</em></span></div>
+</div></div>
+</article>
+<article class="svc-block">
+<div class="svc-row"><h3>Field mapping</h3><p>Map source columns to destination fields and check which images, notes and relationships the destination can accept.</p></div>
+<div class="svc-panel" aria-hidden="true"><svg class="svc-map" viewBox="0 0 520 250" fill="none">
+<text class="svc-map__head" x="40" y="24">Spreadsheet column</text><text class="svc-map__head svc-map__end" x="480" y="24">Destination field</text>
+<path class="svc-map__line" pathLength="1" d="M150 62H370" /><path class="svc-map__line" pathLength="1" d="M150 106C260 106 260 150 370 150" /><path class="svc-map__line" pathLength="1" d="M150 150C260 150 260 106 370 106" /><path class="svc-map__line" pathLength="1" d="M150 194H370" />
+<path class="svc-map__miss" d="M150 238H300" />
+<text class="svc-map__src" x="40" y="67">Titre</text><text class="svc-map__src" x="40" y="111">Dim.</text><text class="svc-map__src" x="40" y="155">Nom artiste</text><text class="svc-map__src" x="40" y="199">Dispo</text><text class="svc-map__src svc-map__src--off" x="40" y="243">Notes privées</text>
+<text class="svc-map__dst" x="480" y="67">Title</text><text class="svc-map__dst" x="480" y="111">Artist</text><text class="svc-map__dst" x="480" y="155">Dimensions</text><text class="svc-map__dst" x="480" y="199">Availability</text><text class="svc-map__dst svc-map__src--off" x="480" y="243">Not accepted · agreed apart</text>
+</svg></div>
+</article>
 </section>
-<section class="cat-section" aria-labelledby="work-title"><h2 id="work-title">Get the records ready before moving them</h2><ul class="cat-list"><li>Identify duplicate artwork records, inconsistent artist names and missing references without silently merging uncertain matches.</li><li>Standardise fields such as dimensions, media, currency and availability against rules agreed with the gallery.</li><li>Map source columns to destination fields and check which images, notes and relationships the destination can accept.</li></ul></section>
-<section class="cat-section" aria-labelledby="example-title"><h2 id="example-title">What this looks like in practice</h2><p>A gallery has one spreadsheet for artworks and a folder of images named in several different ways. We keep the original export, agree stable artwork identifiers, flag ambiguous image matches and test a small import. The gallery checks that sample before the rest of the agreed records are moved.</p><p class="cat-note">An example of the workflow, not a client case study.</p></section>
-<section class="cat-section" aria-labelledby="scope-title"><h2 id="scope-title">A clear scope, before we start</h2><h3 class="cat-group">Included in the agreed work</h3><p>A defined source export and destination, field mapping, agreed cleanup rules, a sample import where supported and a reconciliation of record counts and flagged exceptions. The quote specifies volumes and image handling.</p><h3 class="cat-group">Not included by default</h3><p>Valuations, provenance verification, ownership decisions and resolving uncertain availability are the gallery’s responsibility. Software subscriptions, manual research and changes to systems without export or import access need separate agreement.</p></section>
-<section class="cat-section cat-faq" aria-labelledby="faq-title"><h2 id="faq-title">Questions</h2><details><summary>Can you migrate an Artlogic inventory?</summary><p>I first check the export you can obtain and what the destination accepts. Some relationships, files or private fields may need a separate process; I confirm those limits before work starts.</p></details><details><summary>Will our artwork images move with the data?</summary><p>Only when image files or accessible references are available and the destination supports them. Image matching and transfer are explicitly scoped, not assumed.</p></details><details><summary>How do you avoid losing artwork data?</summary><p>We retain the original source, test a sample and compare the agreed fields and record counts. Uncertain matches are flagged for review, and the old system should remain available until you approve the transfer.</p></details></section>
-<section class="cat-section cat-more" aria-labelledby="related-title"><h2 id="related-title">Related work</h2><ul><li><a href="/tasks/inventory/">Inventory tasks</a></li><li><a href="/art-gallery-websites/">Website design &amp; support for art galleries</a></li><li><a href="/art-gallery-seo/">SEO services for art galleries</a></li><li><a href="/art-advisor-websites/">Websites &amp; digital support for art advisors</a></li><li><a href="/#products">Small tools for gallery work</a></li></ul></section>
-<section class="cat-cta" aria-labelledby="request-title"><h2 id="request-title">Start with what you need done.</h2><p class="cat-note">Have a specific task? Add it to your estimate. For a larger project, send the current setup and the result you need.</p><div class="contact-channels"><a class="button" href="/?add=import-artworks#tasks">Add an inventory migration task <span aria-hidden="true">→</span></a><a class="cat-task__add" href="/contact/">Request a project quote</a></div></section>
+
+<section class="svc-group" aria-labelledby="example-title">
+<article class="svc-block">
+<div class="svc-row"><h2 id="example-title">What this looks like in practice</h2><div><p>A gallery has one spreadsheet for artworks and a folder of images named in several different ways. We keep the original export, agree stable artwork identifiers, flag ambiguous image matches and test a small import. The gallery checks that sample before the rest of the agreed records are moved.</p><p class="svc-note">An example of the workflow, not a client case study.</p></div></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-after__page"><span>Sample import · 10 of 198 records</span><strong>Untitled (Horizon)</strong><p>Sacha Elron · 2024 · Acrylic · 140 × 140 cm</p><img src="/mockups/whatsapp/horizon-room.jpg" alt="" /><div class="svc-after__links"><b>RR–0241</b><b>Image matched</b><b>Available</b></div></div></div>
+</article>
+</section>
+
+<section class="svc-group" aria-labelledby="scope-title">
+<h2 class="svc-title" id="scope-title">A clear scope, before we start</h2>
+<div class="svc-row svc-row--line"><h3>Included in the agreed work</h3><p>A defined source export and destination, field mapping, agreed cleanup rules, a sample import where supported and a reconciliation of record counts and flagged exceptions. The quote specifies volumes and image handling.</p></div>
+<div class="svc-row svc-row--line"><h3>Not included by default</h3><p>Valuations, provenance verification, ownership decisions and resolving uncertain availability are the gallery’s responsibility. Software subscriptions, manual research and changes to systems without export or import access need separate agreement.</p></div>
+</section>
+
+<section class="svc-group svc-faq cat-faq" aria-labelledby="faq-title"><h2 class="svc-title" id="faq-title">Questions</h2><details><summary>Can you migrate an Artlogic inventory?</summary><p>I first check the export you can obtain and what the destination accepts. Some relationships, files or private fields may need a separate process; I confirm those limits before work starts.</p></details><details><summary>Will our artwork images move with the data?</summary><p>Only when image files or accessible references are available and the destination supports them. Image matching and transfer are explicitly scoped, not assumed.</p></details><details><summary>How do you avoid losing artwork data?</summary><p>We retain the original source, test a sample and compare the agreed fields and record counts. Uncertain matches are flagged for review, and the old system should remain available until you approve the transfer.</p></details></section>
+
+<section class="svc-group svc-related" aria-labelledby="related-title"><h2 class="svc-title" id="related-title">Related work</h2><ul><li><a href="/tasks/inventory/">Inventory tasks</a></li><li><a href="/art-gallery-websites/">Website design &amp; support for art galleries</a></li><li><a href="/art-gallery-seo/">SEO services for art galleries</a></li><li><a href="/art-advisor-websites/">Websites &amp; digital support for art advisors</a></li><li><a href="/#products">Small tools for gallery work</a></li></ul></section>
+
+<section class="svc-group svc-cta" aria-labelledby="request-title"><h2 class="svc-title" id="request-title">Start with what you need done.</h2><p class="svc-lead">Have a specific task? Add it to your estimate. For a larger project, send the current setup and the result you need.</p><div class="svc-cta__actions"><a class="button" href="/?add=import-artworks#tasks">Add an inventory migration task <span aria-hidden="true">→</span></a><a class="svc-pill" href="/contact/">Request a project quote</a></div></section>
 </main>
     <footer class="big-footer">
       <div class="big-footer__main">

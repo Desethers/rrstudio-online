@@ -24,7 +24,7 @@
 <script type="module" src="/src/category.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Website design & support for art galleries", "description": "Website design, exhibition pages and ongoing technical support for contemporary art galleries. Work directly with R.R Studio on a clear, agreed scope.", "url": "https://www.rrstudio.online/art-gallery-websites/", "provider": {"@type": "Organization", "@id": "https://www.rrstudio.online/#organization", "name": "R.R Studio", "url": "https://www.rrstudio.online/", "email": "studio@rrstudio.online"}}</script>
 </head>
-<body class="cat-page">
+<body class="cat-page svc-page">
     <header class="header">
       <div class="header__inner">
         <a class="brand" href="/" aria-label="R.R Studio home">R.R <span>Studio</span></a>
@@ -40,20 +40,81 @@
     </div>
     </header>
 
-<main class="cat">
-<nav class="cat-crumb" aria-label="Breadcrumb"><a href="/">Studio</a><span aria-hidden="true">/</span><span aria-current="page">Website design &amp; support for art galleries</span></nav>
-<section class="cat-hero" aria-labelledby="page-title">
-<p class="cat-eyebrow">R.R Studio · Services</p>
+<main class="svc">
+<header class="svc-head">
+<nav class="svc-crumb" aria-label="Breadcrumb"><a href="/">Studio</a><span aria-hidden="true">/</span><span aria-current="page">Services</span></nav>
 <h1 id="page-title">Website design &amp; support for art galleries</h1>
-<p class="cat-lead">A gallery website needs to publish the programme, present artists clearly and stay manageable between openings. I design and improve websites around that work, with direct support from the person building them.</p>
-<p class="cat-note">Independent studio. Direct collaboration. Scope agreed before work starts.</p>
+<p class="svc-lead">A gallery website needs to publish the programme, present artists clearly and stay manageable between openings. I design and improve websites around that work, with direct support from the person building them.</p>
+<p class="svc-note">Independent studio. Direct collaboration. Scope agreed before work starts.</p>
+</header>
+
+<div class="svc-stage svc-stage--cms" aria-hidden="true">
+<div class="svc-desk">
+<div class="svc-browser__top"><i></i><i></i><i></i><span>galleryname.com/exhibitions/your-friends</span></div>
+<div class="svc-desk__nav"><b>GALERIE</b><span class="is-on">Exhibitions</span><span>Artists</span><span>Fairs</span><span>News</span><span>About</span></div>
+<img class="svc-build" src="/mockups/your-friends-large.jpg" alt="" />
+<div class="svc-desk__body">
+<div><small class="svc-build">Current exhibition</small><strong class="svc-build">Sacha Elron — <em>Your friends</em></strong><span class="svc-build">Feb 12 — Mar 22, 2026</span></div>
+<div><p class="svc-build">A presentation of recent paintings and works on paper exploring friendship, memory and shared light. The exhibition brings together a focused selection of pieces conceived as a single environment.</p><div class="svc-build svc-desk__actions"><b>Enquire</b><b>Press release</b><b>View artist</b></div></div>
+</div>
+</div>
+<div class="svc-stage__aside">
+<div class="svc-chip"><i></i><div><strong>Your friends</strong><span>Opening Feb 12</span></div><b class="svc-swap"><em>Draft</em><em>Live</em></b></div>
+<div class="svc-handset">
+<div class="svc-handset__top"><span>Exhibitions</span><b class="svc-swap svc-cms__state"><em>Draft</em><em>Published</em></b></div>
+<div class="svc-cms__form">
+<label class="svc-field"><small>Title</small><span><em class="svc-build">Sacha Elron — Your friends</em></span></label>
+<div class="svc-field-row">
+<label class="svc-field"><small>Opening</small><span><em class="svc-build">Feb 12</em></span></label>
+<label class="svc-field"><small>Closing</small><span><em class="svc-build">Mar 22</em></span></label>
+</div>
+<label class="svc-field svc-field--text"><small>Press text</small><span><em class="svc-build">A presentation of recent paintings and works on paper exploring friendship, memory and shared light.</em></span></label>
+<div class="svc-field"><small>Installation views</small><div class="svc-cms__images"><img class="svc-build" src="/mockups/your-friends.jpg" alt="" /><img class="svc-build" src="/mockups/artist/work-1.jpg" alt="" /><b>+</b></div></div>
+<b class="svc-handset__publish">Publish</b>
+</div>
+</div>
+</div>
+<p class="svc-stage__note">Illustration with sample content. The editing setup is chosen around what your team needs to update.</p>
+</div>
+
+<section class="svc-group" aria-labelledby="work-title">
+<h2 class="svc-title" id="work-title">A website your team can keep using</h2>
+<article class="svc-block">
+<div class="svc-row"><h3>Artist pages</h3><p>Artist pages need consistent biographies, artwork captions and enquiry links, without rebuilding each page by hand.</p></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-after__page svc-artist"><span>galleryname.com/artists/sacha-elron</span><div class="svc-artist__head"><img src="/mockups/artist/portrait.jpg" alt="" /><div><strong>Sacha Elron</strong><p>Born 1975, US · Lives and works in Paris</p></div></div><div class="svc-artist__works"><img class="svc-build" src="/mockups/artist/work-1.jpg" alt="" /><img class="svc-build" src="/mockups/artist/work-2.jpg" alt="" /><img class="svc-build" src="/mockups/artist/work-3.jpg" alt="" /></div><div class="svc-after__links"><b>Biography</b><b>Works</b><b>Enquire</b></div></div></div>
+</article>
+<article class="svc-block">
+<div class="svc-row"><h3>Programme &amp; archive</h3><p>Exhibition dates, installation views and press material need a clear place in the current programme and archive.</p></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-list"><small>Exhibitions</small><ul><li><span>Your friends · Feb 12 — Mar 22</span><b class="svc-swap "><em>Current</em><em>Archive</em></b></li><li><span>Autumn Selection · 2025</span><b>Archive</b></li><li><span>Works on paper · 2025</span><b>Archive</b></li><li class="is-off"><span>/exhibitions/your-friends</span><b>Same address</b></li></ul></div></div>
+</article>
+<article class="svc-block">
+<div class="svc-row"><h3>Mobile &amp; speed</h3><p>Mobile layouts, slow images and broken links can make a collector’s first visit harder than it should be.</p></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-weight svc-weight--text">
+<div class="svc-weight__num svc-swap"><em>6.8<small>s</small></em><em>1.2<small>s</small></em></div>
+<div class="svc-weight__bar"><i></i></div>
+<div class="svc-weight__meta"><span>First visit on mobile</span><span class="svc-swap"><em>Heavy images, broken links</em><em>Light images, working links</em></span></div>
+</div></div>
+</article>
 </section>
-<section class="cat-section" aria-labelledby="work-title"><h2 id="work-title">A website your team can keep using</h2><ul class="cat-list"><li>Artist pages need consistent biographies, artwork captions and enquiry links, without rebuilding each page by hand.</li><li>Exhibition dates, installation views and press material need a clear place in the current programme and archive.</li><li>Mobile layouts, slow images and broken links can make a collector’s first visit harder than it should be.</li></ul></section>
-<section class="cat-section" aria-labelledby="example-title"><h2 id="example-title">What this looks like in practice</h2><p>An exhibition is opening next month. We agree a page structure, prepare the supplied images, publish the dates and press text, and check the enquiry route on mobile. After the opening, the page moves into the archive without losing its address.</p><p class="cat-note">An example of the workflow, not a client case study.</p></section>
-<section class="cat-section" aria-labelledby="scope-title"><h2 id="scope-title">A clear scope, before we start</h2><h3 class="cat-group">Included in the agreed work</h3><p>Page structure, design and implementation, responsive checks and an agreed handover. For an existing site, I first check its platform and access before confirming what can be changed.</p><h3 class="cat-group">Not included by default</h3><p>Photography, artist biographies, translations, hosting fees and third-party subscriptions are not included unless listed in the quote. A new site, a migration and a single page update are different scopes.</p></section>
-<section class="cat-section cat-faq" aria-labelledby="faq-title"><h2 id="faq-title">Questions</h2><details><summary>Can you improve our existing gallery website?</summary><p>Yes, where the platform and access allow it. Send the URL and the changes you need. I confirm feasibility before proposing a rebuild.</p></details><details><summary>Can we update artists and exhibitions ourselves?</summary><p>That is part of planning the site. We agree which content your team needs to edit and choose the publishing setup around it.</p></details><details><summary>How much does an art gallery website cost?</summary><p>A complete website is quoted after reviewing the content, platform and editing needs. Smaller jobs can go through the fixed-scope task estimate instead.</p></details></section>
-<section class="cat-section cat-more" aria-labelledby="related-title"><h2 id="related-title">Related work</h2><ul><li><a href="/tasks/website/">Website tasks</a></li><li><a href="/art-gallery-seo/">SEO services for art galleries</a></li><li><a href="/art-inventory-migration/">Artwork inventory cleanup &amp; migration</a></li><li><a href="/art-advisor-websites/">Websites &amp; digital support for art advisors</a></li><li><a href="/#products">Small tools for gallery work</a></li></ul></section>
-<section class="cat-cta" aria-labelledby="request-title"><h2 id="request-title">Start with what you need done.</h2><p class="cat-note">Have a specific task? Add it to your estimate. For a larger project, send the current setup and the result you need.</p><div class="contact-channels"><a class="button" href="/?add=publish-exhibition#tasks">Add an exhibition page task <span aria-hidden="true">→</span></a><a class="cat-task__add" href="/contact/">Request a project quote</a></div></section>
+
+<section class="svc-group" aria-labelledby="example-title">
+<article class="svc-block">
+<div class="svc-row"><h2 id="example-title">What this looks like in practice</h2><div><p>An exhibition is opening next month. We agree a page structure, prepare the supplied images, publish the dates and press text, and check the enquiry route on mobile. After the opening, the page moves into the archive without losing its address.</p><p class="svc-note">An example of the workflow, not a client case study.</p></div></div>
+<div class="svc-panel" aria-hidden="true"><div class="svc-after__page"><span>galleryname.com/exhibitions/your-friends</span><strong>Sacha Elron — <em>Your friends</em></strong><p>Feb 12 — Mar 22, 2026</p><img src="/mockups/your-friends-large.jpg" alt="" /><div class="svc-after__links"><b>Enquire</b><b>Press release</b><b>Archive</b></div></div></div>
+</article>
+</section>
+
+<section class="svc-group" aria-labelledby="scope-title">
+<h2 class="svc-title" id="scope-title">A clear scope, before we start</h2>
+<div class="svc-row svc-row--line"><h3>Included in the agreed work</h3><p>Page structure, design and implementation, responsive checks and an agreed handover. For an existing site, I first check its platform and access before confirming what can be changed.</p></div>
+<div class="svc-row svc-row--line"><h3>Not included by default</h3><p>Photography, artist biographies, translations, hosting fees and third-party subscriptions are not included unless listed in the quote. A new site, a migration and a single page update are different scopes.</p></div>
+</section>
+
+<section class="svc-group svc-faq cat-faq" aria-labelledby="faq-title"><h2 class="svc-title" id="faq-title">Questions</h2><details><summary>Can you improve our existing gallery website?</summary><p>Yes, where the platform and access allow it. Send the URL and the changes you need. I confirm feasibility before proposing a rebuild.</p></details><details><summary>Can we update artists and exhibitions ourselves?</summary><p>That is part of planning the site. We agree which content your team needs to edit and choose the publishing setup around it.</p></details><details><summary>How much does an art gallery website cost?</summary><p>A complete website is quoted after reviewing the content, platform and editing needs. Smaller jobs can go through the fixed-scope task estimate instead.</p></details></section>
+
+<section class="svc-group svc-related" aria-labelledby="related-title"><h2 class="svc-title" id="related-title">Related work</h2><ul><li><a href="/tasks/website/">Website tasks</a></li><li><a href="/art-gallery-seo/">SEO services for art galleries</a></li><li><a href="/art-inventory-migration/">Artwork inventory cleanup &amp; migration</a></li><li><a href="/art-advisor-websites/">Websites &amp; digital support for art advisors</a></li><li><a href="/#products">Small tools for gallery work</a></li></ul></section>
+
+<section class="svc-group svc-cta" aria-labelledby="request-title"><h2 class="svc-title" id="request-title">Start with what you need done.</h2><p class="svc-lead">Have a specific task? Add it to your estimate. For a larger project, send the current setup and the result you need.</p><div class="svc-cta__actions"><a class="button" href="/?add=publish-exhibition#tasks">Add an exhibition page task <span aria-hidden="true">→</span></a><a class="svc-pill" href="/contact/">Request a project quote</a></div></section>
 </main>
     <footer class="big-footer">
       <div class="big-footer__main">

@@ -1,0 +1,79 @@
+/* A separate editorial comparison, distinct from the four principle cards. */
+.approach-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 40px;
+  margin-top: 36px;
+}
+.approach-comparison__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  grid-template-rows: auto auto auto 1fr;
+  align-content: start;
+  min-width: 0;
+  padding: 36px;
+  border-radius: 0;
+  background: transparent;
+  color: #171717;
+}
+.approach-comparison__card .approach-comparison__label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: var(--font-weight-400);
+  line-height: 1.4;
+  text-transform: none;
+  color: #707070;
+}
+.approach-comparison__icon { display: block; margin: 0; grid-column: 2; grid-row: 1; }
+.approach-comparison__card h3 {
+  grid-column: 1 / -1;
+  padding-top: 40px;
+  margin: 0 0 14px;
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-weight: var(--font-weight-400);
+  letter-spacing: -.025em;
+  line-height: 1.25;
+}
+.approach-comparison__card > p:not(.approach-comparison__label) {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 16px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.5;
+  color: #707070;
+}
+.approach-comparison__card--dark { background: #171717; color: #fff; border-radius: 22px; }
+.approach-comparison__card--dark .approach-comparison__label,
+.approach-comparison__card--dark > p:not(.approach-comparison__label) { color: #b5b5b5; }
+.approach-comparison__closing {
+  max-width: 68ch;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: var(--font-weight-300);
+  line-height: 1.5;
+}
+
+.approach-comparison-section {
+  max-width: 1084px;
+  margin: 0 auto 96px;
+  padding: 64px 22px 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 40px;
+}
+.approach-comparison-section__heading .eyebrow { margin-bottom: 14px; }
+.approach-comparison-section__heading h2 { max-width: 28ch; margin: 0; font-size: clamp(28px, 3.2vw, 40px); font-weight: var(--font-weight-400); letter-spacing: -.025em; line-height: 1.15; text-wrap: balance; }
+@media (max-width: 640px) {
+  .approach-comparison-section { padding: 40px 12px 0; margin-bottom: 72px; }
+  .approach-comparison__card h3 { padding-top: 40px; }
+  .approach-comparison { grid-template-columns: minmax(0, 1fr); }
+  .approach-comparison__card { padding: 24px; }
+}
+
+.approach-comparison__points { grid-column: 1 / -1; list-style: none; margin: 28px 0 0; padding: 0; font-size: 15px; font-weight: var(--font-weight-300); line-height: 1.5; }
+.approach-comparison__points li { padding: 12px 0; border-top: 1px solid #1717171a; }
+.approach-comparison__points li:last-child { padding-bottom: 0; }
+.approach-comparison__card--dark .approach-comparison__points li { border-top-color: #ffffff26; }
+
+.approach-comparison__card:not(.approach-comparison__card--dark) { padding-left: 0; padding-right: 0; }
