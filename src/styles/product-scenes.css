@@ -492,9 +492,9 @@
  * a 405px canvas on WhatsApp's chat background (#efeae2) with its bubbles, tails, ticks and forwarded-artwork message, scaled into the
  * card. Static: no animation, no bubble shadows. */
 .software-promo--tools .product-cards > .product-card:has(.product-scene--whatsapp),
-.software-promo--tools .product-cards > .product-card:has(.product-scene--whatsapp):is(:hover,:focus-within) { background: #efeae2; }
+.software-promo--tools .product-cards > .product-card:has(.product-scene--whatsapp):is(:hover,:focus-within) { background: var(--surface-warm); }
 .product-card:has(.product-scene--whatsapp) .product-card__body { background: transparent; }
-.software-promo--tools .product-cards .product-scene--whatsapp { overflow: hidden; border-radius: 0 0 21px 21px; background: #efeae2; }
+.software-promo--tools .product-cards .product-scene--whatsapp { overflow: hidden; border-radius: 0 0 21px 21px; background: var(--surface-warm); }
 .wac-conv {
   position: absolute;
   top: 0;

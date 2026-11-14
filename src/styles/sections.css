@@ -13259,7 +13259,7 @@ h2,
 /* Keep the tools wheel on the opening line on desktop. */
 @media (min-width: 761px) {
   .hero .hero__copy--connected { max-width: 850px; text-wrap: initial; }
-  .hero-copy__opening { display: block; white-space: nowrap; }
+  .hero-copy__opening { display: block; white-space: nowrap; margin-bottom: 6px; }
 }
 
 /* Move the complete approved hero content one spacing step lower. */
