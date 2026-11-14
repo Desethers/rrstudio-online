@@ -14816,3 +14816,30 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 @media (max-width: 640px) {
   .hero-copy__audience { margin-top: 6px; }
 }
+
+/* A centred deck on phones: a readable front card, with quiet edges behind it. */
+@media (max-width: 640px) {
+  .tasks--foldable .task-fan { height: 424px; margin-top: 24px; }
+  .task-fan .task-card:not(.is-fan-expanded) {
+    width: min(300px, calc(100% - 48px));
+    height: 350px;
+    top: 12px;
+    padding: 22px;
+    transform-origin: center;
+    transform: translateX(calc(-50% + (var(--fan-index) - 3) * 7px)) translateY(calc(var(--fan-index) * 10px)) rotate(calc((var(--fan-index) - 3) * -1deg));
+  }
+  .task-fan .task-card:not(.is-fan-expanded) h3 { font-size: 18px; line-height: 1.25; }
+  .task-fan .task-card:not(.is-fan-expanded) .task-description { font-size: 14px; line-height: 1.45; }
+  .task-fan .task-card:not(.is-fan-expanded) .task-price { font-size: 20px; }
+  .task-fan .task-card:not(.is-fan-expanded) .task-glyph { transform: translateX(-50%) scale(.65); bottom: 18px; }
+}
+
+/* Three stepped cards on phones, exposing the titles behind the front card. */
+@media (max-width: 640px) {
+  .task-fan > .task-card:first-child { display: none; }
+  .tasks--foldable .task-fan { height: 574px; }
+  .task-fan .task-card:not(.is-fan-expanded) {
+    width: min(310px, calc(100% - 24px));
+    transform: translateX(calc(-50% + (var(--fan-index) - 3) * 4px)) translateY(calc((var(--fan-index) - 1) * 92px));
+  }
+}
