@@ -13361,7 +13361,7 @@ h2,
 }
 .task-fan .task-card h3 { font-size: 20px; }
 .task-fan .task-card .task-price { font-size: 19px; }
-.task-fan .task-card .task-description { font-size: 13px; line-height: 1.5; }
+.task-fan .task-card .task-description { font-size: 12px; line-height: 1.5; }
 .task-fan .task-card .task-category { font-size: 11px; }
 .task-catalogue-toggle {
   display: flex;
@@ -14842,4 +14842,20 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
     width: min(310px, calc(100% - 24px));
     transform: translateX(calc(-50% + (var(--fan-index) - 3) * 4px)) translateY(calc((var(--fan-index) - 1) * 92px));
   }
+}
+
+/* Header: nav sits at the right edge instead of centred; brand softens slightly on hover. */
+@media (min-width: 901px) {
+  .header__inner {
+    grid-template-columns: 1fr auto;
+  }
+  .nav {
+    justify-self: end;
+  }
+}
+.brand {
+  transition: color 0.2s ease;
+}
+.brand:hover {
+  color: rgba(17, 17, 16, 0.75);
 }

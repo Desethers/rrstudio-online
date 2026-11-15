@@ -518,8 +518,8 @@
 /* Incoming: #fafafa, tail bottom left. */
 .wac-in { align-self: flex-start; margin-left: 29px; }
 .wac-in + .wac-in { margin-top: 3px; }
-.wac-in .wac-tail { left: 0; fill: #fafafa; }
-.wac-in .wac-body { margin-left: 6px; padding: 8px 17px 2.27px 10px; background: #fafafa; }
+.wac-in .wac-tail { left: 0; fill: #efefed; }
+.wac-in .wac-body { margin-left: 6px; padding: 8px 17px 2.27px 10px; background: #efefed; }
 .wac-in p { max-width: 240px; }
 .wac-in .wac-time { margin-top: -4px; text-align: right; }
 /* Outgoing text: #d9fdd3, no tail, time and ticks on the text's right edge. */
