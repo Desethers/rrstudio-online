@@ -14925,3 +14925,9 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 /* Open card button: grey stroke. */
 .task-fan .task-card.is-fan-expanded .task-add { border-color: #c4c4c2; }
 .task-fan .task-card.is-fan-expanded .task-add:hover { border-color: var(--ink); }
+
+/* Studio Partner: the feature list sits on the card's bottom edge, level with the bottom of the dark inset. */
+@media (min-width: 761px) {
+  .studio-partner__features { align-self: end; }
+  .studio-partner__features li:last-child { padding-bottom: 0; }
+}
