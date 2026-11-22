@@ -660,6 +660,9 @@ const MIGRATION_GLYPH = (() => {
     </div>`;
 })();
 
+/* The regular (non-wide) migration card uses the same glyph, scaled down in CSS. */
+TASK_GLYPHS["website-migration"] = MIGRATION_GLYPH;
+
 /* Phones show the task grid as a carousel of small slides; a full-width card would not fit
  * there, so it is rendered just under the carousel instead. */
 const taskFeature = document.createElement("div");

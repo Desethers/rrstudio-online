@@ -15280,8 +15280,8 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
   position: relative;
   align-self: flex-start;
   display: block;
-  width: calc(100% - 20px);
-  max-width: none;
+  width: 330px;
+  max-width: 100%;
   height: 56px;
   aspect-ratio: auto;
   margin: 0;
@@ -15297,8 +15297,9 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 .cg--wa .cg__msg {
   position: absolute;
   top: 9px;
-  left: 4.8%;
-  right: 8%;
+  left: 17px;
+  right: 22px;
+  white-space: nowrap;
   font-size: 15.4px;
   line-height: 20px;
   letter-spacing: -0.2px;
@@ -15363,3 +15364,105 @@ img.cg__avatar { display: block; object-fit: cover; background: none; }
 @media (max-width: 760px) {
   .big-footer--statement .big-footer__nav .big-footer__nav-left { gap: 36px; }
 }
+
+/* Footer lists — compact on phones */
+@media (max-width: 640px) {
+  .big-footer--statement .big-footer__nav a { font-size: 13px; }
+  .big-footer--statement .big-footer__group { font-size: 13px; margin-bottom: 4px; }
+  .big-footer--statement .big-footer__nav div { gap: 7px; }
+  .big-footer--statement .big-footer__nav--split,
+  .big-footer--statement .big-footer__nav .big-footer__nav-left { gap: 28px; }
+  .big-footer__connect a { gap: 8px; }
+  .big-footer__connect svg { width: 13px; height: 13px; }
+}
+
+/* WhatsApp bubble — smaller on phones */
+@media (max-width: 640px) {
+  .big-footer .cg--wa .cg__bubble { width: 272px; height: 47px; }
+  .big-footer .cg--wa .cg__msg { top: 7px; left: 14px; right: 18px; font-size: 13px; line-height: 17px; letter-spacing: -0.15px; }
+  .big-footer .cg--wa .cg__meta { right: 21px; bottom: 5px; font-size: 9px; }
+  .big-footer .cg--wa .cg__meta img { width: 14px; }
+}
+@media (max-width: 640px) {
+  .big-footer .cg--wa .cg__bubble { align-self: center; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 640px) {
+  .big-footer .cg--mail { height: 155px; }
+  .big-footer .cg--mail .cg__card { justify-content: flex-start; padding-top: 26px; }
+}
+/* FAQ — same side inset as the other sections on phones */
+@media (max-width: 640px) {
+  .faq { padding-left: 22px; padding-right: 22px; }
+}
+/* Tasks — phones show the carousel only for now */
+@media (max-width: 640px) {
+  .tasks .task-fan,
+  .tasks .task-catalogue-toggle,
+  .tasks .task-filters { display: none !important; }
+  .tasks .task-catalogue[hidden] { display: block !important; }
+}
+/* Studio card — no shadow on phones / touch (tap leaves :hover stuck) */
+@media (max-width: 640px), (hover: none) {
+  .studio-card,
+  .studio-card:hover { box-shadow: none; }
+}
+/* Phone task carousel: "Ajouter" only once a card is opened; an expand glyph top-right hints the tap. */
+@media (max-width: 640px) {
+  .task-grid .task-card { position: relative; }
+  .task-grid .task-card:not(.is-expanded) .task-add { display: none; }
+  .task-grid .task-card:not(.is-expanded)::after {
+    content: "";
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    width: 18px;
+    height: 18px;
+    background: #000;
+    pointer-events: none;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
+/* Phone carousel: no Ajouter row any more, so the card shrinks and the glyph sits
+   evenly between the text and the expand glyph. */
+@media (max-width: 640px) {
+  .task-grid .task-card:not(.is-expanded) { min-height: 356px; }
+  .task-grid .task-card:not(.is-expanded) .task-glyph { bottom: 56px; }
+}
+/* Migration glyph inside a regular task card: same tiles, scaled to the other glyphs' size. */
+.task-card:not(.task-card--wide) .task-glyph--migration {
+  zoom: 1; left: auto; right: 22px; margin: 0;
+  transform: scale(0.46); transform-origin: 100% 100%;
+}
+@media (max-width: 640px) {
+  .task-grid .task-card:not(.task-card--wide) .task-glyph--migration {
+    left: 50%; right: auto; margin-left: -150px; transform-origin: 50% 100%;
+  }
+}
+/* Task grid (desktop/tablet): "Ajouter" sits right under the description, not pinned to the card bottom. */
+@media (min-width: 641px) {
+  .task-grid .task-card .task-add { margin-top: 22px; }
+}
+/* Task grid (desktop/tablet): bigger glyph and a small expand hint on closed cards. */
+@media (min-width: 641px) {
+  .task-grid .task-card { position: relative; }
+  .task-grid .task-card:not(.is-expanded) .task-glyph {
+    transform: scale(1.25);
+    transform-origin: 100% 100%;
+  }
+  .task-grid .task-card:not(.is-expanded):not(.task-card--wide) .task-glyph--migration { transform: scale(0.575); }
+  .task-grid .task-card:not(.is-expanded)::after {
+    content: "";
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 16px;
+    height: 16px;
+    background: #000;
+    pointer-events: none;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
+/* Task grid: price in grey, like the stacked cards. */
+.task-grid .task-price { color: var(--muted); }
