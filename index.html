@@ -805,49 +805,60 @@
         <small>Scope and costs agreed before we begin.</small>
       </section>
     </main>
-    <footer class="big-footer">
-      <div class="big-footer__main">
-        <div class="big-footer__lead">
-          <p class="big-footer__statement">One person for the tech <br />side of your gallery.</p>
-          <form class="big-footer__form" novalidate data-lang="en" data-msgs='{"ok": "Thank you, I’ll be in touch.", "invalid": "Enter a valid email address.", "failed": "Couldn’t send. Try again, or write to studio@rrstudio.online."}'>
-            <p class="big-footer__stay">Stay in touch</p>
-            <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <div class="big-footer__field">
+    <footer class="big-footer big-footer--statement">
+      <div class="big-footer__hero">
+        <p class="big-footer__headline">Leave the tech to <br />someone who knows art.</p>
+        <p class="big-footer__sub">Need a hand or want to bring superintelligence into your art business? <br />Just get in touch.</p>
+      </div>
+      <div class="big-footer__contact-row big-footer__contact-row--glyph">
+        <div class="cg cg--mail">
+          <span class="cg__tag">To: studio@rrstudio.online</span>
+          <div class="cg__card">
+            <p class="cg__label">New message</p>
+            <form class="big-footer__form cg__form" novalidate data-lang="en" data-msgs='{"ok": "Thank you, I’ll be in touch.", "invalid": "Enter a valid email address.", "failed": "Couldn’t send. Try again, or write to studio@rrstudio.online."}'>
+              <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="big-footer__field">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
               <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required />
               <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </div>
-            <p class="big-footer__status" role="status">I’ll only use your email to write back to you.</p>
-          </form>
+              </div>
+              <p class="big-footer__status" role="status">I’ll only use your email to write back to you.</p>
+            </form>
+          </div>
         </div>
-        <nav class="big-footer__cols" aria-label="Footer">
-        <div>
-          <a class="big-footer__title" href="/#products">Tools</a>
-          <a href="/#products">Chat</a>
-          <a href="/#products">Mail</a>
-          <a href="/#products">Assistant</a>
-          <a href="/#products">Inventory</a>
-        </div>
-        <div>
-          <a class="big-footer__title" href="/#tasks">Tasks</a>
-          <a href="/tasks/website/">Website &amp; visibility</a>
-          <a href="/tasks/inventory/">Inventory</a>
-          <a href="/tasks/sales-material/">Sales material</a>
-          <a href="/art-gallery-websites/">Website design &amp; support for art galleries</a>
-          <a href="/art-gallery-seo/">SEO services for art galleries</a>
-          <a href="/art-inventory-migration/">Artwork inventory cleanup &amp; migration</a>
-          <a href="/art-advisor-websites/">Websites &amp; digital support for art advisors</a>
-        </div>
-        <div>
-          <a class="big-footer__title" href="/#studio">Studio</a>
-          <a href="/#studio">About</a>
-          <a href="/#ways">Studio Partner</a>
-          <a href="/contact/">Contact</a>
-          <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a href="mailto:studio@rrstudio.online">Email</a>
-        </div>
-        </nav>
+        <a class="cg cg--wa" href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer">
+          <span class="cg__tag cg__tag--wa-header"><img class="cg__avatar" src="/logos/whatsapp.svg" alt="" width="28" height="28" /><span class="cg__who"><b>R.R Studio</b><small>online</small></span></span>
+          <span class="cg__card">
+            <span class="cg__bubble"><img class="cg__bubble-shadow" src="/footer/wa-bubble-shadow.svg" alt="" width="686" height="130" /><img class="cg__bubble-fill" src="/footer/wa-bubble.svg?v=5" alt="" width="687" height="128" /><span class="cg__msg">Hi, I’d like to talk about my project.</span><span class="cg__meta">11:47<img src="/footer/wa-read.svg" alt="" width="29" height="20" /></span></span>
+            <span class="cg__open">Open WhatsApp <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
       </div>
+      <nav class="big-footer__nav big-footer__nav--split" aria-label="Footer">
+        <div class="big-footer__nav-left">
+          <div>
+            <p class="big-footer__group">Tools</p>
+            <a href="/#products">Chat</a>
+            <a href="/#products">Mail</a>
+            <a href="/#products">Assistant</a>
+            <a href="/#products">Inventory</a>
+          </div>
+          <div>
+            <p class="big-footer__group">Services</p>
+            <a href="/art-gallery-websites/">Website design &amp; support for art galleries</a>
+            <a href="/art-gallery-seo/">SEO services for art galleries</a>
+            <a href="/art-inventory-migration/">Artwork inventory cleanup &amp; migration</a>
+            <a href="/art-advisor-websites/">Digital support for art advisors</a>
+          </div>
+        </div>
+        <div class="big-footer__connect">
+          <p class="big-footer__group">Connect</p>
+          <a href="mailto:studio@rrstudio.online"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Email</a>
+          <a href="https://wa.me/33645642843?text=Hi%2C%20I%E2%80%99d%20like%20to%20talk%20about%20my%20project." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>WhatsApp</a>
+          <a href="https://www.instagram.com/r.r.studio.paris" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor" stroke="none"/></svg>Instagram</a>
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer" data-todo="x-handle"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
+        </div>
+      </nav>
       <div class="big-footer__meta">
         <span class="big-footer__lang"><span class="lang-current">EN</span><i aria-hidden="true">·</i><a href="/fr/" hreflang="fr" aria-label="Voir le site en français">FR</a></span>
         <span>© 2026 R.R Studio · Paris, France</span>

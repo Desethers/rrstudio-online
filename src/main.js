@@ -2416,7 +2416,7 @@ document.querySelector('.filter[data-component-default]')?.click();
     if (!card) return;
     card.style.setProperty('--fan-index', position);
     const jitter = (range) => (Math.random() * 2 - 1) * range;
-    card.style.setProperty('--stack-x-desktop', `${(position - 1.5) * 170 + jitter(3)}px`);
+    card.style.setProperty('--stack-x-desktop', `${(position - 1.5) * 186 + jitter(3)}px`);
     card.style.setProperty('--stack-x-mobile', `${(position - 1.5) * 32 + jitter(1)}px`);
     card.style.setProperty('--stack-y', `${(position - 1.5) ** 2 * 8 + [0, -4, 3, -2][position] + jitter(1)}px`);
     card.style.setProperty('--stack-angle', `${(position - 1.5) * 1.6 + jitter(.25)}deg`);
