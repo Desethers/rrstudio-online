@@ -14859,3 +14859,69 @@ main > .faq { padding-top: 120px; padding-bottom: 120px; }
 .brand:hover {
   color: rgba(17, 17, 16, 0.75);
 }
+
+/* Collapsed task cards: no "Add task" button (it lives in the expanded card) and a larger glyph. */
+.task-fan .task-card:not(.is-fan-expanded) .task-add { display: none; }
+.task-fan .task-card:not(.is-fan-expanded) .task-glyph { transform: translateX(-50%) scale(1.4); bottom: 24px; }
+@media (max-width: 760px) {
+  .task-fan .task-card:not(.is-fan-expanded) .task-glyph { transform: translateX(-50%) scale(1.15); bottom: 22px; }
+}
+@media (max-width: 640px) {
+  .task-fan .task-card:not(.is-fan-expanded) .task-glyph { transform: translateX(-50%) scale(1.05); bottom: 20px; }
+}
+
+/* Open task card, left column: clearer rhythm between label, title, price, copy and button. */
+@media (min-width: 761px) {
+  .task-fan .task-card.is-fan-expanded { padding: 28px 26px; gap: 24px; }
+  .task-fan .task-card.is-fan-expanded .task-card__body { flex-basis: 186px; width: 186px; }
+  .task-fan .task-card.is-fan-expanded h3 {
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 26px 0 0;
+    text-wrap: balance;
+  }
+  .task-fan .task-card.is-fan-expanded .task-price {
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .task-fan .task-card.is-fan-expanded .task-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 22px;
+    max-width: 24ch;
+  }
+  .task-fan .task-card.is-fan-expanded .task-add {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+}
+
+/* Collapsed task cards: price in grey, like the open card. */
+.task-fan .task-card:not(.is-fan-expanded) .task-price { color: var(--muted); }
+
+/* Collapsed task cards: a few px more between the title and the price. */
+.task-fan .task-card:not(.is-fan-expanded) .task-price { margin-top: 6px; }
+
+/* Open card "Publish an exhibition": title on a single line. */
+@media (min-width: 761px) {
+  .task-fan .task-card.is-fan-expanded[data-preview-id="publish-exhibition"] h3 {
+    font-size: 19px;
+    white-space: nowrap;
+  }
+}
+
+/* Open card "Prepare my gallery for an art fair": title on two lines. */
+@media (min-width: 761px) {
+  .task-fan .task-card.is-fan-expanded[data-preview-id="viewing-room"] h3 { font-size: 19px; }
+}
+
+/* Open card: the button follows the description with the same gap as price → description. */
+@media (min-width: 761px) {
+  .task-fan .task-card.is-fan-expanded .task-add { margin-top: 22px; }
+}
+
+/* Open card button: grey stroke. */
+.task-fan .task-card.is-fan-expanded .task-add { border-color: #c4c4c2; }
+.task-fan .task-card.is-fan-expanded .task-add:hover { border-color: var(--ink); }

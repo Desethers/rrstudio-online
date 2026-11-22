@@ -2522,15 +2522,15 @@ document.querySelector('.filter[data-component-default]')?.click();
     const card = event.target.closest('.task-card');
     if (!card) return;
     event.preventDefault();
-    openFanCard(card);
+    setExpanded(true, true, true);
   });
   fan.addEventListener('click', event => {
     if (event.target.closest('.task-fan-close')) { closeFanCard(); return; }
     if (event.target.closest('.task-card__media')) return;
     const button = event.target.closest('.task-add');
     if (!button) {
-      const card = event.target.closest('.task-card');
-      if (card) openFanCard(card);
+      /* A click on a stacked card unfolds the whole catalogue instead of opening that card. */
+      if (event.target.closest('.task-card')) setExpanded(true, true, true);
       return;
     }
     const taskId = button.dataset.taskId;
@@ -2563,9 +2563,10 @@ document.querySelector('.filter[data-component-default]')?.click();
   /* Unfold: the fan fades and folds away while the catalogue opens in height and its cards rise
    * in one after the other. Fold is the same movement reversed. No element is scaled, so text
    * and previews never distort. */
-  const setExpanded = (expanded, animate = false) => {
+  const setExpanded = (expanded, animate = false, fromFan = false) => {
     const changed = catalogue.hidden === expanded;
     catalogueTransition?.progress(1);
+    const clearOrder = () => taskGrid.querySelectorAll('.task-card').forEach(c => { c.style.order = ''; });
     closeFanCard(false);
     syncFanSelection();
     const gridCards = [...taskGrid.querySelectorAll('.task-card')];
@@ -2575,6 +2576,7 @@ document.querySelector('.filter[data-component-default]')?.click();
       ? (expanded ? 'Replier les tâches' : 'Voir toutes les tâches')
       : (expanded ? 'Close tasks' : 'Explore all tasks');
     if (!shouldAnimate) {
+      if (!expanded) clearOrder();
       catalogue.hidden = !expanded;
       fan.hidden = expanded;
       return;
@@ -2582,6 +2584,112 @@ document.querySelector('.filter[data-component-default]')?.click();
 
     section.classList.add('is-unfolding');
     toggle.disabled = true;
+
+    /* Two beats. 1) The stacked cards line up: each one travels from its place in the stack to the
+     * first row of the catalogue (they take the first slots). 2) The remaining cards then drop in
+     * one after the other from above and settle with a little weight. */
+    if (expanded && fromFan) {
+      const origins = new Map();
+      let rank = 0;
+      fan.querySelectorAll('.task-card').forEach(c => {
+        const r = c.getBoundingClientRect();
+        if (r.width) origins.set(c.dataset.previewId, { r, rot: gsap.getProperty(c, 'rotation') || 0, rank: rank++ });
+      });
+      gridCards.forEach(card => {
+        const o = origins.get(card.dataset.previewId);
+        if (o) card.style.order = String(o.rank - origins.size);
+      });
+      catalogue.hidden = false;
+      fan.hidden = true;
+      const lined = gridCards.filter(c => origins.has(c.dataset.previewId));
+      const dropped = gridCards.filter(c => !origins.has(c.dataset.previewId));
+      gsap.set(filters, { opacity: 0, y: 18 });
+      gsap.set(dropped, { opacity: 0, y: 22 });
+      lined.forEach((card, i) => {
+        const from = origins.get(card.dataset.previewId);
+        const g = card.getBoundingClientRect();
+        gsap.set(card, {
+          x: from.r.left + from.r.width / 2 - (g.left + g.width / 2),
+          y: from.r.top + from.r.height / 2 - (g.top + g.height / 2),
+          scale: from.r.width / g.width,
+          rotation: from.rot,
+          zIndex: 10 + i,
+          transformOrigin: '50% 50%'
+        });
+      });
+      const tlFan = gsap.timeline({
+        onComplete: () => {
+          /* clearProps 'all' wipes the inline style, so the stack cards' order is put back after it. */
+          const orders = gridCards.map(c => c.style.order);
+          gsap.set([fan, catalogue, filters, ...gridCards], { clearProps: 'all' });
+          gridCards.forEach((c, i) => { c.style.order = orders[i]; });
+          section.classList.remove('is-unfolding');
+          toggle.disabled = false;
+          catalogueTransition = null;
+        }
+      });
+      tlFan.to(lined, { x: 0, y: 0, scale: 1, rotation: 0, duration: 1.1, stagger: .06, ease: 'power2.inOut' }, 0)
+        .to(filters, { opacity: 1, y: 0, duration: .6, ease: 'power2.out' }, .8)
+        .to(dropped, { opacity: 1, y: 0, duration: .9, stagger: .09, ease: 'power2.out' }, .95);
+      catalogueTransition = tlFan;
+      return;
+    }
+
+    /* Closing mirrors the opening. 1) The other cards fade out and sink slightly, last first.
+     * 2) The stack's cards glide back from the grid to their places and tilts in the stack, while the
+     * catalogue shrinks to the stack's height so the content below follows without a jump. */
+    if (!expanded) {
+      const page = el => { const r = el.getBoundingClientRect(); return { left: r.left + scrollX, top: r.top + scrollY, width: r.width, height: r.height }; };
+      const now = new Map(gridCards.map(c => [c, page(c)]));
+      const afterNow = page(toggle).top;
+      // Peek at the closed layout to know where every stack card ends up.
+      catalogue.hidden = true;
+      fan.hidden = false;
+      const targets = new Map();
+      fan.querySelectorAll('.task-card').forEach(c => {
+        const r = page(c);
+        if (r.width) targets.set(c.dataset.previewId, { r, rot: gsap.getProperty(c, 'rotation') || 0 });
+      });
+      const afterClosed = page(toggle).top;
+      fan.hidden = true;
+      catalogue.hidden = false;
+
+      const lined = gridCards.filter(c => targets.has(c.dataset.previewId));
+      const faded = gridCards.filter(c => !targets.has(c.dataset.previewId));
+      const catalogueHeight = catalogue.offsetHeight;
+      gsap.set(catalogue, { height: catalogueHeight, overflow: 'visible' });
+      lined.forEach((c, i) => gsap.set(c, { zIndex: 10 + i, transformOrigin: '50% 50%' }));
+
+      const tlClose = gsap.timeline({
+        onComplete: () => {
+          catalogue.hidden = true;
+          fan.hidden = false;
+          gsap.set([fan, catalogue, filters, ...gridCards], { clearProps: 'all' });
+          clearOrder();
+          section.classList.remove('is-unfolding');
+          toggle.disabled = false;
+          catalogueTransition = null;
+        }
+      });
+      tlClose.to(faded, { opacity: 0, y: 22, duration: .6, stagger: { each: .06, from: 'end' }, ease: 'power2.in' }, 0)
+        .to(filters, { opacity: 0, y: 18, duration: .45, ease: 'power2.in' }, .1)
+        .to(catalogue, { height: Math.max(0, catalogueHeight + afterClosed - afterNow), duration: 1.1, ease: 'power2.inOut' }, .45);
+      [...lined].reverse().forEach((c, i) => {
+        const to = targets.get(c.dataset.previewId).r;
+        const from = now.get(c);
+        tlClose.to(c, {
+          x: to.left + to.width / 2 - (from.left + from.width / 2),
+          y: to.top + to.height / 2 - (from.top + from.height / 2),
+          scale: to.width / from.width,
+          rotation: targets.get(c.dataset.previewId).rot,
+          duration: 1.1,
+          ease: 'power2.inOut'
+        }, .45 + i * .06);
+      });
+      catalogueTransition = tlClose;
+      return;
+    }
+
     const cleanup = () => {
       catalogue.hidden = !expanded;
       fan.hidden = expanded;
@@ -2622,7 +2730,7 @@ document.querySelector('.filter[data-component-default]')?.click();
     catalogueTransition = tl;
   };
   setExpanded(false);
-  toggle.addEventListener('click', () => setExpanded(catalogue.hidden, true));
+  toggle.addEventListener('click', () => setExpanded(catalogue.hidden, true, true));
   filters.addEventListener('click', () => setExpanded(true));
   document.querySelector('.category-strip')?.addEventListener('click', event => {
     if (event.target.closest('.category-link')) setExpanded(true);
